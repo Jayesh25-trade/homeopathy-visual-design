@@ -837,8 +837,8 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 850px) {
-  .portrait-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 68px; }
-  .portrait-hero__photo { min-height: 52svh; }
+  .portrait-hero { grid-template-columns: 1fr; min-height: auto; }
+  .portrait-hero__photo { min-height: max(340px, 42svh); }
   .portrait-hero__photo img { position: absolute; inset: 0; object-position: center 22%; }
   .portrait-hero__photo-wash { background: linear-gradient(0deg, var(--ivory), transparent 34%); opacity: .7; }
   .portrait-hero__content { padding: 34px 20px 116px; }
