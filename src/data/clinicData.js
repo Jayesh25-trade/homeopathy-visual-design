@@ -83,7 +83,7 @@ export const conditions = [
     label: "Migraine",
     shortLabel: "Migraine",
     description: "Long-term management of recurring migraines and headaches.",
-    images: ["/assets/conditions/migraine.jpg"],
+    images: ["/assets/conditions/migraine-care.jpg"],
     doctorId: "kushal",
   },
   {
@@ -91,7 +91,7 @@ export const conditions = [
     label: "PCOD",
     shortLabel: "PCOD",
     description: "Individualised support for hormonal balance and cycle-related concerns.",
-    images: ["/assets/conditions/pcod.jpg"],
+    images: ["/assets/conditions/pcod-care.jpg"],
     doctorId: "kushal",
   },
   {
@@ -99,7 +99,7 @@ export const conditions = [
     label: "Kidney Stones",
     shortLabel: "Kidney Stones",
     description: "Consultation and supportive management for kidney-stone concerns and recurrence.",
-    images: ["/assets/conditions/kidney-stones.jpg"],
+    images: ["/assets/conditions/kidney-care.jpg"],
     doctorId: "kushal",
   },
   {
@@ -107,7 +107,7 @@ export const conditions = [
     label: "Acidity & Digestion",
     shortLabel: "Acidity & Digestion",
     description: "Care for acidity, gas, bloating and digestive complaints.",
-    images: ["/assets/conditions/acidity.jpg"],
+    images: ["/assets/conditions/digestion-care.jpg"],
     doctorId: "antim",
   },
   {
@@ -115,7 +115,7 @@ export const conditions = [
     label: "Paediatric Illnesses",
     shortLabel: "Paediatric",
     description: "Gentle, individualised care for children's recurring health concerns.",
-    images: ["/assets/conditions/paediatric.jpg"],
+    images: ["/assets/conditions/paediatric-care.jpg"],
     doctorId: "antim",
   },
   {
@@ -123,7 +123,7 @@ export const conditions = [
     label: "Mental Health Care",
     shortLabel: "Mental Health",
     description: "Supportive care for stress, anxiety and emotional well-being.",
-    images: ["/assets/conditions/mental-health.jpg"],
+    images: ["/assets/conditions/wellbeing-care.jpg"],
     doctorId: "antim",
   },
 ];

@@ -38,7 +38,10 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
       </div>
 
       <div className="portrait-hero__ribbon" aria-hidden="true">
-        <span>Listen deeply</span><span>Care individually</span><span>Heal thoughtfully</span><span>Listen deeply</span>
+        <div className="portrait-hero__ticker">
+          <span>Listen deeply · Care individually · Heal thoughtfully · </span>
+          <span>Listen deeply · Care individually · Heal thoughtfully · </span>
+        </div>
       </div>
     </section>
   );

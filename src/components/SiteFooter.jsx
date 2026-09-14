@@ -1,39 +1,42 @@
 import React from 'react';
-import { clinic } from '../data/clinicData';
+import { clinic, locations } from '../data/clinicData';
 
 export default function SiteFooter() {
+  const physicalLocations = locations.filter(location => location.mapsUrl);
   return (
-    <footer
-      style={{
-        background: 'var(--ink)',
-        color: 'rgba(245,240,232,0.4)',
-        padding: '28px var(--gutter)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: '12px',
-      }}
-    >
-      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.06em' }}>
-        © {new Date().getFullYear()} {clinic.name} · Est. 1998 · Pune & Jalgaon
-      </p>
-      <a
-        href={clinic.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.65rem',
-          color: 'rgba(245,240,232,0.4)',
-          letterSpacing: '0.06em',
-          textDecoration: 'underline',
-          textUnderlineOffset: '3px',
-        }}
-        aria-label="Instagram @somanikushal"
-      >
-        @somanikushal
-      </a>
+    <footer className="site-footer">
+      <div className="site-footer__maps" aria-label="Clinic maps">
+        {physicalLocations.map(location => (
+          <article key={location.id} className="site-footer__map">
+            <iframe
+              title={`${location.city} clinic map`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(location.address)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="site-footer__map-label">
+              <div><span>Visit us</span><strong>{location.city}</strong></div>
+              <a href={location.mapsUrl} target="_blank" rel="noopener noreferrer">Open map ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="site-footer__main">
+        <div className="site-footer__brand">
+          <img src={clinic.logo} alt="Dr Somani's Homoeopathy logo" width="56" height="56" />
+          <div><strong>{clinic.name}</strong><span>Think Homoeopathy, Think Somani.</span></div>
+        </div>
+        <div className="site-footer__links">
+          <a href={clinic.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href={clinic.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="#doctors">Our doctors</a>
+          <a href="#concerns">Areas of care</a>
+        </div>
+      </div>
+      <div className="site-footer__legal">
+        <span>© {new Date().getFullYear()} {clinic.name}</span>
+        <span>Established 1998 · Pune · Jalgaon · Online</span>
+      </div>
     </footer>
   );
 }

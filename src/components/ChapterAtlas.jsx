@@ -68,8 +68,8 @@ export default function ChapterAtlas({ onOpenBooking }) {
                 borderRadius: '20px',
                 border: `1px solid ${i === selected ? 'var(--vermilion)' : 'rgba(14,14,12,0.18)'}`,
                 background: i === selected ? 'var(--vermilion)' : 'transparent',
-                color: i === selected ? '#fff' : 'rgba(14,14,12,0.65)',
-                fontFamily: 'IBM Plex Mono, monospace',
+                color: i === selected ? 'var(--ivory)' : 'var(--fg-muted)',
+                fontFamily: 'var(--font-sans)',
                 fontSize: '0.7rem',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -127,7 +127,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span style={{
-                  fontFamily: 'Fraunces, serif',
+                   fontFamily: 'var(--font-serif)',
                   fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
                   fontWeight: 300,
                   color: i === selected ? 'var(--ink)' : 'rgba(14,14,12,0.5)',
@@ -146,10 +146,10 @@ export default function ChapterAtlas({ onOpenBooking }) {
             style={{
               animation: 'fadeUp 400ms cubic-bezier(0.22,1,0.36,1) both',
               padding: '24px',
-              background: '#ffffff',
+               background: 'var(--bg-surface)',
               borderRadius: '6px',
-              border: '1px solid rgba(200,135,58,0.25)',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+               border: '1px solid var(--border)',
+               boxShadow: 'var(--shadow-sm)',
             }}
           >
             {/* Image */}
@@ -165,6 +165,8 @@ export default function ChapterAtlas({ onOpenBooking }) {
               <img
                 src={active.images[0]}
                 alt={active.label}
+                width="1024"
+                height="640"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 loading="lazy"
               />
@@ -185,7 +187,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
               Overview
             </p>
             <p style={{
-              fontFamily: 'Fraunces, serif', fontWeight: 300,
+               fontFamily: 'var(--font-serif)', fontWeight: 400,
               fontSize: 'clamp(1.1rem, 2vw, 1.45rem)',
               color: 'var(--ink)', lineHeight: 1.45, marginBottom: '22px',
             }}>
@@ -214,7 +216,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
               </div>
               <div>
                 <p style={{
-                  fontFamily: 'Fraunces, serif', fontWeight: 300,
+                   fontFamily: 'var(--font-serif)', fontWeight: 400,
                   fontSize: '1rem', color: 'var(--ink)', marginBottom: '2px',
                 }}>
                   {doctor.name}
@@ -229,7 +231,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: '24px' }}>
               {['Pune', 'Jalgaon', 'Online'].map(loc => (
                 <span key={loc} style={{
-                  fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.68rem',
+                   fontFamily: 'var(--font-sans)', fontSize: '0.68rem',
                   padding: '5px 12px', border: '1px solid rgba(14,14,12,0.18)',
                   borderRadius: '2px', color: 'var(--mineral)',
                 }}>
