@@ -14,7 +14,7 @@ import SiteFooter          from './components/SiteFooter';
 
 export default function App() {
   const [formOpen,  setFormOpen]  = useState(false);
-  const [theme,     setTheme]     = useState('dark');   // 'dark' | 'paper'
+  const [theme,     setTheme]     = useState('paper');   // 'dark' | 'paper'
   const [isMobile,  setIsMobile]  = useState(window.matchMedia('(max-width:768px)').matches);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
