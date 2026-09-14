@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr Somani's Homoeopathy | 27 Years of Trusted Homoeopathic Care — Pune &amp; Jalgaon</title>
+  <meta name="description" content="Dr Kushal Somani — 27 years of safe, side-effect-free homoeopathic treatment for Skin & Vitiligo, Allergies, Migraine, PCOD, Kidney Stones, Acidity, Paediatric & Mental Health. Clinics in Pune & Jalgaon. Online consultations available." />
+  <meta name="theme-color" content="#14213d" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dr Somani's Homoeopathy — 27 Years of Trusted Care" />
+  <meta property="og:description" content="Safe, side-effect-free homoeopathic treatment. Clinics in Pune & Jalgaon. Online consultations available." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/logo.png" />
+</head>
+<body>
+
+  <!-- ============ MAIN NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="brand">
+        <img class="brand__mark" src="assets/logo.png" alt="Dr Somani's Homoeopathy logo" onerror="this.onerror=null;this.src='assets/logo.svg'" />
+        <span class="brand__text">
+          <strong>Dr Somani's</strong>
+          <small>Homoeopathy</small>
+        </span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#treatments">Treatments</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#online">Online</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn--cta nav__cta">Book Appointment</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__eyebrow">🌸 Be Safe &amp; Sure · Trusted Care Since 1998</span>
+        <h1>27 Years of Trusted <span>Homoeopathic Care</span></h1>
+        <p class="hero__slogan">Think Homoeopathy, Think Somani.</p>
+        <p class="hero__lead">
+          Dr Kushal A Somani offers safe, side-effect-free homoeopathic treatment that
+          treats the root cause — boosting your immunity and delivering long-lasting relief.
+        </p>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--cta">Book Appointment</a>
+        </div>
+        <div class="hero__assure">
+          ✅ Safe &amp; side-effect-free &nbsp;·&nbsp; ✅ Boosts immunity &nbsp;·&nbsp; ✅ Long-lasting results
+        </div>
+      </div>
+
+      <div class="hero__card">
+        <img class="hero__avatar" src="assets/dr-kushal-somani.jpg" alt="Dr Kushal A Somani" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'hero__avatar hero__avatar--fallback',textContent:'👨‍⚕️'}))" />
+        <h3>Dr Kushal A Somani</h3>
+        <p class="hero__role">M.D. (Hom) · Consulting Homoeopath</p>
+        <ul class="hero__points">
+          <li>27+ years of clinical experience</li>
+          <li>Clinics in Pune &amp; Jalgaon</li>
+          <li>Online consultations available</li>
+        </ul>
+        <a href="https://wa.me/919834172124" target="_blank" rel="noopener" class="btn btn--cta btn--block">Consult Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="stats">
+    <div class="container stats__grid reveal-stagger">
+      <div class="stat"><strong>27+</strong><span>Years of Service</span></div>
+      <div class="stat"><strong>8</strong><span>Specialised Treatments</span></div>
+      <div class="stat"><strong>2</strong><span>Clinics — Pune &amp; Jalgaon</span></div>
+      <div class="stat"><strong>100%</strong><span>Side-effect-free Care</span></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <div class="about__media reveal">
+        <img class="about__photo" src="assets/dr-kushal-somani.jpg" alt="Dr Kushal A Somani outside the clinic" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'about__photo about__photo--fallback',textContent:'👨‍⚕️'}))" />
+        <div class="about__exp">27<span>Years</span></div>
+      </div>
+      <div class="about__content reveal">
+        <span class="kicker">About the Clinic</span>
+        <h2>Compassionate, root-cause healing for over two decades</h2>
+        <p>
+          For 27 years, <strong>Dr Kushal A Somani</strong> has helped patients find lasting relief
+          through classical homoeopathy — understanding each patient deeply and treating the
+          underlying cause, not just the symptoms, so results last.
+        </p>
+        <p>
+          Today, alongside <strong>Dr Antim Somani</strong>, the clinic serves patients from
+          <strong>Pune</strong> and <strong>Jalgaon</strong>, with online consultations available
+          across India. Quality homoeopathic care is always within reach — gentle, safe and tailored to you.
+        </p>
+        <a href="#contact" class="btn btn--cta">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TREATMENTS ============ -->
+  <section class="treatments" id="treatments">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">What We Treat</span>
+        <h2>Specialised Homoeopathic Treatments</h2>
+        <p>Select the condition you're facing — we'll start your enquiry for that treatment.</p>
+      </div>
+
+      <div class="cards reveal-stagger">
+        <button type="button" class="card" data-condition="Skin Diseases &amp; Vitiligo">
+          <span class="card__banner" data-emoji="🩹" style="--b1:#fde4d4;--b2:#f6c6ac"><img class="card__banner-img" src="assets/conditions/skin.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Skin Diseases &amp; Vitiligo</h3><p>Lasting relief for vitiligo, psoriasis, eczema and stubborn skin conditions.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Allergies">
+          <span class="card__banner" data-emoji="🤧" style="--b1:#d9f0dd;--b2:#b3ddc3"><img class="card__banner-img" src="assets/conditions/allergies.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Allergies</h3><p>Treating the root cause of recurring allergies and seasonal reactions.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Migraine">
+          <span class="card__banner" data-emoji="🧠" style="--b1:#e1e5fb;--b2:#c1cbf4"><img class="card__banner-img" src="assets/conditions/migraine.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Migraine</h3><p>Gentle, long-term management of chronic migraines and headaches.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="PCOD">
+          <span class="card__banner" data-emoji="🌸" style="--b1:#fdd9e8;--b2:#f5bad4"><img class="card__banner-img" src="assets/conditions/pcod.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>PCOD</h3><p>Hormonal balance and regular cycles through holistic homoeopathic care.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Kidney Stones">
+          <span class="card__banner" data-emoji="💧" style="--b1:#d3ecf7;--b2:#a9d7ee"><img class="card__banner-img" src="assets/conditions/kidney-stones.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Kidney Stones</h3><p>Safe dissolution and prevention without invasive procedures.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Acidity &amp; Digestion">
+          <span class="card__banner" data-emoji="🍃" style="--b1:#d5f0ea;--b2:#abe0d4"><img class="card__banner-img" src="assets/conditions/acidity.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Acidity &amp; Digestion</h3><p>Relief from acidity, gas, bloating and digestive disorders.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Paediatric Illnesses">
+          <span class="card__banner" data-emoji="🧒" style="--b1:#fdeecb;--b2:#f7db9a"><img class="card__banner-img" src="assets/conditions/paediatric.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Paediatric Illnesses</h3><p>Safe, gentle medicines for children's recurring health issues.</p><span class="card__pick">Select this →</span></span>
+        </button>
+        <button type="button" class="card" data-condition="Mental Health Care">
+          <span class="card__banner" data-emoji="💚" style="--b1:#d6efe4;--b2:#b0e0cc"><img class="card__banner-img" src="assets/conditions/mental-health.jpg" alt="" loading="lazy" onerror="this.remove()" /></span>
+          <span class="card__body"><h3>Mental Health Care</h3><p>Support for stress, anxiety and emotional well-being.</p><span class="card__pick">Select this →</span></span>
+        </button>
+      </div>
+      <p class="cards__hint">Can't find your concern? <a href="#contact">Send us a message</a> and we'll guide you.</p>
+    </div>
+  </section>
+
+  <!-- ============ SKIN & VITILIGO GALLERY (auto-shows once photos are uploaded) ============ -->
+  <section class="skingal condgal hidden" id="skinGallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Skin &amp; Vitiligo</span>
+        <h2>Skin &amp; Vitiligo Care</h2>
+        <p>Conditions we help manage every day — from vitiligo and psoriasis to eczema and stubborn rashes.</p>
+      </div>
+      <div class="skingal__grid">
+        <figure class="skingal__item"><img src="assets/conditions/skin.jpg" alt="Skin &amp; vitiligo care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/skin-2.jpg" alt="Skin &amp; vitiligo care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/skin-3.jpg" alt="Skin &amp; vitiligo care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/skin-4.jpg" alt="Skin &amp; vitiligo care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/skin-5.jpg" alt="Skin &amp; vitiligo care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ALLERGIES GALLERY (auto-shows once photos are uploaded) ============ -->
+  <section class="skingal condgal hidden" id="allergyGallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Allergies</span>
+        <h2>Allergy Care</h2>
+        <p>Gentle, root-cause treatment for skin allergies, hives, hay fever, dust and seasonal reactions.</p>
+      </div>
+      <div class="skingal__grid">
+        <figure class="skingal__item"><img src="assets/conditions/allergies.jpg" alt="Allergy care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/allergies-2.jpg" alt="Allergy care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+        <figure class="skingal__item"><img src="assets/conditions/allergies-3.jpg" alt="Allergy care at Dr Somani's Homoeopathy" loading="lazy" onerror="this.closest('.skingal__item').remove()" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCTORS ============ -->
+  <section class="doctors" id="doctors">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Meet the Doctors</span>
+        <h2>Qualified, Caring Homoeopaths</h2>
+        <p>Registered practitioners dedicated to safe, individualised homoeopathic care.</p>
+      </div>
+      <div class="doctors__grid reveal-stagger">
+        <a class="doctor" href="doctor-kushal-somani.html">
+          <img class="doctor__photo" src="assets/dr-kushal-somani.jpg" alt="Dr Kushal A Somani" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'doctor__photo doctor__photo--fallback',textContent:'👨‍⚕️'}))" />
+          <h3>Dr Kushal A Somani</h3>
+          <p class="doctor__qual">M.D. (Hom) · Consulting Homoeopath</p>
+          <p class="doctor__reg">Reg. No. 82170</p>
+          <p class="doctor__desc">27 years of experience in chronic and complex cases — skin, vitiligo, PCOD, migraine and more.</p>
+          <span class="doctor__more">View full profile →</span>
+        </a>
+        <a class="doctor" href="doctor-antim-somani.html">
+          <img class="doctor__photo" src="assets/dr-antim-somani.jpg" alt="Dr Antim Somani" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'doctor__photo doctor__photo--fallback',textContent:'👨‍⚕️'}))" />
+          <h3>Dr Antim Somani</h3>
+          <p class="doctor__qual">B.H.M.S</p>
+          <p class="doctor__reg">Reg. No. 40721</p>
+          <p class="doctor__desc">Committed to gentle, patient-first homoeopathic care for the whole family.</p>
+          <span class="doctor__more">View full profile →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ONLINE CONSULTATION ============ -->
+  <section class="online" id="online">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Consult From Anywhere</span>
+        <h2>Online Homoeopathic Consultation</h2>
+        <p>The same trusted care from the comfort of your home — anywhere in India. Simple, private and convenient.</p>
+      </div>
+
+      <div class="online__steps reveal-stagger">
+        <div class="ostep"><span class="ostep__no">1</span><div class="ostep__ic">🗓️</div><h3>Book your slot</h3><p>Request a time on WhatsApp — pick a day and part of the day that suits you.</p></div>
+        <div class="ostep"><span class="ostep__no">2</span><div class="ostep__ic">💳</div><h3>Confirm &amp; pay</h3><p>Confirm your appointment and pay the consultation fee securely via UPI.</p></div>
+        <div class="ostep"><span class="ostep__no">3</span><div class="ostep__ic">🎥</div><h3>Video consultation</h3><p>Meet the doctor over a video call and discuss your case in detail.</p></div>
+        <div class="ostep"><span class="ostep__no">4</span><div class="ostep__ic">💊</div><h3>Medicines &amp; follow-up</h3><p>Get your prescription and guidance on WhatsApp, with follow-up support.</p></div>
+      </div>
+
+      <div class="online__cols">
+        <div class="obook reveal">
+          <h3>Request an online consultation</h3>
+          <label>Your name<input type="text" id="obName" placeholder="Full name" /></label>
+          <label>City<input type="text" id="obCity" placeholder="Your city" /></label>
+          <label>Concern
+            <select id="obConcern">
+              <option value="">Select a treatment</option>
+              <option>Skin Diseases &amp; Vitiligo</option>
+              <option>Allergies</option>
+              <option>Migraine</option>
+              <option>PCOD</option>
+              <option>Kidney Stones</option>
+              <option>Acidity &amp; Digestion</option>
+              <option>Paediatric Illnesses</option>
+              <option>Mental Health Care</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <div class="obook__row">
+            <div>
+              <span class="obook__lbl">Preferred day</span>
+              <div class="chips" id="obDay">
+                <button type="button" data-v="Today">Today</button>
+                <button type="button" data-v="Tomorrow">Tomorrow</button>
+                <button type="button" data-v="This week">This week</button>
+              </div>
+            </div>
+            <div>
+              <span class="obook__lbl">Preferred time</span>
+              <div class="chips" id="obTime">
+                <button type="button" data-v="Morning">Morning</button>
+                <button type="button" data-v="Afternoon">Afternoon</button>
+                <button type="button" data-v="Evening">Evening</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn--cta btn--block" id="obSend">Request slot on WhatsApp</button>
+          <p class="contact__note">Opens a pre-filled WhatsApp message to the clinic.</p>
+        </div>
+
+        <div class="oprep reveal">
+          <h3>What to keep ready</h3>
+          <ul class="oprep__list">
+            <li>Recent reports (blood tests, scans) — clear photos are fine</li>
+            <li>Your current medicines / prescriptions</li>
+            <li>A short note of your symptoms and how long you've had them</li>
+            <li>A quiet space and a stable internet connection</li>
+          </ul>
+          <div class="oprep__actions">
+            <a class="btn btn--whatsapp" id="oVideo" href="https://wa.me/919834172124">🎥 Start video call</a>
+            <a class="btn btn--cta" id="oPay" href="#">💳 Pay fee via UPI</a>
+          </div>
+          <p class="oprep__hint">🕒 <span id="oTimings">Flexible slots — request your preferred time</span></p>
+          <p class="oprep__hint">🔒 Your details stay private and go only to the clinic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY HOMOEOPATHY ============ -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head section-head--light">
+        <span class="kicker kicker--light">The Somani Difference</span>
+        <h2>Why Choose Homoeopathy?</h2>
+      </div>
+      <div class="why__grid reveal-stagger">
+        <div class="why__item"><div class="why__icon">🛡️</div><h3>Safe &amp; Side-Effect-Free</h3><p>Natural medicines that are gentle on the body and safe for all ages.</p></div>
+        <div class="why__item"><div class="why__icon">⚡</div><h3>Boosts Immunity</h3><p>Strengthens your body's natural defences from within.</p></div>
+        <div class="why__item"><div class="why__icon">🌱</div><h3>Long-Lasting Results</h3><p>Treats the root cause for relief that truly lasts.</p></div>
+        <div class="why__item"><div class="why__icon">🤝</div><h3>Personalised Care</h3><p>Every treatment plan is tailored to you as an individual.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Patient Stories</span>
+        <h2>Trusted by Patients for 27 Years</h2>
+        <p>Real experiences from people who found lasting relief. <em>(Hover to pause.)</em></p>
+      </div>
+    </div>
+
+    <div class="marquee" id="reviewMarquee">
+      <div class="marquee__track" id="reviewTrack">
+        <blockquote class="quote review"><div class="review__stars">★★★★★ <span>5.0</span></div><p>"After years of skin trouble, Dr Somani's treatment finally gave me clear, healthy skin. No side effects at all."</p><footer>— Priya, Pune</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★½ <span>4.5</span></div><p>"My migraines used to control my life. With homoeopathy, I finally have lasting relief and my energy back."</p><footer>— Rohan, Jalgaon</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★<span class="star-empty">★</span> <span>4.0</span></div><p>"Online consultations were so convenient, and the care for my daughter's allergies was wonderful and gentle."</p><footer>— Anjali, Mumbai</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★★ <span>5.0</span></div><p>"My PCOD is finally under control and my cycles are regular. Dr Somani explained everything so patiently."</p><footer>— Sneha, Pune</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★½ <span>4.5</span></div><p>"Passed my kidney stone without any surgery. I'm so grateful for this safe, natural treatment."</p><footer>— Mahesh, Jalgaon</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★★ <span>5.0</span></div><p>"Years of acidity and bloating, gone. I can finally eat in peace. Highly recommend Dr Somani's."</p><footer>— Kavita, Nashik</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★<span class="star-empty">★</span> <span>4.0</span></div><p>"My vitiligo patches have reduced remarkably. The 27 years of experience really shows in the results."</p><footer>— Imran, Pune</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★½ <span>4.5</span></div><p>"My son's frequent colds and coughs have stopped completely. Gentle medicines that actually work for kids."</p><footer>— Deepa, Mumbai</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★★ <span>5.0</span></div><p>"I struggled with anxiety for years. The care here has been life-changing — calm, understanding and effective."</p><footer>— Aarti, Jalgaon</footer></blockquote>
+        <blockquote class="quote review"><div class="review__stars">★★★★½ <span>4.5</span></div><p>"Trustworthy, honest and genuinely caring. The whole family now consults only at Dr Somani's."</p><footer>— Sanjay, Pune</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="container contact__inner">
+      <div class="contact__info">
+        <span class="kicker">Get in Touch</span>
+        <h2>Book Your Consultation</h2>
+        <p>Tired of endless doctor visits? Let's find you long-lasting relief. Reach out to book an in-clinic or online consultation.</p>
+
+        <ul class="contact__list">
+          <li><span>📞</span><a href="tel:+919834172124">+91 98341 72124</a> <em>(Pune)</em></li>
+          <li><span>📞</span><a href="tel:+919270278668">+91 92702 78668</a> <em>(Jalgaon)</em></li>
+          <li><span>✉️</span><a href="/cdn-cgi/l/email-protection#741f01071c15185a155a071b19151a1d341319151d185a171b19"><span class="__cf_email__" data-cfemail="640f11170c05084a054a170b09050a0d240309050d084a070b09">[email&#160;protected]</span></a></li>
+          <li><span>📷</span><a href="https://instagram.com/somanikushal" target="_blank" rel="noopener">@somanikushal</a></li>
+        </ul>
+
+        <div class="contact__clinics">
+          <div class="clinic">
+            <h4>🏥 Wakad, Pune</h4>
+            <p>One Place Wakad, Office No. E-105, First Floor, Pink City Road, above Sanghvi Jewellers, Wakad, Pune – 411057</p>
+            <p class="clinic__actions">
+              <a href="tel:+919834172124">📞 98341 72124</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=One+Place+Wakad+Pink+City+Road+Pune+411057" target="_blank" rel="noopener">📍 Directions</a>
+            </p>
+          </div>
+          <div class="clinic">
+            <h4>🏥 Jalgaon</h4>
+            <p>First Floor, Chitra Chowk – JMP Market, above Agarwal Sweet Mart, Jalgaon – 425001</p>
+            <p class="clinic__actions">
+              <a href="tel:+919270278668">📞 92702 78668</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=Chitra+Chowk+JMP+Market+Jalgaon+425001" target="_blank" rel="noopener">📍 Directions</a>
+            </p>
+          </div>
+          <div class="clinic"><h4>🌐 Online Consultations</h4><p>Video consultations available across India.</p></div>
+        </div>
+      </div>
+
+      <form class="contact__form" id="enquiryForm" novalidate>
+        <h3>Send an Enquiry</h3>
+        <label>Full Name<input type="text" name="name" required placeholder="Your name" /></label>
+        <label>Phone<input type="tel" name="phone" required placeholder="Your phone number" /></label>
+        <label>Condition / Concern
+          <select name="condition">
+            <option value="">Select a treatment</option>
+            <option>Skin Diseases &amp; Vitiligo</option>
+            <option>Allergies</option>
+            <option>Migraine</option>
+            <option>PCOD</option>
+            <option>Kidney Stones</option>
+            <option>Acidity &amp; Digestion</option>
+            <option>Paediatric Illnesses</option>
+            <option>Mental Health Care</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Preferred Branch
+          <select name="branch" required>
+            <option value="">Select a branch</option>
+            <option value="Pune (Wakad)">Pune — Wakad clinic</option>
+            <option value="Jalgaon">Jalgaon clinic</option>
+            <option value="Online">Online consultation</option>
+          </select>
+        </label>
+        <label>Message<textarea name="message" rows="3" placeholder="Tell us briefly about your concern"></textarea></label>
+        <button type="submit" class="btn btn--cta btn--block">Send via WhatsApp</button>
+        <p class="contact__note">Your enquiry opens a pre-filled WhatsApp message to the right clinic.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="brand__mark" src="assets/logo.png" alt="Dr Somani's Homoeopathy logo" onerror="this.onerror=null;this.src='assets/logo.svg'" />
+        <div><strong>Dr Somani's Homoeopathy</strong><br /><small>Be Safe &amp; Sure · Since 1998 · Pune &amp; Jalgaon</small></div>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> Dr Somani's Homoeopathy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING ACTIONS ============ -->
+  <div class="floaters">
+    <a href="https://wa.me/919834172124" target="_blank" rel="noopener" class="floater floater--wa" aria-label="WhatsApp">💬</a>
+    <a href="tel:+919834172124" class="floater floater--call" aria-label="Call">📞</a>
+  </div>
+
+  <!-- ============ AI CHAT ASSISTANT ============ -->
+  <button class="ai-launcher" id="aiLauncher" aria-label="Chat with our assistant">
+    <span class="ai-launcher__dot">🌸</span>
+    <span class="ai-launcher__label">Ask our assistant</span>
+  </button>
+  <section class="ai-panel" id="aiPanel" aria-label="Dr Somani's Homoeopathy assistant">
+    <header class="ai-head">
+      <img class="ai-head__logo" src="assets/logo.png" alt="Dr Somani's Homoeopathy" onerror="this.onerror=null;this.src='assets/logo.svg'" />
+      <div class="ai-head__title"><strong>Sanjeevani</strong><small>Dr Somani's Homoeopathy assistant</small></div>
+      <button class="ai-head__close" id="aiClose" aria-label="Close chat">×</button>
+    </header>
+    <div class="ai-messages" id="aiMessages"></div>
+    <button class="ai-handoff hidden" id="aiHandoff">📤 Send my details to the clinic</button>
+    <div class="ai-attach-chip hidden" id="aiChip"></div>
+    <form class="ai-form" id="aiForm" autocomplete="off">
+      <input type="file" id="aiFile" accept="image/*,application/pdf" hidden />
+      <button type="button" class="ai-attach" id="aiAttach" aria-label="Attach a report (optional)" title="Attach a report (optional)">📎</button>
+      <input type="text" id="aiInput" placeholder="Type your message…" aria-label="Message" />
+      <button type="submit" id="aiSend" aria-label="Send">➤</button>
+    </form>
+  </section>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/ai-config.js"></script>
+  <script src="js/online-config.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/script.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"b4cdcc64da9041a593f269f78bcbf225","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
