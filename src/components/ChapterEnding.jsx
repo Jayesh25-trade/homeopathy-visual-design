@@ -24,7 +24,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             color: 'var(--ink)',
             lineHeight: 1.15,
             marginBottom: '24px',
-            letterSpacing: '-0.02em',
+            letterSpacing: '0',
           }}>
             "Your case deserves time,<br />
             <em>context and careful attention.</em>"
@@ -32,7 +32,7 @@ export default function ChapterEnding({ onOpenBooking }) {
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: '1.05rem',
-            color: 'rgba(14,14,12,0.6)',
+            color: 'var(--fg-muted)',
             lineHeight: 1.7,
           }}>
             Choose how you would like to begin. Every consultation with Dr Somani's
@@ -46,7 +46,7 @@ export default function ChapterEnding({ onOpenBooking }) {
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           gap: '2px',
           marginBottom: '40px',
-          background: 'rgba(14,14,12,0.08)',
+          background: 'var(--border)',
         }}>
           {locations.map((loc) => (
             <div
@@ -70,7 +70,7 @@ export default function ChapterEnding({ onOpenBooking }) {
               </h3>
               <p style={{
                 fontSize: '0.85rem',
-                color: 'rgba(14,14,12,0.55)',
+                color: 'var(--fg-muted)',
                 lineHeight: 1.6,
                 marginBottom: '10px',
               }}>
@@ -130,7 +130,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             href={clinic.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn--outline-dark"
+            className="btn btn--outline-ink"
             aria-label="Instagram"
           >
             @somanikushal
@@ -141,11 +141,11 @@ export default function ChapterEnding({ onOpenBooking }) {
         <p style={{
           fontFamily: 'var(--font-sans)',
           fontSize: '0.82rem',
-          color: 'rgba(14,14,12,0.42)',
+          color: 'var(--fg-muted)',
           lineHeight: 1.6,
           maxWidth: '600px',
           paddingTop: '24px',
-          borderTop: '1px solid rgba(14,14,12,0.1)',
+          borderTop: '1px solid var(--border)',
         }}>
           Treatment is individualised. Suitability and expected outcomes are discussed
           during consultation. This website does not replace emergency medical care.

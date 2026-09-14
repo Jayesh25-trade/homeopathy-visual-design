@@ -50,8 +50,8 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
         href="#beginning"
         style={{
           position: 'fixed', top: '-80px', left: '20px', zIndex: 9999,
-          background: 'var(--vermilion)', color: '#fff', padding: '10px 18px',
-          fontFamily: 'Manrope, sans-serif', fontSize: '0.85rem', borderRadius: '2px',
+           background: 'var(--vermilion)', color: 'var(--ivory)', padding: '10px 18px',
+           fontFamily: 'var(--font-sans)', fontSize: '0.85rem', borderRadius: '5px',
           transition: 'top 0.2s',
         }}
         onFocus={e => { e.currentTarget.style.top = '20px'; }}
@@ -82,11 +82,11 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
           <span
             className="hide-mobile"
             style={{
-              fontFamily: 'Fraunces, serif',
+               fontFamily: 'var(--font-serif)',
               fontWeight: 300,
               fontSize: '0.95rem',
               color: 'var(--fg)',
-              letterSpacing: '-0.01em',
+               letterSpacing: '0',
             }}
           >
             Dr Somani's Homoeopathy
@@ -105,7 +105,7 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
               onClick={() => scrollTo(item.id)}
               style={{
                 padding: '8px 14px',
-                fontFamily: 'IBM Plex Mono, monospace',
+                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.65rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',

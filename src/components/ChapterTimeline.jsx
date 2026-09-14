@@ -33,7 +33,7 @@ export default function ChapterTimeline() {
             top: '8px',
             bottom: '8px',
             width: '1px',
-            background: 'linear-gradient(to bottom, transparent, rgba(139,160,122,0.5) 10%, rgba(139,160,122,0.5) 90%, transparent)',
+            background: 'linear-gradient(to bottom, transparent, var(--mineral-light) 10%, var(--mineral-light) 90%, transparent)',
           }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -59,8 +59,8 @@ export default function ChapterTimeline() {
                   width: '9px',
                   height: '9px',
                   borderRadius: '50%',
-                  background: ch.isCoda ? 'var(--amber)' : 'rgba(139,160,122,0.7)',
-                  boxShadow: ch.isCoda ? '0 0 12px rgba(200,135,58,0.5)' : 'none',
+                   background: ch.isCoda ? 'var(--amber)' : 'var(--mineral-light)',
+                   boxShadow: ch.isCoda ? 'var(--shadow-sm)' : 'none',
                 }} />
 
                 {/* Year */}
@@ -94,7 +94,7 @@ export default function ChapterTimeline() {
                     {ch.body && (
                       <p style={{
                         fontSize: '0.95rem',
-                        color: 'rgba(245,240,232,0.62)',
+                         color: 'var(--mineral-light)',
                         lineHeight: 1.7,
                         maxWidth: '480px',
                       }}>
@@ -110,7 +110,7 @@ export default function ChapterTimeline() {
                       fontFamily: 'var(--font-serif)',
                       fontStyle: 'italic',
                       fontSize: 'clamp(1rem, 2vw, 1.35rem)',
-                      color: 'rgba(245,240,232,0.6)',
+                       color: 'var(--mineral-light)',
                       lineHeight: 1.5,
                     }}>
                       {ch.heading}
