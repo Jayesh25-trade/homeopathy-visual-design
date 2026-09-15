@@ -30,7 +30,7 @@ const ITEMS = [
 
 export default function BeforeYouCall() {
   const [checked, setChecked] = useState(new Set());
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   const toggle = idx => {
     setChecked(prev => {
