@@ -874,6 +874,25 @@ ul, ol { list-style: none; }
 .journey__location-detail p:not(.chapter-label) { max-width: 600px; color: var(--mineral-light); line-height: 1.6; }
 .journey__phone { display: inline-block; margin-top: 12px; color: var(--amber-light); font-weight: 700; }
 .journey__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.journey .checklist-item { border-color: color-mix(in srgb, var(--ivory) 14%, transparent); }
+.journey .checklist-check { border-color: var(--mineral-light); }
+.journey .before-call__title,
+.journey .before-call__item-title { color: var(--ivory); }
+.journey .before-call__detail { color: color-mix(in srgb, var(--ivory) 68%, transparent); }
+
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 20px;
+  z-index: 9999;
+  padding: 10px 18px;
+  border-radius: 5px;
+  background: var(--vermilion);
+  color: var(--ivory);
+  font: 600 .85rem var(--font-sans);
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 20px; }
 
 /* Map-led footer */
 .site-footer { background: var(--forest); color: var(--ivory); }
@@ -893,11 +912,17 @@ ul, ol { list-style: none; }
 .site-footer__legal { display: flex; justify-content: space-between; gap: 16px; padding: 18px var(--gutter); border-top: 1px solid var(--glass-border); color: var(--mineral-light); font-size: .7rem; }
 
 @media (max-width: 760px) {
+  body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+  .journey { padding: 72px 0 88px; }
+  .journey__image { opacity: .45; background: linear-gradient(var(--forest), color-mix(in srgb, var(--forest) 88%, transparent)), url('/assets/healing_sanctuary_bg.png') center/cover; }
+  .journey__header { margin-bottom: 44px; }
   .journey__steps { grid-template-columns: 1fr; margin-bottom: 38px; }
   .journey__step { min-height: auto; display: grid; grid-template-columns: 50px 1fr; gap: 16px; padding: 0 0 30px; }
   .journey__number { margin: 0; }
   .journey__connector { top: 48px; bottom: 4px; left: 22px; right: auto; width: 1px; height: auto; background: linear-gradient(var(--amber), transparent); }
   .journey__location-detail { grid-template-columns: 1fr; }
+  .journey__location-detail p:not(.chapter-label), .journey__step p { color: color-mix(in srgb, var(--ivory) 72%, transparent); }
+  .journey__booking { background: color-mix(in srgb, var(--forest) 88%, transparent); }
   .journey__locations { overflow-x: auto; }
   .journey__locations button { flex-shrink: 0; }
   .site-footer__maps { grid-template-columns: 1fr; }

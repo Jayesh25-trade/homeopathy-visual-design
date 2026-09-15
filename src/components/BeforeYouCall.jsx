@@ -30,7 +30,7 @@ const ITEMS = [
 
 export default function BeforeYouCall() {
   const [checked, setChecked] = useState(new Set());
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   const toggle = idx => {
     setChecked(prev => {
@@ -67,8 +67,8 @@ export default function BeforeYouCall() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span style={{ fontSize: '1rem' }}>📂</span>
-          <span style={{
-            fontFamily: 'IBM Plex Mono, monospace',
+          <span className="before-call__title" style={{
+            fontFamily: 'var(--font-sans)',
             fontSize: '0.72rem',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -121,8 +121,8 @@ export default function BeforeYouCall() {
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
                   <span style={{ fontSize: '0.95rem' }}>{item.icon}</span>
-                  <span style={{
-                    fontFamily: 'Manrope, sans-serif',
+                   <span className="before-call__item-title" style={{
+                     fontFamily: 'var(--font-sans)',
                     fontWeight: 600,
                     fontSize: 'clamp(0.88rem, 1.5vw, 0.95rem)',
                     color: checked.has(i) ? 'var(--fg-muted)' : 'var(--fg)',
@@ -133,7 +133,7 @@ export default function BeforeYouCall() {
                     {item.title}
                   </span>
                 </div>
-                <p style={{
+                 <p className="before-call__detail" style={{
                   fontSize: 'clamp(0.8rem, 1.3vw, 0.88rem)',
                   color: 'var(--fg-faint)',
                   lineHeight: 1.55,
@@ -157,8 +157,8 @@ export default function BeforeYouCall() {
               animation: 'fadeUp 350ms ease both',
             }}>
               <span style={{ fontSize: '1.1rem' }}>✓</span>
-              <span style={{
-                fontFamily: 'IBM Plex Mono, monospace',
+               <span style={{
+                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.68rem',
                 letterSpacing: '0.08em',
                 color: '#2d7a4e',

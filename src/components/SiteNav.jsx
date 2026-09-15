@@ -48,14 +48,7 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
       {/* ── Skip link ───────────────────────────────────────── */}
       <a
         href="#beginning"
-        style={{
-          position: 'fixed', top: '-80px', left: '20px', zIndex: 9999,
-           background: 'var(--vermilion)', color: 'var(--ivory)', padding: '10px 18px',
-           fontFamily: 'var(--font-sans)', fontSize: '0.85rem', borderRadius: '5px',
-          transition: 'top 0.2s',
-        }}
-        onFocus={e => { e.currentTarget.style.top = '20px'; }}
-        onBlur={e => { e.currentTarget.style.top = '-80px'; }}
+        className="skip-link"
       >
         Skip to content
       </a>
