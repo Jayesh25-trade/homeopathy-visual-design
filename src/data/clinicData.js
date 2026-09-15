@@ -60,11 +60,7 @@ export const conditions = [
     label: "Skin Diseases & Vitiligo",
     shortLabel: "Skin & Vitiligo",
     description: "Specialised care for vitiligo, psoriasis, eczema, acne, fungal infections and recurring skin concerns.",
-    images: [
-      "/assets/disease_skin_care.png",
-      "/assets/conditions/skin.jpg",
-      "/assets/conditions/skin-2.jpg",
-    ],
+    images: ["/assets/conditions/skin-care.jpg"],
     doctorId: "kushal",
   },
   {
@@ -72,10 +68,7 @@ export const conditions = [
     label: "Respiratory & Allergies",
     shortLabel: "Respiratory & Allergies",
     description: "Individualised care for allergic rhinitis, asthma, bronchitis, sinus and recurring seasonal allergies.",
-    images: [
-      "/assets/disease_respiratory.png",
-      "/assets/conditions/allergies.jpg",
-    ],
+    images: ["/assets/conditions/allergy-care.jpg"],
     doctorId: "kushal",
   },
   {
@@ -83,7 +76,7 @@ export const conditions = [
     label: "Migraine",
     shortLabel: "Migraine",
     description: "Long-term management of recurring migraines and headaches.",
-    images: ["/assets/conditions/migraine-care.jpg"],
+    images: ["/assets/conditions/migraine-care-v2.jpg"],
     doctorId: "kushal",
   },
   {
@@ -91,7 +84,7 @@ export const conditions = [
     label: "PCOD",
     shortLabel: "PCOD",
     description: "Individualised support for hormonal balance and cycle-related concerns.",
-    images: ["/assets/conditions/pcod-care.jpg"],
+    images: ["/assets/conditions/pcod-care-v2.jpg"],
     doctorId: "kushal",
   },
   {
@@ -99,7 +92,7 @@ export const conditions = [
     label: "Kidney Stones",
     shortLabel: "Kidney Stones",
     description: "Consultation and supportive management for kidney-stone concerns and recurrence.",
-    images: ["/assets/conditions/kidney-care.jpg"],
+    images: ["/assets/conditions/kidney-care-v2.jpg"],
     doctorId: "kushal",
   },
   {
@@ -107,7 +100,7 @@ export const conditions = [
     label: "Acidity & Digestion",
     shortLabel: "Acidity & Digestion",
     description: "Care for acidity, gas, bloating and digestive complaints.",
-    images: ["/assets/conditions/digestion-care.jpg"],
+    images: ["/assets/conditions/digestion-care-v2.jpg"],
     doctorId: "antim",
   },
   {
@@ -115,7 +108,7 @@ export const conditions = [
     label: "Paediatric Illnesses",
     shortLabel: "Paediatric",
     description: "Gentle, individualised care for children's recurring health concerns.",
-    images: ["/assets/conditions/paediatric-care.jpg"],
+    images: ["/assets/conditions/paediatric-care-v2.jpg"],
     doctorId: "antim",
   },
   {
@@ -123,7 +116,7 @@ export const conditions = [
     label: "Mental Health Care",
     shortLabel: "Mental Health",
     description: "Supportive care for stress, anxiety and emotional well-being.",
-    images: ["/assets/conditions/wellbeing-care.jpg"],
+    images: ["/assets/conditions/mental-health-care.jpg"],
     doctorId: "antim",
   },
 ];
