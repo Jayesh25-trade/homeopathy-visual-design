@@ -165,8 +165,8 @@ export default function ChapterAtlas({ onOpenBooking }) {
               <img
                 src={active.images[0]}
                 alt={active.label}
-                width="1024"
-                height="640"
+                width="1280"
+                height="800"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 loading="lazy"
               />
