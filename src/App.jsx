@@ -7,6 +7,7 @@ import ParallaxDivider     from './components/ParallaxDivider';
 import ChapterTimeline     from './components/ChapterTimeline';
 import SymptomEstimator    from './components/SymptomEstimator';
 import ChapterDoctors      from './components/ChapterDoctors';
+import ChapterStories      from './components/ChapterStories';
 import ChapterConsultation from './components/ChapterConsultation';
 import ChapterEnding       from './components/ChapterEnding';
 import AppointmentForm     from './components/AppointmentForm';
@@ -88,6 +89,7 @@ export default function App() {
         <ChapterTimeline />
         <SymptomEstimator onOpenBooking={openBooking} />
         <ChapterDoctors  onOpenBooking={openBooking} />
+        <ChapterStories />
         <ChapterConsultation onOpenBooking={openBooking} isMobile={isMobile} />
         <ChapterEnding   onOpenBooking={openBooking} />
       </main>
