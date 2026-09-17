@@ -5,3 +5,6 @@
 - [x] Keep all clinic facts, locations, doctors, contacts, Instagram, and treatment data accurate to the verified source.
 - [x] Generate only the supporting homeopathy imagery needed beyond existing authentic assets. Existing supporting imagery covered the final composition, so no redundant images were added.
 - [x] Verify desktop and mobile visuals, links, booking flow, reduced motion, and production build.
+- [x] Rebuild the mobile opening as a full-screen Dr Somani portrait with direct WhatsApp booking.
+- [x] Remove theme switching and standardise text contrast in one professional visual theme.
+- [x] Save validated consultation requests securely before offering WhatsApp follow-up.

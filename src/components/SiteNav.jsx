@@ -17,7 +17,7 @@ const WHATSAPP_ICON = (
   </svg>
 );
 
-export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
+export default function SiteNav({ onOpenBooking }) {
   const [active, setActive] = useState('beginning');
   const [scrolled, setScrolled] = useState(false);
 
@@ -40,8 +40,6 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
   const scrollTo = id => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const isDark = theme !== 'paper';
 
   return (
     <>
@@ -130,16 +128,6 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
 
         {/* Right cluster */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {/* Theme toggle */}
-          <button
-            className="theme-btn"
-            onClick={onToggleTheme}
-            aria-label={isDark ? 'Switch to paper mode' : 'Switch to dark mode'}
-            title={isDark ? 'Paper mode' : 'Dark mode'}
-          >
-            {isDark ? '☀' : '🌑'}
-          </button>
-
           <button
             className="btn btn--primary hide-mobile"
             onClick={() => onOpenBooking?.()}
@@ -208,14 +196,6 @@ export default function SiteNav({ onOpenBooking, theme, onToggleTheme }) {
         >
           {WHATSAPP_ICON}
         </a>
-        <button
-          className="theme-btn"
-          onClick={onToggleTheme}
-          aria-label={isDark ? 'Paper mode' : 'Dark mode'}
-          style={{ flexShrink: 0 }}
-        >
-          {isDark ? '☀' : '🌑'}
-        </button>
       </div>
     </>
   );

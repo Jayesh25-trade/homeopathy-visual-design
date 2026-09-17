@@ -79,15 +79,14 @@ export default function ChapterEnding({ onOpenBooking }) {
               <p className="mono" style={{ fontSize: '0.72rem', color: 'var(--mineral)', marginBottom: '20px' }}>
                 {loc.phone}
               </p>
-              <a
-                href={loc.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => onOpenBooking?.()}
                 className="btn btn--primary"
                 style={{ fontSize: '0.82rem', padding: '10px 18px' }}
               >
                 Book at {loc.city}
-              </a>
+              </button>
               {loc.mapsUrl && (
                 <a
                   href={loc.mapsUrl}

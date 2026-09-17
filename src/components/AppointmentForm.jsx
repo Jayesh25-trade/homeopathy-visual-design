@@ -1,10 +1,22 @@
 import React, { useState, useMemo } from 'react';
+import { z } from 'zod';
 import { conditions, locations } from '../data/clinicData';
+import { supabase } from '../integrations/supabase/client';
 
 const INITIAL = {
   name: '', phone: '', condition: '', branch: '',
   date: '', timePreference: '', message: '',
 };
+
+const enquirySchema = z.object({
+  name: z.string().trim().min(2, 'Please enter your full name').max(100, 'Name is too long'),
+  phone: z.string().trim().regex(/^[0-9+\s\-()]{7,20}$/, 'Please enter a valid phone number'),
+  condition: z.string().trim().min(1, 'Please select a concern').max(120),
+  branch: z.string().trim().min(1, 'Please select a location').max(100),
+  date: z.string().max(10),
+  timePreference: z.enum(['', 'Morning', 'Afternoon', 'Evening']),
+  message: z.string().trim().max(1000, 'Please keep your message under 1,000 characters'),
+});
 
 function buildWAText(form) {
   const lines = [`*New Consultation Enquiry — Dr Somani's Homoeopathy*\n`];
@@ -23,6 +35,8 @@ export default function AppointmentForm({ isOpen, onClose }) {
   const [errors, setErrors] = useState({});
   const [sent, setSent]   = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const waText = useMemo(() => buildWAText(form), [form]);
   const hasAnyInput = form.name || form.phone || form.condition;
@@ -30,12 +44,13 @@ export default function AppointmentForm({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const validate = () => {
-    const e = {};
-    if (!form.name.trim()) e.name = 'Required';
-    if (!form.phone.trim() || !/^[0-9+\s\-()]{7,15}$/.test(form.phone.trim())) e.phone = 'Valid number required';
-    if (!form.condition) e.condition = 'Required';
-    if (!form.branch) e.branch = 'Required';
-    return e;
+    const result = enquirySchema.safeParse(form);
+    if (result.success) return {};
+    return result.error.issues.reduce((all, issue) => {
+      const key = issue.path[0];
+      if (typeof key === 'string' && !all[key]) all[key] = issue.message;
+      return all;
+    }, {});
   };
 
   const set = key => e => {
@@ -43,14 +58,28 @@ export default function AppointmentForm({ isOpen, onClose }) {
     if (errors[key]) setErrors(er => { const n = { ...er }; delete n[key]; return n; });
   };
 
-  const handleSubmit = ev => {
+  const handleSubmit = async ev => {
     ev.preventDefault();
     const e = validate();
     if (Object.keys(e).length) { setErrors(e); return; }
+    setSubmitting(true);
+    setSubmitError('');
+    const parsed = enquirySchema.parse(form);
+    const { error } = await supabase.from('consultation_enquiries').insert({
+      name: parsed.name,
+      phone: parsed.phone,
+      condition: parsed.condition,
+      branch: parsed.branch,
+      preferred_date: parsed.date || null,
+      time_preference: parsed.timePreference || null,
+      message: parsed.message || null,
+    });
+    setSubmitting(false);
+    if (error) {
+      setSubmitError('We could not save your request. Please try again or contact the clinic on WhatsApp.');
+      return;
+    }
     setSent(true);
-    setTimeout(() => {
-      window.open(`https://wa.me/919834172124?text=${encodeURIComponent(waText)}`, '_blank');
-    }, 300);
   };
 
   const Field = ({ id, label, error, children }) => (
@@ -229,12 +258,14 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 </div>
               )}
 
-              <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.42)', lineHeight: 1.55 }}>
-                Submitting opens WhatsApp with this pre-filled message. Do not share detailed records or payment info here.
+               <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.58)', lineHeight: 1.55 }}>
+                 Your request will be saved securely. The clinic will contact you to confirm the appointment. Please do not share payment details here.
               </p>
 
-              <button type="submit" className="btn btn--primary btn--full">
-                Send via WhatsApp →
+               {submitError && <p role="alert" className="form-error">{submitError}</p>}
+
+               <button type="submit" className="btn btn--primary btn--full" disabled={submitting}>
+                 {submitting ? 'Saving your request…' : 'Request Consultation →'}
               </button>
             </form>
 
@@ -284,7 +315,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
         ) : (
           <div style={{ padding: '48px 32px', textAlign: 'center' }}>
             <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '14px', fontSize: '0.62rem' }}>
-              ENQUIRY SENT
+               REQUEST RECEIVED
             </p>
             <h3 style={{
               fontFamily: 'Fraunces, serif', fontWeight: 300,
@@ -293,8 +324,11 @@ export default function AppointmentForm({ isOpen, onClose }) {
               Thank you, {form.name.split(' ')[0]}.
             </h3>
             <p style={{ fontSize: '0.95rem', color: 'rgba(14,14,12,0.6)', lineHeight: 1.65, marginBottom: '28px', maxWidth: '380px', margin: '0 auto 28px' }}>
-              Your WhatsApp message was pre-filled. Send it to connect with the clinic.
+               Your consultation request has been saved. The clinic will contact you to confirm a suitable time.
             </p>
+             <a href={`https://wa.me/919834172124?text=${encodeURIComponent(waText)}`} target="_blank" rel="noopener noreferrer" className="btn btn--whatsapp" style={{ marginRight: '10px' }}>
+               Continue on WhatsApp
+             </a>
             <button onClick={onClose} className="btn btn--outline-ink" style={{ minWidth: '160px' }}>
               Close
             </button>

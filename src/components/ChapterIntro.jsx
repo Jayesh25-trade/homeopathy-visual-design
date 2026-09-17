@@ -23,9 +23,17 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
         </div>
         <p className="portrait-hero__statement">{clinic.statement}</p>
         <div className="portrait-hero__actions">
-          <button className="btn btn--primary" onClick={() => onOpenBooking?.()} id="hero-book-btn">
+          <button className="btn btn--primary portrait-hero__desktop-book" onClick={() => onOpenBooking?.()} id="hero-book-btn">
             Book a Consultation <span aria-hidden="true">→</span>
           </button>
+          <a
+            className="btn btn--whatsapp portrait-hero__mobile-book"
+            href={`${clinic.whatsapp}?text=${encodeURIComponent("Hello Dr Somani's Homoeopathy, I would like to book a consultation.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book on WhatsApp <span aria-hidden="true">→</span>
+          </a>
           <a href="#concerns" className="portrait-hero__link">Explore areas of care</a>
         </div>
         <div className="portrait-hero__doctor">
