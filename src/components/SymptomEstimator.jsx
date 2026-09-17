@@ -5,29 +5,29 @@ const MESSAGES = [
   {
     range: [0, 1],
     label: "Less than 1 year",
-    title: "Early intervention works well.",
-    body: "Conditions addressed within the first year often respond most clearly to constitutional homoeopathic care. This is an excellent time to begin.",
+    title: "Early concerns still deserve context.",
+    body: "A consultation can help document when the concern began, what affects it and what you have already tried.",
     tone: "encouraging",
   },
   {
     range: [1, 3],
     label: "1 – 3 years",
     title: "A considered approach matters.",
-    body: "Conditions of 1–3 years duration have often gone through cycles of partial improvement. Classical homoeopathy addresses the pattern beneath the symptoms, not just the latest episode.",
+    body: "When symptoms have changed over time, a careful history helps the doctor understand the full pattern rather than one recent episode.",
     tone: "grounded",
   },
   {
     range: [3, 7],
     label: "3 – 7 years",
-    title: "Chronic cases are Dr Somani's speciality.",
-    body: "More than 27 years of clinical practice has been shaped by exactly these cases — deep-rooted conditions that haven't responded fully to other approaches. A thorough case history is where it begins.",
+    title: "A detailed history becomes important.",
+    body: "Long-standing concerns may involve several stages and previous treatments. Your consultation begins with a thorough review of that history.",
     tone: "specialist",
   },
   {
     range: [7, 15],
     label: "More than 7 years",
-    title: "Long experience, patient care.",
-    body: "Conditions carried for many years deserve careful, unhurried attention. Dr Somani's consultations are designed precisely for this — understanding the person as much as the condition.",
+    title: "Long-standing concerns need careful review.",
+    body: "Conditions carried for many years deserve unhurried attention, including your symptoms, health history, lifestyle and previous care.",
     tone: "reassuring",
   },
 ];
@@ -46,6 +46,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
 
   return (
     <section
+      className="symptom-estimator"
       aria-label="Symptom Duration Estimator"
       style={{
         background: 'var(--bg-mid)',
@@ -105,8 +106,8 @@ export default function SymptomEstimator({ onOpenBooking }) {
             justifyContent: 'space-between',
             marginTop: '8px',
           }}>
-            <span className="mono" style={{ fontSize: '0.6rem' }}>{'< 1 yr'}</span>
-            <span className="mono" style={{ fontSize: '0.6rem' }}>7+ yrs</span>
+            <span className="mono" style={{ fontSize: '0.75rem' }}>{'< 1 year'}</span>
+            <span className="mono" style={{ fontSize: '0.75rem' }}>7+ years</span>
           </div>
         </div>
 
@@ -128,11 +129,11 @@ export default function SymptomEstimator({ onOpenBooking }) {
             boxShadow: '0 12px 36px rgba(0,0,0,0.3)',
           }}
         >
-          <p className="mono" style={{ fontSize: '0.6rem', marginBottom: '8px', color: TONE_COLORS[msg.tone] }}>
+          <p className="mono" style={{ fontSize: '0.75rem', marginBottom: '8px', color: TONE_COLORS[msg.tone] }}>
             {msg.label}
           </p>
           <h3 style={{
-            fontFamily: 'Fraunces, serif',
+            fontFamily: 'var(--font-serif)',
             fontWeight: 300,
             fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
             color: 'var(--fg)',

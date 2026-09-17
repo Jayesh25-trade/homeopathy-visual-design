@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { consultationSteps, locations } from '../data/clinicData';
 import BeforeYouCall from './BeforeYouCall';
 
-export default function ChapterConsultation() {
+export default function ChapterConsultation({ onOpenBooking }) {
   const [activeLocation, setActiveLocation] = useState(0);
   const loc = locations[activeLocation];
 
@@ -45,7 +45,7 @@ export default function ChapterConsultation() {
               <a className="journey__phone" href={loc.phoneHref}>{loc.phone}</a>
             </div>
             <div className="journey__actions">
-              <a href={loc.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn--primary">Book via WhatsApp</a>
+              <button type="button" onClick={() => onOpenBooking?.()} className="btn btn--primary">Request Consultation</button>
               {loc.mapsUrl && <a href={loc.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn--outline">Directions</a>}
             </div>
           </div>

@@ -1,22 +1,21 @@
 /* ============================================================
-   THEME TOKENS — DARK FOREST (default)
+   BOTANICAL HERITAGE — single, consistent visual theme
    ============================================================ */
-:root,
-[data-theme="dark"] {
+:root {
   --font-serif: 'Lora', Georgia, serif;
   --font-sans: 'Nunito Sans', system-ui, sans-serif;
   --font-mono: 'Nunito Sans', system-ui, sans-serif;
   --forest: #17392e;
   --ivory: #f4f0e7;
   --paper: #f4f0e7;
-  --bg:           #23423a;
-  --bg-mid:       #2f574d;
-  --bg-surface:   #3a665b;
-  --fg:           #f4f1ea;
-  --fg-muted:     rgba(244,241,234,0.7);
-  --fg-faint:     rgba(244,241,234,0.35);
-  --border:       rgba(195,150,77,0.22);
-  --border-strong:rgba(195,150,77,0.5);
+  --bg:           #f4f0e7;
+  --bg-mid:       #315b4b;
+  --bg-surface:   #ffffff;
+  --fg:           #1a1a16;
+  --fg-muted:     rgba(14,14,12,0.68);
+  --fg-faint:     rgba(14,14,12,0.48);
+  --border:       rgba(14,14,12,0.12);
+  --border-strong:rgba(14,14,12,0.3);
 
   --amber:        #c3964d;
   --amber-light:  #d8aa5c;
@@ -29,41 +28,8 @@
   --paper-bg:     #f4f1ea;
   --ink:          #1b332d;
 
-  --glass:        rgba(35,66,58,0.88);
-  --glass-border: rgba(195,150,77,0.3);
-
-  --shadow-sm:    0 2px 8px rgba(0,0,0,0.3);
-  --shadow-md:    0 8px 32px rgba(0,0,0,0.4);
-  --shadow-lg:    0 20px 60px rgba(0,0,0,0.5);
-}
-
-/* ============================================================
-   PAPER MODE THEME
-   ============================================================ */
-[data-theme="paper"] {
-  --font-serif: 'Lora', Georgia, serif;
-  --font-sans: 'Nunito Sans', system-ui, sans-serif;
-  --font-mono: 'Nunito Sans', system-ui, sans-serif;
-  --forest: #17392e;
-  --ivory: #f4f0e7;
-  --paper: #f4f0e7;
-  --bg:           #f4f0e7;
-  --bg-mid:       #315b4b;
-  --bg-surface:   #ffffff;
-  --fg:           #1a1a16;
-  --fg-muted:     rgba(14,14,12,0.62);
-  --fg-faint:     rgba(14,14,12,0.35);
-  --border:       rgba(14,14,12,0.12);
-  --border-strong:rgba(14,14,12,0.3);
-
-  --amber:        #b58a34;
-  --amber-light:  #d3a84f;
-  --mineral:      #315b4b;
-  --mineral-light:#88a496;
-  --root-color:   rgba(90,106,78,0.55);
-  --root-active:  rgba(196,60,42,0.85);
-  --glass:        rgba(244,239,227,0.92);
-  --glass-border: rgba(14,14,12,0.15);
+  --glass:        rgba(244,240,231,0.94);
+  --glass-border: rgba(23,57,46,0.18);
 
   --shadow-sm:    0 2px 8px rgba(0,0,0,0.06);
   --shadow-md:    0 8px 32px rgba(0,0,0,0.1);
@@ -434,7 +400,7 @@ ul, ol { list-style: none; }
   color: var(--ink);
   position: relative;
 }
-[data-theme="paper"] .paper-section {
+.paper-section {
   background: #f9f5ee;
 }
 
@@ -532,6 +498,13 @@ ul, ol { list-style: none; }
 }
 .field-input:focus { border-color: var(--vermilion); }
 .field-input--error { border-color: var(--vermilion) !important; }
+.form-error { padding: 12px 14px; border-left: 3px solid var(--vermilion); background: rgba(181,138,52,.1); color: var(--ink); font-size: .84rem; line-height: 1.5; }
+.btn:disabled { cursor: wait; opacity: .65; transform: none; }
+.symptom-estimator { color: var(--ivory); }
+.symptom-estimator .serif-display,
+.symptom-estimator h3 { color: var(--ivory) !important; }
+.symptom-estimator .mono,
+.symptom-estimator p { color: rgba(244,240,231,.78); }
 
 /* ============================================================
    RESPONSIVE UTILITIES
@@ -543,27 +516,6 @@ ul, ol { list-style: none; }
   .hide-mobile { display: none !important; }
   .show-mobile { display: block !important; }
 }
-
-/* ============================================================
-   THEME TOGGLE
-   ============================================================ */
-.theme-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  color: var(--fg);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 300ms ease, background 300ms;
-  -webkit-tap-highlight-color: transparent;
-}
-.theme-btn:hover { transform: scale(1.1); }
-.theme-btn:active { transform: scale(0.93); }
 
 /* ============================================================
    STICKY TOP NAV (appears after scroll)
@@ -954,6 +906,7 @@ ul, ol { list-style: none; }
   gap: 24px;
   margin-top: 34px;
 }
+.portrait-hero__mobile-book { display: none; }
 
 .portrait-hero__link {
   padding: 10px 0 6px;
@@ -1004,14 +957,21 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 850px) {
-  .portrait-hero { grid-template-columns: 1fr; min-height: auto; }
-  .portrait-hero__photo { min-height: max(340px, 42svh); }
-  .portrait-hero__photo img { position: absolute; inset: 0; object-position: center 22%; }
-  .portrait-hero__photo-wash { background: linear-gradient(0deg, var(--ivory), transparent 34%); opacity: .7; }
-  .portrait-hero__content { padding: 34px 20px 116px; }
-  .portrait-hero h1 { font-size: clamp(2.65rem, 12vw, 4.4rem); }
-  .portrait-hero__statement { font-size: 1rem; }
-  .portrait-hero__ribbon { height: 68px; gap: 36px; justify-content: flex-start; padding-left: 20px; clip-path: ellipse(92% 70% at 50% 100%); }
+  .portrait-hero { display: block; min-height: 100svh; background: var(--forest); color: var(--ivory); }
+  .portrait-hero__photo { position: absolute; inset: 0; min-height: 100%; }
+  .portrait-hero__photo img { position: absolute; inset: 0; object-position: center 18%; filter: saturate(.82) contrast(1.02); }
+  .portrait-hero__photo-wash { background: linear-gradient(180deg, rgba(23,57,46,.04) 22%, rgba(23,57,46,.32) 54%, rgba(23,57,46,.96) 88%); opacity: 1; }
+  .portrait-hero__content { position: relative; z-index: 2; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 72px 20px 82px; }
+  .portrait-hero__kicker { margin-bottom: 12px; color: var(--amber-light); font-size: .66rem; }
+  .portrait-hero h1 { max-width: 390px; color: var(--ivory); font-size: clamp(2.45rem, 11vw, 3.65rem); line-height: 1.03; text-shadow: 0 2px 24px rgba(0,0,0,.22); }
+  .portrait-hero h1 em { color: var(--amber-light); }
+  .portrait-hero__statement { max-width: 430px; margin-top: 16px; color: rgba(244,240,231,.82); font-size: .94rem; line-height: 1.58; }
+  .portrait-hero__actions { gap: 14px; margin-top: 22px; }
+  .portrait-hero__desktop-book { display: none; }
+  .portrait-hero__mobile-book { display: inline-flex; min-width: 210px; }
+  .portrait-hero__link { color: var(--ivory); border-color: var(--amber-light); }
+  .portrait-hero__doctor { display: none; }
+  .portrait-hero__ribbon { height: 48px; bottom: 0; clip-path: none; background: var(--amber-light); font-size: .9rem; }
 }
 
 /* Care journey */

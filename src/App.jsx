@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ReadingProgress     from './components/ReadingProgress';
 import SiteNav             from './components/SiteNav';
 import ChapterIntro        from './components/ChapterIntro';
@@ -15,16 +15,10 @@ import SiteFooter          from './components/SiteFooter';
 
 export default function App() {
   const [formOpen,  setFormOpen]  = useState(false);
-  const [theme,     setTheme]     = useState('paper');   // 'dark' | 'paper'
   const [isMobile,  setIsMobile]  = useState(window.matchMedia('(max-width:768px)').matches);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
-
-  // Theme on <html data-theme>
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
 
   // Detect mobile
   useEffect(() => {
@@ -66,7 +60,6 @@ export default function App() {
 
   const openBooking  = useCallback(() => setFormOpen(true),  []);
   const closeBooking = useCallback(() => setFormOpen(false), []);
-  const toggleTheme  = useCallback(() => setTheme(t => t === 'dark' ? 'paper' : 'dark'), []);
 
   return (
     <>
@@ -74,8 +67,6 @@ export default function App() {
 
       <SiteNav
         onOpenBooking={openBooking}
-        theme={theme}
-        onToggleTheme={toggleTheme}
       />
 
       <main id="main-content">
