@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "canvas-confetti": "^1.9.4",
     "lucide-react": "^1.45.0",
     "react": "^19.2.8",
@@ -20,7 +21,10 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
     "oxlint": "^1.81.0",
+    "postgres": "^3.4.9",
     "vite": "^8.3.0"
   }
 }
