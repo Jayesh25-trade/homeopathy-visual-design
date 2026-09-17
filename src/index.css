@@ -500,6 +500,11 @@ ul, ol { list-style: none; }
 .field-input--error { border-color: var(--vermilion) !important; }
 .form-error { padding: 12px 14px; border-left: 3px solid var(--vermilion); background: rgba(181,138,52,.1); color: var(--ink); font-size: .84rem; line-height: 1.5; }
 .btn:disabled { cursor: wait; opacity: .65; transform: none; }
+.symptom-estimator { color: var(--ivory); }
+.symptom-estimator .serif-display,
+.symptom-estimator h3 { color: var(--ivory) !important; }
+.symptom-estimator .mono,
+.symptom-estimator p { color: rgba(244,240,231,.78); }
 
 /* ============================================================
    RESPONSIVE UTILITIES

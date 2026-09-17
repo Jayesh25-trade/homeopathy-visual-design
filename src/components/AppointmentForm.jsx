@@ -279,8 +279,8 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 display: 'flex', flexDirection: 'column',
               }}
             >
-              <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '14px', fontSize: '0.62rem' }}>
-                LIVE WHATSAPP PREVIEW
+              <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '14px', fontSize: '0.72rem' }}>
+                OPTIONAL WHATSAPP FOLLOW-UP
               </p>
               {hasAnyInput ? (
                 <>
@@ -306,7 +306,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   background: 'rgba(14,14,12,0.03)', borderRadius: '8px', minHeight: '200px',
                 }}>
                   <p style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1rem', color: 'rgba(14,14,12,0.3)', textAlign: 'center' }}>
-                    Start filling in the form<br />to see your message here.
+                    Start filling in the form<br />to prepare a follow-up message.
                   </p>
                 </div>
               )}

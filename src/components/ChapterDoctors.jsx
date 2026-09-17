@@ -86,7 +86,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
               {/* Content */}
               <div>
                 <h2 style={{
-                  fontFamily: 'Fraunces, serif', fontWeight: 300,
+                  fontFamily: 'var(--font-serif)', fontWeight: 400,
                   fontSize: 'clamp(1.7rem, 3.5vw, 2.8rem)',
                   color: 'var(--ink)', lineHeight: 1.1, marginBottom: '8px',
                 }}>
@@ -168,7 +168,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
                   onClick={() => onOpenBooking?.()}
                   style={{ minWidth: '200px' }}
                 >
-                  Book with {dr.name.split(' ')[1]}
+                  Book with {dr.name.replace(/^Dr\s+/i, '').split(' ')[0]}
                 </button>
               </div>
 
