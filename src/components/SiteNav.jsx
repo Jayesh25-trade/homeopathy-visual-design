@@ -58,10 +58,8 @@ export default function SiteNav({ onOpenBooking }) {
       >
         {/* Logo / clinic name */}
         <button
+          className="top-bar__brand"
           onClick={() => scrollTo('beginning')}
-          style={{
-            display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer',
-          }}
           aria-label="Back to top"
         >
           <img
@@ -70,17 +68,9 @@ export default function SiteNav({ onOpenBooking }) {
             width="32" height="32"
             style={{ width: '32px', height: '32px', objectFit: 'contain' }}
           />
-          <span
-            className="hide-mobile"
-            style={{
-               fontFamily: 'var(--font-serif)',
-              fontWeight: 300,
-              fontSize: '0.95rem',
-              color: 'var(--fg)',
-               letterSpacing: '0',
-            }}
-          >
-            Dr Somani's Homoeopathy
+          <span className="top-bar__brand-copy">
+            <strong>Dr Somani's</strong>
+            <small>Homoeopathy</small>
           </span>
         </button>
 
@@ -127,13 +117,12 @@ export default function SiteNav({ onOpenBooking }) {
         </nav>
 
         {/* Right cluster */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div className="top-bar__actions">
           <button
-            className="btn btn--primary hide-mobile"
+            className="btn btn--primary top-bar__book"
             onClick={() => onOpenBooking?.()}
-            style={{ padding: '10px 20px', fontSize: '0.8rem' }}
           >
-            Book
+            Book <span className="hide-mobile">consultation</span>
           </button>
         </div>
       </header>

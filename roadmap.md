@@ -8,3 +8,4 @@
 - [x] Rebuild the mobile opening as a full-screen Dr Somani portrait with direct WhatsApp booking.
 - [x] Remove theme switching and standardise text contrast in one professional visual theme.
 - [x] Save validated consultation requests securely before offering WhatsApp follow-up.
+- [x] Refine the mobile header, opening composition, care selector spacing, and practice timeline alignment.

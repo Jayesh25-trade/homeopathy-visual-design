@@ -5,99 +5,50 @@ export default function ChapterTimeline() {
   return (
     <section
       id="27-years"
+      className="practice-timeline"
       aria-label="27 Years — One Evolving Practice"
-      style={{
-        background: 'var(--forest)',
-        padding: 'clamp(80px,10vw,140px) 0',
-        overflow: 'hidden',
-      }}
     >
       <div className="container">
 
-        <p className="chapter-label" style={{ marginBottom: '40px' }}>
+        <p className="chapter-label practice-timeline__label">
           Chapter 03 · 27 Years, One Evolving Practice
         </p>
 
-        <h2 className="serif-display serif-display--md reveal" style={{ color: 'var(--ivory)', marginBottom: '80px', maxWidth: '600px' }}>
+        <h2 className="serif-display serif-display--md reveal practice-timeline__title">
           A practice built on<br />
           <em style={{ color: 'var(--amber-light)' }}>listening first.</em>
         </h2>
 
         {/* Timeline entries */}
-        <div style={{ position: 'relative' }}>
+        <div className="practice-timeline__entries">
 
           {/* Vertical root line */}
-          <div style={{
-            position: 'absolute',
-            left: '0',
-            top: '8px',
-            bottom: '8px',
-            width: '1px',
-            background: 'linear-gradient(to bottom, transparent, var(--mineral-light) 10%, var(--mineral-light) 90%, transparent)',
-          }} />
+          <div className="practice-timeline__line" />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
             {timelineChapters.map((ch, i) => (
-              <div
+              <article
                 key={i}
-                className="reveal"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '180px 1fr',
-                  gap: '40px',
-                  alignItems: 'start',
-                  paddingBottom: ch.isCoda ? '0' : '64px',
-                  paddingLeft: '28px',
-                  position: 'relative',
-                }}
+                className={`reveal practice-timeline__entry ${ch.isCoda ? 'practice-timeline__entry--coda' : ''}`}
               >
                 {/* Root node dot */}
-                <div style={{
-                  position: 'absolute',
-                  left: '-4px',
-                  top: '8px',
-                  width: '9px',
-                  height: '9px',
-                  borderRadius: '50%',
-                   background: ch.isCoda ? 'var(--amber)' : 'var(--mineral-light)',
-                   boxShadow: ch.isCoda ? 'var(--shadow-sm)' : 'none',
-                }} />
+                <div className="practice-timeline__dot" />
 
                 {/* Year */}
-                <div>
-                  <span style={{
-                    fontFamily: ch.isCoda ? 'var(--font-serif)' : 'var(--font-mono)',
-                    fontSize: ch.isCoda ? 'clamp(2rem, 4vw, 3.5rem)' : '0.9rem',
-                    fontWeight: ch.isCoda ? 300 : 400,
-                    color: ch.isCoda ? 'var(--amber-light)' : 'var(--mineral-light)',
-                    fontStyle: ch.isCoda ? 'italic' : 'normal',
-                    lineHeight: 1.2,
-                    display: 'block',
-                  }}>
+                <div className="practice-timeline__year">
+                  <span>
                     {ch.year}
                   </span>
                 </div>
 
                 {/* Content */}
                 {!ch.isCoda && (
-                  <div>
-                    <h3 style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontWeight: 300,
-                      fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-                      color: 'var(--ivory)',
-                      marginBottom: '10px',
-                      lineHeight: 1.3,
-                    }}>
+                  <div className="practice-timeline__copy">
+                    <h3>
                       {ch.heading}
                     </h3>
                     {ch.body && (
-                      <p style={{
-                        fontSize: '0.95rem',
-                         color: 'var(--mineral-light)',
-                        lineHeight: 1.7,
-                        maxWidth: '480px',
-                      }}>
+                      <p>
                         {ch.body}
                       </p>
                     )}
@@ -105,19 +56,13 @@ export default function ChapterTimeline() {
                 )}
 
                 {ch.isCoda && (
-                  <div style={{ paddingTop: '12px' }}>
-                    <p style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontStyle: 'italic',
-                      fontSize: 'clamp(1rem, 2vw, 1.35rem)',
-                       color: 'var(--mineral-light)',
-                      lineHeight: 1.5,
-                    }}>
+                  <div className="practice-timeline__coda">
+                    <p>
                       {ch.heading}
                     </p>
                   </div>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         </div>
