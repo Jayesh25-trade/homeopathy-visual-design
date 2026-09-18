@@ -43,16 +43,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
 
         {/* Condition pill scroller — visible on mobile */}
         <div
-          className="show-mobile"
-          style={{
-            display: 'flex',
-            overflowX: 'auto',
-            gap: '8px',
-            marginBottom: '28px',
-            paddingBottom: '8px',
-            scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch',
-          }}
+          className="show-mobile care-tabs"
           role="tablist"
           aria-label="Conditions"
         >
@@ -62,23 +53,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
               role="tab"
               aria-selected={i === selected}
               onClick={() => setSelected(i)}
-              style={{
-                flexShrink: 0,
-                padding: '9px 16px',
-                borderRadius: '20px',
-                border: `1px solid ${i === selected ? 'var(--vermilion)' : 'rgba(14,14,12,0.18)'}`,
-                background: i === selected ? 'var(--vermilion)' : 'transparent',
-                color: i === selected ? 'var(--ivory)' : 'var(--fg-muted)',
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.7rem',
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                transition: 'all 200ms ease',
-                minHeight: '44px',
-                scrollSnapAlign: 'start',
-                whiteSpace: 'nowrap',
-              }}
+              className="care-tab"
             >
               {c.shortLabel}
             </button>

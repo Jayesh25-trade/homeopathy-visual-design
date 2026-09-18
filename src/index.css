@@ -543,6 +543,12 @@ ul, ol { list-style: none; }
   transform: none;
   opacity: 1;
 }
+.top-bar__brand { display: flex; align-items: center; gap: 10px; min-width: 0; text-align: left; }
+.top-bar__brand-copy { display: grid; line-height: 1.05; color: var(--forest); }
+.top-bar__brand-copy strong { font: 500 .92rem var(--font-serif); }
+.top-bar__brand-copy small { margin-top: 3px; color: var(--fg-muted); font-size: .58rem; font-weight: 700; text-transform: uppercase; }
+.top-bar__actions { display: flex; align-items: center; gap: 10px; }
+.top-bar__book { padding: 9px 18px; min-height: 42px; font-size: .75rem; }
 
 /* ============================================================
    MOBILE BOTTOM ACTION BAR
@@ -974,6 +980,47 @@ ul, ol { list-style: none; }
   .portrait-hero__ribbon { height: 48px; bottom: 0; clip-path: none; background: var(--amber-light); font-size: .9rem; }
 }
 
+/* Areas of care */
+.care-tabs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 34px;
+}
+.care-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  color: var(--fg-muted);
+  font: 700 .68rem/1.25 var(--font-sans);
+  text-align: center;
+  text-transform: uppercase;
+  transition: border-color 200ms ease, background 200ms ease, color 200ms ease, transform 180ms ease;
+}
+.care-tab[aria-selected='true'] { border-color: var(--amber); background: var(--amber); color: var(--forest); }
+.care-tab:active { transform: scale(.97); }
+
+/* Practice timeline */
+.practice-timeline { overflow: hidden; padding: clamp(80px,10vw,140px) 0; background: var(--forest); }
+.practice-timeline__label { margin-bottom: 34px; }
+.practice-timeline__title { max-width: 600px; margin-bottom: 72px; color: var(--ivory); }
+.practice-timeline__title em { color: var(--amber-light); }
+.practice-timeline__entries { position: relative; }
+.practice-timeline__line { position: absolute; top: 8px; bottom: 8px; left: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--mineral-light) 10%, var(--mineral-light) 90%, transparent); }
+.practice-timeline__entry { position: relative; display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: start; gap: 40px; padding: 0 0 64px 28px; }
+.practice-timeline__entry--coda { padding-bottom: 0; }
+.practice-timeline__dot { position: absolute; top: 8px; left: -4px; width: 9px; height: 9px; border-radius: 50%; background: var(--mineral-light); }
+.practice-timeline__entry--coda .practice-timeline__dot { background: var(--amber); box-shadow: var(--shadow-sm); }
+.practice-timeline__year span { display: block; color: var(--mineral-light); font: 400 .9rem/1.2 var(--font-mono); }
+.practice-timeline__entry--coda .practice-timeline__year span { color: var(--amber-light); font: italic 300 clamp(2rem,4vw,3.5rem)/1.2 var(--font-serif); }
+.practice-timeline__copy h3 { margin-bottom: 10px; color: var(--ivory); font: 300 clamp(1.1rem,2vw,1.5rem)/1.3 var(--font-serif); }
+.practice-timeline__copy p { max-width: 480px; color: var(--mineral-light); font-size: .95rem; line-height: 1.7; }
+.practice-timeline__coda { padding-top: 12px; }
+.practice-timeline__coda p { color: var(--mineral-light); font: italic 400 clamp(1rem,2vw,1.35rem)/1.5 var(--font-serif); }
+
 /* Care journey */
 .journey { position: relative; overflow: hidden; padding: clamp(76px, 9vw, 132px) 0; background: var(--forest); color: var(--ivory); }
 .journey__image { position: absolute; inset: 0; background: linear-gradient(90deg, var(--forest) 0%, color-mix(in srgb, var(--forest) 88%, transparent) 52%, color-mix(in srgb, var(--forest) 74%, transparent)), url('/assets/healing_sanctuary_bg.png') center/cover; opacity: .72; }
@@ -1054,6 +1101,30 @@ ul, ol { list-style: none; }
   .site-footer__map iframe { min-height: 280px; }
   .site-footer__main, .site-footer__legal { flex-direction: column; }
   .site-footer__links { gap: 18px; }
+  .top-bar { min-height: 58px; padding: 8px 14px; }
+  .top-bar__brand img { width: 34px !important; height: 34px !important; }
+  .top-bar__book { padding: 8px 14px; min-height: 40px; }
+  .practice-timeline { padding: 72px 0 84px; }
+  .practice-timeline__label { margin-bottom: 24px; }
+  .practice-timeline__title { max-width: 340px; margin-bottom: 50px; font-size: 2.35rem; line-height: 1.08; }
+  .practice-timeline__entry { grid-template-columns: 82px minmax(0, 1fr); gap: 18px; padding: 0 0 48px 22px; }
+  .practice-timeline__entry--coda { padding-bottom: 0; }
+  .practice-timeline__copy h3 { margin-bottom: 8px; font-size: 1.28rem; }
+  .practice-timeline__copy p { font-size: .9rem; line-height: 1.65; }
+  .practice-timeline__year span { font-size: .78rem; }
+  .practice-timeline__entry--coda .practice-timeline__year span { font-size: 1.7rem; }
+}
+
+@media (max-width: 420px) {
+  .portrait-hero__content { padding: 64px 18px 72px; }
+  .portrait-hero__kicker { max-width: 310px; line-height: 1.45; }
+  .portrait-hero h1 { font-size: 2.65rem; line-height: 1.02; }
+  .portrait-hero__statement { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+  .portrait-hero__actions { align-items: stretch; flex-direction: column; gap: 10px; }
+  .portrait-hero__mobile-book { width: 100%; min-width: 0; }
+  .portrait-hero__link { align-self: flex-start; }
+  .care-tabs { gap: 10px; }
+  .care-tab { min-height: 54px; padding-inline: 8px; font-size: .64rem; }
 }
 
 @media (prefers-reduced-motion: reduce) { .portrait-hero__ticker { animation: none; } }
