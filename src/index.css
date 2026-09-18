@@ -986,6 +986,7 @@ ul, ol { list-style: none; }
   gap: 12px;
   margin-bottom: 34px;
 }
+@media (max-width: 768px) { .show-mobile.care-tabs { display: grid !important; } }
 .care-tab {
   display: flex;
   align-items: center;
