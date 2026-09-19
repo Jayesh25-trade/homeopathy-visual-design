@@ -2,27 +2,22 @@ import React, { useState } from 'react';
 
 const ITEMS = [
   {
-    icon: '📋',
     title: 'Recent medical reports',
     detail: 'Blood tests, scans, or specialist letters from the last 6 months. Clear photos on your phone are fine.',
   },
   {
-    icon: '💊',
     title: 'Current medicines or prescriptions',
     detail: 'Any allopathic, homoeopathic, or other medicines you are currently taking, with their dosages.',
   },
   {
-    icon: '🗓️',
     title: 'Timeline of your symptoms',
     detail: 'When the concern first appeared, how it has changed, and what you have already tried.',
   },
   {
-    icon: '📶',
     title: 'A stable internet connection',
     detail: 'For online consultations. A quiet space without interruption helps the doctor focus on your case.',
   },
   {
-    icon: '🧘',
     title: 'A few minutes of calm',
     detail: "Dr Somani's consultations are unhurried. Being relaxed helps you remember details that matter.",
   },
@@ -30,7 +25,7 @@ const ITEMS = [
 
 export default function BeforeYouCall() {
   const [checked, setChecked] = useState(new Set());
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const toggle = idx => {
     setChecked(prev => {
@@ -44,10 +39,11 @@ export default function BeforeYouCall() {
 
   return (
     <div style={{
-      background: 'rgba(245,240,232,0.04)',
-      border: '1px solid var(--border)',
-      borderRadius: '2px',
+      background: 'rgba(255, 255, 255, 0.05)',
+      border: '1px solid rgba(255, 255, 255, 0.22)',
+      borderRadius: '8px',
       overflow: 'hidden',
+      marginTop: '24px',
     }}>
 
       {/* Accordion header */}
@@ -58,38 +54,47 @@ export default function BeforeYouCall() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '18px 24px',
+          padding: '16px 20px',
           background: 'none',
+          border: 'none',
           cursor: 'pointer',
           gap: '12px',
         }}
         aria-expanded={expanded}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '1rem' }}>📂</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span className="before-call__title" style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.72rem',
-            letterSpacing: '0.1em',
+            fontSize: '0.8rem',
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: allDone ? '#2d7a4e' : 'var(--mineral-light)',
+            color: allDone ? '#4ADE80' : '#E4B567',
+            fontWeight: 700,
           }}>
-            {allDone ? '✓ Ready for your consultation' : `Before you call — ${checked.size}/${ITEMS.length} ready`}
+            {allDone ? 'Ready for your consultation' : `BEFORE YOU CALL — ${checked.size}/${ITEMS.length} READY`}
           </span>
         </div>
-        <span style={{
-          color: 'var(--mineral-light)',
-          fontSize: '1.2rem',
-          transform: expanded ? 'rotate(180deg)' : 'none',
-          transition: 'transform 280ms ease',
-        }}>
-          ⌄
-        </span>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#FAF7F2"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            transform: expanded ? 'rotate(180deg)' : 'none',
+            transition: 'transform 280ms ease',
+          }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </button>
 
       {/* Checklist items */}
       {expanded && (
-        <div style={{ padding: '0 24px 20px' }}>
+        <div style={{ padding: '0 20px 20px 20px' }}>
           {ITEMS.map((item, i) => (
             <button
               key={i}
@@ -103,39 +108,56 @@ export default function BeforeYouCall() {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '12px',
-                padding: '14px 0',
-                borderBottom: '1px solid var(--border)',
-                animationDelay: `${i * 60}ms`,
+                padding: '12px 0',
+                borderBottom: i < ITEMS.length - 1 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
+                borderTop: 'none',
+                borderLeft: 'none',
+                borderRight: 'none',
               }}
               aria-pressed={checked.has(i)}
               aria-label={`Mark "${item.title}" as ready`}
             >
-              {/* Checkbox */}
+              {/* Custom Checkbox Circle */}
               <div
-                className={`checklist-check ${checked.has(i) ? 'checked' : ''}`}
-                aria-hidden="true"
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
+                  border: checked.has(i) ? '1.5px solid #4ADE80' : '1.5px solid rgba(255, 255, 255, 0.6)',
+                  background: checked.has(i) ? '#4ADE80' : 'transparent',
+                  color: checked.has(i) ? '#173F32' : 'transparent',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  marginTop: '2px',
+                  transition: 'all 0.2s ease',
+                }}
               >
-                {checked.has(i) && '✓'}
+                {checked.has(i) && (
+                  <svg width="11" height="9" viewBox="0 0 12 10" fill="none" stroke="#173F32" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="1.5 5 4.5 8 10.5 1.5" />
+                  </svg>
+                )}
               </div>
 
               <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
-                  <span style={{ fontSize: '0.95rem' }}>{item.icon}</span>
-                   <span className="before-call__item-title" style={{
-                     fontFamily: 'var(--font-sans)',
-                    fontWeight: 600,
-                    fontSize: 'clamp(0.88rem, 1.5vw, 0.95rem)',
-                    color: checked.has(i) ? 'var(--fg-muted)' : 'var(--fg)',
-                    textDecoration: checked.has(i) ? 'line-through' : 'none',
-                    opacity: checked.has(i) ? 0.55 : 1,
-                    transition: 'all 250ms',
-                  }}>
-                    {item.title}
-                  </span>
-                </div>
-                 <p className="before-call__detail" style={{
-                  fontSize: 'clamp(0.8rem, 1.3vw, 0.88rem)',
-                  color: 'var(--fg-faint)',
+                <span style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 600,
+                  fontSize: '0.94rem',
+                  color: checked.has(i) ? 'rgba(250,247,242,0.45)' : '#FFFFFF',
+                  textDecoration: checked.has(i) ? 'line-through' : 'none',
+                  marginBottom: '3px',
+                  transition: 'color 0.2s ease',
+                }}>
+                  {item.title}
+                </span>
+                <p style={{
+                  margin: 0,
+                  fontSize: '0.84rem',
+                  color: checked.has(i) ? 'rgba(250,247,242,0.35)' : '#E6E1D7',
                   lineHeight: 1.55,
                 }}>
                   {item.detail}
@@ -148,21 +170,23 @@ export default function BeforeYouCall() {
             <div style={{
               marginTop: '16px',
               padding: '12px 16px',
-              background: 'rgba(45,122,78,0.15)',
-              border: '1px solid rgba(45,122,78,0.3)',
-              borderRadius: '2px',
+              background: 'rgba(74,222,128,0.15)',
+              border: '1px solid rgba(74,222,128,0.35)',
+              borderRadius: '6px',
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              animation: 'fadeUp 350ms ease both',
             }}>
-              <span style={{ fontSize: '1.1rem' }}>✓</span>
-               <span style={{
-                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.68rem',
-                letterSpacing: '0.08em',
-                color: '#2d7a4e',
+              <svg width="14" height="12" viewBox="0 0 12 10" fill="none" stroke="#4ADE80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="1.5 5 4.5 8 10.5 1.5" />
+              </svg>
+              <span style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.78rem',
+                letterSpacing: '0.06em',
+                color: '#4ADE80',
                 textTransform: 'uppercase',
+                fontWeight: 700
               }}>
                 You are ready. Your consultation can begin.
               </span>
@@ -173,3 +197,4 @@ export default function BeforeYouCall() {
     </div>
   );
 }
+

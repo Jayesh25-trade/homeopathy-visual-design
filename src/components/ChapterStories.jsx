@@ -51,7 +51,11 @@ export default function ChapterStories() {
                 <img src={story.poster} alt="" width="720" height="1280" loading="lazy" />
                 <span className="story-card__shade" />
                 <span className="story-card__number">{String(index + 1).padStart(2, '0')}</span>
-                <span className="story-card__play" aria-hidden="true">▶</span>
+                <span className="story-card__play" aria-hidden="true">
+                  <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                    <path d="M0 0L14 8L0 16V0Z" />
+                  </svg>
+                </span>
                 <span className="story-card__copy">
                   <small>{story.eyebrow}</small>
                   <strong>{story.title}</strong>

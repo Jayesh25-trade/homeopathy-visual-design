@@ -339,7 +339,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       fontWeight: 500,
                     }}
                   >
-                    <span style={{ fontSize: '0.7rem', color: '#173F32' }}>🍃</span>
+                    <span style={{ fontSize: '0.7rem', color: '#173F32', fontWeight: 700 }}>•</span>
                     {item.treatment}
                   </span>
                 </div>
@@ -620,7 +620,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     fontWeight: 500,
                   }}
                 >
-                  🍃 {selectedCase.treatment}
+                  • {selectedCase.treatment}
                 </span>
               </div>
 

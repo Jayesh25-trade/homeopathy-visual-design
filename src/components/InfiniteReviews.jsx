@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
+const RenderStars = () => (
+  <div style={{ display: 'inline-flex', gap: '2px', alignItems: 'center' }}>
+    {[...Array(5)].map((_, i) => (
+      <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#C5964A">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+      </svg>
+    ))}
+  </div>
+);
+
 // 22 Real Google Patient Reviews
 const reviewsData = [
   {
@@ -567,9 +577,7 @@ export default function InfiniteReviews() {
 
                     {/* Rating Stars & Time */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
-                      <div style={{ color: '#C5964A', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                        ★★★★★
-                      </div>
+                      <RenderStars />
                       <span style={{ fontSize: '0.7rem', color: '#68706A' }}>
                         {rev.time}
                       </span>
@@ -627,12 +635,8 @@ export default function InfiniteReviews() {
                       color: '#68706A',
                     }}
                   >
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
-                      ♡ Like
-                    </span>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
-                      ➦ Share
-                    </span>
+                    <span style={{ cursor: 'pointer' }}>Like</span>
+                    <span style={{ cursor: 'pointer' }}>Share</span>
                   </div>
                 </article>
               );
@@ -657,28 +661,24 @@ export default function InfiniteReviews() {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '1.05rem', color: '#173F32' }}>👥</span>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
                 Trusted by Patients
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '1.05rem', color: '#173F32' }}>🍃</span>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
                 Gentle. Safe. Natural.
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '1.05rem', color: '#173F32' }}>🛡️</span>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
                 Personalized Care
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '1.05rem', color: '#C5964A' }}>🤎</span>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
                 Better Health.
               </span>
@@ -772,8 +772,8 @@ export default function InfiniteReviews() {
             </div>
 
             {/* Stars */}
-            <div style={{ color: '#C5964A', fontSize: '0.95rem', marginBottom: '14px' }}>
-              ★★★★★ <span style={{ fontSize: '0.75rem', color: '#173F32', marginLeft: '6px', fontWeight: 600 }}>Verified Google Review</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+              <RenderStars /> <span style={{ fontSize: '0.75rem', color: '#173F32', fontWeight: 600 }}>Verified Google Review</span>
             </div>
 
             {/* Full Review Text */}
