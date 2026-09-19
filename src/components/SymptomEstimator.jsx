@@ -45,13 +45,13 @@ export default function SymptomEstimator({ onOpenBooking }) {
       className="symptom-estimator"
       aria-label="How long have you had this concern? Timeline Estimator"
       style={{
-        background: '#F0F4F3',
+        background: '#17392e',
         padding: 'clamp(60px, 8vw, 110px) 0',
         position: 'relative',
         overflow: 'hidden',
-        color: '#1A2E2B',
-        borderTop: '1px solid rgba(14, 74, 71, 0.12)',
-        borderBottom: '1px solid rgba(14, 74, 71, 0.12)',
+        color: '#f4f0e7',
+        borderTop: '1px solid rgba(216, 170, 92, 0.2)',
+        borderBottom: '1px solid rgba(216, 170, 92, 0.2)',
       }}
     >
       {/* Background ambient lighting */}
@@ -62,7 +62,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
           right: '-10%',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(196,154,69,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(195,150,77,0.12) 0%, transparent 70%)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -71,7 +71,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Eyebrow */}
-        <div className="chapter-label" style={{ color: '#0E4A47', marginBottom: '16px' }}>
+        <div className="chapter-label" style={{ color: 'var(--amber-light)', marginBottom: '16px' }}>
           {t('estimator.label')}
         </div>
 
@@ -88,10 +88,10 @@ export default function SymptomEstimator({ onOpenBooking }) {
           <div style={{ maxWidth: '640px' }}>
             <h2
               className="serif-display serif-display--md"
-              style={{ color: '#0E4A47', marginBottom: '32px', lineHeight: 1.18 }}
+              style={{ color: '#ffffff', marginBottom: '32px', lineHeight: 1.18 }}
             >
               {t('estimator.h2')}{' '}
-              <em style={{ color: '#C49A45', fontStyle: 'italic' }}>
+              <em style={{ color: 'var(--amber-light)', fontStyle: 'italic' }}>
                 {t('estimator.h2Em')}
               </em>
             </h2>
@@ -111,13 +111,13 @@ export default function SymptomEstimator({ onOpenBooking }) {
                     fontFamily: 'var(--font-serif, "Lora", Georgia, serif)',
                     fontSize: 'clamp(2.8rem, 6vw, 4.8rem)',
                     fontWeight: 300,
-                    color: '#0E4A47',
+                    color: '#ffffff',
                     lineHeight: 1,
                   }}
                 >
                   {currentStage.yearsText}
                 </span>
-                <span className="mono" style={{ fontSize: '0.82rem', color: '#C49A45', fontWeight: 700 }}>
+                <span className="mono" style={{ fontSize: '0.82rem', color: 'var(--amber-light)', fontWeight: 600 }}>
                   {stageIndex === 0
                     ? t('estimator.months')
                     : stageIndex === 1
@@ -157,7 +157,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
                       border: 'none',
                       padding: '4px 0',
                       cursor: 'pointer',
-                      color: stageIndex === i ? '#0E4A47' : 'rgba(14, 74, 71, 0.45)',
+                      color: stageIndex === i ? 'var(--amber-light)' : 'rgba(244, 240, 231, 0.45)',
                       fontFamily: 'Manrope, sans-serif',
                       fontSize: '0.68rem',
                       fontWeight: stageIndex === i ? 700 : 500,
@@ -176,13 +176,13 @@ export default function SymptomEstimator({ onOpenBooking }) {
               className="ambient-glow-amber"
               style={{
                 padding: '24px 28px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(196, 154, 69, 0.35)',
-                borderLeft: '4px solid #C49A45',
-                borderRadius: '8px',
+                background: 'rgba(244, 240, 231, 0.05)',
+                border: `1px solid ${TONE_COLORS[msgTone]}60`,
+                borderLeft: `4px solid ${TONE_COLORS[msgTone]}`,
+                borderRadius: '6px',
                 animation: 'fadeUp 400ms cubic-bezier(0.22,1,0.36,1) both',
                 marginBottom: '28px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
               }}
             >
               <h3
@@ -190,7 +190,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
                   fontFamily: 'var(--font-serif, "Lora", Georgia, serif)',
                   fontWeight: 400,
                   fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-                  color: '#0E4A47',
+                  color: '#ffffff',
                   marginBottom: '10px',
                   lineHeight: 1.25,
                 }}
@@ -200,7 +200,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
               <p
                 style={{
                   fontSize: 'clamp(0.88rem, 1.2vw, 1rem)',
-                  color: '#3D5A54',
+                  color: 'rgba(244, 240, 231, 0.88)',
                   lineHeight: 1.65,
                   margin: 0,
                 }}
@@ -219,7 +219,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
             </button>
           </div>
 
-          {/* RIGHT COLUMN: Evolving Editorial Visual */}
+          {/* RIGHT COLUMN: Evolving Editorial Visual with Seamless Dark Vignette Mask */}
           <div
             style={{
               position: 'relative',
@@ -227,12 +227,12 @@ export default function SymptomEstimator({ onOpenBooking }) {
               aspectRatio: '16 / 10',
               borderRadius: '16px',
               overflow: 'hidden',
-              boxShadow: '0 15px 40px rgba(14, 74, 71, 0.12)',
-              border: '1px solid rgba(14, 74, 71, 0.15)',
-              background: '#FFFFFF',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+              border: '1px solid rgba(216, 170, 92, 0.25)',
+              background: '#0e241d',
             }}
           >
-            {/* Vignette Overlay fading smoothly into #F0F4F3 */}
+            {/* Vignette Overlay fading into #17392e */}
             <div
               style={{
                 position: 'absolute',
@@ -240,7 +240,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
                 zIndex: 3,
                 pointerEvents: 'none',
                 background:
-                  'radial-gradient(circle at center, transparent 50%, rgba(240, 244, 243, 0.4) 80%, rgba(240, 244, 243, 0.85) 100%)',
+                  'radial-gradient(circle at center, transparent 40%, rgba(23, 57, 46, 0.6) 80%, rgba(23, 57, 46, 0.95) 100%)',
               }}
               aria-hidden="true"
             />

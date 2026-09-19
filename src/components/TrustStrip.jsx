@@ -16,9 +16,9 @@ export default function TrustStrip() {
     <section
       aria-label="Practice statistics"
       style={{
-        background: '#FAF7F2',
-        borderTop: '1px solid rgba(14,74,71,0.12)',
-        borderBottom: '1px solid rgba(14,74,71,0.12)',
+        background: 'var(--forest)',
+        borderTop: '1px solid rgba(139,160,122,0.15)',
+        borderBottom: '1px solid rgba(139,160,122,0.15)',
         padding: 'clamp(20px,4vw,36px) 0',
         overflow: 'hidden',
       }}
@@ -42,7 +42,7 @@ export default function TrustStrip() {
               justifyContent: 'center',
               padding: 'clamp(12px,2vw,20px) clamp(8px,1.5vw,16px)',
               borderRight: i < stats.length - 1
-                ? '1px solid rgba(14,74,71,0.12)'
+                ? '1px solid rgba(139,160,122,0.18)'
                 : 'none',
               textAlign: 'center',
             }}
@@ -50,9 +50,9 @@ export default function TrustStrip() {
             <span
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontWeight: 500,
+                fontWeight: 400,
                 fontSize: 'clamp(1.5rem, 2.8vw, 2.4rem)',
-                color: '#C49A45',
+                color: 'var(--amber-light)',
                 lineHeight: 1,
                 marginBottom: '6px',
                 letterSpacing: '-0.01em',
@@ -65,7 +65,7 @@ export default function TrustStrip() {
                 fontFamily: 'var(--font-sans)',
                 fontWeight: 600,
                 fontSize: 'clamp(0.72rem, 1.1vw, 0.88rem)',
-                color: '#0E4A47',
+                color: 'rgba(245,240,232,0.92)',
                 marginBottom: '3px',
                 letterSpacing: '0.01em',
               }}
@@ -86,7 +86,7 @@ export default function TrustStrip() {
           }
           [aria-label="Practice statistics"] .container > div:nth-child(4),
           [aria-label="Practice statistics"] .container > div:nth-child(5) {
-            border-top: 1px solid rgba(14,74,71,0.12);
+            border-top: 1px solid rgba(139,160,122,0.18);
           }
           [aria-label="Practice statistics"] .container > div:nth-child(5) {
             border-right: none !important;
