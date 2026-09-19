@@ -14,7 +14,7 @@ export default function ChapterTimeline() {
           Chapter 03 · 27 Years, One Evolving Practice
         </p>
 
-        <h2 className="serif-display serif-display--md reveal practice-timeline__title">
+        <h2 className="serif-display serif-display--md practice-timeline__title">
           A practice built on<br />
           <em style={{ color: 'var(--amber-light)' }}>listening first.</em>
         </h2>
