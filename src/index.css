@@ -975,21 +975,21 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 850px) {
-  .portrait-hero { display: block; min-height: 100svh; background: var(--forest); color: var(--ivory); }
+  .portrait-hero { display: block; min-height: calc(100svh - 58px); max-height: none; height: auto; background: var(--forest); color: var(--ivory); position: relative; margin-top: 58px; }
   .portrait-hero__photo { position: absolute; inset: 0; min-height: 100%; }
   .portrait-hero__photo img { position: absolute; inset: 0; object-position: center 18%; filter: saturate(.82) contrast(1.02); }
   .portrait-hero__photo-wash { background: linear-gradient(180deg, rgba(23,57,46,.04) 22%, rgba(23,57,46,.32) 54%, rgba(23,57,46,.96) 88%); opacity: 1; }
-  .portrait-hero__content { position: relative; z-index: 2; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 72px 20px 82px; background: none !important; }
-  .portrait-hero__kicker { margin-bottom: 12px; color: var(--amber-light); font-size: .66rem; }
-  .portrait-hero h1 { max-width: 390px; color: var(--ivory); font-size: clamp(2.45rem, 11vw, 3.65rem); line-height: 1.03; text-shadow: 0 2px 24px rgba(0,0,0,.22); }
+  .portrait-hero__content { position: relative; z-index: 2; min-height: calc(100svh - 58px); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px 58px; background: none !important; }
+  .portrait-hero__kicker { margin-bottom: 10px; color: var(--amber-light); font-size: .66rem; }
+  .portrait-hero h1 { max-width: 390px; color: var(--ivory); font-size: clamp(2.3rem, 10vw, 3.4rem); line-height: 1.03; text-shadow: 0 2px 24px rgba(0,0,0,.22); }
   .portrait-hero h1 em { color: var(--amber-light); }
-  .portrait-hero__statement { max-width: 430px; margin-top: 16px; color: rgba(244,240,231,.82); font-size: .94rem; line-height: 1.58; }
-  .portrait-hero__actions { gap: 14px; margin-top: 22px; }
+  .portrait-hero__statement { max-width: 430px; margin-top: 14px; color: rgba(244,240,231,.85); font-size: .88rem; line-height: 1.55; }
+  .portrait-hero__actions { gap: 12px; margin-top: 18px; margin-bottom: 12px; }
   .portrait-hero__desktop-book { display: none; }
-  .portrait-hero__mobile-book { display: inline-flex; min-width: 210px; }
+  .portrait-hero__mobile-book { display: inline-flex; min-width: 190px; }
   .portrait-hero__link { color: var(--ivory); border-color: var(--amber-light); }
   .portrait-hero__doctor { display: none; }
-  .portrait-hero__ribbon { height: 48px; bottom: 0; clip-path: none; background: var(--amber-light); font-size: .9rem; }
+  .portrait-hero__ribbon { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; height: 42px; clip-path: none; background: #E4B567; color: #17392e; font-size: 0.82rem; font-weight: 700; display: flex; align-items: center; padding-top: 0; }
 }
 
 /* Areas of care */
