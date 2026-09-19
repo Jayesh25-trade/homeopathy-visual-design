@@ -36,7 +36,7 @@ export default function ChapterEnding({ onOpenBooking }) {
       id="locations"
       className="paper-section"
       aria-label="Book a Consultation"
-      style={{ padding: 'clamp(100px,12vw,160px) 0' }}
+      style={{ padding: 'clamp(36px, 4vw, 56px) 0 20px 0' }}
     >
       <div className="container">
 

@@ -92,7 +92,7 @@ export default function App() {
         <ChapterEnding   onOpenBooking={openBooking} />
       </main>
 
-      <SiteFooter />
+      <SiteFooter onOpenBooking={openBooking} />
 
       <AppointmentForm
         isOpen={formOpen}
