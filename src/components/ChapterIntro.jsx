@@ -25,7 +25,7 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
           zIndex: 10,
         }}
       >
-        <LanguageSelector variant="dark" />
+        <LanguageSelector variant="default" />
       </div>
 
       <div className="portrait-hero__photo" aria-hidden="true">
