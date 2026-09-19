@@ -46,12 +46,12 @@ export default function ChapterConsultation({ onOpenBooking }) {
       <div className="journey__image" aria-hidden="true" />
       <div className="container journey__inner">
         <header className="journey__header reveal">
-          <p className="chapter-label" style={{ color: '#E4B567' }}>{t('consultationSection.label')}</p>
-          <h2 className="serif-display serif-display--md" style={{ color: '#FFFFFF' }}>
+          <p className="chapter-label" style={{ color: '#0E4A47' }}>{t('consultationSection.label')}</p>
+          <h2 className="serif-display serif-display--md" style={{ color: '#0E4A47' }}>
             {t('consultationSection.h2')}<br />
-            <em style={{ color: '#E4B567' }}>{t('consultationSection.h2Em')}</em>
+            <em style={{ color: '#C49A45' }}>{t('consultationSection.h2Em')}</em>
           </h2>
-          <p style={{ color: '#E6E1D7' }}>{t('consultationSection.sub')}</p>
+          <p style={{ color: '#3D5A54' }}>{t('consultationSection.sub')}</p>
         </header>
 
         <ol className="journey__steps">
@@ -59,8 +59,8 @@ export default function ChapterConsultation({ onOpenBooking }) {
             <li className="journey__step reveal" key={step.n}>
               <span className="journey__number">{step.n}</span>
               <div>
-                <h3 style={{ color: '#FFFFFF' }}>{step.title}</h3>
-                <p style={{ color: '#E6E1D7' }}>{step.body}</p>
+                <h3 style={{ color: '#0E4A47' }}>{step.title}</h3>
+                <p style={{ color: '#3D5A54' }}>{step.body}</p>
               </div>
               {index < steps.length - 1 && <span className="journey__connector" aria-hidden="true" />}
             </li>
@@ -77,10 +77,10 @@ export default function ChapterConsultation({ onOpenBooking }) {
           </div>
           <div className="journey__location-detail">
             <div>
-              <p className="chapter-label" style={{ color: '#E4B567' }}>{t('common.selectLocation')}</p>
-              <h3 style={{ color: '#FFFFFF', margin: '4px 0 8px 0', fontFamily: 'var(--font-serif)', fontSize: '1.85rem' }}>{loc.city}</h3>
-              <p style={{ color: '#FAF7F2', margin: '0 0 10px 0', lineHeight: 1.6, fontSize: '0.94rem' }}>{loc.address}</p>
-              <a className="journey__phone" href={loc.phoneHref} style={{ color: '#E4B567', fontSize: '1.05rem', fontWeight: 700, display: 'inline-block' }}>{loc.phone}</a>
+              <p className="chapter-label" style={{ color: '#0E4A47' }}>{t('common.selectLocation')}</p>
+              <h3 style={{ color: '#0E4A47', margin: '4px 0 8px 0', fontFamily: 'var(--font-serif)', fontSize: '1.85rem' }}>{loc.city}</h3>
+              <p style={{ color: '#3D5A54', margin: '0 0 10px 0', lineHeight: 1.6, fontSize: '0.94rem' }}>{loc.address}</p>
+              <a className="journey__phone" href={loc.phoneHref} style={{ color: '#C49A45', fontSize: '1.05rem', fontWeight: 700, display: 'inline-block' }}>{loc.phone}</a>
             </div>
             <div className="journey__actions">
               <button
@@ -88,8 +88,8 @@ export default function ChapterConsultation({ onOpenBooking }) {
                 onClick={() => onOpenBooking?.()}
                 className="btn btn--primary"
                 style={{
-                  background: '#C5964A',
-                  color: '#173F32',
+                  background: '#0E4A47',
+                  color: '#FFFFFF',
                   fontWeight: 700,
                   padding: '12px 24px',
                   borderRadius: '5px',
@@ -112,9 +112,9 @@ export default function ChapterConsultation({ onOpenBooking }) {
                     justifyContent: 'center',
                     padding: '12px 24px',
                     borderRadius: '5px',
-                    color: '#FFFFFF',
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.5)',
+                    color: '#0E4A47',
+                    background: '#FAF7F2',
+                    border: '1.5px solid rgba(14, 74, 71, 0.25)',
                     fontWeight: 700,
                     textDecoration: 'none',
                     letterSpacing: '0.06em',
