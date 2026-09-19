@@ -347,15 +347,43 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   </div>
                 )}
 
-                <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.58)', lineHeight: 1.55 }}>
-                  A 6-digit SMS OTP will be sent to verify your real mobile number before submitting.
+                <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.58)', lineHeight: 1.55, margin: 0 }}>
+                  Choose your preferred booking method:
                 </p>
 
                 {submitError && <p role="alert" className="form-error">{submitError}</p>}
 
-                <button type="submit" className="btn btn--primary btn--full" disabled={submitting}>
-                  {submitting ? 'Sending SMS OTP…' : 'Send Verification OTP →'}
-                </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <a
+                    href={`https://wa.me/919834172124?text=${encodeURIComponent(waText)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--whatsapp"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      padding: '13px 18px',
+                      borderRadius: '5px',
+                      fontSize: '0.86rem',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span>Instant Booking on WhatsApp (No OTP Needed) →</span>
+                  </a>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '4px 0' }}>
+                    <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
+                    <span style={{ fontSize: '0.68rem', color: 'var(--mineral-light)', fontWeight: 600, textTransform: 'uppercase' }}>OR</span>
+                    <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
+                  </div>
+
+                  <button type="submit" className="btn btn--primary btn--full" disabled={submitting} style={{ background: '#173F32', color: '#FFFFFF' }}>
+                    {submitting ? 'Sending SMS OTP…' : 'Submit on Website (SMS OTP Verified)'}
+                  </button>
+                </div>
               </form>
             ) : (
               /* OTP Verification Step */
