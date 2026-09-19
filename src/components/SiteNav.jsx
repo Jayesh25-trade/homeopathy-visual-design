@@ -123,7 +123,7 @@ export default function SiteNav({ onOpenBooking }) {
           pointerEvents: scrolled ? 'all' : 'none',
         }}
       >
-        {NAV_ITEMS.map(item => (
+        {navItems.map(item => (
           <button
             key={item.id}
             onClick={() => scrollTo(item.id)}
@@ -156,7 +156,7 @@ export default function SiteNav({ onOpenBooking }) {
           onClick={() => onOpenBooking?.()}
           style={{ flex: 1, fontSize: '0.85rem', padding: '12px 16px' }}
         >
-          Book Consultation
+          {t('nav.bookBtn')}
         </button>
         <a
           href={clinic.whatsapp}
