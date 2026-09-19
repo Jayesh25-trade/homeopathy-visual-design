@@ -58,11 +58,8 @@ export default function SiteNav({ onOpenBooking }) {
 
   return (
     <>
-      {/* ── Top bar (appears on scroll) ─────────────────────── */}
-      <header
-        className={`top-bar ${scrolled ? 'visible' : ''}`}
-        role="banner"
-      >
+      {/* ── Constant Top Bar Header (Laptop & Mobile) ─────────── */}
+      <header className="top-bar visible" role="banner">
         {/* Logo / clinic name */}
         <button
           className="top-bar__brand"
@@ -72,8 +69,8 @@ export default function SiteNav({ onOpenBooking }) {
           <img
             src="/assets/logo.png"
             alt="Dr Somani's Homoeopathy"
-            width="32" height="32"
-            style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+            width="36" height="36"
+            style={{ width: '36px', height: '36px', objectFit: 'contain' }}
           />
           <span className="top-bar__brand-copy">
             <strong>{t('nav.brand')}</strong>
@@ -115,7 +112,7 @@ export default function SiteNav({ onOpenBooking }) {
         <div className="top-bar__actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <LanguageSelector />
           <button
-            className="btn btn--primary top-bar__book"
+            className="btn btn--primary top-bar__book hide-mobile"
             onClick={() => onOpenBooking?.()}
           >
             {t('nav.bookBtn')}

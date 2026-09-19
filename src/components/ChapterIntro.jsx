@@ -15,18 +15,6 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
 
   return (
     <section id="beginning" className="portrait-hero" aria-label="Introduction — Dr Somani's Homoeopathy">
-      
-      {/* Floating Language Switcher for top Hero header */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '20px',
-          right: '20px',
-          zIndex: 10,
-        }}
-      >
-        <LanguageSelector variant="default" />
-      </div>
 
       <div className="portrait-hero__photo" aria-hidden="true">
         <img src={kushal.portrait} alt="" loading="eager" />
