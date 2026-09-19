@@ -14,6 +14,18 @@ const RenderStars = () => (
 const reviewsData = [
   {
     id: 1,
+    name: 'Jayesh Mal',
+    meta: 'Local Guide · 8 reviews · 4 photos',
+    time: '2 weeks ago',
+    stars: 5,
+    isNew: true,
+    avatar: 'J',
+    avatarBg: '#8B4513',
+    text: 'I had been suffering from a cough for almost a month. I contacted Dr. Kushal Somani online from Pune, while I am from Mumbai. He understood my issue ,guided me properly and sent me the medicines. Within 8 days, my cough was completely gone. Thank you Dr Kushal',
+    ownerResponse: "Jayesh, Thank you for trusting Dr Somani's Homoeopathy for your health concerns. Always wishing you the best of health."
+  },
+  {
+    id: 2,
     name: 'Ankit Purohit',
     meta: '11 reviews · 1 photo',
     time: '2 months ago',

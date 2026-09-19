@@ -30,6 +30,19 @@ function buildWAText(form) {
   return lines.join('\n');
 }
 
+const Field = ({ id, label, error, children }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+    <label
+      htmlFor={id}
+      className="field-label"
+      style={{ color: error ? 'var(--vermilion)' : 'var(--mineral-light)' }}
+    >
+      {label}{error && ` — ${error}`}
+    </label>
+    {children}
+  </div>
+);
+
 export default function AppointmentForm({ isOpen, onClose }) {
   const [form, setForm]   = useState(INITIAL);
   const [errors, setErrors] = useState({});
@@ -81,19 +94,6 @@ export default function AppointmentForm({ isOpen, onClose }) {
     }
     setSent(true);
   };
-
-  const Field = ({ id, label, error, children }) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-      <label
-        htmlFor={id}
-        className="field-label"
-        style={{ color: error ? 'var(--vermilion)' : 'var(--mineral-light)' }}
-      >
-        {label}{error && ` — ${error}`}
-      </label>
-      {children}
-    </div>
-  );
 
   return (
     <div
