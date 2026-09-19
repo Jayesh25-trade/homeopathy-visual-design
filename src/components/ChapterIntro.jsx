@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { clinic, doctors } from '../data/clinicData';
 
 export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
+  const kushal = doctors.find(d => d.id === 'kushal') || doctors[0];
   const [headingVisible, setHeadingVisible] = useState(false);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
   return (
     <section id="beginning" className="portrait-hero" aria-label="Introduction — Dr Somani's Homoeopathy">
       <div className="portrait-hero__photo" aria-hidden="true">
-        <img src={doctors[0].portrait} alt="" loading="eager" />
+        <img src={kushal.portrait} alt="" loading="eager" />
         <div className="portrait-hero__photo-wash" />
       </div>
 
@@ -39,8 +40,8 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
         <div className="portrait-hero__doctor">
           <span className="portrait-hero__line" />
           <div>
-            <strong>{doctors[0].name}</strong>
-            <span>{doctors[0].qualifications} · {doctors[0].experience} · Reg. {doctors[0].regNo}</span>
+            <strong>{kushal.name}</strong>
+            <span>{kushal.qualifications} · Reg. {kushal.regNo}</span>
           </div>
         </div>
       </div>
