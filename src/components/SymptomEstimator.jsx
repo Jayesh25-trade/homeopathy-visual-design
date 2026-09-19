@@ -144,7 +144,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
           </h3>
           <p style={{
             fontSize: 'clamp(0.88rem, 1.4vw, 1rem)',
-            color: 'var(--fg-muted)',
+            color: 'rgba(245,240,232,0.88)',
             lineHeight: 1.7,
           }}>
             {msg.body}

@@ -8,6 +8,8 @@ import ChapterTimeline     from './components/ChapterTimeline';
 import SymptomEstimator    from './components/SymptomEstimator';
 import ChapterDoctors      from './components/ChapterDoctors';
 import ChapterStories      from './components/ChapterStories';
+import ClinicalTransformations from './components/ClinicalTransformations';
+import InfiniteReviews from './components/InfiniteReviews';
 import ChapterConsultation from './components/ChapterConsultation';
 import ChapterEnding       from './components/ChapterEnding';
 import AppointmentForm     from './components/AppointmentForm';
@@ -83,6 +85,8 @@ export default function App() {
         <SymptomEstimator onOpenBooking={openBooking} />
         <ChapterDoctors  onOpenBooking={openBooking} />
         <ChapterStories />
+        <ClinicalTransformations onOpenBooking={openBooking} />
+        <InfiniteReviews />
         <ChapterConsultation onOpenBooking={openBooking} isMobile={isMobile} />
         <ChapterEnding   onOpenBooking={openBooking} />
       </main>
