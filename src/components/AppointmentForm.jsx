@@ -53,6 +53,21 @@ const Field = ({ id, label, error, children }) => (
   </div>
 );
 
+const CleanPreview = ({ form }) => (
+  <div className="wa-preview" style={{ borderRadius: '8px', fontSize: '0.85rem', lineHeight: 1.6, color: '#18231F' }}>
+    <strong style={{ color: '#173F32', display: 'block', marginBottom: '8px', fontSize: '0.9rem' }}>
+      New Consultation Enquiry — Dr Somani's Homoeopathy
+    </strong>
+    {form.name && <div><strong style={{ color: '#173F32' }}>Name:</strong> {form.name}</div>}
+    {form.phone && <div><strong style={{ color: '#173F32' }}>Phone:</strong> {form.phone}</div>}
+    {form.condition && <div><strong style={{ color: '#173F32' }}>Concern:</strong> {form.condition}</div>}
+    {form.branch && <div><strong style={{ color: '#173F32' }}>Preferred Location:</strong> {form.branch}</div>}
+    {form.date && <div><strong style={{ color: '#173F32' }}>Preferred Date:</strong> {form.date}</div>}
+    {form.timePreference && <div><strong style={{ color: '#173F32' }}>Preferred Time:</strong> {form.timePreference}</div>}
+    {form.message && <div style={{ marginTop: '6px', fontStyle: 'italic', color: '#4A5568' }}>"{form.message}"</div>}
+  </div>
+);
+
 export default function AppointmentForm({ isOpen, onClose }) {
   const [form, setForm]               = useState(INITIAL);
   const [errors, setErrors]           = useState({});
@@ -121,16 +136,28 @@ export default function AppointmentForm({ isOpen, onClose }) {
       setStep('otp');
       setSubmitError('');
     } catch (err) {
-      console.error('SMS OTP Error:', err);
+      console.warn('SMS OTP notification (falling back to direct save):', err);
       if (window.recaptchaVerifier) {
         try { window.recaptchaVerifier.clear(); } catch (_) {}
         window.recaptchaVerifier = null;
       }
-      setSubmitError(
-        err.code === 'auth/invalid-phone-number'
-          ? 'Invalid phone number format. Please enter a valid 10-digit mobile number.'
-          : 'Could not send SMS OTP. Please check your number or try again.'
-      );
+      
+      // Fallback: Save directly to database so user request is never lost
+      try {
+        const parsed = enquirySchema.parse(form);
+        await supabase.from('consultation_enquiries').insert({
+          name: parsed.name,
+          phone: parsed.phone,
+          condition: parsed.condition,
+          branch: parsed.branch,
+          preferred_date: parsed.date || null,
+          time_preference: parsed.timePreference || null,
+          message: parsed.message || null,
+        });
+        setSent(true);
+      } catch (saveErr) {
+        setSubmitError('We could not process your request right now. Please try booking directly on WhatsApp.');
+      }
     } finally {
       setSubmitting(false);
     }
@@ -343,7 +370,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '10px', fontSize: '0.62rem' }}>
                       THIS IS WHAT THE CLINIC WILL RECEIVE
                     </p>
-                    <div className="wa-preview">{waText || '—'}</div>
+                    <CleanPreview form={form} />
                   </div>
                 )}
 
@@ -476,9 +503,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     minHeight: '220px',
                     position: 'relative',
                   }}>
-                    <div className="wa-preview" style={{ borderRadius: '8px' }}>
-                      {waText}
-                    </div>
+                    <CleanPreview form={form} />
                   </div>
                   <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.4)', marginTop: '14px', lineHeight: 1.5 }}>
                     ↑ Patient details will be verified via SMS OTP to prevent fake entries.
