@@ -34,7 +34,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
         </p>
 
         <h2
-          className="serif-display serif-display--lg reveal"
+          className="serif-display serif-display--lg"
           style={{ color: 'var(--ink)', marginBottom: 'clamp(28px,5vw,48px)', lineHeight: 1.15 }}
         >
           Eight areas of<br />
