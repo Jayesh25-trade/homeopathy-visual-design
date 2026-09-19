@@ -1,24 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import healthVideo from '../assets/videos/health-explained.mp4.asset.json';
-import healthPoster from '../assets/videos/health-explained-poster.jpg.asset.json';
-import patientVideo from '../assets/videos/patient-story.mp4.asset.json';
-import patientPoster from '../assets/videos/patient-story-poster.jpg.asset.json';
-import clinicVideo from '../assets/videos/clinic-story.mp4.asset.json';
-import clinicPoster from '../assets/videos/clinic-story-poster.jpg.asset.json';
-import heelVideo from '../assets/videos/heel-pain.mp4.asset.json';
-import heelPoster from '../assets/videos/heel-pain-poster.jpg.asset.json';
-import eczemaVideo from '../assets/videos/eczema-care.mp4.asset.json';
-import eczemaPoster from '../assets/videos/eczema-care-poster.jpg.asset.json';
-import migraineVideo from '../assets/videos/migraine-care.mp4.asset.json';
-import migrainePoster from '../assets/videos/migraine-care-poster.jpg.asset.json';
 
 const stories = [
-  { title: 'Understanding your health', eyebrow: 'Doctor explains', video: healthVideo.url, poster: healthPoster.url },
-  { title: 'A patient’s experience', eyebrow: 'Patient story', video: patientVideo.url, poster: patientPoster.url },
-  { title: 'Inside the clinic', eyebrow: 'Care journey', video: clinicVideo.url, poster: clinicPoster.url },
-  { title: 'Heel pain explained', eyebrow: 'Health guide', video: heelVideo.url, poster: heelPoster.url },
-  { title: 'Eczema and skin care', eyebrow: 'Health guide', video: eczemaVideo.url, poster: eczemaPoster.url },
-  { title: 'Migraine and homoeopathy', eyebrow: 'Health guide', video: migraineVideo.url, poster: migrainePoster.url },
+  { title: 'Understanding your health', eyebrow: 'Doctor explains', video: '/media/health-explained.mp4', poster: '/media/health-explained-poster.jpg' },
+  { title: 'A patient’s experience', eyebrow: 'Patient story', video: '/media/patient-story.mp4', poster: '/media/patient-story-poster.jpg' },
+  { title: 'Inside the clinic', eyebrow: 'Care journey', video: '/media/clinic-story.mp4', poster: '/media/clinic-story-poster.jpg' },
+  { title: 'Heel pain explained', eyebrow: 'Health guide', video: '/media/heel-pain.mp4', poster: '/media/heel-pain-poster.jpg' },
+  { title: 'Eczema and skin care', eyebrow: 'Health guide', video: '/media/eczema-care.mp4', poster: '/media/eczema-care-poster.jpg' },
+  { title: 'Migraine and homoeopathy', eyebrow: 'Health guide', video: '/media/migraine-care.mp4', poster: '/media/migraine-care-poster.jpg' },
 ];
 
 export default function ChapterStories() {
