@@ -12,6 +12,7 @@ import ChapterConsultation from './components/ChapterConsultation';
 import ChapterEnding       from './components/ChapterEnding';
 import AppointmentForm     from './components/AppointmentForm';
 import SiteFooter          from './components/SiteFooter';
+import TrustStrip          from './components/TrustStrip';
 
 export default function App() {
   const [formOpen,  setFormOpen]  = useState(false);
@@ -75,6 +76,7 @@ export default function App() {
           prefersReducedMotion={prefersReducedMotion}
           isMobile={isMobile}
         />
+        <TrustStrip />
         <ChapterAtlas    onOpenBooking={openBooking} />
         <ParallaxDivider />
         <ChapterTimeline />

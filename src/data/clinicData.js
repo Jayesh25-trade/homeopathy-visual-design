@@ -14,6 +14,14 @@ export const clinic = {
   logo: "/assets/logo.png",
 };
 
+export const trustStats = [
+  { value: "27+",  label: "Years of Service",           sub: "Since 1998" },
+  { value: "50K+", label: "Patients Treated",           sub: "Across India" },
+  { value: "8",    label: "Specialised Treatments",     sub: "Classical Homoeopathy" },
+  { value: "2",    label: "Clinics",                    sub: "Pune & Jalgaon" },
+  { value: "100%", label: "Side-effect-free Care",      sub: "Safe for all ages" },
+];
+
 export const doctors = [
   {
     id: "antim",
@@ -65,7 +73,7 @@ export const conditions = [
     shortLabel: "Skin & Vitiligo",
     description: "Specialised care for vitiligo, psoriasis, eczema, acne, fungal infections and recurring skin concerns.",
     images: ["/assets/conditions/skin-care.jpg"],
-    doctorId: "kushal",
+    doctorId: "antim",
   },
   {
     id: "allergies",
@@ -73,7 +81,7 @@ export const conditions = [
     shortLabel: "Respiratory & Allergies",
     description: "Individualised care for allergic rhinitis, asthma, bronchitis, sinus and recurring seasonal allergies.",
     images: ["/assets/conditions/allergy-care.jpg"],
-    doctorId: "kushal",
+    doctorId: "antim",
   },
   {
     id: "migraine",
@@ -81,7 +89,7 @@ export const conditions = [
     shortLabel: "Migraine",
     description: "Long-term management of recurring migraines and headaches.",
     images: ["/assets/conditions/migraine-care-v2.jpg"],
-    doctorId: "kushal",
+    doctorId: "antim",
   },
   {
     id: "pcod",
@@ -89,7 +97,7 @@ export const conditions = [
     shortLabel: "PCOD",
     description: "Individualised support for hormonal balance and cycle-related concerns.",
     images: ["/assets/conditions/pcod-care-v2.jpg"],
-    doctorId: "kushal",
+    doctorId: "antim",
   },
   {
     id: "kidney-stones",
@@ -97,7 +105,7 @@ export const conditions = [
     shortLabel: "Kidney Stones",
     description: "Consultation and supportive management for kidney-stone concerns and recurrence.",
     images: ["/assets/conditions/kidney-care-v2.jpg"],
-    doctorId: "kushal",
+    doctorId: "antim",
   },
   {
     id: "acidity",
@@ -105,7 +113,7 @@ export const conditions = [
     shortLabel: "Acidity & Digestion",
     description: "Care for acidity, gas, bloating and digestive complaints.",
     images: ["/assets/conditions/digestion-care-v2.jpg"],
-    doctorId: "antim",
+    doctorId: "kushal",
   },
   {
     id: "paediatric",
@@ -113,7 +121,7 @@ export const conditions = [
     shortLabel: "Paediatric",
     description: "Gentle, individualised care for children's recurring health concerns.",
     images: ["/assets/conditions/paediatric-care-v2.jpg"],
-    doctorId: "antim",
+    doctorId: "kushal",
   },
   {
     id: "mental-health",
@@ -121,7 +129,7 @@ export const conditions = [
     shortLabel: "Mental Health",
     description: "Supportive care for stress, anxiety and emotional well-being.",
     images: ["/assets/conditions/mental-health-care.jpg"],
-    doctorId: "antim",
+    doctorId: "kushal",
   },
 ];
 
