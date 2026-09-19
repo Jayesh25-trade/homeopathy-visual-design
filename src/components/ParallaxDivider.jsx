@@ -1,11 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function ParallaxDivider() {
-  const [scrollY, setScrollY] = useState(0);
+  const bgRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    let scheduledAnimationFrame = false;
+
+    const handleScroll = () => {
+      if (scheduledAnimationFrame) return;
+      scheduledAnimationFrame = true;
+
+      requestAnimationFrame(() => {
+        scheduledAnimationFrame = false;
+        if (bgRef.current) {
+          const scrollY = window.scrollY;
+          const offsetY = (scrollY * 0.12) % 80;
+          bgRef.current.style.transform = `translate3d(0, ${offsetY}px, 0) scale(1.1)`;
+        }
+      });
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -24,14 +40,15 @@ export default function ParallaxDivider() {
     >
       {/* Mountain Background Parallax Layer */}
       <div
+        ref={bgRef}
         style={{
           position: 'absolute',
           inset: 0,
           backgroundImage: `url(/assets/endura_parallax_mountain.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          transform: `translateY(${(scrollY * 0.15) % 80}px) scale(1.1)`,
-          transition: 'transform 0.1s ease-out',
+          willChange: 'transform',
+          transform: 'translate3d(0, 0, 0) scale(1.1)',
         }}
       />
 
@@ -73,3 +90,4 @@ export default function ParallaxDivider() {
     </section>
   );
 }
+

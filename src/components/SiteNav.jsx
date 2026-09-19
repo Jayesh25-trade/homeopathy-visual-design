@@ -24,18 +24,31 @@ export default function SiteNav({ onOpenBooking }) {
   ];
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-      let current = 'beginning';
-      for (const n of navItems) {
-        const el = document.getElementById(n.id);
-        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) {
-          current = n.id;
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        ticking = false;
+        const isScrolled = window.scrollY > 80;
+        setScrolled(prev => (prev !== isScrolled ? isScrolled : prev));
+
+        let current = 'beginning';
+        const viewportCenter = window.innerHeight * 0.5;
+        for (let i = 0; i < navItems.length; i++) {
+          const el = document.getElementById(navItems[i].id);
+          if (el && el.getBoundingClientRect().top <= viewportCenter) {
+            current = navItems[i].id;
+          }
         }
-      }
-      setActive(current);
+        setActive(prev => (prev !== current ? current : prev));
+      });
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
