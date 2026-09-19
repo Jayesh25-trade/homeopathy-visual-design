@@ -11,11 +11,11 @@ export default function ChapterTimeline() {
       <div className="container">
 
         <p className="chapter-label practice-timeline__label">
-          Chapter 03 · 27 Years, One Evolving Practice
+          Chapter 03 · 27 Years, Two Generations
         </p>
 
         <h2 className="serif-display serif-display--md practice-timeline__title">
-          A practice built on<br />
+          A family practice built on<br />
           <em style={{ color: 'var(--amber-light)' }}>listening first.</em>
         </h2>
 

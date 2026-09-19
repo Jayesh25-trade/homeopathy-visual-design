@@ -93,6 +93,30 @@ export default function ChapterDoctors({ onOpenBooking }) {
                   {dr.name}
                 </h2>
 
+                {/* Generation badge */}
+                {dr.generation && (
+                  <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '6px',
+                    padding: '3px 10px',
+                    background: dr.generation === 'First Generation'
+                      ? 'rgba(200,135,58,0.12)'
+                      : 'rgba(45,97,78,0.1)',
+                    border: `1px solid ${dr.generation === 'First Generation'
+                      ? 'rgba(200,135,58,0.35)'
+                      : 'rgba(45,97,78,0.25)'}`,
+                    borderRadius: '2px',
+                    marginBottom: '8px',
+                  }}>
+                    <span className="mono" style={{
+                      fontSize: '0.6rem',
+                      color: dr.generation === 'First Generation' ? 'var(--amber)' : '#2d6150',
+                      letterSpacing: '0.06em',
+                    }}>
+                      {dr.generation === 'First Generation' ? '⬤ Founder · ' : '⬤ '}{dr.generation}
+                    </span>
+                  </div>
+                )}
+
                 <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '6px', fontSize: '0.68rem' }}>
                   {dr.qualifications} · {dr.role}{dr.experience ? ` · ${dr.experience}` : ''}
                 </p>
