@@ -1,7 +1,17 @@
 import React from 'react';
-import { trustStats } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function TrustStrip() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: t('trust.years'), label: t('trust.yearsSub') },
+    { value: t('trust.patients'), label: t('trust.patientsSub') },
+    { value: t('trust.generations'), label: t('trust.generationsSub') },
+    { value: t('trust.clinics'), label: t('trust.clinicsSub') },
+    { value: t('trust.safe'), label: t('trust.safeSub') },
+  ];
+
   return (
     <section
       aria-label="Practice statistics"
@@ -14,16 +24,16 @@ export default function TrustStrip() {
       }}
     >
       <div
-        className="container"
+        className="container trust-strip-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(5, 1fr)',
           gap: '0',
         }}
       >
-        {trustStats.map((stat, i) => (
+        {stats.map((stat, i) => (
           <div
-            key={stat.label}
+            key={i}
             className="reveal"
             style={{
               display: 'flex',
@@ -31,7 +41,7 @@ export default function TrustStrip() {
               alignItems: 'center',
               justifyContent: 'center',
               padding: 'clamp(12px,2vw,20px) clamp(8px,1.5vw,16px)',
-              borderRight: i < trustStats.length - 1
+              borderRight: i < stats.length - 1
                 ? '1px solid rgba(139,160,122,0.18)'
                 : 'none',
               textAlign: 'center',
@@ -41,7 +51,7 @@ export default function TrustStrip() {
               style={{
                 fontFamily: 'var(--font-serif)',
                 fontWeight: 400,
-                fontSize: 'clamp(1.6rem, 3vw, 2.6rem)',
+                fontSize: 'clamp(1.5rem, 2.8vw, 2.4rem)',
                 color: 'var(--amber-light)',
                 lineHeight: 1,
                 marginBottom: '6px',
@@ -61,16 +71,6 @@ export default function TrustStrip() {
               }}
             >
               {stat.label}
-            </span>
-            <span
-              className="mono"
-              style={{
-                fontSize: '0.56rem',
-                color: 'var(--mineral-light)',
-                letterSpacing: '0.04em',
-              }}
-            >
-              {stat.sub}
             </span>
           </div>
         ))}

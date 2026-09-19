@@ -1,10 +1,35 @@
 import React, { useState } from 'react';
-import { conditions, doctors, clinic } from '../data/clinicData';
+import { doctors, clinic } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterAtlas({ onOpenBooking }) {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState(0);
-  const active = conditions[selected];
-  const doctor = doctors.find(d => d.id === active.doctorId) || doctors[0];
+
+  const conditionKeys = ['skin', 'allergies', 'migraine', 'pcod', 'kidney', 'acidity', 'paediatric', 'mental'];
+  const conditionDoctorIds = ['antim', 'antim', 'antim', 'antim', 'antim', 'kushal', 'kushal', 'kushal'];
+  const conditionImages = [
+    '/assets/conditions/skin-care.jpg',
+    '/assets/conditions/allergy-care.jpg',
+    '/assets/conditions/migraine-care-v2.jpg',
+    '/assets/conditions/pcod-care-v2.jpg',
+    '/assets/conditions/kidney-care-v2.jpg',
+    '/assets/conditions/digestion-care-v2.jpg',
+    '/assets/conditions/paediatric-care-v2.jpg',
+    '/assets/conditions/mental-health-care.jpg',
+  ];
+
+  const currentKey = conditionKeys[selected];
+  const activeCondition = {
+    key: currentKey,
+    label: t(`atlas.conditions.${currentKey}.label`),
+    shortLabel: t(`atlas.conditions.${currentKey}.short`),
+    description: t(`atlas.conditions.${currentKey}.desc`),
+    image: conditionImages[selected],
+    doctorId: conditionDoctorIds[selected],
+  };
+
+  const doctor = doctors.find(d => d.id === activeCondition.doctorId) || doctors[0];
 
   return (
     <section
@@ -13,7 +38,6 @@ export default function ChapterAtlas({ onOpenBooking }) {
       aria-label="Treatment Atlas — Areas of Care"
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Microscopic texture ambient backdrop */}
       <div
         className="parallax-layer"
         style={{
@@ -30,15 +54,15 @@ export default function ChapterAtlas({ onOpenBooking }) {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
         <p className="chapter-label" style={{ color: 'var(--mineral)' }}>
-          Chapter 02 · The Treatment Atlas
+          {t('atlas.label')}
         </p>
 
         <h2
           className="serif-display serif-display--lg"
           style={{ color: 'var(--ink)', marginBottom: 'clamp(28px,5vw,48px)', lineHeight: 1.15 }}
         >
-          Eight areas of<br />
-          <em>care and attention.</em>
+          {t('atlas.heading')}<br />
+          <em>{t('atlas.headingEm')}</em>
         </h2>
 
         {/* Condition pill scroller — visible on mobile */}
@@ -47,15 +71,15 @@ export default function ChapterAtlas({ onOpenBooking }) {
           role="tablist"
           aria-label="Conditions"
         >
-          {conditions.map((c, i) => (
+          {conditionKeys.map((key, i) => (
             <button
-              key={c.id}
+              key={key}
               role="tab"
               aria-selected={i === selected}
               onClick={() => setSelected(i)}
               className="care-tab"
             >
-              {c.shortLabel}
+              {t(`atlas.conditions.${key}.short`)}
             </button>
           ))}
         </div>
@@ -74,9 +98,9 @@ export default function ChapterAtlas({ onOpenBooking }) {
             aria-label="Condition list"
             style={{ paddingTop: '4px' }}
           >
-            {conditions.map((c, i) => (
+            {conditionKeys.map((key, i) => (
               <button
-                key={c.id}
+                key={key}
                 onClick={() => setSelected(i)}
                 style={{
                   display: 'flex',
@@ -102,13 +126,13 @@ export default function ChapterAtlas({ onOpenBooking }) {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span style={{
-                   fontFamily: 'var(--font-serif)',
+                  fontFamily: 'var(--font-serif)',
                   fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
                   fontWeight: 300,
                   color: i === selected ? 'var(--ink)' : 'rgba(14,14,12,0.5)',
                   transition: 'color 200ms',
                 }}>
-                  {c.label}
+                  {t(`atlas.conditions.${key}.label`)}
                 </span>
               </button>
             ))}
@@ -116,15 +140,15 @@ export default function ChapterAtlas({ onOpenBooking }) {
 
           {/* Right — active condition detail */}
           <div
-            key={active.id}
+            key={activeCondition.key}
             className="ambient-glow-amber"
             style={{
               animation: 'fadeUp 400ms cubic-bezier(0.22,1,0.36,1) both',
               padding: '24px',
-               background: 'var(--bg-surface)',
+              background: 'var(--bg-surface)',
               borderRadius: '6px',
-               border: '1px solid var(--border)',
-               boxShadow: 'var(--shadow-sm)',
+              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow-sm)',
             }}
           >
             {/* Image */}
@@ -138,8 +162,8 @@ export default function ChapterAtlas({ onOpenBooking }) {
               background: '#d8d4cc',
             }}>
               <img
-                src={active.images[0]}
-                alt={active.label}
+                src={activeCondition.image}
+                alt={activeCondition.label}
                 width="1280"
                 height="800"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -153,20 +177,17 @@ export default function ChapterAtlas({ onOpenBooking }) {
                 position: 'absolute', bottom: '12px', left: '14px',
                 color: 'rgba(245,240,232,0.88)', fontSize: '0.6rem',
               }}>
-                {active.shortLabel}
+                {activeCondition.shortLabel}
               </span>
             </div>
 
             {/* Description */}
-            <p className="chapter-label" style={{ color: 'var(--mineral)', marginBottom: '10px' }}>
-              Overview
-            </p>
             <p style={{
-               fontFamily: 'var(--font-serif)', fontWeight: 400,
+              fontFamily: 'var(--font-serif)', fontWeight: 400,
               fontSize: 'clamp(1.1rem, 2vw, 1.45rem)',
               color: 'var(--ink)', lineHeight: 1.45, marginBottom: '22px',
             }}>
-              {active.description}
+              {activeCondition.description}
             </p>
 
             {/* Doctor */}
@@ -191,7 +212,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
               </div>
               <div>
                 <p style={{
-                   fontFamily: 'var(--font-serif)', fontWeight: 400,
+                  fontFamily: 'var(--font-serif)', fontWeight: 400,
                   fontSize: '1rem', color: 'var(--ink)', marginBottom: '2px',
                 }}>
                   {doctor.name}
@@ -202,34 +223,18 @@ export default function ChapterAtlas({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* Location pills */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: '24px' }}>
-              {['Pune', 'Jalgaon', 'Online'].map(loc => (
-                <span key={loc} style={{
-                   fontFamily: 'var(--font-sans)', fontSize: '0.68rem',
-                  padding: '5px 12px', border: '1px solid rgba(14,14,12,0.18)',
-                  borderRadius: '2px', color: 'var(--mineral)',
-                }}>
-                  {loc}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href={`${clinic.whatsapp}?text=${encodeURIComponent(`Hi Dr. Somani, I would like to discuss: ${active.label}.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => onOpenBooking?.()}
               className="btn btn--primary"
               style={{ width: '100%' }}
             >
-              Discuss this concern
-            </a>
+              {t('atlas.bookForThis')}
+            </button>
           </div>
 
         </div>
       </div>
 
-      {/* Fix two-col on mobile */}
       <style>{`
         @media (max-width: 640px) {
           #concerns .container > div:last-child {
@@ -240,3 +245,4 @@ export default function ChapterAtlas({ onOpenBooking }) {
     </section>
   );
 }
+

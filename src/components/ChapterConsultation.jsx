@@ -1,37 +1,75 @@
 import React, { useState } from 'react';
-import { consultationSteps, locations } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 import BeforeYouCall from './BeforeYouCall';
 
 export default function ChapterConsultation({ onOpenBooking }) {
+  const { t, lang } = useLanguage();
   const [activeLocation, setActiveLocation] = useState(0);
-  const loc = locations[activeLocation];
+
+  const steps = [
+    { n: '01', title: t('consultationSection.steps.0.title'), body: t('consultationSection.steps.0.body') },
+    { n: '02', title: t('consultationSection.steps.1.title'), body: t('consultationSection.steps.1.body') },
+    { n: '03', title: t('consultationSection.steps.2.title'), body: t('consultationSection.steps.2.body') },
+    { n: '04', title: t('consultationSection.steps.3.title'), body: t('consultationSection.steps.3.body') },
+  ];
+
+  const locItems = [
+    {
+      id: 'wakad',
+      city: lang === 'mr' ? 'पुणे क्लिनिक' : lang === 'hi' ? 'पुणे क्लिनिक' : 'Wakad, Pune',
+      address: t('common.puneAddress'),
+      phone: '+91 98226 77921',
+      phoneHref: 'tel:+919822677921',
+      mapsUrl: 'https://maps.app.goo.gl/jthY3tH3iZJyVP9j9'
+    },
+    {
+      id: 'jalgaon',
+      city: lang === 'mr' ? 'जळगाव क्लिनिक' : lang === 'hi' ? 'जलगांव क्लिनिक' : 'Jalgaon',
+      address: t('common.jalgaonAddress'),
+      phone: '+91 94222 77921',
+      phoneHref: 'tel:+919422277921',
+      mapsUrl: 'https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon'
+    },
+    {
+      id: 'online',
+      city: lang === 'mr' ? 'ऑनलाइन व्हिडियो सल्ला' : lang === 'hi' ? 'ऑनलाइन वीडियो परामर्श' : 'Online / Pan-India',
+      address: t('common.onlineAddress'),
+      phone: '+91 98226 77921',
+      phoneHref: 'tel:+919822677921',
+    }
+  ];
+
+  const loc = locItems[activeLocation];
 
   return (
     <section id="consultation" className="journey" aria-label="How consultation works">
       <div className="journey__image" aria-hidden="true" />
       <div className="container journey__inner">
         <header className="journey__header reveal">
-          <p className="chapter-label" style={{ color: '#E4B567' }}>How care begins</p>
-          <h2 className="serif-display serif-display--md" style={{ color: '#FFFFFF' }}>One path.<br /><em style={{ color: '#E4B567' }}>Four careful steps.</em></h2>
-          <p style={{ color: '#E6E1D7' }}>A clear, unhurried process—from your first message to thoughtful follow-up.</p>
+          <p className="chapter-label" style={{ color: '#E4B567' }}>{t('consultationSection.label')}</p>
+          <h2 className="serif-display serif-display--md" style={{ color: '#FFFFFF' }}>
+            {t('consultationSection.h2')}<br />
+            <em style={{ color: '#E4B567' }}>{t('consultationSection.h2Em')}</em>
+          </h2>
+          <p style={{ color: '#E6E1D7' }}>{t('consultationSection.sub')}</p>
         </header>
 
         <ol className="journey__steps">
-          {consultationSteps.map((step, index) => (
+          {steps.map((step, index) => (
             <li className="journey__step reveal" key={step.n}>
               <span className="journey__number">{step.n}</span>
               <div>
                 <h3 style={{ color: '#FFFFFF' }}>{step.title}</h3>
                 <p style={{ color: '#E6E1D7' }}>{step.body}</p>
               </div>
-              {index < consultationSteps.length - 1 && <span className="journey__connector" aria-hidden="true" />}
+              {index < steps.length - 1 && <span className="journey__connector" aria-hidden="true" />}
             </li>
           ))}
         </ol>
 
         <div className="journey__booking reveal">
           <div className="journey__locations" role="tablist" aria-label="Choose clinic location">
-            {locations.map((item, index) => (
+            {locItems.map((item, index) => (
               <button key={item.id} role="tab" aria-selected={index === activeLocation} onClick={() => setActiveLocation(index)}>
                 {item.city}
               </button>
@@ -39,7 +77,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
           </div>
           <div className="journey__location-detail">
             <div>
-              <p className="chapter-label" style={{ color: '#E4B567' }}>Selected location</p>
+              <p className="chapter-label" style={{ color: '#E4B567' }}>{t('common.selectLocation')}</p>
               <h3 style={{ color: '#FFFFFF', margin: '4px 0 8px 0', fontFamily: 'var(--font-serif)', fontSize: '1.85rem' }}>{loc.city}</h3>
               <p style={{ color: '#FAF7F2', margin: '0 0 10px 0', lineHeight: 1.6, fontSize: '0.94rem' }}>{loc.address}</p>
               <a className="journey__phone" href={loc.phoneHref} style={{ color: '#E4B567', fontSize: '1.05rem', fontWeight: 700, display: 'inline-block' }}>{loc.phone}</a>
@@ -61,7 +99,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
                   letterSpacing: '0.04em',
                 }}
               >
-                REQUEST CONSULTATION
+                {t('common.requestConsultation')}
               </button>
               {loc.mapsUrl && (
                 <a
@@ -84,7 +122,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  DIRECTIONS
+                  {t('common.directions')}
                 </a>
               )}
             </div>
@@ -94,4 +132,5 @@ export default function ChapterConsultation({ onOpenBooking }) {
       </div>
     </section>
   );
-}
+}
+

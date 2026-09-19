@@ -1,17 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const stories = [
-  { title: 'Understanding your health', eyebrow: 'Doctor explains', video: '/media/health-explained.mp4', poster: '/media/health-explained-poster.jpg' },
-  { title: 'A patient’s experience', eyebrow: 'Patient story', video: '/media/patient-story.mp4', poster: '/media/patient-story-poster.jpg' },
-  { title: 'Inside the clinic', eyebrow: 'Care journey', video: '/media/clinic-story.mp4', poster: '/media/clinic-story-poster.jpg' },
-  { title: 'Heel pain explained', eyebrow: 'Health guide', video: '/media/heel-pain.mp4', poster: '/media/heel-pain-poster.jpg' },
-  { title: 'Eczema and skin care', eyebrow: 'Health guide', video: '/media/eczema-care.mp4', poster: '/media/eczema-care-poster.jpg' },
-  { title: 'Migraine and homoeopathy', eyebrow: 'Health guide', video: '/media/migraine-care.mp4', poster: '/media/migraine-care-poster.jpg' },
+const storiesBase = [
+  { id: 's1', video: '/media/health-explained.mp4', poster: '/media/health-explained-poster.jpg' },
+  { id: 's2', video: '/media/patient-story.mp4', poster: '/media/patient-story-poster.jpg' },
+  { id: 's3', video: '/media/clinic-story.mp4', poster: '/media/clinic-story-poster.jpg' },
+  { id: 's4', video: '/media/heel-pain.mp4', poster: '/media/heel-pain-poster.jpg' },
+  { id: 's5', video: '/media/eczema-care.mp4', poster: '/media/eczema-care-poster.jpg' },
+  { id: 's6', video: '/media/migraine-care.mp4', poster: '/media/migraine-care-poster.jpg' },
 ];
 
 export default function ChapterStories() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(null);
   const videoRef = useRef(null);
+
+  const stories = storiesBase.map(s => ({
+    ...s,
+    title: t(`stories.${s.id}.title`),
+    eyebrow: t(`stories.${s.id}.eyebrow`)
+  }));
 
   useEffect(() => {
     if (active === null) return undefined;
@@ -34,19 +42,19 @@ export default function ChapterStories() {
       <div className="container">
         <div className="stories-heading reveal">
           <div>
-            <p className="chapter-label">From the clinic</p>
+            <p className="chapter-label">{t('stories.label')}</p>
             <h2 id="stories-title" className="serif-display serif-display--lg">
-              Care, explained<br /><em>in Dr Somani’s own words.</em>
+              {t('stories.h2')}<br /><em>{t('stories.h2Em')}</em>
             </h2>
           </div>
           <a href="https://www.instagram.com/somanikushal/" target="_blank" rel="noopener noreferrer" className="stories-instagram">
-            Follow @somanikushal <span aria-hidden="true">↗</span>
+            {t('stories.followIg')}
           </a>
         </div>
 
         <div className="stories-rail" aria-label="Clinic videos">
           {stories.map((story, index) => (
-            <article className="story-card reveal" key={story.title}>
+            <article className="story-card reveal" key={story.id}>
               <button className="story-card__media" onClick={() => setActive(index)} aria-label={`Play ${story.title}`}>
                 <img src={story.poster} alt="" width="720" height="1280" loading="lazy" />
                 <span className="story-card__shade" />
@@ -69,7 +77,7 @@ export default function ChapterStories() {
       {active !== null && (
         <div className="video-modal" role="dialog" aria-modal="true" aria-label={stories[active].title} onMouseDown={event => event.target === event.currentTarget && close()}>
           <div className="video-modal__frame">
-            <button className="video-modal__close" onClick={close} aria-label="Close video">×</button>
+            <button className="video-modal__close" onClick={close} aria-label={t('common.close')}>×</button>
             <video ref={videoRef} src={stories[active].video} poster={stories[active].poster} controls autoPlay playsInline preload="metadata" />
             <div className="video-modal__caption">
               <small>{stories[active].eyebrow}</small>
@@ -80,4 +88,4 @@ export default function ChapterStories() {
       )}
     </section>
   );
-}
+}

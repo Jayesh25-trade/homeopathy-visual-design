@@ -1,31 +1,18 @@
 import React, { useState } from 'react';
-
-const ITEMS = [
-  {
-    title: 'Recent medical reports',
-    detail: 'Blood tests, scans, or specialist letters from the last 6 months. Clear photos on your phone are fine.',
-  },
-  {
-    title: 'Current medicines or prescriptions',
-    detail: 'Any allopathic, homoeopathic, or other medicines you are currently taking, with their dosages.',
-  },
-  {
-    title: 'Timeline of your symptoms',
-    detail: 'When the concern first appeared, how it has changed, and what you have already tried.',
-  },
-  {
-    title: 'A stable internet connection',
-    detail: 'For online consultations. A quiet space without interruption helps the doctor focus on your case.',
-  },
-  {
-    title: 'A few minutes of calm',
-    detail: "Dr Somani's consultations are unhurried. Being relaxed helps you remember details that matter.",
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BeforeYouCall() {
+  const { t } = useLanguage();
   const [checked, setChecked] = useState(new Set());
   const [expanded, setExpanded] = useState(true);
+
+  const items = [
+    { title: t('consultationSection.checklist.0.title'), detail: t('consultationSection.checklist.0.detail') },
+    { title: t('consultationSection.checklist.1.title'), detail: t('consultationSection.checklist.1.detail') },
+    { title: t('consultationSection.checklist.2.title'), detail: t('consultationSection.checklist.2.detail') },
+    { title: t('consultationSection.checklist.3.title'), detail: t('consultationSection.checklist.3.detail') },
+    { title: t('consultationSection.checklist.4.title'), detail: t('consultationSection.checklist.4.detail') },
+  ];
 
   const toggle = idx => {
     setChecked(prev => {
@@ -35,7 +22,7 @@ export default function BeforeYouCall() {
     });
   };
 
-  const allDone = checked.size === ITEMS.length;
+  const allDone = checked.size === items.length;
 
   return (
     <div style={{
@@ -71,7 +58,9 @@ export default function BeforeYouCall() {
             color: allDone ? '#4ADE80' : '#E4B567',
             fontWeight: 700,
           }}>
-            {allDone ? 'Ready for your consultation' : `BEFORE YOU CALL — ${checked.size}/${ITEMS.length} READY`}
+            {allDone
+              ? t('consultationSection.readyHeader')
+              : `${t('consultationSection.beforeCallHeader')} — ${checked.size}/${items.length}`}
           </span>
         </div>
         <svg
@@ -95,7 +84,7 @@ export default function BeforeYouCall() {
       {/* Checklist items */}
       {expanded && (
         <div style={{ padding: '0 20px 20px 20px' }}>
-          {ITEMS.map((item, i) => (
+          {items.map((item, i) => (
             <button
               key={i}
               onClick={() => toggle(i)}
@@ -109,7 +98,7 @@ export default function BeforeYouCall() {
                 alignItems: 'flex-start',
                 gap: '12px',
                 padding: '12px 0',
-                borderBottom: i < ITEMS.length - 1 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
+                borderBottom: i < items.length - 1 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
                 borderTop: 'none',
                 borderLeft: 'none',
                 borderRight: 'none',
@@ -188,7 +177,7 @@ export default function BeforeYouCall() {
                 textTransform: 'uppercase',
                 fontWeight: 700
               }}>
-                You are ready. Your consultation can begin.
+                {t('consultationSection.readyBanner')}
               </span>
             </div>
           )}
@@ -197,4 +186,5 @@ export default function BeforeYouCall() {
     </div>
   );
 }
+
 

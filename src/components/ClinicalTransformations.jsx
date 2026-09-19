@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-// Exact 6 Cases Data as specified
-const casesData = [
+// Base Cases Data
+const casesDataBase = [
   {
     id: 'case-01',
+    cKey: 'c1',
     category: 'SKIN',
     categoryType: 'Skin',
     treatment: '8 Weeks Treatment',
-    title: 'Skin Fungal Infection',
-    shortDescription: 'Ringworm patch on cheek cleared completely without any topical steroids.',
-    fullDescription: 'Chronic facial ringworm patch on the cheek and jawline healed down to the cellular root using individualized constitutional homoeopathy. Zero steroid ointments used, preventing skin thinning and recurrence.',
     doctor: 'Dr. Kushal A Somani & Dr. Antim Somani',
     beforeImg: '/media/case1_fungal_before.jpg',
     afterImg: '/media/case1_fungal_after.jpg',
@@ -17,12 +16,10 @@ const casesData = [
   },
   {
     id: 'case-02',
+    cKey: 'c2',
     category: 'PSORIASIS',
     categoryType: 'Psoriasis',
     treatment: '5 Months Treatment',
-    title: 'Plaque Psoriasis',
-    shortDescription: 'Thick, scaly plaques on elbow and forearm improved to healthy, smooth skin.',
-    fullDescription: 'Extensive white scaly psoriatic plaques on the elbow and arm completely softened and cleared. Immune-mediated inflammation addressed from within, restoring smooth, healthy skin tissue.',
     doctor: 'Dr. Antim Somani (Founder)',
     beforeImg: '/media/case2_psoriasis_before.jpg',
     afterImg: '/media/case2_psoriasis_after.jpg',
@@ -30,12 +27,10 @@ const casesData = [
   },
   {
     id: 'case-03',
+    cKey: 'c3',
     category: 'HAIR',
     categoryType: 'Hair',
     treatment: '3 Months Treatment',
-    title: 'Alopecia Areata',
-    shortDescription: 'Patchy hair loss on scalp with significant regrowth after treatment.',
-    fullDescription: 'Autoimmune circular bald patch on lower scalp completely filled in with dense, natural dark hair growth. Constitutional homoeopathic treatment reversed follicle suppression without painful scalp injections.',
     doctor: 'Dr. Kushal A Somani',
     beforeImg: '/media/case3_alopecia_before.jpg',
     afterImg: '/media/case3_alopecia_after.jpg',
@@ -43,12 +38,10 @@ const casesData = [
   },
   {
     id: 'case-04',
+    cKey: 'c4',
     category: 'VITILIGO',
     categoryType: 'Vitiligo',
     treatment: '6 Months Treatment',
-    title: 'Vitiligo (Leucoderma)',
-    shortDescription: 'White patches on neck reduced with natural homoeopathic treatment.',
-    fullDescription: 'Prominent depigmented vitiligo patch on the neck achieved full melanocyte activation and repigmentation. Natural skin tone restored through internal homoeopathic immune balancing.',
     doctor: 'Dr. Kushal A Somani & Dr. Antim Somani',
     beforeImg: '/media/case4_vitiligo_before.jpg',
     afterImg: '/media/case4_vitiligo_after.jpg',
@@ -56,12 +49,10 @@ const casesData = [
   },
   {
     id: 'case-05',
+    cKey: 'c5',
     category: 'HAIR',
     categoryType: 'Hair',
     treatment: '4 Months Treatment',
-    title: 'Male Pattern Hair Loss',
-    shortDescription: 'Noticeable improvement in hair density and coverage.',
-    fullDescription: 'Advanced male pattern scalp thinning at the crown and frontal hairline restored to thick, dense dark coverage through root-cause internal homoeopathic therapy.',
     doctor: 'Dr. Kushal A Somani',
     beforeImg: '/media/case5_malehair_before.jpg',
     afterImg: '/media/case5_malehair_after.jpg',
@@ -69,12 +60,10 @@ const casesData = [
   },
   {
     id: 'case-06',
+    cKey: 'c6',
     category: 'PSORIASIS',
     categoryType: 'Psoriasis',
     treatment: '4 Months Treatment',
-    title: 'Palmar Psoriasis',
-    shortDescription: 'Severe dryness and scaling on palms healed to soft, healthy skin.',
-    fullDescription: 'Severe dry cracking, painful flaking, and thick scaly palmar psoriasis across open palm and fingers fully healed to soft, healthy hand skin with restored natural flexibility.',
     doctor: 'Dr. Kushal A Somani',
     beforeImg: '/media/case6_palmar_before.jpg',
     afterImg: '/media/case6_palmar_after.jpg',
@@ -83,14 +72,29 @@ const casesData = [
 ];
 
 export default function ClinicalTransformations({ onOpenBooking }) {
-  const [activeFilter, setActiveFilter] = useState('All Cases');
+  const { t, lang } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState('All');
   const [selectedCase, setSelectedCase] = useState(null);
 
-  const filters = ['All Cases', 'Skin', 'Hair', 'Psoriasis', 'Vitiligo', 'Other'];
+  const casesData = casesDataBase.map(c => ({
+    ...c,
+    title: t(`casesSection.${c.cKey}.title`),
+    shortDescription: t(`casesSection.${c.cKey}.short`),
+    fullDescription: t(`casesSection.${c.cKey}.full`),
+  }));
 
-  const filteredCases = activeFilter === 'All Cases'
+  const filters = [
+    { id: 'All', label: t('casesSection.allFilters') },
+    { id: 'Skin', label: lang === 'mr' ? 'त्वचारोग' : lang === 'hi' ? 'त्वचारोग' : 'Skin' },
+    { id: 'Hair', label: lang === 'mr' ? 'केस' : lang === 'hi' ? 'बाल' : 'Hair' },
+    { id: 'Psoriasis', label: lang === 'mr' ? 'सोरायसिस' : lang === 'hi' ? 'सोरायसिस' : 'Psoriasis' },
+    { id: 'Vitiligo', label: lang === 'mr' ? 'विटिलिगो (कोड)' : lang === 'hi' ? 'सफेद दाग' : 'Vitiligo' },
+  ];
+
+  const filteredCases = activeFilter === 'All'
     ? casesData
     : casesData.filter(c => c.categoryType.toLowerCase() === activeFilter.toLowerCase());
+
 
   // Prevent scroll when modal is open
   useEffect(() => {
@@ -196,7 +200,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                 textTransform: 'uppercase',
               }}
             >
-              REAL PATIENTS
+              {t('casesSection.eyebrow')}
             </span>
             <span style={{ width: '20px', height: '1px', background: '#C5964A' }}></span>
           </div>
@@ -213,7 +217,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               marginBottom: '10px',
             }}
           >
-            Real People. <em style={{ fontStyle: 'italic', color: '#173F32', fontWeight: 400 }}>Real Results.</em>
+            {t('casesSection.h2')} <em style={{ fontStyle: 'italic', color: '#173F32', fontWeight: 400 }}>{t('casesSection.h2Em')}</em>
           </h2>
 
           {/* Subtitle */}
@@ -225,7 +229,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               lineHeight: 1.5,
             }}
           >
-            Actual before-and-after photographs from Dr. Somani’s Homoeopathy Hospital.
+            {t('casesSection.sub')}
           </p>
         </div>
 
@@ -245,11 +249,11 @@ export default function ClinicalTransformations({ onOpenBooking }) {
           aria-label="Filter patient transformation categories"
         >
           {filters.map(filter => {
-            const isActive = activeFilter === filter;
+            const isActive = activeFilter === filter.id;
             return (
               <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
                 role="tab"
                 aria-selected={isActive}
                 style={{
@@ -268,13 +272,13 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   flexShrink: 0
                 }}
               >
-                {filter}
+                {filter.label}
               </button>
             );
           })}
         </div>
 
-        {/* MAIN CASE GRID (Desktop: 3 cols grid; Mobile: Horizontal Swipe Slider so it fits on screen without taking endless vertical space) */}
+        {/* MAIN CASE GRID */}
         <div
           className="cases-responsive-container"
           style={{
@@ -300,7 +304,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                 }}
                 className="case-card-item"
               >
-                {/* CARD HEADER (Category Pill + Duration Pill) */}
+                {/* CARD HEADER */}
                 <div
                   style={{
                     display: 'flex',
@@ -344,7 +348,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   </span>
                 </div>
 
-                {/* 50/50 SPLIT BEFORE + AFTER IMAGE CONTAINER */}
+                {/* BEFORE + AFTER CONTAINER */}
                 <div
                   style={{
                     position: 'relative',
@@ -360,11 +364,11 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   }}
                   onClick={() => setSelectedCase(item)}
                 >
-                  {/* BEFORE Image (Left Half) */}
+                  {/* BEFORE */}
                   <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
                     <img
                       src={item.beforeImg}
-                      alt={`${item.title} before treatment`}
+                      alt={`${item.title} before`}
                       style={{
                         width: '100%',
                         height: '100%',
@@ -388,15 +392,15 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                         letterSpacing: '0.04em',
                       }}
                     >
-                      Before
+                      {t('casesSection.before')}
                     </span>
                   </div>
 
-                  {/* AFTER Image (Right Half) */}
+                  {/* AFTER */}
                   <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', borderLeft: '1.5px solid #FFFFFF' }}>
                     <img
                       src={item.afterImg}
-                      alt={`${item.title} after treatment`}
+                      alt={`${item.title} after`}
                       style={{
                         width: '100%',
                         height: '100%',
@@ -420,11 +424,11 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                         letterSpacing: '0.04em',
                       }}
                     >
-                      After
+                      {t('casesSection.after')}
                     </span>
                   </div>
 
-                  {/* CENTER CHEVRON DIVIDER */}
+                  {/* CHEVRON */}
                   <div
                     style={{
                       position: 'absolute',
@@ -497,7 +501,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       }}
                       className="view-case-btn"
                     >
-                      View Case
+                      {t('common.readMore')}
                       <span className="arrow-icon" style={{ transition: 'transform 0.2s ease', display: 'inline-block' }}>
                         →
                       </span>
@@ -509,7 +513,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
           })}
         </div>
 
-        {/* BOTTOM EXPLORE MORE BUTTON -> GOOGLE MAPS REDIRECT */}
+        {/* BOTTOM EXPLORE MORE BUTTON */}
         <div style={{ textAlign: 'center', marginTop: '10px' }}>
           <a
             href="https://maps.app.goo.gl/jthY3tH3iZJyVP9j9"
@@ -533,8 +537,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               textDecoration: 'none',
             }}
           >
-            Explore More Real Cases
-            <span style={{ fontSize: '0.95rem' }}>→</span>
+            {t('casesSection.exploreMoreBtn')}
           </a>
         </div>
       </div>
@@ -669,7 +672,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     fontWeight: 600,
                   }}
                 >
-                  BEFORE
+                  {t('casesSection.before')}
                 </span>
               </div>
 
@@ -692,7 +695,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     fontWeight: 600,
                   }}
                 >
-                  AFTER CURE
+                  {t('casesSection.after')}
                 </span>
               </div>
             </div>
@@ -719,7 +722,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   Doctor: <strong>{selectedCase.doctor}</strong>
                 </span>
                 <span className="mono" style={{ fontSize: '0.7rem', color: '#173F32', fontWeight: 600 }}>
-                  ✓ 100% Side-Effect Free
+                  ✓ {t('trust.safe')}
                 </span>
               </div>
             </div>
@@ -738,7 +741,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   color: '#68706A',
                 }}
               >
-                Close
+                {t('common.close')}
               </button>
               <button
                 onClick={() => {
@@ -756,9 +759,10 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   cursor: 'pointer',
                 }}
               >
-                Book Consultation →
+                {t('nav.bookBtn')} →
               </button>
             </div>
+
           </div>
         </div>
       )}

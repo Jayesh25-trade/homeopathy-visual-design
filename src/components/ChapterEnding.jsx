@@ -1,7 +1,36 @@
 import React from 'react';
-import { clinic, locations } from '../data/clinicData';
+import { clinic } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterEnding({ onOpenBooking }) {
+  const { t, lang } = useLanguage();
+
+  const locationsList = [
+    {
+      id: 'wakad',
+      city: lang === 'mr' ? 'वाकड, पुणे' : lang === 'hi' ? 'वाकड, पुणे' : 'Wakad, Pune',
+      address: t('common.puneAddress'),
+      phone: '+91 98226 77921',
+      type: 'CLINIC',
+      mapsUrl: 'https://maps.app.goo.gl/jthY3tH3iZJyVP9j9'
+    },
+    {
+      id: 'jalgaon',
+      city: lang === 'mr' ? 'जळगाव' : lang === 'hi' ? 'जलगांव' : 'Jalgaon',
+      address: t('common.jalgaonAddress'),
+      phone: '+91 94222 77921',
+      type: 'CLINIC',
+      mapsUrl: 'https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon'
+    },
+    {
+      id: 'online',
+      city: lang === 'mr' ? 'ऑनलाइन सल्ला' : lang === 'hi' ? 'ऑनलाइन परामर्श' : 'Online Consultation',
+      address: t('common.onlineAddress'),
+      phone: '+91 98226 77921',
+      type: 'ONLINE',
+    }
+  ];
+
   return (
     <section
       id="locations"
@@ -12,7 +41,7 @@ export default function ChapterEnding({ onOpenBooking }) {
       <div className="container">
 
         <p className="chapter-label" style={{ color: 'var(--mineral)', marginBottom: '40px' }}>
-          Chapter 07 · Begin
+          {lang === 'mr' ? 'प्रकरण ०७ · प्रारंभ' : lang === 'hi' ? 'अध्याय 07 · शुरुआत' : 'Chapter 07 · Begin'}
         </p>
 
         {/* Closing headline */}
@@ -26,8 +55,8 @@ export default function ChapterEnding({ onOpenBooking }) {
             marginBottom: '24px',
             letterSpacing: '0',
           }}>
-            "Your case deserves time,<br />
-            <em>context and careful attention.</em>"
+            {t('ending.h2')}<br />
+            <em>{t('ending.h2Em')}</em>
           </h2>
           <p style={{
             fontFamily: 'var(--font-sans)',
@@ -35,8 +64,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             color: 'var(--fg-muted)',
             lineHeight: 1.7,
           }}>
-            Choose how you would like to begin. Every consultation with Dr Somani's
-            starts with listening—your history, your experience, your life.
+            {t('ending.sub')}
           </p>
         </div>
 
@@ -48,7 +76,7 @@ export default function ChapterEnding({ onOpenBooking }) {
           marginBottom: '40px',
           background: 'var(--border)',
         }}>
-          {locations.map((loc) => (
+          {locationsList.map((loc) => (
             <div
               key={loc.id}
               style={{
@@ -57,7 +85,9 @@ export default function ChapterEnding({ onOpenBooking }) {
               }}
             >
               <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '12px', fontSize: '0.65rem' }}>
-                {loc.id === 'online' ? 'ONLINE' : 'CLINIC'}
+                {loc.type === 'ONLINE' 
+                  ? (lang === 'mr' ? 'ऑनलाइन' : lang === 'hi' ? 'ऑनलाइन' : 'ONLINE')
+                  : (lang === 'mr' ? 'क्लिनिक' : lang === 'hi' ? 'क्लिनिक' : 'CLINIC')}
               </p>
               <h3 style={{
                 fontFamily: 'var(--font-serif)',
@@ -85,7 +115,7 @@ export default function ChapterEnding({ onOpenBooking }) {
                 className="btn btn--primary"
                 style={{ fontSize: '0.82rem', padding: '10px 18px' }}
               >
-                Book at {loc.city}
+                {t('ending.requestBtn')}
               </button>
               {loc.mapsUrl && (
                 <a
@@ -102,7 +132,7 @@ export default function ChapterEnding({ onOpenBooking }) {
                     textUnderlineOffset: '3px',
                   }}
                 >
-                  Directions →
+                  {t('common.directions')} →
                 </a>
               )}
             </div>
@@ -123,7 +153,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             rel="noopener noreferrer"
             className="btn btn--whatsapp"
           >
-            WhatsApp the Clinic
+            {t('ending.whatsappBtn')}
           </a>
           <a
             href={clinic.instagram}
@@ -146,11 +176,11 @@ export default function ChapterEnding({ onOpenBooking }) {
           paddingTop: '24px',
           borderTop: '1px solid var(--border)',
         }}>
-          Treatment is individualised. Suitability and expected outcomes are discussed
-          during consultation. This website does not replace emergency medical care.
+          {t('footer.disclaimer')}
         </p>
 
       </div>
     </section>
   );
 }
+

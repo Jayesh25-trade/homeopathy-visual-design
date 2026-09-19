@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import ReadingProgress     from './components/ReadingProgress';
 import SiteNav             from './components/SiteNav';
 import ChapterIntro        from './components/ChapterIntro';
@@ -65,7 +66,7 @@ export default function App() {
   const closeBooking = useCallback(() => setFormOpen(false), []);
 
   return (
-    <>
+    <LanguageProvider>
       <ReadingProgress />
 
       <SiteNav
@@ -97,6 +98,6 @@ export default function App() {
         isOpen={formOpen}
         onClose={closeBooking}
       />
-    </>
+    </LanguageProvider>
   );
 }

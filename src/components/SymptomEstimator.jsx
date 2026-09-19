@@ -1,36 +1,5 @@
 import React, { useState } from 'react';
-import { clinic } from '../data/clinicData';
-
-const MESSAGES = [
-  {
-    range: [0, 1],
-    label: "Less than 1 year",
-    title: "Early concerns still deserve context.",
-    body: "A consultation can help document when the concern began, what affects it and what you have already tried.",
-    tone: "encouraging",
-  },
-  {
-    range: [1, 3],
-    label: "1 – 3 years",
-    title: "A considered approach matters.",
-    body: "When symptoms have changed over time, a careful history helps the doctor understand the full pattern rather than one recent episode.",
-    tone: "grounded",
-  },
-  {
-    range: [3, 7],
-    label: "3 – 7 years",
-    title: "A detailed history becomes important.",
-    body: "Long-standing concerns may involve several stages and previous treatments. Your consultation begins with a thorough review of that history.",
-    tone: "specialist",
-  },
-  {
-    range: [7, 15],
-    label: "More than 7 years",
-    title: "Long-standing concerns need careful review.",
-    body: "Conditions carried for many years deserve unhurried attention, including your symptoms, health history, lifestyle and previous care.",
-    tone: "reassuring",
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const TONE_COLORS = {
   encouraging: '#2d7a4e',
@@ -40,9 +9,24 @@ const TONE_COLORS = {
 };
 
 export default function SymptomEstimator({ onOpenBooking }) {
+  const { t } = useLanguage();
   const [years, setYears] = useState(2);
 
-  const msg = MESSAGES.find(m => years >= m.range[0] && years < m.range[1]) || MESSAGES[MESSAGES.length - 1];
+  const getMessageIndex = (y) => {
+    if (y < 1) return 0;
+    if (y < 3) return 1;
+    if (y < 7) return 2;
+    return 3;
+  };
+
+  const idx = getMessageIndex(years);
+  const toneList = ['encouraging', 'grounded', 'specialist', 'reassuring'];
+  const msgTone = toneList[idx];
+
+  const msgObj = {
+    title: t(`estimator.messages.${idx}.title`),
+    body: t(`estimator.messages.${idx}.body`),
+  };
 
   return (
     <section
@@ -56,15 +40,15 @@ export default function SymptomEstimator({ onOpenBooking }) {
       <div className="container">
 
         <div className="chapter-label">
-          How long have you had this concern?
+          {t('estimator.label')}
         </div>
 
         <h2
           className="serif-display serif-display--md"
           style={{ color: 'var(--fg)', marginBottom: '48px', maxWidth: '640px' }}
         >
-          Every case has its{' '}
-          <em style={{ color: 'var(--amber-light)' }}>own timeline.</em>
+          {t('estimator.h2')}{' '}
+          <em style={{ color: 'var(--amber-light)' }}>{t('estimator.h2Em')}</em>
         </h2>
 
         {/* Slider */}
@@ -85,7 +69,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
               {years < 1 ? '< 1' : years}
             </span>
             <span className="mono" style={{ fontSize: '0.8rem' }}>
-              {years < 1 ? 'months' : years === 1 ? 'year' : 'years'}
+              {years < 1 ? t('estimator.months') : years === 1 ? t('estimator.year') : t('estimator.years')}
             </span>
           </div>
 
@@ -106,14 +90,14 @@ export default function SymptomEstimator({ onOpenBooking }) {
             justifyContent: 'space-between',
             marginTop: '8px',
           }}>
-            <span className="mono" style={{ fontSize: '0.75rem' }}>{'< 1 year'}</span>
-            <span className="mono" style={{ fontSize: '0.75rem' }}>7+ years</span>
+            <span className="mono" style={{ fontSize: '0.75rem' }}>{t('estimator.lessThan1')}</span>
+            <span className="mono" style={{ fontSize: '0.75rem' }}>{t('estimator.moreThan7')}</span>
           </div>
         </div>
 
         {/* Message card */}
         <div
-          key={msg.tone}
+          key={idx}
           className="ambient-glow-amber"
           style={{
             maxWidth: '640px',
@@ -121,17 +105,14 @@ export default function SymptomEstimator({ onOpenBooking }) {
             background: 'rgba(245,240,232,0.06)',
             backgroundImage: `linear-gradient(to bottom, rgba(26,35,24,0.85), rgba(26,35,24,0.95)), url(/assets/remedy_globules_paper.png)`,
             backgroundSize: 'cover',
-            border: `1px solid ${TONE_COLORS[msg.tone]}50`,
-            borderLeft: `4px solid ${TONE_COLORS[msg.tone]}`,
+            border: `1px solid ${TONE_COLORS[msgTone]}50`,
+            borderLeft: `4px solid ${TONE_COLORS[msgTone]}`,
             borderRadius: '4px',
             animation: 'fadeUp 400ms cubic-bezier(0.22,1,0.36,1) both',
             marginBottom: '32px',
             boxShadow: '0 12px 36px rgba(0,0,0,0.3)',
           }}
         >
-          <p className="mono" style={{ fontSize: '0.75rem', marginBottom: '8px', color: TONE_COLORS[msg.tone] }}>
-            {msg.label}
-          </p>
           <h3 style={{
             fontFamily: 'var(--font-serif)',
             fontWeight: 300,
@@ -140,14 +121,14 @@ export default function SymptomEstimator({ onOpenBooking }) {
             marginBottom: '10px',
             lineHeight: 1.25,
           }}>
-            {msg.title}
+            {msgObj.title}
           </h3>
           <p style={{
             fontSize: 'clamp(0.88rem, 1.4vw, 1rem)',
             color: 'rgba(245,240,232,0.88)',
             lineHeight: 1.7,
           }}>
-            {msg.body}
+            {msgObj.body}
           </p>
         </div>
 
@@ -156,10 +137,11 @@ export default function SymptomEstimator({ onOpenBooking }) {
           onClick={() => onOpenBooking?.()}
           style={{ animationDelay: '0.2s' }}
         >
-          Discuss your case with Dr Somani
+          {t('estimator.discussBtn')}
         </button>
 
       </div>
     </section>
   );
 }
+

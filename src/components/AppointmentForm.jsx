@@ -4,6 +4,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { auth } from '../integrations/firebase/client';
 import { conditions, locations } from '../data/clinicData';
 import { supabase } from '../integrations/supabase/client';
+import { useLanguage } from '../context/LanguageContext';
 
 const INITIAL = {
   name: '', phone: '', condition: '', branch: '',
@@ -53,22 +54,23 @@ const Field = ({ id, label, error, children }) => (
   </div>
 );
 
-const CleanPreview = ({ form }) => (
+const CleanPreview = ({ form, t }) => (
   <div className="wa-preview" style={{ borderRadius: '8px', fontSize: '0.85rem', lineHeight: 1.6, color: '#18231F' }}>
     <strong style={{ color: '#173F32', display: 'block', marginBottom: '8px', fontSize: '0.9rem' }}>
-      New Consultation Enquiry — Dr Somani's Homoeopathy
+      {t('form.title')} — Dr Somani's Homoeopathy
     </strong>
-    {form.name && <div><strong style={{ color: '#173F32' }}>Name:</strong> {form.name}</div>}
-    {form.phone && <div><strong style={{ color: '#173F32' }}>Phone:</strong> {form.phone}</div>}
-    {form.condition && <div><strong style={{ color: '#173F32' }}>Concern:</strong> {form.condition}</div>}
-    {form.branch && <div><strong style={{ color: '#173F32' }}>Preferred Location:</strong> {form.branch}</div>}
-    {form.date && <div><strong style={{ color: '#173F32' }}>Preferred Date:</strong> {form.date}</div>}
-    {form.timePreference && <div><strong style={{ color: '#173F32' }}>Preferred Time:</strong> {form.timePreference}</div>}
+    {form.name && <div><strong style={{ color: '#173F32' }}>{t('form.fullName')}:</strong> {form.name}</div>}
+    {form.phone && <div><strong style={{ color: '#173F32' }}>{t('form.phone')}:</strong> {form.phone}</div>}
+    {form.condition && <div><strong style={{ color: '#173F32' }}>{t('form.concern')}:</strong> {form.condition}</div>}
+    {form.branch && <div><strong style={{ color: '#173F32' }}>{t('form.location')}:</strong> {form.branch}</div>}
+    {form.date && <div><strong style={{ color: '#173F32' }}>{t('form.preferredDate')}:</strong> {form.date}</div>}
+    {form.timePreference && <div><strong style={{ color: '#173F32' }}>{t('form.preferredTime')}:</strong> {form.timePreference}</div>}
     {form.message && <div style={{ marginTop: '6px', fontStyle: 'italic', color: '#4A5568' }}>"{form.message}"</div>}
   </div>
 );
 
 export default function AppointmentForm({ isOpen, onClose }) {
+  const { t, lang } = useLanguage();
   const [form, setForm]               = useState(INITIAL);
   const [errors, setErrors]           = useState({});
   const [step, setStep]               = useState('form'); // 'form' | 'otp'
@@ -250,13 +252,13 @@ export default function AppointmentForm({ isOpen, onClose }) {
         }}>
           <div>
             <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '5px', fontSize: '0.62rem' }}>
-              CONSULTATION ENQUIRY
+              {t('form.title')}
             </p>
             <h2 style={{
               fontFamily: 'Fraunces, serif', fontWeight: 300,
               fontSize: 'clamp(1.4rem, 3vw, 1.8rem)', color: 'var(--ink)', lineHeight: 1.2,
             }}>
-              {step === 'otp' ? 'Verify your phone number' : 'Begin your case.'}
+              {step === 'otp' ? t('form.headingOtp') : t('form.headingForm')}
             </h2>
           </div>
           <button
@@ -280,69 +282,78 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 style={{ padding: 'clamp(18px,3vw,32px) clamp(18px,4vw,40px)', display: 'flex', flexDirection: 'column', gap: '18px' }}
               >
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                  <Field id="f-name" label="Full Name" error={errors.name}>
+                  <Field id="f-name" label={t('form.fullName')} error={errors.name}>
                     <input
                       id="f-name" type="text" autoComplete="name"
                       value={form.name} onChange={set('name')}
-                      className="field-input" placeholder="Your name"
+                      className="field-input" placeholder={t('form.fullNamePlaceholder')}
                       aria-required="true" aria-invalid={!!errors.name}
                     />
                   </Field>
-                  <Field id="f-phone" label="Phone (10 Digits)" error={errors.phone}>
+                  <Field id="f-phone" label={t('form.phone')} error={errors.phone}>
                     <input
                       id="f-phone" type="tel" autoComplete="tel"
                       value={form.phone} onChange={set('phone')}
-                      className="field-input" placeholder="+91 98XXX XXXXX"
+                      className="field-input" placeholder={t('form.phonePlaceholder')}
                       inputMode="tel"
                       aria-required="true" aria-invalid={!!errors.phone}
                     />
                   </Field>
                 </div>
 
-                <Field id="f-condition" label="Condition / Concern" error={errors.condition}>
+                <Field id="f-condition" label={t('form.concern')} error={errors.condition}>
                   <select
                     id="f-condition" value={form.condition} onChange={set('condition')}
                     className="field-input" aria-required="true" aria-invalid={!!errors.condition}
                   >
-                    <option value="">Select a concern</option>
-                    {conditions.map(c => <option key={c.id} value={c.label}>{c.label}</option>)}
-                    <option value="Other">Other / Multiple</option>
+                    <option value="">{t('form.selectConcern')}</option>
+                    {conditions.map(c => {
+                      const localizedLabel = lang === 'mr' ? t(`atlas.conditions.${c.id}.label`) : lang === 'hi' ? t(`atlas.conditions.${c.id}.label`) : c.label;
+                      return <option key={c.id} value={c.label}>{localizedLabel}</option>;
+                    })}
+                    <option value="Other">{t('form.otherConcern')}</option>
                   </select>
                 </Field>
 
-                <Field id="f-branch" label="Preferred Location" error={errors.branch}>
+                <Field id="f-branch" label={t('form.location')} error={errors.branch}>
                   <select
                     id="f-branch" value={form.branch} onChange={set('branch')}
                     className="field-input" aria-required="true" aria-invalid={!!errors.branch}
                   >
-                    <option value="">Select a location</option>
-                    {locations.map(l => <option key={l.id} value={l.city}>{l.city}</option>)}
+                    <option value="">{t('form.selectLocation')}</option>
+                    {locations.map(l => {
+                      let cityName = l.city;
+                      if (l.id === 'wakad') cityName = lang === 'mr' ? 'वाकड, पुणे क्लिनिक' : lang === 'hi' ? 'वाकड, पुणे क्लिनिक' : 'Wakad, Pune';
+                      if (l.id === 'jalgaon') cityName = lang === 'mr' ? 'जळगाव क्लिनिक' : lang === 'hi' ? 'जलगांव क्लिनिक' : 'Jalgaon';
+                      if (l.id === 'online') cityName = lang === 'mr' ? 'ऑनलाइन व्हिडियो सल्ला' : lang === 'hi' ? 'ऑनलाइन वीडियो परामर्श' : 'Online Consultation';
+                      return <option key={l.id} value={l.city}>{cityName}</option>;
+                    })}
                   </select>
                 </Field>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                  <Field id="f-date" label="Preferred Date" error={null}>
+                  <Field id="f-date" label={t('form.preferredDate')} error={null}>
                     <input
                       id="f-date" type="date" value={form.date} onChange={set('date')}
                       className="field-input"
                       min={new Date().toISOString().split('T')[0]}
                     />
                   </Field>
-                  <Field id="f-time" label="Preferred Time" error={null}>
+                  <Field id="f-time" label={t('form.preferredTime')} error={null}>
                     <select id="f-time" value={form.timePreference} onChange={set('timePreference')} className="field-input">
-                      <option value="">No preference</option>
-                      <option value="Morning">Morning</option>
-                      <option value="Afternoon">Afternoon</option>
-                      <option value="Evening">Evening</option>
+                      <option value="">{t('form.noPref')}</option>
+                      <option value="Morning">{t('form.morning')}</option>
+                      <option value="Afternoon">{t('form.afternoon')}</option>
+                      <option value="Evening">{t('form.evening')}</option>
                     </select>
                   </Field>
                 </div>
 
-                <Field id="f-msg" label="Message (optional)" error={null}>
+                <Field id="f-msg" label={t('form.message')} error={null}>
                   <textarea
                     id="f-msg" rows="3" value={form.message} onChange={set('message')}
                     className="field-input" style={{ resize: 'vertical' }}
-                    placeholder="Any additional context you'd like to share"
+                    placeholder={t('form.msgPlaceholder')}
                   />
                 </Field>
 
@@ -361,21 +372,21 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     aria-expanded={showPreview}
                   >
                     <span>{showPreview ? '▲' : '▼'}</span>
-                    Preview WhatsApp message
+                    {t('form.previewBtn')}
                   </button>
                 )}
 
                 {showPreview && hasAnyInput && (
                   <div>
                     <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '10px', fontSize: '0.62rem' }}>
-                      THIS IS WHAT THE CLINIC WILL RECEIVE
+                      {t('form.whatClinicReceives')}
                     </p>
-                    <CleanPreview form={form} />
+                    <CleanPreview form={form} t={t} />
                   </div>
                 )}
 
                 <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.58)', lineHeight: 1.55, margin: 0 }}>
-                  Choose your preferred booking method:
+                  {t('form.chooseMethod')}
                 </p>
 
                 {submitError && <p role="alert" className="form-error">{submitError}</p>}
@@ -398,17 +409,17 @@ export default function AppointmentForm({ isOpen, onClose }) {
                       textDecoration: 'none',
                     }}
                   >
-                    <span>Instant Booking on WhatsApp (No OTP Needed) →</span>
+                    <span>{t('form.instantWaBtn')}</span>
                   </a>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '4px 0' }}>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
-                    <span style={{ fontSize: '0.68rem', color: 'var(--mineral-light)', fontWeight: 600, textTransform: 'uppercase' }}>OR</span>
+                    <span style={{ fontSize: '0.68rem', color: 'var(--mineral-light)', fontWeight: 600, textTransform: 'uppercase' }}>{t('form.or')}</span>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
                   </div>
 
                   <button type="submit" className="btn btn--primary btn--full" disabled={submitting} style={{ background: '#173F32', color: '#FFFFFF' }}>
-                    {submitting ? 'Sending SMS OTP…' : 'Submit on Website (SMS OTP Verified)'}
+                    {submitting ? t('form.sendingOtp') : t('form.websiteOtpBtn')}
                   </button>
                 </div>
               </form>
@@ -427,14 +438,14 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   color: '#173F32',
                 }}>
                   <p style={{ margin: 0, fontSize: '0.88rem', fontWeight: 600 }}>
-                    SMS OTP sent to {formattedPhone}
+                    {t('form.otpSentTo')} {formattedPhone}
                   </p>
                   <p style={{ margin: '4px 0 0 0', fontSize: '0.78rem', color: '#2D6150' }}>
-                    Enter the 6-digit verification code sent to your mobile phone.
+                    {t('form.enter6Digit')}
                   </p>
                 </div>
 
-                <Field id="f-otp" label="Enter 6-Digit OTP" error={otpError}>
+                <Field id="f-otp" label={t('form.otpInputLabel')} error={otpError}>
                   <input
                     id="f-otp"
                     type="text"
@@ -458,7 +469,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 {otpError && <p role="alert" className="form-error">{otpError}</p>}
 
                 <button type="submit" className="btn btn--primary btn--full" disabled={verifyingOtp || otpCode.length !== 6}>
-                  {verifyingOtp ? 'Verifying Code…' : 'Verify OTP & Complete Request →'}
+                  {verifyingOtp ? t('form.verifyingCode') : t('form.verifyAndSubmit')}
                 </button>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px' }}>
@@ -474,7 +485,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                       textDecoration: 'underline',
                     }}
                   >
-                    ← Edit Details / Change Number
+                    {t('form.editDetails')}
                   </button>
                 </div>
               </form>
@@ -503,7 +514,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     minHeight: '220px',
                     position: 'relative',
                   }}>
-                    <CleanPreview form={form} />
+                    <CleanPreview form={form} t={t} />
                   </div>
                   <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.4)', marginTop: '14px', lineHeight: 1.5 }}>
                     ↑ Patient details will be verified via SMS OTP to prevent fake entries.
@@ -541,22 +552,22 @@ export default function AppointmentForm({ isOpen, onClose }) {
               ✓
             </div>
             <p className="mono" style={{ color: '#2D6150', marginBottom: '8px', fontSize: '0.72rem', fontWeight: 700 }}>
-               REAL NUMBER VERIFIED & REQUEST SAVED
+               {t('form.requestReceivedTitle')}
             </p>
             <h3 style={{
               fontFamily: 'Fraunces, serif', fontWeight: 300,
               fontSize: 'clamp(1.4rem,3vw,2rem)', color: 'var(--ink)', marginBottom: '12px',
             }}>
-              Thank you, {form.name.split(' ')[0]}.
+              {t('form.thankYou')} {form.name.split(' ')[0]}.
             </h3>
             <p style={{ fontSize: '0.95rem', color: 'rgba(14,14,12,0.6)', lineHeight: 1.65, marginBottom: '28px', maxWidth: '380px', margin: '0 auto 28px' }}>
-               Your mobile number ({formattedPhone}) has been verified. The clinic will contact you directly to confirm a suitable time.
+               {t('form.successSub')} ({formattedPhone})
             </p>
              <a href={`https://wa.me/919834172124?text=${encodeURIComponent(waText)}`} target="_blank" rel="noopener noreferrer" className="btn btn--whatsapp" style={{ marginRight: '10px' }}>
-               Continue on WhatsApp
+               {t('form.continueWa')}
              </a>
             <button onClick={onClose} className="btn btn--outline-ink" style={{ minWidth: '160px' }}>
-              Close
+              {t('common.close')}
             </button>
           </div>
         )}
@@ -570,4 +581,5 @@ export default function AppointmentForm({ isOpen, onClose }) {
     </div>
   );
 }
+
 

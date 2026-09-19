@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const RenderStars = () => (
   <div style={{ display: 'inline-flex', gap: '2px', alignItems: 'center' }}>
@@ -37,7 +38,7 @@ const reviewsData = [
     ownerResponse: "Ankit, Thank you for trusting Dr. Somani’s Homoeopathy for your son’s treatment. We're glad to know that homoeopathy helped him."
   },
   {
-    id: 2,
+    id: 3,
     name: 'Kanhaiya Tela',
     meta: '5 reviews · 1 photo',
     time: '3 weeks ago',
@@ -49,7 +50,7 @@ const reviewsData = [
     ownerResponse: "Kanhaiya, Thank you for your detailed feedback. We are happy to know that homoeopathic medicines helped you with your complaints. Always wishing you the best of health."
   },
   {
-    id: 3,
+    id: 4,
     name: 'Siddhi Jain',
     meta: 'Local Guide · 10 reviews · 23 photos',
     time: '6 months ago',
@@ -61,7 +62,7 @@ const reviewsData = [
     ownerResponse: "Siddhi, Thank you for trusting Dr Somani's Homoeopathy! Always here to support your healthy journey."
   },
   {
-    id: 4,
+    id: 5,
     name: 'Radhika Joshi',
     meta: 'Local Guide · 29 reviews · 27 photos',
     time: '6 months ago',
@@ -73,7 +74,7 @@ const reviewsData = [
     ownerResponse: "Radhika, Thank you for sharing your experience with Dr Somani’s Homoeopathy! We’re glad to know that homoeopathy helped you for your skin ailments."
   },
   {
-    id: 5,
+    id: 6,
     name: 'Namrata Mahamunkar',
     meta: '2 reviews',
     time: '4 weeks ago',
@@ -85,7 +86,7 @@ const reviewsData = [
     ownerResponse: "Namrata, Thank you for your kind words. We are glad that your leg pain and shoulder pain is now better with homoeopathy."
   },
   {
-    id: 6,
+    id: 7,
     name: 'Dhanendra kumar Bhurtiya',
     meta: '1 review',
     time: '11 months ago',
@@ -97,7 +98,7 @@ const reviewsData = [
     ownerResponse: "Dhanendra, Thank you for choosing Dr. Somani’s Homoeopathy. Your recovery from Allergic Rhinitis makes us really happy!"
   },
   {
-    id: 7,
+    id: 8,
     name: 'Seema Dhage',
     meta: '3 reviews',
     time: '3 weeks ago',
@@ -109,7 +110,7 @@ const reviewsData = [
     ownerResponse: "Seema, Thank you for sharing your experience with Dr Somani’s Homoeopathy. We’re glad to know that you had a positive experience with your hair fall treatment."
   },
   {
-    id: 8,
+    id: 9,
     name: 'Chaitali Bihani',
     meta: '2 reviews',
     time: '10 months ago',
@@ -121,7 +122,7 @@ const reviewsData = [
     ownerResponse: "Chaitali, Thank you for trusting Dr. Somani’s Homoeopathy for your treatment. We're glad to know that the use of inhalers has reduced now."
   },
   {
-    id: 9,
+    id: 10,
     name: 'Mukund Chandak',
     meta: 'Local Guide · 7 reviews · 1 photo',
     time: '1 month ago',
@@ -133,7 +134,7 @@ const reviewsData = [
     ownerResponse: "Mukund, We are glad to know that homeopathic medicines helped you for your digestion issues."
   },
   {
-    id: 10,
+    id: 11,
     name: 'Tanuj Kabra',
     meta: '3 reviews',
     time: '10 months ago',
@@ -145,7 +146,7 @@ const reviewsData = [
     ownerResponse: "Tanuj, Thank you for your valuable feedback."
   },
   {
-    id: 11,
+    id: 12,
     name: 'Prashant Sulkshane',
     meta: 'Local Guide · 16 reviews',
     time: '6 months ago',
@@ -157,7 +158,7 @@ const reviewsData = [
     ownerResponse: "Prashant, Thanks for your valuable feedback."
   },
   {
-    id: 12,
+    id: 13,
     name: 'Dr. Suyog Somani',
     meta: 'Local Guide · 32 reviews · 36 photos',
     time: '10 months ago',
@@ -169,7 +170,7 @@ const reviewsData = [
     ownerResponse: "Dr Suyog, Thank you for your kind words!"
   },
   {
-    id: 13,
+    id: 14,
     name: 'Vedika Raskar',
     meta: '6 reviews',
     time: '6 months ago',
@@ -181,7 +182,7 @@ const reviewsData = [
     ownerResponse: "Vedika, Thank you for sharing your experience with Dr Somani's Homoeopathy."
   },
   {
-    id: 14,
+    id: 15,
     name: 'Dilip Malpani',
     meta: '2 reviews',
     time: '10 months ago',
@@ -193,7 +194,7 @@ const reviewsData = [
     ownerResponse: "Dilip, We are glad to know that homeopathic medicines gave you long lasting relief from your allergies."
   },
   {
-    id: 15,
+    id: 16,
     name: 'Nutan Zawar',
     meta: '1 review',
     time: '7 months ago',
@@ -205,7 +206,7 @@ const reviewsData = [
     ownerResponse: "Nutan, Thank you for trusting Dr Somani’s Homoeopathy for your mouth ulcers treatment."
   },
   {
-    id: 16,
+    id: 17,
     name: 'Rushikesh Suryawanshi',
     meta: '3 reviews',
     time: '10 months ago',
@@ -217,7 +218,7 @@ const reviewsData = [
     ownerResponse: "Rushikesh, Thanks for your kind words."
   },
   {
-    id: 17,
+    id: 18,
     name: 'Akshay Soni',
     meta: 'Local Guide · 6 reviews',
     time: '10 months ago',
@@ -229,7 +230,7 @@ const reviewsData = [
     ownerResponse: "Akshay, Thank you for choosing Dr. Somani’s Homoeopathy for your hairfall treatment."
   },
   {
-    id: 18,
+    id: 19,
     name: 'Jagruti Bari',
     meta: '3 reviews',
     time: '9 months ago',
@@ -241,7 +242,7 @@ const reviewsData = [
     ownerResponse: "Jagruti, Thank you for consistently trusting Dr Somani's Homoeopathy."
   },
   {
-    id: 19,
+    id: 20,
     name: 'Mayur Gavali',
     meta: '1 review · 2 photos',
     time: '7 months ago',
@@ -253,7 +254,7 @@ const reviewsData = [
     ownerResponse: "Mayur, Thank you for trusting Dr Somani's Homeopathy for your mother's recovery."
   },
   {
-    id: 20,
+    id: 21,
     name: 'Madhuri Mundada',
     meta: '3 reviews',
     time: '10 months ago',
@@ -265,7 +266,7 @@ const reviewsData = [
     ownerResponse: "Madhuri, We really appreciate your feedback and trust in Dr. Somani’s Homoeopathy."
   },
   {
-    id: 21,
+    id: 22,
     name: 'Mo alim Salmani',
     meta: '3 reviews',
     time: '8 months ago',
@@ -277,7 +278,7 @@ const reviewsData = [
     ownerResponse: "Alim, Thank you for your kind words! We’re delighted that your Alopecia patches improved with Homoeopathy."
   },
   {
-    id: 22,
+    id: 23,
     name: 'Hassan Bhai',
     meta: '1 review',
     time: '4 months ago',
@@ -291,6 +292,7 @@ const reviewsData = [
 ];
 
 export default function InfiniteReviews() {
+  const { t } = useLanguage();
   const [selectedReview, setSelectedReview] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -339,60 +341,6 @@ export default function InfiniteReviews() {
         </svg>
       </div>
 
-      {/* Decorative Script Text (Top Left Outer Edge) */}
-      <div
-        className="mobile-hide-script"
-        style={{
-          position: 'absolute',
-          top: '30px',
-          left: 'clamp(20px, 4vw, 40px)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            fontFamily: "'Caveat', 'Playfair Display', cursive, serif",
-            fontSize: 'clamp(1.2rem, 2.2vw, 2rem)',
-            color: '#315744',
-            opacity: 0.35,
-            display: 'block',
-            lineHeight: 1.1,
-            transform: 'rotate(-5deg)',
-          }}
-        >
-          Healing<br />People<br />Naturally
-        </span>
-      </div>
-
-      {/* Decorative Script Text (Top Right Outer Edge) */}
-      <div
-        className="mobile-hide-script"
-        style={{
-          position: 'absolute',
-          top: '35px',
-          right: 'clamp(20px, 4vw, 40px)',
-          pointerEvents: 'none',
-          zIndex: 1,
-          textAlign: 'right',
-        }}
-        aria-hidden="true"
-      >
-        <span
-          style={{
-            fontFamily: "'Caveat', cursive, serif",
-            fontSize: 'clamp(1rem, 1.8vw, 1.4rem)',
-            color: '#C5964A',
-            opacity: 0.45,
-            display: 'block',
-            lineHeight: 1.2,
-          }}
-        >
-          Same People.<br />Real Results.
-        </span>
-      </div>
-
       <div style={{ position: 'relative', zIndex: 2, maxWidth: '100%', margin: '0 auto' }}>
         
         {/* SECTION HEADER */}
@@ -411,7 +359,7 @@ export default function InfiniteReviews() {
                 textTransform: 'uppercase',
               }}
             >
-              PATIENT REVIEWS
+              {t('reviewsSection.eyebrow')}
             </span>
             <span style={{ width: '20px', height: '1px', background: '#C5964A' }}></span>
           </div>
@@ -428,7 +376,7 @@ export default function InfiniteReviews() {
               marginBottom: '10px',
             }}
           >
-            Real Stories. <em style={{ fontStyle: 'italic', color: '#173F32', fontWeight: 400 }}>Real Trust.</em>
+            {t('reviewsSection.h2')} <em style={{ fontStyle: 'italic', color: '#173F32', fontWeight: 400 }}>{t('reviewsSection.h2Em')}</em>
           </h2>
 
           {/* Subtitle */}
@@ -440,7 +388,7 @@ export default function InfiniteReviews() {
               lineHeight: 1.5,
             }}
           >
-            Hear from our patients who have shared their experience with Dr. Somani’s Homoeopathy.
+            {t('reviewsSection.sub')}
           </p>
         </div>
 
@@ -593,21 +541,6 @@ export default function InfiniteReviews() {
                       <span style={{ fontSize: '0.7rem', color: '#68706A' }}>
                         {rev.time}
                       </span>
-                      {rev.isNew && (
-                        <span
-                          style={{
-                            fontSize: '0.58rem',
-                            background: '#E8F2ED',
-                            color: '#173F32',
-                            padding: '1px 6px',
-                            borderRadius: '8px',
-                            fontWeight: 700,
-                            border: '1px solid #C5DEC8',
-                          }}
-                        >
-                          New
-                        </span>
-                      )}
                     </div>
 
                     {/* Review Text Body */}
@@ -628,27 +561,10 @@ export default function InfiniteReviews() {
                             textDecoration: 'underline',
                           }}
                         >
-                          Read more
+                          {t('common.readMore')}
                         </button>
                       )}
                     </p>
-                  </div>
-
-                  {/* Card Bottom Row */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '14px',
-                      marginTop: '16px',
-                      paddingTop: '10px',
-                      borderTop: '1px solid #F0ECE1',
-                      fontSize: '0.72rem',
-                      color: '#68706A',
-                    }}
-                  >
-                    <span style={{ cursor: 'pointer' }}>Like</span>
-                    <span style={{ cursor: 'pointer' }}>Share</span>
                   </div>
                 </article>
               );
@@ -674,25 +590,25 @@ export default function InfiniteReviews() {
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
-                Trusted by Patients
+                {t('reviewsSection.t1')}
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
-                Gentle. Safe. Natural.
+                {t('reviewsSection.t2')}
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
-                Personalized Care
+                {t('reviewsSection.t3')}
               </span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#18231F' }}>
-                Better Health.
+                {t('reviewsSection.t4')}
               </span>
             </div>
           </div>
@@ -785,7 +701,7 @@ export default function InfiniteReviews() {
 
             {/* Stars */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-              <RenderStars /> <span style={{ fontSize: '0.75rem', color: '#173F32', fontWeight: 600 }}>Verified Google Review</span>
+              <RenderStars /> <span style={{ fontSize: '0.75rem', color: '#173F32', fontWeight: 600 }}>{t('reviewsSection.verifiedGoogle')}</span>
             </div>
 
             {/* Full Review Text */}
@@ -805,7 +721,7 @@ export default function InfiniteReviews() {
                 }}
               >
                 <p className="mono" style={{ margin: '0 0 4px 0', fontSize: '0.68rem', color: '#173F32', fontWeight: 700 }}>
-                  Response from owner (Dr. Somani's Homoeopathy):
+                  {t('reviewsSection.responseFromOwner')}
                 </p>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#18231F', lineHeight: 1.5 }}>
                   "{selectedReview.ownerResponse}"
@@ -828,7 +744,7 @@ export default function InfiniteReviews() {
                   cursor: 'pointer',
                 }}
               >
-                Close Review
+                {t('reviewsSection.closeReview')}
               </button>
             </div>
           </div>
@@ -848,9 +764,6 @@ export default function InfiniteReviews() {
         @media (max-width: 640px) {
           #patient-reviews {
             padding: 32px 0 !important;
-          }
-          .mobile-hide-script {
-            display: none !important;
           }
           .trust-strip-grid {
             grid-template-columns: 1fr 1fr !important;

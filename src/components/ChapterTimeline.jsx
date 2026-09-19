@@ -1,7 +1,17 @@
 import React from 'react';
-import { timelineChapters } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterTimeline() {
+  const { t } = useLanguage();
+
+  const chapters = [
+    { year: "1998", body: t('timeline.t1998') },
+    { year: "2000s", body: t('timeline.t2000s') },
+    { year: "Wakad, Pune", body: t('timeline.tSecondDecade') },
+    { year: "Second Gen", body: t('timeline.tGen2') },
+    { year: "Present", body: t('timeline.tPresent') },
+  ];
+
   return (
     <section
       id="27-years"
@@ -11,57 +21,35 @@ export default function ChapterTimeline() {
       <div className="container">
 
         <p className="chapter-label practice-timeline__label">
-          Chapter 03 · 27 Years, Two Generations
+          {t('timeline.label')}
         </p>
 
         <h2 className="serif-display serif-display--md practice-timeline__title">
-          A family practice built on<br />
-          <em style={{ color: 'var(--amber-light)' }}>listening first.</em>
+          {t('timeline.h2')}<br />
+          <em style={{ color: 'var(--amber-light)' }}>{t('timeline.h2Em')}</em>
         </h2>
 
         {/* Timeline entries */}
         <div className="practice-timeline__entries">
-
-          {/* Vertical root line */}
           <div className="practice-timeline__line" />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {timelineChapters.map((ch, i) => (
+            {chapters.map((ch, i) => (
               <article
                 key={i}
-                className={`reveal practice-timeline__entry ${ch.isCoda ? 'practice-timeline__entry--coda' : ''}`}
+                className="reveal practice-timeline__entry"
               >
-                {/* Root node dot */}
                 <div className="practice-timeline__dot" />
 
-                {/* Year */}
                 <div className="practice-timeline__year">
-                  <span>
-                    {ch.year}
-                  </span>
+                  <span>{ch.year}</span>
                 </div>
 
-                {/* Content */}
-                {!ch.isCoda && (
-                  <div className="practice-timeline__copy">
-                    <h3>
-                      {ch.heading}
-                    </h3>
-                    {ch.body && (
-                      <p>
-                        {ch.body}
-                      </p>
-                    )}
-                  </div>
-                )}
-
-                {ch.isCoda && (
-                  <div className="practice-timeline__coda">
-                    <p>
-                      {ch.heading}
-                    </p>
-                  </div>
-                )}
+                <div className="practice-timeline__copy">
+                  <p style={{ color: 'rgba(245,240,232,0.92)', fontSize: '0.98rem', lineHeight: 1.65 }}>
+                    {ch.body}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
@@ -70,3 +58,4 @@ export default function ChapterTimeline() {
     </section>
   );
 }
+

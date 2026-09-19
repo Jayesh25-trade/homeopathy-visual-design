@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { clinic } from '../data/clinicData';
-
-const NAV_ITEMS = [
-  { id: 'beginning',    label: 'Beginning' },
-  { id: 'concerns',     label: 'Concerns' },
-  { id: '27-years',     label: '27 Years' },
-  { id: 'estimator',    label: 'Your Case' },
-  { id: 'doctors',      label: 'Doctors' },
-  { id: 'consultation', label: 'Consultation' },
-  { id: 'locations',    label: 'Book' },
-];
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 const WHATSAPP_ICON = (
   <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -18,14 +10,24 @@ const WHATSAPP_ICON = (
 );
 
 export default function SiteNav({ onOpenBooking }) {
+  const { t } = useLanguage();
   const [active, setActive] = useState('beginning');
   const [scrolled, setScrolled] = useState(false);
+
+  const navItems = [
+    { id: 'beginning',    label: t('nav.about') },
+    { id: 'concerns',     label: t('nav.concerns') },
+    { id: 'doctors',      label: t('nav.about') },
+    { id: 'real-patients',label: t('nav.cases') },
+    { id: 'patient-reviews', label: t('nav.reviews') },
+    { id: 'consultation', label: t('nav.consultation') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
       let current = 'beginning';
-      for (const n of NAV_ITEMS) {
+      for (const n of navItems) {
         const el = document.getElementById(n.id);
         if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) {
           current = n.id;
@@ -43,14 +45,6 @@ export default function SiteNav({ onOpenBooking }) {
 
   return (
     <>
-      {/* ── Skip link ───────────────────────────────────────── */}
-      <a
-        href="#beginning"
-        className="skip-link"
-      >
-        Skip to content
-      </a>
-
       {/* ── Top bar (appears on scroll) ─────────────────────── */}
       <header
         className={`top-bar ${scrolled ? 'visible' : ''}`}
@@ -69,8 +63,8 @@ export default function SiteNav({ onOpenBooking }) {
             style={{ width: '32px', height: '32px', objectFit: 'contain' }}
           />
           <span className="top-bar__brand-copy">
-            <strong>Dr Somani's</strong>
-            <small>Homoeopathy</small>
+            <strong>{t('nav.brand')}</strong>
+            <small>{t('nav.brandSub')}</small>
           </span>
         </button>
 
@@ -78,15 +72,15 @@ export default function SiteNav({ onOpenBooking }) {
         <nav
           aria-label="Primary navigation"
           className="hide-mobile"
-          style={{ display: 'flex', gap: '0' }}
+          style={{ display: 'flex', gap: '0', alignItems: 'center' }}
         >
-          {NAV_ITEMS.map(item => (
+          {navItems.map(item => (
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
               style={{
                 padding: '8px 14px',
-                 fontFamily: 'var(--font-sans)',
+                fontFamily: 'var(--font-sans)',
                 fontSize: '0.65rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -100,29 +94,18 @@ export default function SiteNav({ onOpenBooking }) {
               aria-current={active === item.id ? 'location' : undefined}
             >
               {item.label}
-              {active === item.id && (
-                <span style={{
-                  position: 'absolute',
-                  bottom: '6px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '4px',
-                  height: '4px',
-                  borderRadius: '50%',
-                  background: 'var(--vermilion)',
-                }} />
-              )}
             </button>
           ))}
         </nav>
 
-        {/* Right cluster */}
-        <div className="top-bar__actions">
+        {/* Right cluster with Language Selector */}
+        <div className="top-bar__actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <LanguageSelector />
           <button
             className="btn btn--primary top-bar__book"
             onClick={() => onOpenBooking?.()}
           >
-            Book <span className="hide-mobile">consultation</span>
+            {t('nav.bookBtn')}
           </button>
         </div>
       </header>
