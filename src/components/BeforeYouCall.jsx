@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function BeforeYouCall() {
@@ -60,7 +60,7 @@ export default function BeforeYouCall() {
           }}>
             {allDone
               ? t('consultationSection.readyHeader')
-              : `${t('consultationSection.beforeCallHeader')} — ${checked.size}/${items.length}`}
+              : `${t('consultationSection.beforeCallHeader')} â€” ${checked.size}/${items.length}`}
           </span>
         </div>
         <svg
@@ -114,7 +114,7 @@ export default function BeforeYouCall() {
                   borderRadius: '50%',
                   border: checked.has(i) ? '1.5px solid #4ADE80' : '1.5px solid rgba(255, 255, 255, 0.6)',
                   background: checked.has(i) ? '#4ADE80' : 'transparent',
-                  color: checked.has(i) ? '#173F32' : 'transparent',
+                  color: checked.has(i) ? '#1B2A41' : 'transparent',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -124,7 +124,7 @@ export default function BeforeYouCall() {
                 }}
               >
                 {checked.has(i) && (
-                  <svg width="11" height="9" viewBox="0 0 12 10" fill="none" stroke="#173F32" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="11" height="9" viewBox="0 0 12 10" fill="none" stroke="#1B2A41" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="1.5 5 4.5 8 10.5 1.5" />
                   </svg>
                 )}

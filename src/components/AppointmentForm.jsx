@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import { z } from 'zod';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { auth } from '../integrations/firebase/client';
@@ -30,7 +30,7 @@ function formatE164(phone) {
 }
 
 function buildWAText(form) {
-  const lines = [`*New Consultation Enquiry — Dr Somani's Homoeopathy*\n`];
+  const lines = [`*New Consultation Enquiry â€” Dr Somani's Homoeopathy*\n`];
   if (form.name)          lines.push(`*Name:* ${form.name}`);
   if (form.phone)         lines.push(`*Phone:* ${form.phone}`);
   if (form.condition)     lines.push(`*Concern:* ${form.condition}`);
@@ -46,9 +46,9 @@ const Field = ({ id, label, error, children }) => (
     <label
       htmlFor={id}
       className="field-label"
-      style={{ color: error ? 'var(--vermilion)' : 'var(--mineral-light)' }}
+      style={{ color: error ? 'var(--vermilion)' : 'var(--muted)' }}
     >
-      {label}{error && ` — ${error}`}
+      {label}{error && ` â€” ${error}`}
     </label>
     {children}
   </div>
@@ -56,15 +56,15 @@ const Field = ({ id, label, error, children }) => (
 
 const CleanPreview = ({ form, t }) => (
   <div className="wa-preview" style={{ borderRadius: '8px', fontSize: '0.85rem', lineHeight: 1.6, color: '#18231F' }}>
-    <strong style={{ color: '#173F32', display: 'block', marginBottom: '8px', fontSize: '0.9rem' }}>
-      {t('form.title')} — Dr Somani's Homoeopathy
+    <strong style={{ color: '#1B2A41', display: 'block', marginBottom: '8px', fontSize: '0.9rem' }}>
+      {t('form.title')} â€” Dr Somani's Homoeopathy
     </strong>
-    {form.name && <div><strong style={{ color: '#173F32' }}>{t('form.fullName')}:</strong> {form.name}</div>}
-    {form.phone && <div><strong style={{ color: '#173F32' }}>{t('form.phone')}:</strong> {form.phone}</div>}
-    {form.condition && <div><strong style={{ color: '#173F32' }}>{t('form.concern')}:</strong> {form.condition}</div>}
-    {form.branch && <div><strong style={{ color: '#173F32' }}>{t('form.location')}:</strong> {form.branch}</div>}
-    {form.date && <div><strong style={{ color: '#173F32' }}>{t('form.preferredDate')}:</strong> {form.date}</div>}
-    {form.timePreference && <div><strong style={{ color: '#173F32' }}>{t('form.preferredTime')}:</strong> {form.timePreference}</div>}
+    {form.name && <div><strong style={{ color: '#1B2A41' }}>{t('form.fullName')}:</strong> {form.name}</div>}
+    {form.phone && <div><strong style={{ color: '#1B2A41' }}>{t('form.phone')}:</strong> {form.phone}</div>}
+    {form.condition && <div><strong style={{ color: '#1B2A41' }}>{t('form.concern')}:</strong> {form.condition}</div>}
+    {form.branch && <div><strong style={{ color: '#1B2A41' }}>{t('form.location')}:</strong> {form.branch}</div>}
+    {form.date && <div><strong style={{ color: '#1B2A41' }}>{t('form.preferredDate')}:</strong> {form.date}</div>}
+    {form.timePreference && <div><strong style={{ color: '#1B2A41' }}>{t('form.preferredTime')}:</strong> {form.timePreference}</div>}
     {form.message && <div style={{ marginTop: '6px', fontStyle: 'italic', color: '#4A5568' }}>"{form.message}"</div>}
   </div>
 );
@@ -265,7 +265,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
             onClick={onClose}
             aria-label="Close form"
             style={{ color: 'rgba(14,14,12,0.45)', fontSize: '1.6rem', padding: '8px 12px', minWidth: '48px', minHeight: '48px', lineHeight: 1 }}
-          >×</button>
+          >Ã—</button>
         </div>
 
         {!sent ? (
@@ -323,9 +323,9 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     <option value="">{t('form.selectLocation')}</option>
                     {locations.map(l => {
                       let cityName = l.city;
-                      if (l.id === 'wakad') cityName = lang === 'mr' ? 'वाकड, पुणे क्लिनिक' : lang === 'hi' ? 'वाकड, पुणे क्लिनिक' : 'Wakad, Pune';
-                      if (l.id === 'jalgaon') cityName = lang === 'mr' ? 'जळगाव क्लिनिक' : lang === 'hi' ? 'जलगांव क्लिनिक' : 'Jalgaon';
-                      if (l.id === 'online') cityName = lang === 'mr' ? 'ऑनलाइन व्हिडियो सल्ला' : lang === 'hi' ? 'ऑनलाइन वीडियो परामर्श' : 'Online Consultation';
+                      if (l.id === 'wakad') cityName = lang === 'mr' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡ à¤•à¥à¤²à¤¿à¤¨à¤¿à¤•' : lang === 'hi' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡ à¤•à¥à¤²à¤¿à¤¨à¤¿à¤•' : 'Wakad, Pune';
+                      if (l.id === 'jalgaon') cityName = lang === 'mr' ? 'à¤œà¤³à¤—à¤¾à¤µ à¤•à¥à¤²à¤¿à¤¨à¤¿à¤•' : lang === 'hi' ? 'à¤œà¤²à¤—à¤¾à¤‚à¤µ à¤•à¥à¤²à¤¿à¤¨à¤¿à¤•' : 'Jalgaon';
+                      if (l.id === 'online') cityName = lang === 'mr' ? 'à¤‘à¤¨à¤²à¤¾à¤‡à¤¨ à¤µà¥à¤¹à¤¿à¤¡à¤¿à¤¯à¥‹ à¤¸à¤²à¥à¤²à¤¾' : lang === 'hi' ? 'à¤‘à¤¨à¤²à¤¾à¤‡à¤¨ à¤µà¥€à¤¡à¤¿à¤¯à¥‹ à¤ªà¤°à¤¾à¤®à¤°à¥à¤¶' : 'Online Consultation';
                       return <option key={l.id} value={l.city}>{cityName}</option>;
                     })}
                   </select>
@@ -371,7 +371,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     }}
                     aria-expanded={showPreview}
                   >
-                    <span>{showPreview ? '▲' : '▼'}</span>
+                    <span>{showPreview ? 'â–²' : 'â–¼'}</span>
                     {t('form.previewBtn')}
                   </button>
                 )}
@@ -414,11 +414,11 @@ export default function AppointmentForm({ isOpen, onClose }) {
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '4px 0' }}>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
-                    <span style={{ fontSize: '0.68rem', color: 'var(--mineral-light)', fontWeight: 600, textTransform: 'uppercase' }}>{t('form.or')}</span>
+                    <span style={{ fontSize: '0.68rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase' }}>{t('form.or')}</span>
                     <div style={{ flex: 1, height: '1px', background: 'rgba(14,14,12,0.12)' }} />
                   </div>
 
-                  <button type="submit" className="btn btn--primary btn--full" disabled={submitting} style={{ background: '#173F32', color: '#FFFFFF' }}>
+                  <button type="submit" className="btn btn--primary btn--full" disabled={submitting} style={{ background: '#1B2A41', color: '#FFFFFF' }}>
                     {submitting ? t('form.sendingOtp') : t('form.websiteOtpBtn')}
                   </button>
                 </div>
@@ -435,7 +435,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   background: '#E8F2ED',
                   border: '1px solid #C5DEC8',
                   borderRadius: '8px',
-                  color: '#173F32',
+                  color: '#1B2A41',
                 }}>
                   <p style={{ margin: 0, fontSize: '0.88rem', fontWeight: 600 }}>
                     {t('form.otpSentTo')} {formattedPhone}
@@ -454,7 +454,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     value={otpCode}
                     onChange={e => setOtpCode(e.target.value.replace(/\D/g, ''))}
                     className="field-input"
-                    placeholder="• • • • • •"
+                    placeholder="â€¢ â€¢ â€¢ â€¢ â€¢ â€¢"
                     style={{
                       letterSpacing: '8px',
                       fontSize: '1.4rem',
@@ -517,7 +517,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                     <CleanPreview form={form} t={t} />
                   </div>
                   <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.4)', marginTop: '14px', lineHeight: 1.5 }}>
-                    ↑ Patient details will be verified via SMS OTP to prevent fake entries.
+                    â†‘ Patient details will be verified via SMS OTP to prevent fake entries.
                   </p>
                 </>
               ) : (
@@ -541,7 +541,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
               borderRadius: '50%',
               background: '#E8F2ED',
               border: '2px solid #C5DEC8',
-              color: '#173F32',
+              color: '#1B2A41',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -549,7 +549,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
               fontSize: '1.2rem',
               fontWeight: 800,
             }}>
-              ✓
+              âœ“
             </div>
             <p className="mono" style={{ color: '#2D6150', marginBottom: '8px', fontSize: '0.72rem', fontWeight: 700 }}>
                {t('form.requestReceivedTitle')}

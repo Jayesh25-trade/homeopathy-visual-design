@@ -92,7 +92,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
                       <p className="mono" style={{ color: 'rgba(245,240,232,0.85)', fontSize: '0.62rem' }}>
                         Reg. No. {dr.regNo}
                       </p>
-                      <p className="mono" style={{ color: 'var(--mineral-light)', fontSize: '0.58rem' }}>
+                      <p className="mono" style={{ color: 'var(--muted)', fontSize: '0.58rem' }}>
                         {dr.qualifications}
                       </p>
                     </div>
@@ -128,16 +128,16 @@ export default function ChapterDoctors({ onOpenBooking }) {
                         color: dr.generation === 'First Generation' ? 'var(--amber)' : '#2d6150',
                         letterSpacing: '0.06em',
                       }}>
-                        {dr.generation === 'First Generation' ? '⬤ Founder · ' : '⬤ '}
-                        {lang === 'mr' ? (dr.generation === 'First Generation' ? 'पहिली पिढी' : 'दुसरी पिढी')
-                          : lang === 'hi' ? (dr.generation === 'First Generation' ? 'पहली पीढ़ी' : 'दूसरी पीढ़ी')
+                        {dr.generation === 'First Generation' ? 'â¬¤ Founder Â· ' : 'â¬¤ '}
+                        {lang === 'mr' ? (dr.generation === 'First Generation' ? 'à¤ªà¤¹à¤¿à¤²à¥€ à¤ªà¤¿à¤¢à¥€' : 'à¤¦à¥à¤¸à¤°à¥€ à¤ªà¤¿à¤¢à¥€')
+                          : lang === 'hi' ? (dr.generation === 'First Generation' ? 'à¤ªà¤¹à¤²à¥€ à¤ªà¥€à¤¢à¤¼à¥€' : 'à¤¦à¥‚à¤¸à¤°à¥€ à¤ªà¥€à¤¢à¤¼à¥€')
                           : dr.generation}
                       </span>
                     </div>
                   )}
 
                   <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '6px', fontSize: '0.68rem' }}>
-                    {localizedQual} · {localizedRole}
+                    {localizedQual} Â· {localizedRole}
                   </p>
 
                   {/* Verified badge */}
@@ -151,7 +151,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
                     borderRadius: '2px',
                     marginBottom: '24px',
                   }}>
-                    <span style={{ fontSize: '0.7rem', color: '#2d7a4e' }}>✓</span>
+                    <span style={{ fontSize: '0.7rem', color: '#2d7a4e' }}>âœ“</span>
                     <span className="mono" style={{ fontSize: '0.6rem', color: '#2d7a4e' }}>
                       {t('doctorsSection.registeredBadge')}
                     </span>
@@ -204,10 +204,10 @@ export default function ChapterDoctors({ onOpenBooking }) {
                   </p>
                   <p style={{ fontSize: '0.92rem', color: 'rgba(14,14,12,0.6)', marginBottom: '28px' }}>
                     {dr.locations.map(loc => {
-                      if (loc === 'Wakad, Pune') return lang === 'mr' ? 'वाकड, पुणे' : lang === 'hi' ? 'वाकड, पुणे' : 'Wakad, Pune';
-                      if (loc === 'Jalgaon') return lang === 'mr' ? 'जळगाव' : lang === 'hi' ? 'जलगांव' : 'Jalgaon';
+                      if (loc === 'Wakad, Pune') return lang === 'mr' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡' : lang === 'hi' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡' : 'Wakad, Pune';
+                      if (loc === 'Jalgaon') return lang === 'mr' ? 'à¤œà¤³à¤—à¤¾à¤µ' : lang === 'hi' ? 'à¤œà¤²à¤—à¤¾à¤‚à¤µ' : 'Jalgaon';
                       return loc;
-                    }).join(' · ')}
+                    }).join(' Â· ')}
                   </p>
 
                   <button

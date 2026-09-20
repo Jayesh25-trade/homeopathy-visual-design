@@ -39,7 +39,7 @@ export default function LanguageSelector({ variant = 'default' }) {
               borderRadius: '20px',
               border: 'none',
               background: isActive ? '#C5964A' : 'transparent',
-              color: isActive ? '#173F32' : (isDark ? '#F4F0E7' : '#173F32'),
+              color: isActive ? '#1B2A41' : (isDark ? '#F4F0E7' : '#1B2A41'),
               fontFamily: 'Manrope, system-ui, sans-serif',
               fontWeight: isActive ? 800 : 700,
               fontSize: '0.74rem',
@@ -57,4 +57,3 @@ export default function LanguageSelector({ variant = 'default' }) {
     </div>
   );
 }
-

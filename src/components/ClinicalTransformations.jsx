@@ -110,7 +110,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
   const getCategoryBadgeStyle = (category) => {
     switch (category) {
       case 'SKIN':
-        return { background: '#E8F2ED', color: '#173F32', border: '1px solid #C5DEC8' };
+        return { background: '#F0E6D2', color: '#1B2A41', border: '1px solid #E8DFD0' };
       case 'PSORIASIS':
         return { background: '#FDF0EC', color: '#B84E34', border: '1px solid #F5D5CB' };
       case 'HAIR':
@@ -148,7 +148,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
         }}
         aria-hidden="true"
       >
-        <svg width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="#173F32" strokeWidth="1.5">
+        <svg width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="#1B2A41" strokeWidth="1.5">
           <path d="M10 80 Q 40 20, 80 10 Q 50 60, 10 80 Z" />
           <path d="M10 80 Q 45 45, 80 10" />
         </svg>
@@ -171,7 +171,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
           style={{
             fontFamily: "'Caveat', 'Playfair Display', cursive, serif",
             fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
-            color: '#315744',
+            color: '#1B2A41',
             opacity: 0.35,
             display: 'block',
             lineHeight: 1.1,
@@ -217,7 +217,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               marginBottom: '10px',
             }}
           >
-            {t('casesSection.h2')} <em style={{ fontStyle: 'italic', color: '#173F32', fontWeight: 400 }}>{t('casesSection.h2Em')}</em>
+            {t('casesSection.h2')} <em style={{ fontStyle: 'italic', color: '#1B2A41', fontWeight: 400 }}>{t('casesSection.h2Em')}</em>
           </h2>
 
           {/* Subtitle */}
@@ -265,9 +265,9 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'all 0.2s ease',
-                  background: isActive ? '#173F32' : '#FFFFFF',
+                  background: isActive ? '#1B2A41' : '#FFFFFF',
                   color: isActive ? '#FFFFFF' : '#18231F',
-                  border: isActive ? '1px solid #173F32' : '1px solid #DDD8CC',
+                  border: isActive ? '1px solid #1B2A41' : '1px solid #DDD8CC',
                   boxShadow: isActive ? '0 4px 12px rgba(23,63,50,0.18)' : 'none',
                   flexShrink: 0
                 }}
@@ -343,7 +343,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       fontWeight: 500,
                     }}
                   >
-                    <span style={{ fontSize: '0.7rem', color: '#173F32', fontWeight: 700 }}>•</span>
+                    <span style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 700 }}>â€¢</span>
                     {item.treatment}
                   </span>
                 </div>
@@ -415,7 +415,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                         position: 'absolute',
                         bottom: '8px',
                         left: '8px',
-                        background: '#173F32',
+                        background: '#1B2A41',
                         color: '#FFFFFF',
                         fontSize: '0.58rem',
                         fontWeight: 600,
@@ -439,7 +439,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       height: '24px',
                       borderRadius: '50%',
                       background: '#FFFFFF',
-                      color: '#173F32',
+                      color: '#1B2A41',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -451,7 +451,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       zIndex: 3,
                     }}
                   >
-                    ›
+                    â€º
                   </div>
                 </div>
 
@@ -487,7 +487,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       onClick={() => setSelectedCase(item)}
                       style={{
                         background: '#F2EAE0',
-                        color: '#173F32',
+                        color: '#1B2A41',
                         border: 'none',
                         padding: '7px 14px',
                         borderRadius: '18px',
@@ -503,7 +503,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     >
                       {t('common.readMore')}
                       <span className="arrow-icon" style={{ transition: 'transform 0.2s ease', display: 'inline-block' }}>
-                        →
+                        â†’
                       </span>
                     </button>
                   </div>
@@ -520,7 +520,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              background: '#173F32',
+              background: '#1B2A41',
               color: '#FFFFFF',
               border: 'none',
               padding: '12px 30px',
@@ -595,7 +595,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               }}
               aria-label="Close modal"
             >
-              ✕
+              âœ•
             </button>
 
             {/* Modal Header */}
@@ -623,7 +623,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     fontWeight: 500,
                   }}
                 >
-                  • {selectedCase.treatment}
+                  â€¢ {selectedCase.treatment}
                 </span>
               </div>
 
@@ -687,7 +687,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     position: 'absolute',
                     bottom: '8px',
                     left: '8px',
-                    background: '#173F32',
+                    background: '#1B2A41',
                     color: '#FFF',
                     fontSize: '0.62rem',
                     padding: '3px 8px',
@@ -721,8 +721,8 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                 <span className="mono" style={{ fontSize: '0.72rem', color: '#18231F' }}>
                   Doctor: <strong>{selectedCase.doctor}</strong>
                 </span>
-                <span className="mono" style={{ fontSize: '0.7rem', color: '#173F32', fontWeight: 600 }}>
-                  ✓ {t('trust.safe')}
+                <span className="mono" style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 600 }}>
+                  âœ“ {t('trust.safe')}
                 </span>
               </div>
             </div>
@@ -749,7 +749,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   onOpenBooking?.();
                 }}
                 style={{
-                  background: '#173F32',
+                  background: '#1B2A41',
                   color: '#FFF',
                   border: 'none',
                   padding: '8px 20px',
@@ -759,7 +759,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   cursor: 'pointer',
                 }}
               >
-                {t('nav.bookBtn')} →
+                {t('nav.bookBtn')} â†’
               </button>
             </div>
 
@@ -816,7 +816,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
           transform: scale(1.03);
         }
         .case-card-item:hover .view-case-btn {
-          background: #173F32 !important;
+          background: #1B2A41 !important;
           color: #FFFFFF !important;
         }
         .case-card-item:hover .arrow-icon {

@@ -55,7 +55,7 @@ export default function SiteFooter({ onOpenBooking }) {
                 <div className="site-footer__map-overlay">
                   <div>
                     <span className="map-overlay-sub">
-                      {lang === 'mr' ? 'भेट द्या' : lang === 'hi' ? 'विज़िट करें' : 'VISIT US'}
+                      {lang === 'mr' ? 'à¤­à¥‡à¤Ÿ à¤¦à¥à¤¯à¤¾' : lang === 'hi' ? 'à¤µà¤¿à¤œà¤¼à¤¿à¤Ÿ à¤•à¤°à¥‡à¤‚' : 'VISIT US'}
                     </span>
                     <strong className="map-overlay-city">{loc.city}</strong>
                   </div>
@@ -65,7 +65,7 @@ export default function SiteFooter({ onOpenBooking }) {
                     rel="noopener noreferrer"
                     className="map-overlay-btn"
                   >
-                    Open Maps ↗
+                    Open Maps â†—
                   </a>
                 </div>
               </article>
@@ -74,7 +74,7 @@ export default function SiteFooter({ onOpenBooking }) {
         </div>
       </section>
 
-      {/* ── 2. DESKTOP FOOTER (System / Laptop View > 850px) ──────────────────── */}
+      {/* â”€â”€ 2. DESKTOP FOOTER (System / Laptop View > 850px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="footer-desktop-wrapper hide-mobile">
         <div className="container footer-desktop-container">
           
@@ -90,10 +90,10 @@ export default function SiteFooter({ onOpenBooking }) {
             
             <p className="footer-brand-desc">
               {lang === 'mr' 
-                ? '१९९८ पासून विश्वासार्ह होमिओपॅथिक उपचार. पुणे आणि जळगावमधील कुटुंबांना नैसर्गिक आणि कायमस्वरूपी आरोग्य मिळवून देण्यासाठी वचनबद्ध.'
+                ? 'à¥§à¥¯à¥¯à¥® à¤ªà¤¾à¤¸à¥‚à¤¨ à¤µà¤¿à¤¶à¥à¤µà¤¾à¤¸à¤¾à¤°à¥à¤¹ à¤¹à¥‹à¤®à¤¿à¤“à¤ªà¥…à¤¥à¤¿à¤• à¤‰à¤ªà¤šà¤¾à¤°. à¤ªà¥à¤£à¥‡ à¤†à¤£à¤¿ à¤œà¤³à¤—à¤¾à¤µà¤®à¤§à¥€à¤² à¤•à¥à¤Ÿà¥à¤‚à¤¬à¤¾à¤‚à¤¨à¤¾ à¤¨à¥ˆà¤¸à¤°à¥à¤—à¤¿à¤• à¤†à¤£à¤¿ à¤•à¤¾à¤¯à¤®à¤¸à¥à¤µà¤°à¥‚à¤ªà¥€ à¤†à¤°à¥‹à¤—à¥à¤¯ à¤®à¤¿à¤³à¤µà¥‚à¤¨ à¤¦à¥‡à¤£à¥à¤¯à¤¾à¤¸à¤¾à¤ à¥€ à¤µà¤šà¤¨à¤¬à¤¦à¥à¤§.'
                 : lang === 'hi'
-                ? '1998 से विश्वसनीय होम्योपैथिक देखभाल। पुणे और जलगांव में परिवारों को प्राकृतिक और स्थायी स्वास्थ्य देने के लिए समर्पित।'
-                : 'Trusted homoeopathic care since 1998, helping families in Pune & Jalgaon live healthier, happier lives — naturally.'}
+                ? '1998 à¤¸à¥‡ à¤µà¤¿à¤¶à¥à¤µà¤¸à¤¨à¥€à¤¯ à¤¹à¥‹à¤®à¥à¤¯à¥‹à¤ªà¥ˆà¤¥à¤¿à¤• à¤¦à¥‡à¤–à¤­à¤¾à¤²à¥¤ à¤ªà¥à¤£à¥‡ à¤”à¤° à¤œà¤²à¤—à¤¾à¤‚à¤µ à¤®à¥‡à¤‚ à¤ªà¤°à¤¿à¤µà¤¾à¤°à¥‹à¤‚ à¤•à¥‹ à¤ªà¥à¤°à¤¾à¤•à¥ƒà¤¤à¤¿à¤• à¤”à¤° à¤¸à¥à¤¥à¤¾à¤¯à¥€ à¤¸à¥à¤µà¤¾à¤¸à¥à¤¥à¥à¤¯ à¤¦à¥‡à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤¸à¤®à¤°à¥à¤ªà¤¿à¤¤à¥¤'
+                : 'Trusted homoeopathic care since 1998, helping families in Pune & Jalgaon live healthier, happier lives â€” naturally.'}
             </p>
 
             {/* 3 Trust Badges */}
@@ -140,14 +140,14 @@ export default function SiteFooter({ onOpenBooking }) {
               <strong>Wakad, Pune Clinic</strong>
               <p className="footer-clinic-addr">One Place Wakad, E-105, Pink City Rd</p>
               <a href="https://maps.app.goo.gl/jthY3tH3iZJyVP9j9" target="_blank" rel="noopener noreferrer" className="footer-maps-link">
-                View on Google Maps ↗
+                View on Google Maps â†—
               </a>
             </div>
             <div className="footer-clinic-item" style={{ marginTop: '16px' }}>
               <strong>Jalgaon Clinic</strong>
               <p className="footer-clinic-addr">Chitra Chowk, JMP Market, Jalgaon</p>
               <a href="https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon" target="_blank" rel="noopener noreferrer" className="footer-maps-link">
-                View on Google Maps ↗
+                View on Google Maps â†—
               </a>
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function SiteFooter({ onOpenBooking }) {
             </div>
 
             <div className="footer-quote-box">
-              <p className="footer-quote-text">“Healing naturally. For a better tomorrow.”</p>
+              <p className="footer-quote-text">â€œHealing naturally. For a better tomorrow.â€</p>
               <div className="footer-script-tag">
                 <em>Health Naturally Always</em>
               </div>
@@ -215,7 +215,7 @@ export default function SiteFooter({ onOpenBooking }) {
 
         {/* Desktop Bottom Bar */}
         <div className="container footer-desktop-bottom">
-          <div>© {new Date().getFullYear()} Dr Somani's Homoeopathy. All rights reserved.</div>
+          <div>Â© {new Date().getFullYear()} Dr Somani's Homoeopathy. All rights reserved.</div>
           <div className="footer-legal-links">
             <a href="#privacy">Privacy Policy</a>
             <span>|</span>
@@ -227,7 +227,7 @@ export default function SiteFooter({ onOpenBooking }) {
         </div>
       </div>
 
-      {/* ── 3. MOBILE FOOTER (Phone / Mobile View <= 850px) ────────────────────── */}
+      {/* â”€â”€ 3. MOBILE FOOTER (Phone / Mobile View <= 850px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="footer-mobile-wrapper show-mobile">
         <div className="footer-mobile-container">
           
@@ -253,11 +253,11 @@ export default function SiteFooter({ onOpenBooking }) {
               <button className="mobile-accordion-header" onClick={() => toggleMobileSection('quick-links')}>
                 <div className="accordion-title-left">
                   <span className="acc-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17392e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2A41" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                   </span>
                   <span>Quick Links</span>
                 </div>
-                <span className={`acc-chevron ${activeMobileSection === 'quick-links' ? 'open' : ''}`}>∨</span>
+                <span className={`acc-chevron ${activeMobileSection === 'quick-links' ? 'open' : ''}`}>âˆ¨</span>
               </button>
               {activeMobileSection === 'quick-links' && (
                 <div className="mobile-accordion-body">
@@ -276,23 +276,23 @@ export default function SiteFooter({ onOpenBooking }) {
               <button className="mobile-accordion-header" onClick={() => toggleMobileSection('our-clinics')}>
                 <div className="accordion-title-left">
                   <span className="acc-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17392e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2A41" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   </span>
                   <span>Our Clinics</span>
                 </div>
-                <span className={`acc-chevron ${activeMobileSection === 'our-clinics' ? 'open' : ''}`}>∨</span>
+                <span className={`acc-chevron ${activeMobileSection === 'our-clinics' ? 'open' : ''}`}>âˆ¨</span>
               </button>
               {activeMobileSection === 'our-clinics' && (
                 <div className="mobile-accordion-body">
                   <strong>Wakad, Pune Clinic</strong>
                   <p>One Place Wakad, E-105, Pink City Rd</p>
                   <a href="https://maps.app.goo.gl/jthY3tH3iZJyVP9j9" target="_blank" rel="noopener noreferrer" className="mobile-maps-btn">
-                    View Wakad Map ↗
+                    View Wakad Map â†—
                   </a>
                   <strong style={{ marginTop: '12px' }}>Jalgaon Clinic</strong>
                   <p>Chitra Chowk, JMP Market, Jalgaon</p>
                   <a href="https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon" target="_blank" rel="noopener noreferrer" className="mobile-maps-btn">
-                    View Jalgaon Map ↗
+                    View Jalgaon Map â†—
                   </a>
                 </div>
               )}
@@ -303,11 +303,11 @@ export default function SiteFooter({ onOpenBooking }) {
               <button className="mobile-accordion-header" onClick={() => toggleMobileSection('get-in-touch')}>
                 <div className="accordion-title-left">
                   <span className="acc-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17392e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2A41" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   </span>
                   <span>Get in Touch</span>
                 </div>
-                <span className={`acc-chevron ${activeMobileSection === 'get-in-touch' ? 'open' : ''}`}>∨</span>
+                <span className={`acc-chevron ${activeMobileSection === 'get-in-touch' ? 'open' : ''}`}>âˆ¨</span>
               </button>
               {activeMobileSection === 'get-in-touch' && (
                 <div className="mobile-accordion-body">
@@ -324,11 +324,11 @@ export default function SiteFooter({ onOpenBooking }) {
               <button className="mobile-accordion-header" onClick={() => toggleMobileSection('follow-us')}>
                 <div className="accordion-title-left">
                   <span className="acc-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17392e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2A41" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                   </span>
                   <span>Follow Us</span>
                 </div>
-                <span className={`acc-chevron ${activeMobileSection === 'follow-us' ? 'open' : ''}`}>∨</span>
+                <span className={`acc-chevron ${activeMobileSection === 'follow-us' ? 'open' : ''}`}>âˆ¨</span>
               </button>
               {activeMobileSection === 'follow-us' && (
                 <div className="mobile-accordion-body">
@@ -344,7 +344,7 @@ export default function SiteFooter({ onOpenBooking }) {
 
           {/* Golden CTA Button */}
           <button className="mobile-cta-gold-btn" onClick={() => onOpenBooking?.()}>
-            BOOK CONSULTATION <span>›</span>
+            BOOK CONSULTATION <span>â€º</span>
           </button>
 
           {/* Social Cluster */}
@@ -365,7 +365,7 @@ export default function SiteFooter({ onOpenBooking }) {
 
           {/* Mobile Legal Bar */}
           <div className="mobile-footer-bottom">
-            <p>© {new Date().getFullYear()} Dr Somani's Homoeopathy. All rights reserved.</p>
+            <p>Â© {new Date().getFullYear()} Dr Somani's Homoeopathy. All rights reserved.</p>
             <div className="mobile-legal-links">
               <a href="#privacy">Privacy Policy</a>
               <span>|</span>
