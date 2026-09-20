@@ -177,11 +177,12 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
 
         {/* ── Hero Content Block ── */}
         <div className="dsk-hero-text">
-          {/* 5D Animated Video Title — replaces static text */}
+          {/* Title Image — replaces starting video */}
           <div className="dsk-video-title-wrap" aria-label="Think Homoeopathy Think Somani">
-            <TransparentVideoTitle
-              src="/media/think_homeopathy_loop_1080p.mp4"
-              className="dsk-video-title"
+            <img
+              src="/media/think_somani_title_img.png"
+              alt="Think Homoeopathy Think Somani"
+              className="dsk-video-title dsk-title-img"
             />
           </div>
 
@@ -304,11 +305,12 @@ export default function ChapterIntro({ onOpenBooking, prefersReducedMotion }) {
 
 
 
-        {/* Mobile Video Headline */}
+        {/* Mobile Title Headline Image */}
         <div className="hero-video-headline-wrap" id="smallTeam">
-          <TransparentVideoTitle
-            src="/media/think_homeopathy_loop_1080p.mp4"
-            className="hero-video-headline"
+          <img
+            src="/media/think_somani_title_img.png"
+            alt="Think Homoeopathy Think Somani"
+            className="hero-video-headline hero-title-img"
           />
         </div>
 
