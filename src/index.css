@@ -3235,7 +3235,7 @@ ul, ol { list-style: none; }
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(24px, 4vh, 48px) 0;
+  padding: clamp(72px, 9vh, 120px) 0 clamp(24px, 4vh, 48px) 0;
 }
 .screen-copy {
   margin: auto 0;
@@ -3247,16 +3247,19 @@ ul, ol { list-style: none; }
   align-items: center;
   justify-content: center;
   color: #1e2060;
+  padding-top: 1rem;
 }
 .screen-logo {
-  width: clamp(95px, 12vw, 150px);
-  margin: 0 auto 1.25rem;
+  width: clamp(115px, 15vw, 180px);
+  margin: 0.5rem auto 1.25rem;
   opacity: 0;
+  overflow: visible;
 }
 .screen-logo img {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: contain;
 }
 .screen-badge {
   display: inline-flex;
