@@ -31,6 +31,7 @@ export default function FloatingActions() {
       >
         <a
           href={clinic.phoneHref || "tel:+919834172124"}
+          className="floating-call-button"
           style={{
             width: '56px',
             height: '56px',
@@ -48,7 +49,7 @@ export default function FloatingActions() {
           }}
           aria-label="Call Dr Somani's Clinic"
         >
-          <PhoneCall size={24} color="#FFFFFF" className="flicker-phone-icon" />
+          <PhoneCall size={22} color="#FFFFFF" className="flicker-phone-icon" />
         </a>
       </div>
 
@@ -59,7 +60,7 @@ export default function FloatingActions() {
             transform: scale(1);
           }
           50% {
-            box-shadow: 0 0 0 16px rgba(30, 32, 96, 0), 0 12px 28px rgba(30, 32, 96, 0.5);
+            box-shadow: 0 0 0 14px rgba(30, 32, 96, 0), 0 12px 28px rgba(30, 32, 96, 0.5);
             transform: scale(1.08);
           }
         }
@@ -72,6 +73,16 @@ export default function FloatingActions() {
           85% { transform: rotate(-14deg); }
           90% { transform: rotate(10deg); }
           95% { transform: rotate(-6deg); }
+        }
+        @media (max-width: 600px) {
+          .floating-call-container {
+            bottom: 82px !important;
+            left: 16px !important;
+          }
+          .floating-call-button {
+            width: 48px !important;
+            height: 48px !important;
+          }
         }
       `}</style>
     </>

@@ -582,7 +582,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
       <style>{`
         @media (max-width: 600px) {
           .aarogya-bubble-wrapper {
-            bottom: 80px !important;
+            bottom: 82px !important;
             right: 16px !important;
           }
           .aarogya-chat-window {
