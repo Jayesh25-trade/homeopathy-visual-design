@@ -124,9 +124,9 @@ export default function ClinicalTransformations({ onOpenBooking }) {
 
   return (
     <section
-      id="real-patients"
+      id="cases"
       style={{
-        background: '#F6F2E9',
+        background: 'var(--bg)',
         padding: 'clamp(36px, 5vw, 80px) 0',
         position: 'relative',
         overflow: 'hidden',

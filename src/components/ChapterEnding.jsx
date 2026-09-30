@@ -34,35 +34,59 @@ export default function ChapterEnding({ onOpenBooking }) {
   return (
     <section
       id="locations"
-      className="paper-section"
       aria-label="Book a Consultation"
-      style={{ padding: 'clamp(36px, 4vw, 56px) 0 20px 0' }}
+      style={{
+        backgroundColor: '#f7f4ed',
+        backgroundImage: 'radial-gradient(#dcd5c7 0.8px, transparent 0.8px)',
+        backgroundSize: '18px 18px',
+        padding: 'clamp(3rem, 6vw, 5.5rem) 0 3rem 0',
+        borderTop: '1px solid #e2dad0',
+        borderBottom: '1px solid #e2dad0',
+        position: 'relative'
+      }}
     >
       <div className="container">
 
-        <p className="chapter-label" style={{ color: 'var(--mineral)', marginBottom: '40px' }}>
+        <p style={{
+          fontFamily: "'Special Elite', monospace",
+          color: '#17392e',
+          fontSize: '0.8rem',
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          marginBottom: '1rem'
+        }}>
           {lang === 'mr' ? 'प्रकरण ०७ · प्रारंभ' : lang === 'hi' ? 'अध्याय 07 · शुरुआत' : 'Chapter 07 · Begin'}
         </p>
 
         {/* Closing headline */}
-        <div style={{ maxWidth: '680px', marginBottom: '64px' }}>
+        <div style={{ maxWidth: '780px', marginBottom: '3.5rem' }}>
           <h2 style={{
-            fontFamily: 'var(--font-serif)',
-            fontWeight: 300,
-            fontSize: 'clamp(2rem, 5vw, 4rem)',
-            color: 'var(--ink)',
+            fontFamily: "'Special Elite', monospace",
+            fontWeight: 400,
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)',
+            color: '#1c2621',
             lineHeight: 1.15,
-            marginBottom: '24px',
+            marginBottom: '0.75rem',
             letterSpacing: '0',
           }}>
             {t('ending.h2')}<br />
-            <em>{t('ending.h2Em')}</em>
+            <em style={{ color: '#dc2626', fontStyle: 'italic' }}>{t('ending.h2Em')}</em>
           </h2>
+
+          <div style={{
+            width: '180px',
+            height: '8px',
+            borderTop: '3px solid #d94838',
+            borderRadius: '50%',
+            marginBottom: '1rem',
+            opacity: 0.8
+          }} />
+
           <p style={{
-            fontFamily: 'var(--font-sans)',
+            fontFamily: "'Special Elite', monospace",
             fontSize: '1.05rem',
-            color: 'var(--fg-muted)',
-            lineHeight: 1.7,
+            color: '#5c6660',
+            lineHeight: 1.6,
           }}>
             {t('ending.sub')}
           </p>
@@ -71,70 +95,101 @@ export default function ChapterEnding({ onOpenBooking }) {
         {/* Location cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '2px',
-          marginBottom: '40px',
-          background: 'var(--border)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '1.5rem',
+          marginBottom: '3rem',
         }}>
           {locationsList.map((loc) => (
             <div
               key={loc.id}
               style={{
-                background: 'var(--paper)',
-                padding: '32px 28px',
+                background: '#fdfbf7',
+                padding: '2.25rem 1.75rem',
+                borderRadius: '16px',
+                border: '1px solid #e2dad0',
+                boxShadow: '0 12px 28px rgba(35, 30, 20, 0.08)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 18px 36px rgba(35, 30, 20, 0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 30, 20, 0.08)';
               }}
             >
-              <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '12px', fontSize: '0.65rem' }}>
-                {loc.type === 'ONLINE' 
-                  ? (lang === 'mr' ? 'ऑनलाइन' : lang === 'hi' ? 'ऑनलाइन' : 'ONLINE')
-                  : (lang === 'mr' ? 'क्लिनिक' : lang === 'hi' ? 'क्लिनिक' : 'CLINIC')}
-              </p>
-              <h3 style={{
-                fontFamily: 'var(--font-serif)',
-                fontWeight: 300,
-                fontSize: '1.3rem',
-                color: 'var(--ink)',
-                marginBottom: '10px',
-              }}>
-                {loc.city}
-              </h3>
-              <p style={{
-                fontSize: '0.85rem',
-                color: 'var(--fg-muted)',
-                lineHeight: 1.6,
-                marginBottom: '10px',
-              }}>
-                {loc.address}
-              </p>
-              <p className="mono" style={{ fontSize: '0.72rem', color: 'var(--mineral)', marginBottom: '20px' }}>
-                {loc.phone}
-              </p>
-              <button
-                type="button"
-                onClick={() => onOpenBooking?.()}
-                className="btn btn--primary"
-                style={{ fontSize: '0.82rem', padding: '10px 18px' }}
-              >
-                {t('ending.requestBtn')}
-              </button>
-              {loc.mapsUrl && (
-                <a
-                  href={loc.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'block',
-                    marginTop: '10px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.7rem',
-                    color: 'var(--mineral)',
-                    textDecoration: 'underline',
-                    textUnderlineOffset: '3px',
-                  }}
+              <div>
+                <p style={{
+                  fontFamily: "'Special Elite', monospace",
+                  color: '#dc2626',
+                  marginBottom: '0.85rem',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em'
+                }}>
+                  {loc.type === 'ONLINE' 
+                    ? (lang === 'mr' ? 'ऑनलाइन' : lang === 'hi' ? 'ऑनलाइन' : 'ONLINE')
+                    : (lang === 'mr' ? 'क्लिनिक' : lang === 'hi' ? 'क्लिनिक' : 'CLINIC')}
+                </p>
+
+                <h3 style={{
+                  fontFamily: "'Special Elite', monospace",
+                  fontWeight: 400,
+                  fontSize: '1.4rem',
+                  color: '#1c2621',
+                  marginBottom: '0.75rem',
+                }}>
+                  {loc.city}
+                </h3>
+
+                <p style={{
+                  fontSize: '0.88rem',
+                  color: '#2a3630',
+                  lineHeight: 1.6,
+                  marginBottom: '1rem',
+                }}>
+                  {loc.address}
+                </p>
+
+                <p style={{ fontFamily: "'Special Elite', monospace", fontSize: '0.82rem', color: '#17392e', fontWeight: 600, marginBottom: '1.5rem' }}>
+                  {loc.phone}
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => onOpenBooking?.()}
+                  className="btn-primary"
+                  style={{ fontSize: '0.85rem', padding: '0.65rem 1.4rem', width: '100%' }}
                 >
-                  {t('common.directions')} →
-                </a>
-              )}
+                  {t('ending.requestBtn')}
+                </button>
+
+                {loc.mapsUrl && (
+                  <a
+                    href={loc.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'block',
+                      marginTop: '0.85rem',
+                      fontFamily: "'Special Elite', monospace",
+                      fontSize: '0.78rem',
+                      color: '#17392e',
+                      textAlign: 'center',
+                      textDecoration: 'underline',
+                      textUnderlineOffset: '3px',
+                    }}
+                  >
+                    {t('common.directions')} →
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -144,7 +199,7 @@ export default function ChapterEnding({ onOpenBooking }) {
           display: 'flex',
           flexWrap: 'wrap',
           gap: '14px',
-          marginBottom: '48px',
+          marginBottom: '3rem',
           alignItems: 'center',
         }}>
           <a
@@ -152,6 +207,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--whatsapp"
+            style={{ fontSize: '0.9rem', padding: '0.75rem 1.75rem' }}
           >
             {t('ending.whatsappBtn')}
           </a>
@@ -160,6 +216,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--outline-ink"
+            style={{ fontFamily: "'Special Elite', monospace", fontSize: '0.88rem' }}
             aria-label="Instagram"
           >
             @somanikushal
@@ -170,11 +227,11 @@ export default function ChapterEnding({ onOpenBooking }) {
         <p style={{
           fontFamily: 'var(--font-sans)',
           fontSize: '0.82rem',
-          color: 'var(--fg-muted)',
+          color: '#5c6660',
           lineHeight: 1.6,
-          maxWidth: '600px',
-          paddingTop: '24px',
-          borderTop: '1px solid var(--border)',
+          maxWidth: '650px',
+          paddingTop: '20px',
+          borderTop: '1px solid #e2dad0',
         }}>
           {t('footer.disclaimer')}
         </p>

@@ -1,241 +1,174 @@
 import React from 'react';
 import { doctors } from '../data/clinicData';
-import { useLanguage } from '../context/LanguageContext';
-
-const MCIM_URL = "https://www.maharashtra.gov.in/Site/Upload/Government%20Resolutions/English/Marathi%20Medicine%20Information.pdf";
 
 export default function ChapterDoctors({ onOpenBooking }) {
-  const { t, lang } = useLanguage();
-
   return (
     <section
       id="doctors"
-      className="paper-section section-pad"
-      aria-label="Meet the Doctors"
+      className="paper-section section-pad scroll-target"
+      style={{ backgroundColor: 'var(--bg)', position: 'relative', overflow: 'hidden' }}
+      aria-label="Meet Our Doctors"
     >
-      <div className="container">
+      {/* Botanical Microscopy Organic Wave Texture Layer */}
+      <div
+        className="parallax-layer"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(/assets/botanical_microscopy.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.08,
+          pointerEvents: 'none',
+          mixBlendMode: 'multiply',
+        }}
+      />
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        
+        {/* Section Heading */}
+        <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3.5rem' }}>
+          <span className="badge badge-ocean" style={{ marginBottom: '0.75rem' }}>
+            Experienced Practitioners
+          </span>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            color: 'var(--navy)',
+            fontFamily: 'var(--font-serif)',
+            fontWeight: 400,
+            lineHeight: 1.2,
+            marginBottom: '0.85rem'
+          }}>
+            Meet Our Doctors
+          </h2>
+          <p style={{ color: 'var(--muted)', fontSize: '1.02rem', lineHeight: 1.6 }}>
+            Registered homoeopathic and ayurvedic practitioners dedicated to individualised, compassionate care.
+          </p>
+        </div>
 
-        <p className="chapter-label" style={{ color: 'var(--mineral)' }}>
-          {t('doctorsSection.label')}
-        </p>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(56px,10vw,100px)' }}>
-          {doctors.map((dr, i) => {
-            const isAntim = dr.id === 'dr-antim-somani';
-            const drKey = isAntim ? 'drAntim' : 'drKushal';
-            
-            const localizedName = t(`doctorsSection.${drKey}.name`);
-            const localizedRole = t(`doctorsSection.${drKey}.role`);
-            const localizedQual = t(`doctorsSection.${drKey}.qual`);
-            const localizedIntro = t(`doctorsSection.${drKey}.intro`);
-            
-            const shortFirstName = isAntim 
-              ? (lang === 'mr' ? 'डॉ. अंतिम' : lang === 'hi' ? 'डॉ. अंतिम' : 'Dr. Antim')
-              : (lang === 'mr' ? 'डॉ. कुशल' : lang === 'hi' ? 'डॉ. कुशल' : 'Dr. Kushal');
-
-            return (
-              <article
-                key={dr.id}
-                className="reveal"
-                aria-label={localizedName}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 'clamp(24px,5vw,60px)',
-                  alignItems: 'center',
-                }}
-              >
-                {/* Portrait */}
-                <div style={{ order: i % 2 === 0 ? 0 : 1 }}>
-                  <div style={{ position: 'relative', maxWidth: '400px', margin: i % 2 === 0 ? '0' : '0 0 0 auto' }}>
-                    {/* Amber glow behind portrait */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '-16px', left: i % 2 === 0 ? '-16px' : 'auto',
-                      right: i % 2 !== 0 ? '-16px' : 'auto',
-                      width: '160px', height: '160px',
-                      borderRadius: '50%',
-                      background: 'radial-gradient(circle, rgba(200,135,58,0.14) 0%, transparent 70%)',
-                      pointerEvents: 'none',
-                    }} />
-
-                    <div style={{
-                      width: 'min(280px, 80vw)',
-                      aspectRatio: '1/1',
-                      borderRadius: '50%',
-                      overflow: 'hidden',
-                      background: '#2d3d29',
-                      border: '4px solid var(--amber)',
-                      boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
-                      margin: '0 auto',
-                    }}>
-                      <img
-                        src={dr.portrait}
-                        alt={localizedName}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-                        loading="lazy"
-                      />
-                    </div>
-
-                    {/* Reg badge */}
-                    <div style={{
-                      position: 'absolute',
-                      bottom: '14px',
-                      left: i % 2 === 0 ? '12px' : 'auto',
-                      right: i % 2 !== 0 ? '12px' : 'auto',
-                      background: 'rgba(26,35,24,0.88)',
-                      backdropFilter: 'blur(6px)',
-                      padding: '8px 12px',
-                      borderRadius: '2px',
-                      border: '1px solid rgba(139,160,122,0.2)',
-                    }}>
-                      <p className="mono" style={{ color: 'rgba(245,240,232,0.85)', fontSize: '0.62rem' }}>
-                        Reg. No. {dr.regNo}
-                      </p>
-                      <p className="mono" style={{ color: 'var(--muted)', fontSize: '0.58rem' }}>
-                        {dr.qualifications}
-                      </p>
-                    </div>
-                  </div>
+        {/* Doctor Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          {doctors.map((dr, idx) => (
+            <article
+              key={dr.id}
+              className={`doctor-card-grid ${idx % 2 !== 0 ? 'reverse-desktop' : ''}`}
+              style={{
+                background: '#faf6ee',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid rgba(14, 14, 12, 0.14)',
+                boxShadow: '0 12px 35px rgba(0,0,0,0.05)',
+                overflow: 'hidden',
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: '2rem',
+                padding: 'clamp(1.5rem, 4vw, 3rem)',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 2
+              }}
+            >
+              {/* Doctor Image Container */}
+              <div className="doctor-img-col">
+                <div style={{
+                  position: 'relative',
+                  width: 'min(280px, 100%)',
+                  aspectRatio: '1 / 1',
+                  borderRadius: '50%',
+                  margin: '0 auto',
+                  overflow: 'hidden',
+                  border: '4px solid rgba(220, 38, 38, 0.15)',
+                  boxShadow: 'var(--shadow-md)'
+                }}>
+                  <img
+                    src={dr.portrait}
+                    alt={dr.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                    loading="lazy"
+                  />
                 </div>
+                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                  <span className="badge badge-green" style={{ background: 'rgba(220, 38, 38, 0.08)', color: '#dc2626', border: '1px solid rgba(220, 38, 38, 0.2)' }}>
+                    Reg. No. {dr.regNo}
+                  </span>
+                </div>
+              </div>
 
-                {/* Content */}
-                <div>
-                  <h2 style={{
-                    fontFamily: 'var(--font-serif)', fontWeight: 400,
-                    fontSize: 'clamp(1.7rem, 3.5vw, 2.8rem)',
-                    color: 'var(--ink)', lineHeight: 1.1, marginBottom: '8px',
-                  }}>
-                    {localizedName}
-                  </h2>
+              {/* Doctor Bio & Info */}
+              <div>
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#dc2626', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                  {dr.generation}
+                </span>
+                <h3 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 'clamp(1.6rem, 3vw, 2.3rem)',
+                  color: 'var(--navy)',
+                  fontWeight: 400,
+                  marginTop: '0.25rem',
+                  marginBottom: '0.35rem'
+                }}>
+                  {dr.name}
+                </h3>
+                <p style={{ color: 'var(--muted)', fontWeight: 600, fontSize: '0.95rem', marginBottom: '1.25rem' }}>
+                  {dr.qualifications} · {dr.role}
+                </p>
 
-                  {/* Generation badge */}
-                  {dr.generation && (
-                    <div style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '6px',
-                      padding: '3px 10px',
-                      background: dr.generation === 'First Generation'
-                        ? 'rgba(200,135,58,0.12)'
-                        : 'rgba(45,97,78,0.1)',
-                      border: `1px solid ${dr.generation === 'First Generation'
-                        ? 'rgba(200,135,58,0.35)'
-                        : 'rgba(45,97,78,0.25)'}`,
-                      borderRadius: '2px',
-                      marginBottom: '8px',
-                    }}>
-                      <span className="mono" style={{
-                        fontSize: '0.6rem',
-                        color: dr.generation === 'First Generation' ? 'var(--amber)' : '#2d6150',
-                        letterSpacing: '0.06em',
-                      }}>
-                        {dr.generation === 'First Generation' ? 'â¬¤ Founder Â· ' : 'â¬¤ '}
-                        {lang === 'mr' ? (dr.generation === 'First Generation' ? 'à¤ªà¤¹à¤¿à¤²à¥€ à¤ªà¤¿à¤¢à¥€' : 'à¤¦à¥à¤¸à¤°à¥€ à¤ªà¤¿à¤¢à¥€')
-                          : lang === 'hi' ? (dr.generation === 'First Generation' ? 'à¤ªà¤¹à¤²à¥€ à¤ªà¥€à¤¢à¤¼à¥€' : 'à¤¦à¥‚à¤¸à¤°à¥€ à¤ªà¥€à¤¢à¤¼à¥€')
-                          : dr.generation}
-                      </span>
-                    </div>
-                  )}
+                <p style={{ color: 'var(--ink)', fontSize: '0.98rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                  {dr.introduction}
+                </p>
 
-                  <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '6px', fontSize: '0.68rem' }}>
-                    {localizedQual} Â· {localizedRole}
+                {/* Clinical Interests */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <p style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Specialised Focus Areas
                   </p>
-
-                  {/* Verified badge */}
-                  <div style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '4px 10px',
-                    background: 'rgba(45,122,78,0.1)',
-                    border: '1px solid rgba(45,122,78,0.25)',
-                    borderRadius: '2px',
-                    marginBottom: '24px',
-                  }}>
-                    <span style={{ fontSize: '0.7rem', color: '#2d7a4e' }}>âœ“</span>
-                    <span className="mono" style={{ fontSize: '0.6rem', color: '#2d7a4e' }}>
-                      {t('doctorsSection.registeredBadge')}
-                    </span>
-                    <a
-                      href={MCIM_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontFamily: 'IBM Plex Mono, monospace',
-                        fontSize: '0.58rem',
-                        color: '#2d7a4e',
-                        textDecoration: 'underline',
-                        textUnderlineOffset: '2px',
-                        opacity: 0.75,
-                      }}
-                      aria-label="Verify registration independently"
-                    >
-                      {t('doctorsSection.verifyBtn')}
-                    </a>
-                  </div>
-
-                  <p style={{
-                    fontSize: 'clamp(0.9rem, 1.4vw, 1.02rem)',
-                    lineHeight: 1.75, color: 'rgba(14,14,12,0.7)',
-                    marginBottom: '24px', maxWidth: '440px',
-                  }}>
-                    {localizedIntro}
-                  </p>
-
-                  {/* Clinical interests */}
-                  <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '10px', fontSize: '0.62rem' }}>
-                    {t('doctorsSection.interestsLabel')}
-                  </p>
-                  <div style={{
-                    display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: '28px',
-                  }}>
-                    {dr.interests.map(interest => (
-                      <span key={interest} style={{
-                        fontFamily: 'Manrope, sans-serif', fontSize: '0.82rem',
-                        padding: '5px 11px', border: '1px solid rgba(14,14,12,0.14)',
-                        borderRadius: '2px', color: 'rgba(14,14,12,0.58)',
-                      }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {dr.interests.map((interest, i) => (
+                      <span
+                        key={i}
+                        style={{
+                          fontSize: '0.8rem',
+                          background: '#ffffff',
+                          border: '1px solid rgba(14,14,12,0.12)',
+                          padding: '0.3rem 0.75rem',
+                          borderRadius: 'var(--radius-sm)',
+                          color: 'var(--ink)',
+                          fontWeight: 500
+                        }}
+                      >
                         {interest}
                       </span>
                     ))}
                   </div>
-
-                  <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '8px', fontSize: '0.62rem' }}>
-                    {t('doctorsSection.availableAtLabel')}
-                  </p>
-                  <p style={{ fontSize: '0.92rem', color: 'rgba(14,14,12,0.6)', marginBottom: '28px' }}>
-                    {dr.locations.map(loc => {
-                      if (loc === 'Wakad, Pune') return lang === 'mr' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡' : lang === 'hi' ? 'à¤µà¤¾à¤•à¤¡, à¤ªà¥à¤£à¥‡' : 'Wakad, Pune';
-                      if (loc === 'Jalgaon') return lang === 'mr' ? 'à¤œà¤³à¤—à¤¾à¤µ' : lang === 'hi' ? 'à¤œà¤²à¤—à¤¾à¤‚à¤µ' : 'Jalgaon';
-                      return loc;
-                    }).join(' Â· ')}
-                  </p>
-
-                  <button
-                    className="btn btn--outline-ink"
-                    onClick={() => onOpenBooking?.()}
-                    style={{ minWidth: '200px' }}
-                  >
-                    {t('doctorsSection.bookWithDr')} {shortFirstName}
-                  </button>
                 </div>
 
-              </article>
-            );
-          })}
+                {/* Action Button */}
+                <button
+                  className="btn-primary"
+                  onClick={onOpenBooking}
+                  style={{ fontSize: '0.9rem', padding: '0.65rem 1.35rem' }}
+                >
+                  Book Consultation with {dr.name.split(' ')[1] || dr.name} →
+                </button>
+              </div>
+
+            </article>
+          ))}
         </div>
+
       </div>
 
       <style>{`
-        @media (max-width: 700px) {
-          #doctors article {
-            grid-template-columns: 1fr !important;
+        @media (min-width: 860px) {
+          .doctor-card-grid {
+            grid-template-columns: 280px 1fr !important;
           }
-          #doctors article > div:first-child {
-            order: 0 !important;
+          .doctor-card-grid.reverse-desktop {
+            grid-template-columns: 1fr 280px !important;
+          }
+          .doctor-card-grid.reverse-desktop .doctor-img-col {
+            order: 1 !important;
           }
         }
       `}</style>
     </section>
   );
 }
-

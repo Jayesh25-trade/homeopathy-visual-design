@@ -1,136 +1,144 @@
-import React, { useState } from 'react';
-import { useLanguage } from '../context/LanguageContext';
-import BeforeYouCall from './BeforeYouCall';
+import React from 'react';
+import { consultationSteps } from '../data/clinicData';
 
 export default function ChapterConsultation({ onOpenBooking }) {
-  const { t, lang } = useLanguage();
-  const [activeLocation, setActiveLocation] = useState(0);
-
-  const steps = [
-    { n: '01', title: t('consultationSection.steps.0.title'), body: t('consultationSection.steps.0.body') },
-    { n: '02', title: t('consultationSection.steps.1.title'), body: t('consultationSection.steps.1.body') },
-    { n: '03', title: t('consultationSection.steps.2.title'), body: t('consultationSection.steps.2.body') },
-    { n: '04', title: t('consultationSection.steps.3.title'), body: t('consultationSection.steps.3.body') },
-  ];
-
-  const locItems = [
-    {
-      id: 'wakad',
-      city: lang === 'mr' ? 'पुणे क्लिनिक' : lang === 'hi' ? 'पुणे क्लिनिक' : 'Wakad, Pune',
-      address: t('common.puneAddress'),
-      phone: '+91 98226 77921',
-      phoneHref: 'tel:+919822677921',
-      mapsUrl: 'https://maps.app.goo.gl/jthY3tH3iZJyVP9j9'
-    },
-    {
-      id: 'jalgaon',
-      city: lang === 'mr' ? 'जळगाव क्लिनिक' : lang === 'hi' ? 'जलगांव क्लिनिक' : 'Jalgaon',
-      address: t('common.jalgaonAddress'),
-      phone: '+91 94222 77921',
-      phoneHref: 'tel:+919422277921',
-      mapsUrl: 'https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon'
-    },
-    {
-      id: 'online',
-      city: lang === 'mr' ? 'ऑनलाइन व्हिडियो सल्ला' : lang === 'hi' ? 'ऑनलाइन वीडियो परामर्श' : 'Online / Pan-India',
-      address: t('common.onlineAddress'),
-      phone: '+91 98226 77921',
-      phoneHref: 'tel:+919822677921',
-    }
-  ];
-
-  const loc = locItems[activeLocation];
-
   return (
-    <section id="consultation" className="journey" aria-label="How consultation works">
-      <div className="journey__image" aria-hidden="true" />
-      <div className="container journey__inner">
-        <header className="journey__header reveal">
-          <p className="chapter-label" style={{ color: '#E4B567' }}>{t('consultationSection.label')}</p>
-          <h2 className="serif-display serif-display--md" style={{ color: '#FFFFFF' }}>
-            {t('consultationSection.h2')}<br />
-            <em style={{ color: '#E4B567' }}>{t('consultationSection.h2Em')}</em>
+    <section 
+      id="consultation" 
+      className="paper-section section-pad scroll-target"
+      style={{ 
+        backgroundColor: 'var(--bg)', 
+        position: 'relative', 
+        overflow: 'hidden',
+        borderTop: '2px solid rgba(220, 38, 38, 0.2)',
+        paddingTop: 'clamp(4rem, 7vw, 6.5rem)'
+      }}
+      aria-label="Online Homoeopathic Consultations"
+    >
+      {/* Botanical Microscopy Organic Wave Texture Layer */}
+      <div
+        className="parallax-layer"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(/assets/botanical_microscopy.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.08,
+          pointerEvents: 'none',
+          mixBlendMode: 'multiply',
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
+          <span className="badge badge-ocean" style={{ marginBottom: '0.85rem', background: 'rgba(220, 38, 38, 0.08)', color: '#dc2626', border: '1px solid rgba(220, 38, 38, 0.2)' }}>
+            Global Online Care
+          </span>
+          
+          <h2 style={{
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)',
+            color: 'var(--navy)',
+            fontFamily: 'var(--font-serif)',
+            fontWeight: 400,
+            lineHeight: 1.15,
+            marginBottom: '0.5rem'
+          }}>
+            Your Doctor, Just a Click Away
           </h2>
-          <p style={{ color: '#E6E1D7' }}>{t('consultationSection.sub')}</p>
-        </header>
 
-        <ol className="journey__steps">
-          {steps.map((step, index) => (
-            <li className="journey__step reveal" key={step.n}>
-              <span className="journey__number">{step.n}</span>
-              <div>
-                <h3 style={{ color: '#FFFFFF' }}>{step.title}</h3>
-                <p style={{ color: '#E6E1D7' }}>{step.body}</p>
-              </div>
-              {index < steps.length - 1 && <span className="journey__connector" aria-hidden="true" />}
-            </li>
-          ))}
-        </ol>
+          <h3 style={{
+            fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+            color: '#dc2626',
+            fontWeight: 600,
+            marginBottom: '1.75rem',
+            fontStyle: 'italic',
+            fontFamily: 'var(--font-serif)'
+          }}>
+            Online Homoeopathic Consultations Across the Globe
+          </h3>
 
-        <div className="journey__booking reveal">
-          <div className="journey__locations" role="tablist" aria-label="Choose clinic location">
-            {locItems.map((item, index) => (
-              <button key={item.id} role="tab" aria-selected={index === activeLocation} onClick={() => setActiveLocation(index)}>
-                {item.city}
-              </button>
-            ))}
+          <div style={{
+            color: 'var(--ink)',
+            fontSize: '1.02rem',
+            lineHeight: 1.75,
+            textAlign: 'left',
+            background: '#ffffff',
+            padding: '2rem 2.25rem',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid rgba(14, 14, 12, 0.12)',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.1rem'
+          }}>
+            <p>
+              Distance should never be a barrier to accessing personalised healthcare. With years of experience in online consultations, Dr Somani’s Homoeopathy has been serving patients across India and internationally, with patients already consulting us from the USA, Canada, Germany and other parts of the world.
+            </p>
+
+            <p>
+              Whether you're at home or living abroad, you can consult with our doctors from the comfort of your home. Our online consultation process makes it convenient to discuss your health concerns and receive individualised guidance. Medicines can also be couriered to your doorstep, subject to availability and delivery regulations in your location.
+            </p>
           </div>
-          <div className="journey__location-detail">
-            <div>
-              <p className="chapter-label" style={{ color: '#E4B567' }}>{t('common.selectLocation')}</p>
-              <h3 style={{ color: '#FFFFFF', margin: '4px 0 8px 0', fontFamily: 'var(--font-serif)', fontSize: '1.85rem' }}>{loc.city}</h3>
-              <p style={{ color: '#FAF7F2', margin: '0 0 10px 0', lineHeight: 1.6, fontSize: '0.94rem' }}>{loc.address}</p>
-              <a className="journey__phone" href={loc.phoneHref} style={{ color: '#E4B567', fontSize: '1.05rem', fontWeight: 700, display: 'inline-block' }}>{loc.phone}</a>
-            </div>
-            <div className="journey__actions">
-              <button
-                type="button"
-                onClick={() => onOpenBooking?.()}
-                className="btn btn--primary"
-                style={{
-                  background: '#C5964A',
-                  color: '#173F32',
-                  fontWeight: 700,
-                  padding: '12px 24px',
-                  borderRadius: '5px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '0.85rem',
-                  letterSpacing: '0.04em',
-                }}
-              >
-                {t('common.requestConsultation')}
-              </button>
-              {loc.mapsUrl && (
-                <a
-                  href={loc.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '12px 24px',
-                    borderRadius: '5px',
-                    color: '#FFFFFF',
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    border: '1.5px solid rgba(255, 255, 255, 0.5)',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    letterSpacing: '0.06em',
-                    fontSize: '0.85rem',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  {t('common.directions')}
-                </a>
-              )}
-            </div>
-          </div>
-          <BeforeYouCall />
         </div>
+
+        {/* 4 Consultation Step Cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+          gap: '1.5rem',
+          marginBottom: '3.5rem'
+        }}>
+          {consultationSteps.map((step, idx) => (
+            <div
+              key={idx}
+              style={{
+                background: '#ffffff',
+                padding: '1.75rem 1.5rem',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid rgba(14, 14, 12, 0.12)',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.04)',
+                position: 'relative',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 14px 32px rgba(0,0,0,0.08)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.04)';
+              }}
+            >
+              <div style={{
+                fontSize: '1.75rem',
+                fontWeight: 800,
+                color: '#dc2626',
+                fontFamily: 'var(--font-serif)',
+                marginBottom: '0.6rem'
+              }}>
+                {step.n}
+              </div>
+              <h4 style={{ fontSize: '1.15rem', color: 'var(--navy)', fontFamily: 'var(--font-serif)', marginBottom: '0.4rem', fontWeight: 500 }}>
+                {step.title}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+                {step.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Action CTA Button */}
+        <div style={{ textAlign: 'center' }}>
+          <button className="btn-primary" onClick={onOpenBooking} style={{ fontSize: '1rem', padding: '0.9rem 2.5rem' }}>
+            Book Your Online Consultation Now →
+          </button>
+        </div>
+
       </div>
     </section>
   );
 }
-

@@ -2,65 +2,27 @@ import { useState, useEffect, useCallback } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import ReadingProgress     from './components/ReadingProgress';
 import SiteNav             from './components/SiteNav';
+import CinematicHero       from './components/CinematicHero';
+import BentoHero           from './components/BentoHero';
 import ChapterIntro        from './components/ChapterIntro';
 import ChapterAtlas        from './components/ChapterAtlas';
 import ParallaxDivider     from './components/ParallaxDivider';
 import ChapterTimeline     from './components/ChapterTimeline';
+import ChapterJourney      from './components/ChapterJourney';
 import SymptomEstimator    from './components/SymptomEstimator';
 import ChapterDoctors      from './components/ChapterDoctors';
 import ChapterStories      from './components/ChapterStories';
 import ClinicalTransformations from './components/ClinicalTransformations';
-import InfiniteReviews from './components/InfiniteReviews';
+import InfiniteReviews     from './components/InfiniteReviews';
 import ChapterConsultation from './components/ChapterConsultation';
 import ChapterEnding       from './components/ChapterEnding';
 import AppointmentForm     from './components/AppointmentForm';
 import SiteFooter          from './components/SiteFooter';
-import TrustStrip          from './components/TrustStrip';
+import FloatingActions     from './components/FloatingActions';
+import MobileBottomNav     from './components/MobileBottomNav';
 
 export default function App() {
-  const [formOpen,  setFormOpen]  = useState(false);
-  const [isMobile,  setIsMobile]  = useState(window.matchMedia('(max-width:768px)').matches);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
-
-  // Detect mobile
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width:768px)');
-    const h = e => setIsMobile(e.matches);
-    mq.addEventListener('change', h);
-    return () => mq.removeEventListener('change', h);
-  }, []);
-
-  // Reduced motion
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const h = e => setPrefersReducedMotion(e.matches);
-    mq.addEventListener('change', h);
-    return () => mq.removeEventListener('change', h);
-  }, []);
-
-  // Scroll reveal — runs once then re-observes on theme change
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      document.querySelectorAll('.reveal, .ink-reveal').forEach(el => el.classList.add('revealed'));
-      return;
-    }
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
-      }),
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll('.reveal, .ink-reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, [prefersReducedMotion]);
-
-  // Body padding to account for mobile bottom bar
-  useEffect(() => {
-    document.body.style.paddingBottom = isMobile ? '72px' : '0';
-    return () => { document.body.style.paddingBottom = '0'; };
-  }, [isMobile]);
+  const [formOpen, setFormOpen] = useState(false);
 
   const openBooking  = useCallback(() => setFormOpen(true),  []);
   const closeBooking = useCallback(() => setFormOpen(false), []);
@@ -69,31 +31,58 @@ export default function App() {
     <LanguageProvider>
       <ReadingProgress />
 
-      <SiteNav
-        onOpenBooking={openBooking}
-      />
+      {/* Header (Slides down after scrolling past cinematic hero) */}
+      <SiteNav onOpenBooking={openBooking} />
 
       <main id="main-content">
-        <ChapterIntro
-          onOpenBooking={openBooking}
-          prefersReducedMotion={prefersReducedMotion}
-          isMobile={isMobile}
-        />
-        <TrustStrip />
-        <ChapterAtlas    onOpenBooking={openBooking} />
+        {/* Cinematic Somani Flow Cover Hero Page */}
+        <CinematicHero onOpenBooking={openBooking} />
+
+        {/* Bento Top Hero Section */}
+        <BentoHero onOpenBooking={openBooking} />
+
+        {/* About the Clinic */}
+        <ChapterIntro onOpenBooking={openBooking} />
+
+        {/* Area of Services */}
+        <ChapterAtlas onOpenBooking={openBooking} />
+
         <ParallaxDivider />
-        <ChapterTimeline />
-        <SymptomEstimator onOpenBooking={openBooking} />
-        <ChapterDoctors  onOpenBooking={openBooking} />
-        <ChapterStories />
+
+        {/* Patient Stories & Real Cases */}
         <ClinicalTransformations onOpenBooking={openBooking} />
+        
+        {/* Verified Google Patient Reviews */}
         <InfiniteReviews />
-        <ChapterConsultation onOpenBooking={openBooking} isMobile={isMobile} />
-        <ChapterEnding   onOpenBooking={openBooking} />
+
+        {/* Practice Journey Timeline */}
+        <ChapterTimeline />
+
+        {/* Care Journey — One path. Four careful steps. */}
+        <ChapterJourney onOpenBooking={openBooking} />
+
+        {/* Symptom Estimator */}
+        <SymptomEstimator onOpenBooking={openBooking} />
+
+        {/* Meet Our Doctors (Dr. Antim, Dr. Kushal, Dr. Minal) */}
+        <ChapterDoctors onOpenBooking={openBooking} />
+
+        {/* Video Stories Gallery */}
+        <ChapterStories />
+
+        {/* Online Consultations (Your Doctor, Just a Click Away) */}
+        <ChapterConsultation onOpenBooking={openBooking} />
+
+        {/* Clinics & Contact */}
+        <ChapterEnding onOpenBooking={openBooking} />
       </main>
 
       <SiteFooter onOpenBooking={openBooking} />
 
+      {/* Mobile App Bottom Bar */}
+      <MobileBottomNav onOpenBooking={openBooking} />
+
+      {/* Booking Modal */}
       <AppointmentForm
         isOpen={formOpen}
         onClose={closeBooking}
