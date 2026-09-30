@@ -20,6 +20,7 @@ import AppointmentForm     from './components/AppointmentForm';
 import SiteFooter          from './components/SiteFooter';
 import FloatingActions     from './components/FloatingActions';
 import MobileBottomNav     from './components/MobileBottomNav';
+import AarogyaChatbot      from './components/AarogyaChatbot';
 
 export default function App() {
   const [formOpen, setFormOpen] = useState(false);
@@ -78,6 +79,12 @@ export default function App() {
       </main>
 
       <SiteFooter onOpenBooking={openBooking} />
+
+      {/* Floating Quick Action Buttons (Left) */}
+      <FloatingActions onOpenBooking={openBooking} />
+
+      {/* Aarogya AI Floating Support Assistant (Right Corner Bubble) */}
+      <AarogyaChatbot onOpenBooking={openBooking} />
 
       {/* Mobile App Bottom Bar */}
       <MobileBottomNav onOpenBooking={openBooking} />
