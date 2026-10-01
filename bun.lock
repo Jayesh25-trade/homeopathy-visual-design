@@ -8,6 +8,7 @@
         "@supabase/supabase-js": "^2.116.0",
         "canvas-confetti": "^1.9.4",
         "firebase": "^12.19.0",
+        "gsap": "^3.15.0",
         "lucide-react": "^1.45.0",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
@@ -327,6 +328,8 @@
     "get-caller-file": ["get-caller-file@2.0.5", "https://europe-west1-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/get-caller-file/-/get-caller-file-2.0.5.tgz", {}, "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="],
 
     "get-tsconfig": ["get-tsconfig@4.14.3", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/get-tsconfig/-/get-tsconfig-4.14.3.tgz", { "dependencies": { "resolve-pkg-maps": "^1.0.0" } }, "sha512-++QEw4DIY7WGoukz+/+A/8dGYPT9l9yIadnmSgZ8Rjr3YVSVDipQSO9CdnJo9ePqFqUUqh+wk9uIaoiAwsiPkA=="],
+
+    "gsap": ["gsap@3.15.0", "https://europe-west1-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/gsap/-/gsap-3.15.0.tgz", {}, "sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A=="],
 
     "http-parser-js": ["http-parser-js@0.5.10", "https://europe-west1-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/http-parser-js/-/http-parser-js-0.5.10.tgz", {}, "sha512-Pysuw9XpUq5dVc/2SMHpuTY01RFl8fttgcyunjL7eEMhGM3cI4eOmiCycJDVCo/7O7ClfQD3SaI6ftDzqOXYMA=="],
 
