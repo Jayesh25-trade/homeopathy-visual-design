@@ -29,7 +29,7 @@ export default function BentoHero({ onOpenBooking }) {
             }}
             aria-label="View Real Cases & Clinical Results"
           >
-            {/* RIGHT SIDE: Real Patient Cases 2x2 Photo Collage */}
+            {/* RIGHT SIDE: Real Patient Cases Photo (605140313_1292108829603090_8285101247393558491_n..jpg) */}
             <div style={{
               position: 'absolute',
               top: 0,
@@ -40,27 +40,17 @@ export default function BentoHero({ onOpenBooking }) {
               pointerEvents: 'none',
               overflow: 'hidden',
             }}>
-              {/* 2x2 grid collage of real before-after patient cases */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gridTemplateRows: '1fr 1fr',
-                width: '100%',
-                height: '100%',
-                opacity: 0.9,
-                filter: 'contrast(1.08) brightness(0.95)',
-              }}>
-                <img src="/media/fungal-infection-before-after.jpg" alt="Skin Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <img src="/media/psoriasis-arm-before-after.jpg" alt="Psoriasis Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <img src="/media/vitiligo-before-after.jpg" alt="Vitiligo Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <img src="/media/hair-regrowth-before-after.jpg" alt="Alopecia Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
+              <img 
+                src="/assets/client_photos/real_cases_real_healing_bg.jpg" 
+                alt="Real Cases Real Healing Patient Transformation" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9, filter: 'contrast(1.05) brightness(0.95)' }} 
+              />
 
               {/* Smooth Left-to-Right Horizontal Gradient: Solid Navy on Left -> Clear Photo on Right */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to right, #0b1329 0%, rgba(11, 19, 41, 0.92) 20%, rgba(11, 19, 41, 0.45) 55%, transparent 100%)'
+                background: 'linear-gradient(to right, #0b1329 0%, rgba(11, 19, 41, 0.90) 20%, rgba(11, 19, 41, 0.40) 60%, transparent 100%)'
               }} />
             </div>
 

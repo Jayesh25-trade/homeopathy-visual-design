@@ -102,6 +102,60 @@ export default function Treatments({ onOpenBooking }) {
           ))}
         </div>
 
+        {/* =========================================================
+           IN-HOUSE AUTHENTIC PHARMACY & REMEDY PREPARATION
+           ========================================================= */}
+        <div style={{
+          marginTop: '3.5rem',
+          padding: '2.2rem',
+          background: '#ffffff',
+          borderRadius: 'var(--radius-lg)',
+          border: '1px solid rgba(16, 185, 129, 0.2)',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.04)'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.2rem' }}>
+            <div>
+              <span className="badge badge-emerald" style={{ marginBottom: '0.4rem' }}>In-House Pharmacy</span>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--primary-dark)', margin: 0 }}>
+                Authentic German &amp; Standardised Remedy Dispensary
+              </h3>
+            </div>
+            <span style={{ fontSize: '0.86rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+              100% Pure · Individualised Potencies · Direct Preparation
+            </span>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            
+            {/* Pharmacy Photo 1: Glass Dilutions (IMG_0716.JPEG) */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)' }}>
+              <img 
+                src="/assets/client_photos/IMG_0716.JPEG" 
+                alt="Homoeopathic Glass Remedy Dilution Bottles" 
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '0.75rem 1rem', background: '#fdfbf7' }}>
+                <strong style={{ fontSize: '0.88rem', color: 'var(--primary-dark)' }}>Pure Homoeopathic Dilutions</strong>
+                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>Sealed, high-potency remedies sourced from certified homoeopathic pharmacopoeias.</p>
+              </div>
+            </div>
+
+            {/* Pharmacy Photo 2: Preparation Counter (IMG_0718.JPEG) */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)' }}>
+              <img 
+                src="/assets/client_photos/IMG_0718.JPEG" 
+                alt="Homoeopathic Medicine Preparation Counter" 
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '0.75rem 1rem', background: '#fdfbf7' }}>
+                <strong style={{ fontSize: '0.88rem', color: 'var(--primary-dark)' }}>Custom Dose Preparation</strong>
+                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>Hand-dispensed medicated globule vials tailored specifically for each patient's case.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* Treatment Detail Modal */}
         {selectedTreatment && (
           <div className="modal-overlay" onClick={() => setSelectedTreatment(null)}>

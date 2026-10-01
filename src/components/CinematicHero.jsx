@@ -107,7 +107,7 @@ export default function CinematicHero() {
       {/* Screen Content Container */}
       <div className="screen-inner">
         <div className="screen-copy">
-          {/* Brand Flower Symbol */}
+          {/* Brand Flower Emblem Logo */}
           <div className="screen-logo">
             <img
               src="/assets/somani-logo-flower.png"

@@ -65,11 +65,11 @@ export default function ChapterConsultation({ onOpenBooking }) {
             fontSize: '1.02rem',
             lineHeight: 1.75,
             textAlign: 'left',
-            background: '#ffffff',
+            background: '#faf6ee',
             padding: '2rem 2.25rem',
             borderRadius: 'var(--radius-lg)',
-            border: '1px solid rgba(14, 14, 12, 0.12)',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+            border: '1px solid rgba(14, 14, 12, 0.14)',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.1rem'
@@ -95,10 +95,10 @@ export default function ChapterConsultation({ onOpenBooking }) {
             <div
               key={idx}
               style={{
-                background: '#ffffff',
+                background: '#faf6ee',
                 padding: '1.75rem 1.5rem',
                 borderRadius: 'var(--radius-lg)',
-                border: '1px solid rgba(14, 14, 12, 0.12)',
+                border: '1px solid rgba(14, 14, 12, 0.14)',
                 boxShadow: '0 8px 24px rgba(0,0,0,0.04)',
                 position: 'relative',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease'

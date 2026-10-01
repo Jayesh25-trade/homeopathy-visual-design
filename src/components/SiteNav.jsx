@@ -87,9 +87,9 @@ export default function SiteNav({ onOpenBooking }) {
               src="/assets/somani-logo-horizontal.png" 
               alt="Dr Somani's Homoeopathy Logo" 
               style={{ 
-                height: '44px', 
+                height: 'clamp(36px, 5vw, 44px)', 
                 width: 'auto', 
-                maxWidth: '220px',
+                maxWidth: 'clamp(160px, 48vw, 220px)',
                 objectFit: 'contain',
                 display: 'block' 
               }}

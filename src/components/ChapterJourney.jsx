@@ -169,6 +169,63 @@ export default function ChapterJourney({ onOpenBooking }) {
           ))}
         </div>
 
+        {/* Real Clinic Environment Showcase */}
+        <div style={{
+          marginBottom: '3rem',
+          padding: '2rem',
+          background: '#faf6ee',
+          borderRadius: 'var(--radius-lg)',
+          border: '1px solid rgba(14, 14, 12, 0.14)',
+          boxShadow: 'var(--shadow-sm)'
+        }}>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--navy)', marginBottom: '1.25rem', textAlign: 'center' }}>
+            A Peaceful, Unhurried Healing Environment
+          </h3>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+            
+            {/* Consultation Desk (IMG_0768.JPEG) */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.1)' }}>
+              <img 
+                src="/assets/client_photos/IMG_0768.JPEG" 
+                alt="Doctor Consultation Interaction" 
+                style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '0.65rem 0.85rem', background: '#f2ece0' }}>
+                <strong style={{ fontSize: '0.84rem', color: 'var(--navy)' }}>Attentive Consultation</strong>
+                <p style={{ fontSize: '0.76rem', color: 'var(--muted)', margin: 0 }}>Detailed history taking &amp; compassionate listening</p>
+              </div>
+            </div>
+
+            {/* Consultation Room Setup (IMG_0696.JPEG) */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.1)' }}>
+              <img 
+                src="/assets/client_photos/IMG_0696.JPEG" 
+                alt="Private Consultation Desk Room Setup" 
+                style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '0.65rem 0.85rem', background: '#f2ece0' }}>
+                <strong style={{ fontSize: '0.84rem', color: 'var(--navy)' }}>Private Consultation Space</strong>
+                <p style={{ fontSize: '0.76rem', color: 'var(--muted)', margin: 0 }}>Clean, modern &amp; confidential room setup</p>
+              </div>
+            </div>
+
+            {/* Patient Lounge (IMG_0720.JPEG) */}
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.1)' }}>
+              <img 
+                src="/assets/client_photos/IMG_0720.JPEG" 
+                alt="Clinic Patient Waiting Lounge" 
+                style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '0.65rem 0.85rem', background: '#f2ece0' }}>
+                <strong style={{ fontSize: '0.84rem', color: 'var(--navy)' }}>Comfortable Waiting Lounge</strong>
+                <p style={{ fontSize: '0.76rem', color: 'var(--muted)', margin: 0 }}>Warm reception seating for patients &amp; families</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* Action Button */}
         <div style={{ textAlign: 'center' }}>
           <button 

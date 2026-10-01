@@ -3251,16 +3251,20 @@ ul, ol { list-style: none; }
   padding-top: 0;
 }
 .screen-logo {
-  width: clamp(100px, 12vw, 150px);
+  width: clamp(100px, 16vw, 140px);
   margin: 0 auto 0.75rem;
   opacity: 0;
   overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .screen-logo img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 .screen-badge {
   display: inline-flex;
@@ -3359,7 +3363,7 @@ ul, ol { list-style: none; }
   .somani-screen { min-height: 100vh; min-height: 100svh; }
   .screen-inner { width: calc(100% - 28px); padding: 16px 0 36px 0; }
   .screen-wash { background: radial-gradient(circle at center, rgba(250, 246, 238, 0.78) 0%, rgba(250, 246, 238, 0.92) 65%, rgba(250, 246, 238, 0.96) 100%); }
-  .screen-logo { width: clamp(80px, 22vw, 110px); margin-bottom: 0.5rem; }
+  .screen-logo { width: clamp(88px, 22vw, 115px); margin-bottom: 0.6rem; }
   .screen-badge { font-size: 0.72rem; padding: 4px 12px; margin-bottom: 0.6rem; max-width: 95%; text-align: center; }
   .screen-think { font-size: clamp(38px, 6.5vh, 64px); line-height: 0.92; margin-bottom: 2px; }
   .screen-home { font-size: clamp(42px, 7.5vh, 72px); line-height: 1.02; }
@@ -3384,7 +3388,7 @@ ul, ol { list-style: none; }
     justify-content: center;
   }
   .screen-copy { width: 100%; }
-  .screen-logo { width: 88px; margin-bottom: 14px; }
+  .screen-logo { width: clamp(88px, 22vw, 115px); margin-bottom: 12px; }
   .screen-badge { min-height: 34px; margin-bottom: 18px; padding: 7px 12px; font-size: .69rem; line-height: 1.25; }
   .screen-think { font-size: 2.55rem; line-height: 1; }
   .screen-home { font-size: 3.05rem; line-height: 1; }

@@ -57,7 +57,9 @@ export const doctors = [
     generation: "Second Generation",
     regNo: "82170",
     experience: "Second Generation Physician",
-    portrait: "/assets/dr-kushal-somani.jpg",
+    portrait: "/assets/client_photos/IMG_0680.JPG.jpeg",
+    secondaryPortrait: "/assets/client_photos/IMG_0687.JPG.jpeg",
+    deskPortrait: "/assets/client_photos/IMG_0686.JPG.jpeg",
     introduction: "Carrying forward a legacy of care, with a modern and holistic approach. Dr. Kushal Somani is a second-generation Homoeopathic physician continuing the legacy of Dr. Antim Somani. He completed his medical education at Dhondumama Sathe Homoeopathic Medical College, Pune and is now based in Pune, where he is passionate about providing personalised care and building meaningful, long-term relationships with his patients. With a special interest in mental health and emotional well-being, Dr. Kushal is known for his calm, composed and approachable nature, helping patients feel comfortable sharing their concerns. His practice focuses on understanding each individual’s emotional and physical health needs through a holistic perspective. Alongside his clinical practice, Dr. Kushal has extended his reach through online consultations, helping patients across India and internationally. He also contributes to health education and community awareness by conducting sessions for corporate professionals in Pune on general Homoeopathic awareness and for teenagers on mental health, emotional well-being, personal growth and holistic development.",
     interests: [
       "Mental Health Care",
