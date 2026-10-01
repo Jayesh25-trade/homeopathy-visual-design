@@ -125,6 +125,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
   return (
     <section
       id="cases"
+      className="clinical-cases"
       style={{
         background: 'var(--bg)',
         padding: 'clamp(36px, 5vw, 80px) 0',
@@ -185,7 +186,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
       <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
         
         {/* SECTION HEADER */}
-        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 28px auto' }}>
+        <div className="clinical-cases__header" style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 28px auto' }}>
           
           {/* Eyebrow */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
@@ -343,7 +344,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       fontWeight: 500,
                     }}
                   >
-                    <span style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 700 }}>â€¢</span>
+                    <span aria-hidden="true" style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 700 }}>•</span>
                     {item.treatment}
                   </span>
                 </div>
@@ -451,7 +452,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       zIndex: 3,
                     }}
                   >
-                    â€º
+                    ›
                   </div>
                 </div>
 
@@ -503,7 +504,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     >
                       {t('common.readMore')}
                       <span className="arrow-icon" style={{ transition: 'transform 0.2s ease', display: 'inline-block' }}>
-                        â†’
+                        →
                       </span>
                     </button>
                   </div>
@@ -722,7 +723,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   Doctor: <strong>{selectedCase.doctor}</strong>
                 </span>
                 <span className="mono" style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 600 }}>
-                  âœ“ {t('trust.safe')}
+                   ✓ {t('trust.safe')}
                 </span>
               </div>
             </div>
@@ -759,7 +760,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                   cursor: 'pointer',
                 }}
               >
-                {t('nav.bookBtn')} â†’
+                 {t('nav.bookBtn')} →
               </button>
             </div>
 
@@ -803,7 +804,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
             scroll-snap-align: center !important;
           }
           .filters-scroll-track {
-            justify.content: flex-start !important;
+            justify-content: flex-start !important;
             padding-left: 4px !important;
           }
         }

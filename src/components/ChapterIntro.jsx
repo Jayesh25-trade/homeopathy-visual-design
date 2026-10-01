@@ -5,6 +5,7 @@ export default function ChapterIntro({ onOpenBooking }) {
   return (
     <section
       id="treatments"
+      className="clinic-intro"
       style={{
         backgroundColor: '#f7f4ed',
         backgroundImage: 'radial-gradient(#dcd5c7 0.8px, transparent 0.8px)',
@@ -17,7 +18,7 @@ export default function ChapterIntro({ onOpenBooking }) {
       aria-label="Specialized Treatment & About Dr Somani's Homoeopathy"
     >
       <div className="container">
-        <div style={{
+        <div className="clinic-intro__card" style={{
           maxWidth: '920px',
           margin: '0 auto',
           background: '#fdfbf7',
@@ -28,7 +29,7 @@ export default function ChapterIntro({ onOpenBooking }) {
           position: 'relative'
         }}>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
+          <div className="clinic-intro__meta" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
             <span style={{
               fontFamily: "'Special Elite', monospace",
               fontSize: '0.78rem',
@@ -47,7 +48,7 @@ export default function ChapterIntro({ onOpenBooking }) {
             </span>
           </div>
 
-          <h2 style={{
+          <h2 className="clinic-intro__title" style={{
             fontSize: 'clamp(1.85rem, 3.8vw, 3rem)',
             color: '#1c2621',
             fontFamily: "'Special Elite', monospace",
@@ -58,7 +59,7 @@ export default function ChapterIntro({ onOpenBooking }) {
             Compassionate, root-cause healing for over two decades.
           </h2>
 
-          <div style={{
+          <div className="clinic-intro__copy" style={{
             width: '180px',
             height: '8px',
             borderTop: '3px solid #d94838',
@@ -92,7 +93,7 @@ export default function ChapterIntro({ onOpenBooking }) {
             </p>
           </div>
 
-          <div style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+          <div className="clinic-intro__actions" style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
             <button className="btn-primary" onClick={onOpenBooking}>
               Book a Consultation →
             </button>
