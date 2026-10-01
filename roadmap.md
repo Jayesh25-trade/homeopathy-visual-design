@@ -9,3 +9,4 @@
 - [x] Remove theme switching and standardise text contrast in one professional visual theme.
 - [x] Save validated consultation requests securely before offering WhatsApp follow-up.
 - [x] Refine the mobile header, opening composition, care selector spacing, and practice timeline alignment.
+- [ ] Polish mobile alignment, text spacing, and box finishing without changing the existing design direction.
