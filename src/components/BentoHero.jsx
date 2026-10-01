@@ -56,10 +56,6 @@ export default function BentoHero({ onOpenBooking }) {
 
             {/* LEFT SIDE: Pure Solid Navy Text Panel */}
             <div style={{ position: 'relative', zIndex: 2, maxWidth: '58%' }}>
-              <div className="badge badge-red" style={{ marginBottom: '0.85rem', display: 'inline-flex', boxShadow: '0 2px 8px rgba(220,38,38,0.3)' }}>
-                5.0 Rating · 51,489+ Satisfied Patients
-              </div>
-
               <h2 style={{
                 color: '#ffffff',
                 fontSize: 'clamp(1.65rem, 3vw, 2.5rem)',
