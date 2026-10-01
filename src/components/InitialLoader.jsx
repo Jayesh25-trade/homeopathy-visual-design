@@ -1,8 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function InitialLoader({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }
+  }, []);
 
   useEffect(() => {
     // Prevent scrolling while loading screen is active
@@ -69,6 +80,7 @@ export default function InitialLoader({ onComplete }) {
           className="screen-poster"
         />
         <video
+          ref={videoRef}
           className="screen-video"
           autoPlay
           muted

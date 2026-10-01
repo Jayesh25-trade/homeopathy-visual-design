@@ -9,7 +9,16 @@ export default function CinematicHero() {
   useEffect(() => {
     const screen = screenRef.current;
     const video = videoRef.current;
-    if (!screen || !video) return;
+
+    if (video) {
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }
+
+    if (!screen) return;
 
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (media.matches) {
