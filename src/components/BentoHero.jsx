@@ -185,7 +185,7 @@ export default function BentoHero({ onOpenBooking }) {
               className="bento-card" 
               style={{
                 position: 'relative',
-                background: 'var(--white)',
+                color: '#ffffff',
                 padding: '1.25rem',
                 minHeight: '200px',
                 overflow: 'hidden'
@@ -193,12 +193,16 @@ export default function BentoHero({ onOpenBooking }) {
               aria-label="Specialized Treatment"
             >
               {/* Client Photo Ambient Background (IMG_0734 - Philosophy Board) */}
-              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '50%', opacity: 0.22, zIndex: 1, pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0734.JPEG" 
                   alt="Every person is Unique Philosophy" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.28, filter: 'contrast(1.05)' }}
                 />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(135deg, rgba(15, 30, 54, 0.93) 0%, rgba(24, 48, 80, 0.86) 100%)'
+                }} />
               </div>
 
               <div style={{
@@ -206,69 +210,53 @@ export default function BentoHero({ onOpenBooking }) {
                 display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
                 marginBottom: '0.75rem'
               }}>
-                <span className="badge badge-ocean">
+                <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.18)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
                   Root-Cause Care
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'var(--bg)', display: 'flex',
+                  background: 'rgba(255,255,255,0.25)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
-                  color: 'var(--navy)'
+                  color: '#ffffff'
                 }}>
                   →
                 </div>
               </div>
 
               <div style={{ position: 'relative', zIndex: 2 }}>
-                <h3 style={{ fontSize: '1.35rem', color: 'var(--navy)', marginBottom: '0.35rem' }}>
+                <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginBottom: '0.35rem' }}>
                   Specialized Treatment
                 </h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
+                <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
                   Individualised formulas engineered for lasting wellness without side effects.
                 </p>
-                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--ocean)' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                   Our Approach →
                 </span>
               </div>
             </a>
 
             {/* -------------------------------------------------------
-               BLOCK 4: OUR CLINICS (Fourth Position - Spans Wide)
+               BLOCK 4: OUR CLINICS (Fourth Position - Spans Wide Full Card)
                ------------------------------------------------------- */}
             <a 
               href="#locations" 
               className="bento-card" 
               style={{
                 gridColumn: '1 / -1',
-                background: 'var(--white)',
-                minHeight: '160px',
-                display: 'grid',
-                gridTemplateColumns: '1fr 1.1fr'
+                position: 'relative',
+                color: '#ffffff',
+                minHeight: '180px',
+                padding: '1.35rem 1.5rem',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
               }}
               aria-label="View Our Clinics"
             >
-              {/* Left Details */}
-              <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <span className="badge badge-ocean" style={{ marginBottom: '0.5rem' }}>
-                    Wakad, Pune & Jalgaon
-                  </span>
-                  <h3 style={{ fontSize: '1.25rem', color: 'var(--navy)', marginBottom: '0.25rem' }}>
-                    Our Clinics
-                  </h3>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.4 }}>
-                    Modern clinics with in-person & global online video consultations.
-                  </p>
-                </div>
-                <div style={{ marginTop: '0.75rem' }}>
-                  <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--red)' }}>
-                    Find Nearest Clinic →
-                  </span>
-                </div>
-              </div>
-
-              {/* Right Interior Photo (IMG_0756 - Real Wakad Building Exterior or IMG_0696 Consultation Cabin) */}
-              <div style={{ position: 'relative', overflow: 'hidden' }}>
+              {/* Client Photo Full Ambient Background (IMG_0756 - Real Wakad Building Exterior) */}
+              <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0756.JPEG" 
                   alt="Dr Somani Clinic Wakad Building Exterior" 
@@ -276,9 +264,73 @@ export default function BentoHero({ onOpenBooking }) {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    objectPosition: 'center'
+                    objectPosition: 'center 35%',
+                    opacity: 0.32,
+                    filter: 'contrast(1.1) brightness(0.85)'
                   }}
                 />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.94) 0%, rgba(20, 33, 61, 0.88) 55%, rgba(28, 45, 79, 0.92) 100%)'
+                }} />
+              </div>
+
+              {/* Card Top Row Header */}
+              <div style={{
+                position: 'relative', zIndex: 2,
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                flexWrap: 'nowrap', gap: '0.75rem', marginBottom: '0.5rem'
+              }}>
+                <span className="badge" style={{
+                  background: 'rgba(255, 255, 255, 0.18)',
+                  color: '#ffffff',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  whiteSpace: 'nowrap',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '4px 12px',
+                  fontSize: '0.78rem',
+                  fontWeight: 600,
+                  borderRadius: '9999px'
+                }}>
+                  Wakad, Pune &amp; Jalgaon
+                </span>
+
+                <div style={{
+                  width: '32px', height: '32px', borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.25)', display: 'flex',
+                  alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
+                  color: '#ffffff', flexShrink: 0
+                }}>
+                  →
+                </div>
+              </div>
+
+              {/* Card Body & CTA */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <h3 style={{
+                  color: '#ffffff',
+                  fontSize: 'clamp(1.25rem, 2.2vw, 1.5rem)',
+                  fontFamily: 'var(--font-serif)',
+                  fontWeight: 400,
+                  marginBottom: '0.3rem'
+                }}>
+                  Our Clinics
+                </h3>
+                <p style={{
+                  color: 'rgba(255, 255, 255, 0.88)',
+                  fontSize: 'clamp(0.82rem, 1.2vw, 0.9rem)',
+                  lineHeight: 1.45,
+                  maxWidth: '480px',
+                  marginBottom: '0.85rem'
+                }}>
+                  Modern physical clinics with in-person care &amp; global online video consultations.
+                </p>
+                <div>
+                  <span className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    Find Nearest Clinic →
+                  </span>
+                </div>
               </div>
             </a>
 
