@@ -97,7 +97,6 @@ export default function CinematicHero() {
           aria-hidden="true"
         >
           <source src="/assets/somani-flowers-sky.webm" type="video/webm" />
-          <source src="/assets/think_homeopathy_loop_1080p.mp4" type="video/mp4" />
         </video>
       </div>
 
