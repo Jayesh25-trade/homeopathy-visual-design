@@ -29,7 +29,7 @@ export default function BentoHero({ onOpenBooking }) {
             }}
             aria-label="View Real Cases & Clinical Results"
           >
-            {/* Ambient Low-Opacity Patient Cases Collage Background */}
+            {/* Ambient Clear Patient Cases Collage Background */}
             <div style={{
               position: 'absolute',
               inset: 0,
@@ -37,16 +37,16 @@ export default function BentoHero({ onOpenBooking }) {
               pointerEvents: 'none',
               overflow: 'hidden',
             }}>
-              {/* Subtle 2x2 grid collage of real before-after patient cases with low opacity */}
+              {/* 2x2 grid collage of real before-after patient cases with high clarity */}
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gridTemplateRows: '1fr 1fr',
                 width: '100%',
                 height: '100%',
-                opacity: 0.25,
-                filter: 'grayscale(20%) contrast(1.1)',
-                transform: 'scale(1.05)'
+                opacity: 0.72,
+                filter: 'contrast(1.1) brightness(0.9)',
+                transform: 'scale(1.03)'
               }}>
                 <img src="/media/fungal-infection-before-after.jpg" alt="Skin Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <img src="/media/psoriasis-arm-before-after.jpg" alt="Psoriasis Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -54,17 +54,17 @@ export default function BentoHero({ onOpenBooking }) {
                 <img src="/media/hair-regrowth-before-after.jpg" alt="Alopecia Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
 
-              {/* Dark Overlay Gradient to guarantee 100% text readability */}
+              {/* Balanced Dark Overlay Gradient to guarantee 100% text readability while keeping photos clearly visible */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(135deg, rgba(20, 33, 61, 0.94) 0%, rgba(28, 45, 79, 0.88) 55%, rgba(13, 27, 42, 0.96) 100%)'
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(20, 33, 61, 0.58) 55%, rgba(13, 27, 42, 0.75) 100%)'
               }} />
             </div>
 
             {/* Card Content Header */}
             <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
-              <div className="badge badge-red" style={{ marginBottom: '0.85rem' }}>
+              <div className="badge badge-red" style={{ marginBottom: '0.85rem', boxShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
                 5.0 Rating · 51,489+ Satisfied Patients
               </div>
 
@@ -74,33 +74,36 @@ export default function BentoHero({ onOpenBooking }) {
                 fontFamily: 'var(--font-serif)',
                 fontWeight: 400,
                 lineHeight: 1.15,
-                marginBottom: '0.65rem'
+                marginBottom: '0.65rem',
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.85)'
               }}>
                 Real Cases.<br />Real Healing.
               </h2>
 
               <p style={{
-                color: 'rgba(255, 255, 255, 0.88)',
+                color: '#ffffff',
                 fontSize: 'clamp(0.85rem, 1.2vw, 0.96rem)',
                 lineHeight: 1.5,
                 marginBottom: '1rem',
-                maxWidth: '360px'
+                maxWidth: '360px',
+                textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
+                fontWeight: 500
               }}>
                 "Documented classical homeopathic treatments for chronic skin, hair, and lifestyle conditions — proven by real clinical recovery."
               </p>
 
               {/* Case Category Pills */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255,255,255,0.35)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600, backdropFilter: 'blur(4px)' }}>
                   Skin Fungal
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255,255,255,0.35)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600, backdropFilter: 'blur(4px)' }}>
                   Psoriasis
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255,255,255,0.35)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600, backdropFilter: 'blur(4px)' }}>
                   Vitiligo
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(15, 23, 42, 0.65)', border: '1px solid rgba(255,255,255,0.35)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600, backdropFilter: 'blur(4px)' }}>
                   Hair Loss
                 </span>
               </div>
@@ -108,7 +111,7 @@ export default function BentoHero({ onOpenBooking }) {
 
             {/* Bottom Action Pill */}
             <div style={{ position: 'relative', zIndex: 2, marginTop: 'auto' }}>
-              <span className="btn-primary" style={{ padding: '0.6rem 1.35rem', fontSize: '0.86rem' }}>
+              <span className="btn-primary" style={{ padding: '0.6rem 1.35rem', fontSize: '0.86rem', boxShadow: '0 4px 14px rgba(0,0,0,0.4)' }}>
                 Read Verified Cases →
               </span>
             </div>
@@ -134,16 +137,16 @@ export default function BentoHero({ onOpenBooking }) {
               }}
               aria-label="Explore Area of Services"
             >
-              {/* Client Photo Ambient Background (IMG_0715 - Pharmacy Remedy Shelves) */}
+              {/* Client Photo Visible Background (IMG_0715 - Pharmacy Remedy Shelves) */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
                 <img 
                   src="/assets/client_photos/IMG_0715.JPEG" 
                   alt="Area of Services Remedies" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35, filter: 'brightness(0.7)' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.72, filter: 'contrast(1.05) brightness(0.9)' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(135deg, rgba(20, 33, 61, 0.92) 0%, rgba(31, 78, 121, 0.85) 100%)'
+                  background: 'linear-gradient(135deg, rgba(15, 30, 54, 0.74) 0%, rgba(24, 48, 80, 0.52) 100%)'
                 }} />
               </div>
 
@@ -152,26 +155,27 @@ export default function BentoHero({ onOpenBooking }) {
                 display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
                 marginBottom: '0.75rem'
               }}>
-                <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.18)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}>
+                <span className="badge badge-ocean" style={{ background: 'rgba(15, 23, 42, 0.65)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(4px)' }}>
                   50+ Conditions
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.25)', display: 'flex',
-                  alignItems: 'center', justifyContent: 'center', fontSize: '1rem'
+                  background: 'rgba(15, 23, 42, 0.6)', display: 'flex',
+                  alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
+                  border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(4px)'
                 }}>
                   →
                 </div>
               </div>
 
               <div style={{ position: 'relative', zIndex: 2 }}>
-                <h3 style={{ color: '#ffffff', fontSize: '1.35rem', marginBottom: '0.35rem' }}>
+                <h3 style={{ color: '#ffffff', fontSize: '1.35rem', marginBottom: '0.35rem', textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
                   Area of Services
                 </h3>
-                <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
+                <p style={{ color: '#ffffff', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem', textShadow: '0 2px 6px rgba(0,0,0,0.9)', fontWeight: 500 }}>
                   Holistic care for skin, allergies, PCOD, paediatric & chronic health.
                 </p>
-                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
                   Explore All Services →
                 </span>
               </div>
@@ -192,16 +196,16 @@ export default function BentoHero({ onOpenBooking }) {
               }}
               aria-label="Specialized Treatment"
             >
-              {/* Client Photo Ambient Background (IMG_0734 - Philosophy Board) */}
+              {/* Client Photo Visible Background (IMG_0734 - Philosophy Board) */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0734.JPEG" 
                   alt="Every person is Unique Philosophy" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.28, filter: 'contrast(1.05)' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.72, filter: 'contrast(1.05) brightness(0.9)' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(135deg, rgba(15, 30, 54, 0.93) 0%, rgba(24, 48, 80, 0.86) 100%)'
+                  background: 'linear-gradient(135deg, rgba(15, 30, 54, 0.74) 0%, rgba(24, 48, 80, 0.54) 100%)'
                 }} />
               </div>
 
@@ -210,27 +214,27 @@ export default function BentoHero({ onOpenBooking }) {
                 display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
                 marginBottom: '0.75rem'
               }}>
-                <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.18)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
+                <span className="badge badge-ocean" style={{ background: 'rgba(15, 23, 42, 0.65)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', backdropFilter: 'blur(4px)' }}>
                   Root-Cause Care
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.25)', display: 'flex',
+                  background: 'rgba(15, 23, 42, 0.6)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
-                  color: '#ffffff'
+                  color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(4px)'
                 }}>
                   →
                 </div>
               </div>
 
               <div style={{ position: 'relative', zIndex: 2 }}>
-                <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginBottom: '0.35rem' }}>
+                <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginBottom: '0.35rem', textShadow: '0 2px 8px rgba(0,0,0,0.85)' }}>
                   Specialized Treatment
                 </h3>
-                <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
+                <p style={{ color: '#ffffff', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem', textShadow: '0 2px 6px rgba(0,0,0,0.9)', fontWeight: 500 }}>
                   Individualised formulas engineered for lasting wellness without side effects.
                 </p>
-                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
                   Our Approach →
                 </span>
               </div>
@@ -255,7 +259,7 @@ export default function BentoHero({ onOpenBooking }) {
               }}
               aria-label="View Our Clinics"
             >
-              {/* Client Photo Full Ambient Background (IMG_0756 - Real Wakad Building Exterior) */}
+              {/* Client Photo Visible Background (IMG_0756 - Real Wakad Building Exterior) */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0756.JPEG" 
@@ -265,13 +269,13 @@ export default function BentoHero({ onOpenBooking }) {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center 35%',
-                    opacity: 0.32,
-                    filter: 'contrast(1.1) brightness(0.85)'
+                    opacity: 0.78,
+                    filter: 'contrast(1.05) brightness(0.9)'
                   }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.94) 0%, rgba(20, 33, 61, 0.88) 55%, rgba(28, 45, 79, 0.92) 100%)'
+                  background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.78) 0%, rgba(20, 33, 61, 0.55) 55%, rgba(28, 45, 79, 0.65) 100%)'
                 }} />
               </div>
 
@@ -282,25 +286,26 @@ export default function BentoHero({ onOpenBooking }) {
                 flexWrap: 'nowrap', gap: '0.75rem', marginBottom: '0.5rem'
               }}>
                 <span className="badge" style={{
-                  background: 'rgba(255, 255, 255, 0.18)',
+                  background: 'rgba(15, 23, 42, 0.65)',
                   color: '#ffffff',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  border: '1px solid rgba(255, 255, 255, 0.4)',
                   whiteSpace: 'nowrap',
                   display: 'inline-flex',
                   alignItems: 'center',
                   padding: '4px 12px',
                   fontSize: '0.78rem',
                   fontWeight: 600,
-                  borderRadius: '9999px'
+                  borderRadius: '9999px',
+                  backdropFilter: 'blur(4px)'
                 }}>
                   Wakad, Pune &amp; Jalgaon
                 </span>
 
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.25)', display: 'flex',
+                  background: 'rgba(15, 23, 42, 0.6)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
-                  color: '#ffffff', flexShrink: 0
+                  color: '#ffffff', flexShrink: 0, border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(4px)'
                 }}>
                   →
                 </div>
@@ -313,21 +318,24 @@ export default function BentoHero({ onOpenBooking }) {
                   fontSize: 'clamp(1.25rem, 2.2vw, 1.5rem)',
                   fontFamily: 'var(--font-serif)',
                   fontWeight: 400,
-                  marginBottom: '0.3rem'
+                  marginBottom: '0.3rem',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.85)'
                 }}>
                   Our Clinics
                 </h3>
                 <p style={{
-                  color: 'rgba(255, 255, 255, 0.88)',
+                  color: '#ffffff',
                   fontSize: 'clamp(0.82rem, 1.2vw, 0.9rem)',
                   lineHeight: 1.45,
                   maxWidth: '480px',
-                  marginBottom: '0.85rem'
+                  marginBottom: '0.85rem',
+                  textShadow: '0 2px 6px rgba(0,0,0,0.9)',
+                  fontWeight: 500
                 }}>
                   Modern physical clinics with in-person care &amp; global online video consultations.
                 </p>
                 <div>
-                  <span className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <span className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px', boxShadow: '0 4px 12px rgba(0,0,0,0.4)' }}>
                     Find Nearest Clinic →
                   </span>
                 </div>
