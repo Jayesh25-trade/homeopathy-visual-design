@@ -21,7 +21,7 @@ export default function BentoHero({ onOpenBooking }) {
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              justify: 'space-between',
+              justifyContent: 'space-between',
               padding: 'clamp(1.25rem, 3vw, 2rem)',
               background: 'linear-gradient(135deg, #14213d 0%, #1c2d4f 60%, #0d1b2a 100%)',
               color: '#ffffff',
@@ -29,34 +29,41 @@ export default function BentoHero({ onOpenBooking }) {
             }}
             aria-label="View Real Cases & Clinical Results"
           >
-            {/* Background Botanical & Clinical Visual Bleed */}
+            {/* Ambient Low-Opacity Patient Cases Collage Background */}
             <div style={{
               position: 'absolute',
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: '58%',
-              overflow: 'hidden',
+              inset: 0,
               zIndex: 1,
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              overflow: 'hidden',
             }}>
-              <img 
-                src="/assets/homeopathy_hero_ambient.png" 
-                alt="Natural Homeopathic Healing" 
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'right center',
-                  opacity: 0.82,
-                  maskImage: 'linear-gradient(to right, transparent 0%, black 40%)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 40%)'
-                }}
-              />
+              {/* Subtle 2x2 grid collage of real before-after patient cases with low opacity */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gridTemplateRows: '1fr 1fr',
+                width: '100%',
+                height: '100%',
+                opacity: 0.25,
+                filter: 'grayscale(20%) contrast(1.1)',
+                transform: 'scale(1.05)'
+              }}>
+                <img src="/media/fungal-infection-before-after.jpg" alt="Skin Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/media/psoriasis-arm-before-after.jpg" alt="Psoriasis Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/media/vitiligo-before-after.jpg" alt="Vitiligo Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/media/hair-regrowth-before-after.jpg" alt="Alopecia Case" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+
+              {/* Dark Overlay Gradient to guarantee 100% text readability */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(135deg, rgba(20, 33, 61, 0.94) 0%, rgba(28, 45, 79, 0.88) 55%, rgba(13, 27, 42, 0.96) 100%)'
+              }} />
             </div>
 
             {/* Card Content Header */}
-            <div style={{ position: 'relative', zIndex: 2, maxWidth: '64%' }}>
+            <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
               <div className="badge badge-red" style={{ marginBottom: '0.85rem' }}>
                 5.0 Rating · 51,489+ Satisfied Patients
               </div>
@@ -77,23 +84,23 @@ export default function BentoHero({ onOpenBooking }) {
                 fontSize: 'clamp(0.85rem, 1.2vw, 0.96rem)',
                 lineHeight: 1.5,
                 marginBottom: '1rem',
-                maxWidth: '340px'
+                maxWidth: '360px'
               }}>
                 "Documented classical homeopathic treatments for chronic skin, hair, and lifestyle conditions — proven by real clinical recovery."
               </p>
 
               {/* Case Category Pills */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', padding: '3px 9px', borderRadius: '9999px', color: '#e2e8f0', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
                   Skin Fungal
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', padding: '3px 9px', borderRadius: '9999px', color: '#e2e8f0', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
                   Psoriasis
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', padding: '3px 9px', borderRadius: '9999px', color: '#e2e8f0', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
                   Vitiligo
                 </span>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', padding: '3px 9px', borderRadius: '9999px', color: '#e2e8f0', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', padding: '3px 10px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
                   Hair Loss
                 </span>
               </div>
@@ -127,12 +134,12 @@ export default function BentoHero({ onOpenBooking }) {
               }}
               aria-label="Explore Area of Services"
             >
-              {/* Background Medical Media Photo Bleed */}
+              {/* Client Photo Ambient Background (IMG_0715 - Pharmacy Remedy Shelves) */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
                 <img 
-                  src="/assets/conditions/skin-care.jpg" 
-                  alt="Area of Services" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }}
+                  src="/assets/client_photos/IMG_0715.JPEG" 
+                  alt="Area of Services Remedies" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35, filter: 'brightness(0.7)' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
@@ -185,11 +192,11 @@ export default function BentoHero({ onOpenBooking }) {
               }}
               aria-label="Specialized Treatment"
             >
-              {/* Background Remedy Image Bleed */}
-              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '45%', opacity: 0.25, zIndex: 1 }}>
+              {/* Client Photo Ambient Background (IMG_0734 - Philosophy Board) */}
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '50%', opacity: 0.22, zIndex: 1, pointerEvents: 'none' }}>
                 <img 
-                  src="/assets/remedy_globules_paper.png" 
-                  alt="Natural Remedies" 
+                  src="/assets/client_photos/IMG_0734.JPEG" 
+                  alt="Every person is Unique Philosophy" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
@@ -260,11 +267,11 @@ export default function BentoHero({ onOpenBooking }) {
                 </div>
               </div>
 
-              {/* Right Interior Photo */}
+              {/* Right Interior Photo (IMG_0756 - Real Wakad Building Exterior or IMG_0696 Consultation Cabin) */}
               <div style={{ position: 'relative', overflow: 'hidden' }}>
                 <img 
-                  src="/assets/clinic-reception.jpg" 
-                  alt="Dr Somani Clinic Reception" 
+                  src="/assets/client_photos/IMG_0756.JPEG" 
+                  alt="Dr Somani Clinic Wakad Building Exterior" 
                   style={{
                     width: '100%',
                     height: '100%',
