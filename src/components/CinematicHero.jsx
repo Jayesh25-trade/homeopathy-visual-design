@@ -115,12 +115,6 @@ export default function CinematicHero() {
             />
           </div>
 
-          {/* Excellence Badge */}
-          <div className="screen-badge">
-            <Award size={14} style={{ color: '#dc2626' }} />
-            <span>28+ Years of Healing Excellence · Since 1998</span>
-          </div>
-
           {/* Main Centered Typography */}
           <p className="screen-think">Think</p>
           <h1 className="screen-home">
