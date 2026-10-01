@@ -281,7 +281,7 @@ export default function BentoHero({ onOpenBooking }) {
         {/* =========================================================
            BOTTOM HORIZONTAL TRUST STRIP RAIL
            ========================================================= */}
-        <div style={{
+        <div className="bento-trust-strip" style={{
           marginTop: '1.25rem',
           marginBottom: 0,
           background: 'var(--white)',
@@ -295,7 +295,7 @@ export default function BentoHero({ onOpenBooking }) {
           alignItems: 'center'
         }}>
           {trustStats.map((stat, idx) => (
-            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div key={idx} className="bento-trust-item" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{
                 fontSize: '1.35rem',
                 fontWeight: 700,

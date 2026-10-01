@@ -141,7 +141,7 @@ export default function ChapterAtlas({ onOpenBooking }) {
           {/* Right — active condition detail */}
           <div
             key={activeCondition.key}
-            className="ambient-glow-amber"
+            className="ambient-glow-amber care-detail-card"
             style={{
               animation: 'fadeUp 400ms cubic-bezier(0.22,1,0.36,1) both',
               padding: '24px',

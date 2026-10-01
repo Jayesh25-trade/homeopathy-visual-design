@@ -3368,4 +3368,92 @@ ul, ol { list-style: none; }
   .screen-scroll-cue { margin-top: 0.6rem; margin-bottom: clamp(16px, 4vh, 32px); font-size: 0.7rem; }
 }
 
+/* ============================================================
+   MOBILE FINISHING PASS — spacing, alignment, readable measure
+   ============================================================ */
+@media (max-width: 640px) {
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  .container { padding-inline: 20px; }
+  .section-pad { padding-block: 64px; }
+
+  .somani-screen { height: 100svh; min-height: 640px; }
+  .screen-inner {
+    width: min(100% - 40px, 420px);
+    min-height: 100svh;
+    padding: 72px 0 48px;
+    justify-content: center;
+  }
+  .screen-copy { width: 100%; }
+  .screen-logo { width: 88px; margin-bottom: 14px; }
+  .screen-badge { min-height: 34px; margin-bottom: 18px; padding: 7px 12px; font-size: .69rem; line-height: 1.25; }
+  .screen-think { font-size: 2.55rem; line-height: 1; }
+  .screen-home { font-size: 3.05rem; line-height: 1; }
+  .screen-somani { font-size: 2.55rem; line-height: 1; }
+  .screen-tagline { max-width: 310px; margin: 16px auto 0; font-size: .82rem; line-height: 1.55; }
+  .screen-scroll-cue { margin-top: 22px; margin-bottom: 0; }
+
+  .bento-hero { padding: 20px 0 12px; }
+  .bento-grid, .bento-right-subgrid { gap: 16px; }
+  .bento-card { border-radius: 16px !important; box-shadow: 0 8px 24px rgba(20,33,61,.07); }
+  .bento-grid > .bento-card { min-height: 330px !important; padding: 22px !important; }
+  .bento-grid > .bento-card > div:first-of-type { width: 72% !important; }
+  .bento-grid > .bento-card > div:nth-of-type(2) { max-width: 82% !important; }
+  .bento-right-subgrid > .bento-card { min-height: 210px !important; padding: 20px !important; }
+  .bento-right-subgrid > .bento-card:last-child { min-height: 270px !important; grid-template-columns: minmax(0, 1fr) 46% !important; }
+  .bento-right-subgrid > .bento-card:last-child > div:first-child { padding: 20px !important; }
+  .bento-card h2, .bento-card h3 { line-height: 1.18 !important; }
+  .bento-card p { line-height: 1.55 !important; }
+  .bento-trust-strip { margin-top: 16px !important; padding: 20px !important; grid-template-columns: 1fr !important; gap: 0 !important; border-radius: 16px !important; }
+  .bento-trust-item { min-height: 66px; padding: 10px 4px; border-bottom: 1px solid var(--border); }
+  .bento-trust-item:last-child { border-bottom: 0; }
+  .bento-trust-item > div:first-child { min-width: 70px; font-size: 1.65rem !important; }
+
+  .clinic-intro { padding-block: 64px !important; }
+  .clinic-intro__card { padding: 26px 22px !important; border-radius: 16px !important; box-shadow: 0 10px 28px rgba(35,30,20,.07) !important; }
+  .clinic-intro__meta { align-items: flex-start !important; gap: 10px !important; margin-bottom: 18px !important; }
+  .clinic-intro__meta > span:last-child { flex-basis: 100%; font-size: .76rem !important; line-height: 1.4; }
+  .clinic-intro__title { font-size: 2rem !important; line-height: 1.18 !important; margin-bottom: 16px !important; overflow-wrap: anywhere; }
+  .clinic-intro__title + div { margin-bottom: 22px !important; }
+  .clinic-intro__copy { gap: 18px !important; font-size: .96rem !important; line-height: 1.72 !important; }
+  .clinic-intro__copy p { max-width: 34rem; }
+  .clinic-intro__actions { display: grid !important; gap: 10px !important; margin-top: 26px !important; }
+  .clinic-intro__actions > * { width: 100%; min-height: 48px; text-align: center; }
+
+  #concerns .serif-display--lg { max-width: 320px; margin-bottom: 28px !important; font-size: 2.35rem; line-height: 1.1 !important; }
+  .care-tabs { gap: 10px; margin-bottom: 24px; }
+  .care-tab { min-height: 54px; padding: 10px 8px; font-size: .68rem; line-height: 1.25; }
+  .care-detail-card { padding: 16px !important; border-radius: 12px !important; }
+  .care-detail-card > div:first-child { margin-bottom: 20px !important; border-radius: 8px !important; }
+  .care-detail-card > p { font-size: 1.12rem !important; line-height: 1.5 !important; margin-bottom: 18px !important; }
+  .care-detail-card .mono { letter-spacing: 0; text-transform: none; line-height: 1.4; }
+
+  .clinical-cases { padding-block: 64px !important; }
+  .clinical-cases .container { padding-inline: 20px !important; }
+  .clinical-cases__header { margin-bottom: 24px !important; }
+  .clinical-cases__header h2 { font-size: 2.2rem !important; line-height: 1.08 !important; }
+  .clinical-cases__header p { max-width: 320px; margin-inline: auto !important; line-height: 1.55 !important; }
+  .filters-scroll-track { margin-inline: -20px; padding: 2px 20px 10px !important; gap: 10px !important; scroll-padding-inline: 20px; }
+  .cases-responsive-container { margin-inline: -20px; padding: 0 20px 14px !important; gap: 14px !important; scroll-padding-inline: 20px; }
+  .case-card-item { width: calc(100vw - 56px) !important; max-width: 338px !important; padding: 14px !important; border-radius: 16px !important; scroll-snap-align: start !important; }
+  .case-card-item h3 { font-size: 1.08rem !important; }
+
+  .timeline-polish { padding-block: 64px !important; }
+  .timeline-polish__header { margin-bottom: 36px !important; }
+  .timeline-polish__header h2 { font-size: 2.25rem !important; line-height: 1.1 !important; }
+  .timeline-polish__list { margin-left: 6px; padding-left: 18px !important; }
+  .timeline-polish__entry { margin-bottom: 22px !important; padding-left: 10px !important; }
+  .timeline-polish__dot { left: -25px !important; width: 12px !important; height: 12px !important; }
+  .timeline-polish__card { padding: 20px 18px !important; border-radius: 12px !important; }
+  .timeline-polish__card-head { display: grid !important; gap: 10px !important; margin-bottom: 10px !important; }
+  .timeline-polish__card-head span { justify-self: start; }
+  .timeline-polish__card-head h3 { font-size: 1.18rem !important; line-height: 1.28; }
+  .timeline-polish__card p { font-size: .9rem !important; line-height: 1.65 !important; }
+
+  .mobile-bottom-nav { min-height: 64px; padding: 7px 10px calc(7px + env(safe-area-inset-bottom)); justify-content: space-between; }
+  .mobile-nav-item { min-width: 64px; min-height: 48px; justify-content: center; padding: 4px 8px; font-size: .68rem; }
+  .floating-call-container { bottom: calc(78px + env(safe-area-inset-bottom)) !important; left: 14px !important; }
+  .aarogya-bubble-wrapper { bottom: calc(78px + env(safe-area-inset-bottom)) !important; right: 14px !important; }
+  .aarogya-bubble-wrapper > div:first-child { display: none !important; }
+}
+
 

@@ -35,7 +35,7 @@ export default function ChapterTimeline() {
   return (
     <section
       id="27-years"
-      className="paper-section"
+      className="paper-section timeline-polish"
       style={{
         backgroundColor: 'var(--bg)',
         padding: 'clamp(3.5rem, 7vw, 6rem) 0',
@@ -63,7 +63,7 @@ export default function ChapterTimeline() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Header */}
-        <div style={{ maxWidth: '750px', marginBottom: '3.5rem' }}>
+        <div className="timeline-polish__header" style={{ maxWidth: '750px', marginBottom: '3.5rem' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -92,10 +92,11 @@ export default function ChapterTimeline() {
         </div>
 
         {/* Timeline Entries List */}
-        <div style={{ position: 'relative', paddingLeft: '1.5rem', borderLeft: '2px solid rgba(220, 38, 38, 0.25)' }}>
+        <div className="timeline-polish__list" style={{ position: 'relative', paddingLeft: '1.5rem', borderLeft: '2px solid rgba(220, 38, 38, 0.25)' }}>
           {chapters.map((ch, i) => (
             <article
               key={i}
+              className="timeline-polish__entry"
               style={{
                 position: 'relative',
                 marginBottom: i === chapters.length - 1 ? '0' : '2.5rem',
@@ -103,7 +104,7 @@ export default function ChapterTimeline() {
               }}
             >
               {/* Timeline Red Dot Marker */}
-              <div style={{
+              <div className="timeline-polish__dot" style={{
                 position: 'absolute',
                 top: '0.35rem',
                 left: '-2.15rem',
@@ -116,7 +117,7 @@ export default function ChapterTimeline() {
               }} />
 
               {/* Milestone Card */}
-              <div style={{
+              <div className="timeline-polish__card" style={{
                 background: 'var(--white)',
                 padding: '1.5rem 1.75rem',
                 borderRadius: 'var(--radius-lg)',
@@ -134,7 +135,7 @@ export default function ChapterTimeline() {
                 e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
               }}
               >
-                <div style={{
+                <div className="timeline-polish__card-head" style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.85rem',
