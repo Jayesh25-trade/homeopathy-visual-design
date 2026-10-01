@@ -3253,7 +3253,7 @@ ul, ol { list-style: none; }
 .screen-logo {
   width: clamp(95px, 15vw, 135px);
   margin: 12px auto 0.4rem;
-  padding-top: 6px;
+  padding-top: 4px;
   opacity: 0;
   overflow: visible;
   display: flex;
@@ -3265,8 +3265,9 @@ ul, ol { list-style: none; }
   height: auto;
   display: block;
   object-fit: contain;
-  padding: 6px 4px 2px 4px;
+  padding: 4px;
   box-sizing: border-box;
+  overflow: visible;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 .screen-badge {
@@ -3367,7 +3368,7 @@ ul, ol { list-style: none; }
   .somani-screen { min-height: 100vh; min-height: 100svh; }
   .screen-inner { width: calc(100% - 28px); padding: 16px 0 36px 0; }
   .screen-wash { background: radial-gradient(circle at center, rgba(250, 246, 238, 0.78) 0%, rgba(250, 246, 238, 0.92) 65%, rgba(250, 246, 238, 0.96) 100%); }
-  .screen-logo { width: clamp(80px, 20vw, 105px); margin-top: 14px; margin-bottom: 0.5rem; padding-top: 8px; }
+  .screen-logo { width: clamp(88px, 22vw, 115px); margin-top: 10px; margin-bottom: 0.5rem; padding-top: 4px; overflow: visible; }
   .screen-badge { font-size: 0.72rem; padding: 4px 12px; margin-bottom: 0.6rem; max-width: 95%; text-align: center; }
   .screen-think { font-size: clamp(38px, 6.5vh, 64px); line-height: 0.92; margin-bottom: 2px; }
   .screen-home { font-size: clamp(42px, 7.5vh, 72px); line-height: 1.02; }
@@ -3392,7 +3393,7 @@ ul, ol { list-style: none; }
     justify-content: center;
   }
   .screen-copy { width: 100%; }
-  .screen-logo { width: clamp(88px, 22vw, 115px); margin-bottom: 12px; }
+  .screen-logo { width: clamp(88px, 22vw, 115px); margin-bottom: 10px; overflow: visible; }
   .screen-badge { min-height: 34px; margin-bottom: 18px; padding: 7px 12px; font-size: .69rem; line-height: 1.25; }
   .screen-think { font-size: 2.55rem; line-height: 1; }
   .screen-home { font-size: 3.05rem; line-height: 1; }
