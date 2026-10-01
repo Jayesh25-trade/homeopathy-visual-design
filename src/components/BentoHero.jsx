@@ -135,49 +135,52 @@ export default function BentoHero({ onOpenBooking }) {
                 padding: '1.35rem',
                 minHeight: '200px',
                 overflow: 'hidden',
-                background: '#0c1a30'
+                background: '#0c1a30',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
               }}
               aria-label="Explore Area of Services"
             >
               {/* RIGHT SIDE: Photo (IMG_0715 - Pharmacy Remedy Shelves) */}
-              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '50%', zIndex: 1, pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '55%', zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0715.JPEG" 
                   alt="Area of Services Remedies" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88, filter: 'contrast(1.05) brightness(0.95)' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85, filter: 'contrast(1.05) brightness(0.95)' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to right, #0c1a30 0%, rgba(12, 26, 48, 0.88) 25%, rgba(12, 26, 48, 0.35) 65%, transparent 100%)'
+                  background: 'linear-gradient(to right, #0c1a30 0%, rgba(12, 26, 48, 0.90) 25%, rgba(12, 26, 48, 0.40) 70%, transparent 100%)'
                 }} />
               </div>
 
-              {/* LEFT SIDE: Header & Badge */}
+              {/* Top Row: Badge Top-Left, Arrow Circle Top-Right across full card width */}
               <div style={{
                 position: 'relative', zIndex: 2,
-                display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                marginBottom: '0.75rem', maxWidth: '65%'
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                width: '100%', marginBottom: '0.85rem'
               }}>
                 <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
                   50+ Conditions
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.18)', display: 'flex',
+                  background: 'rgba(255,255,255,0.2)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
-                  color: '#ffffff', border: '1px solid rgba(255,255,255,0.25)'
+                  color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', flexShrink: 0
                 }}>
                   →
                 </div>
               </div>
 
-              {/* LEFT SIDE: Content */}
-              <div style={{ position: 'relative', zIndex: 2, maxWidth: '65%' }}>
+              {/* Body Content */}
+              <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
                 <h3 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                   Area of Services
                 </h3>
                 <p style={{ color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
-                  Holistic care for skin, allergies, PCOD, paediatric & chronic health.
+                  Holistic care for skin, allergies, PCOD, paediatric &amp; chronic health.
                 </p>
                 <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#60a5fa', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                   Explore All Services →
@@ -197,44 +200,47 @@ export default function BentoHero({ onOpenBooking }) {
                 padding: '1.35rem',
                 minHeight: '200px',
                 overflow: 'hidden',
-                background: '#0c1a30'
+                background: '#0c1a30',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
               }}
               aria-label="Specialized Treatment"
             >
               {/* RIGHT SIDE: Photo (IMG_0734 - Philosophy Board) */}
-              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '50%', zIndex: 1, pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '55%', zIndex: 1, pointerEvents: 'none' }}>
                 <img 
                   src="/assets/client_photos/IMG_0734.JPEG" 
                   alt="Every person is Unique Philosophy" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88, filter: 'contrast(1.05) brightness(0.95)' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85, filter: 'contrast(1.05) brightness(0.95)' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to right, #0c1a30 0%, rgba(12, 26, 48, 0.88) 25%, rgba(12, 26, 48, 0.35) 65%, transparent 100%)'
+                  background: 'linear-gradient(to right, #0c1a30 0%, rgba(12, 26, 48, 0.90) 25%, rgba(12, 26, 48, 0.40) 70%, transparent 100%)'
                 }} />
               </div>
 
-              {/* LEFT SIDE: Header & Badge */}
+              {/* Top Row: Badge Top-Left, Arrow Circle Top-Right across full card width */}
               <div style={{
                 position: 'relative', zIndex: 2,
-                display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-                marginBottom: '0.75rem', maxWidth: '65%'
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                width: '100%', marginBottom: '0.85rem'
               }}>
                 <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
                   Root-Cause Care
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.18)', display: 'flex',
+                  background: 'rgba(255,255,255,0.2)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
-                  color: '#ffffff', border: '1px solid rgba(255,255,255,0.25)'
+                  color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', flexShrink: 0
                 }}>
                   →
                 </div>
               </div>
 
-              {/* LEFT SIDE: Content */}
-              <div style={{ position: 'relative', zIndex: 2, maxWidth: '65%' }}>
+              {/* Body Content */}
+              <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
                 <h3 style={{ fontSize: '1.35rem', color: '#ffffff', fontWeight: 600, marginBottom: '0.35rem' }}>
                   Specialized Treatment
                 </h3>
@@ -287,11 +293,11 @@ export default function BentoHero({ onOpenBooking }) {
                 }} />
               </div>
 
-              {/* LEFT SIDE: Card Top Row Header */}
+              {/* Top Row: Single line badge Top-Left, Arrow Circle Top-Right across full width */}
               <div style={{
                 position: 'relative', zIndex: 2,
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                flexWrap: 'nowrap', gap: '0.75rem', marginBottom: '0.5rem', maxWidth: '56%'
+                flexWrap: 'nowrap', gap: '0.75rem', width: '100%', marginBottom: '0.75rem'
               }}>
                 <span className="badge" style={{
                   background: 'rgba(255, 255, 255, 0.15)',
@@ -319,7 +325,7 @@ export default function BentoHero({ onOpenBooking }) {
               </div>
 
               {/* LEFT SIDE: Card Body & CTA */}
-              <div style={{ position: 'relative', zIndex: 2, maxWidth: '56%' }}>
+              <div style={{ position: 'relative', zIndex: 2, maxWidth: '58%' }}>
                 <h3 style={{
                   color: '#ffffff',
                   fontSize: 'clamp(1.25rem, 2.2vw, 1.55rem)',
