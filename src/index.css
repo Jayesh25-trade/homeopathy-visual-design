@@ -3210,6 +3210,8 @@ ul, ol { list-style: none; }
   z-index: -2;
   overflow: hidden;
   opacity: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .screen-video, .screen-poster {
   position: absolute;
@@ -3217,6 +3219,10 @@ ul, ol { list-style: none; }
   height: 100%;
   object-fit: cover;
   object-position: center;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .screen-poster { z-index: -1; }
 .screen-video { z-index: 0; }

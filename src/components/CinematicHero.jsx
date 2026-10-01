@@ -11,11 +11,42 @@ export default function CinematicHero() {
     const video = videoRef.current;
     if (!screen || !video) return;
 
+    // Explicit iOS WebKit autoplay & mute configuration
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('playsinline', 'true');
+    video.setAttribute('webkit-playsinline', 'true');
+
+    const attemptPlay = () => {
+      if (video && video.paused) {
+        const promise = video.play();
+        if (promise !== undefined) {
+          promise.catch(() => {
+            // Low Power Mode or iOS autoplay policy fallback
+          });
+        }
+      }
+    };
+
+    attemptPlay();
+
+    const handleTouchUnlock = () => {
+      attemptPlay();
+      window.removeEventListener('touchstart', handleTouchUnlock);
+      window.removeEventListener('scroll', handleTouchUnlock);
+    };
+
+    window.addEventListener('touchstart', handleTouchUnlock, { passive: true });
+    window.addEventListener('scroll', handleTouchUnlock, { passive: true });
+
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (media.matches) {
       if (video) video.pause();
       screen.classList.add('is-ready');
-      return;
+      return () => {
+        window.removeEventListener('touchstart', handleTouchUnlock);
+        window.removeEventListener('scroll', handleTouchUnlock);
+      };
     }
 
     const ctx = gsap.context(() => {
@@ -74,7 +105,11 @@ export default function CinematicHero() {
         );
     }, screen);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      window.removeEventListener('touchstart', handleTouchUnlock);
+      window.removeEventListener('scroll', handleTouchUnlock);
+    };
   }, []);
 
   return (
@@ -91,13 +126,15 @@ export default function CinematicHero() {
           className="screen-video"
           autoPlay
           muted
+          defaultMuted
           loop
           playsInline
-          preload="metadata"
+          webkit-playsinline="true"
+          preload="auto"
           aria-hidden="true"
         >
-          <source src="/assets/somani-flowers-sky.webm" type="video/webm" />
           <source src="/assets/think_homeopathy_loop_1080p.mp4" type="video/mp4" />
+          <source src="/assets/somani-flowers-sky.webm" type="video/webm" />
         </video>
       </div>
 

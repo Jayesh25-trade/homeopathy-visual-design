@@ -1,8 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function InitialLoader({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Explicit iOS WebKit autoplay & mute configuration
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute('playsinline', 'true');
+      video.setAttribute('webkit-playsinline', 'true');
+
+      const attemptPlay = () => {
+        if (video && video.paused) {
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise.catch(() => {});
+          }
+        }
+      };
+
+      attemptPlay();
+
+      const handleTouchUnlock = () => {
+        attemptPlay();
+        window.removeEventListener('touchstart', handleTouchUnlock);
+      };
+
+      window.addEventListener('touchstart', handleTouchUnlock, { passive: true });
+
+      return () => {
+        window.removeEventListener('touchstart', handleTouchUnlock);
+      };
+    }
+  }, []);
 
   useEffect(() => {
     // Prevent scrolling while loading screen is active
@@ -69,16 +103,19 @@ export default function InitialLoader({ onComplete }) {
           className="screen-poster"
         />
         <video
+          ref={videoRef}
           className="screen-video"
           autoPlay
           muted
+          defaultMuted
           loop
           playsInline
+          webkit-playsinline="true"
           preload="auto"
           aria-hidden="true"
         >
-          <source src="/assets/somani-flowers-sky.webm" type="video/webm" />
           <source src="/assets/think_homeopathy_loop_1080p.mp4" type="video/mp4" />
+          <source src="/assets/somani-flowers-sky.webm" type="video/webm" />
         </video>
       </div>
 
