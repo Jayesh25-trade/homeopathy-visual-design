@@ -22,10 +22,7 @@ import FloatingActions     from './components/FloatingActions';
 import MobileBottomNav     from './components/MobileBottomNav';
 import AarogyaChatbot      from './components/AarogyaChatbot';
 
-import InitialLoader       from './components/InitialLoader';
-
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [formOpen, setFormOpen] = useState(false);
 
   const openBooking  = useCallback(() => setFormOpen(true),  []);
@@ -33,7 +30,6 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      {isLoading && <InitialLoader onComplete={() => setIsLoading(false)} />}
       <ReadingProgress />
 
       {/* Header (Slides down after scrolling past cinematic hero) */}
