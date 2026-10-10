@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PhoneCall } from 'lucide-react';
 import { clinic } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FloatingActions() {
+  const { lang } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function FloatingActions() {
             animation: 'phoneFlickerPulse 2.2s infinite ease-in-out',
             position: 'relative',
           }}
-          aria-label="Call Dr Somani's Clinic"
+          aria-label={lang === 'mr' ? 'डॉ. सोमाणी क्लिनिकला कॉल करा' : lang === 'hi' ? 'डॉ. सोमानी क्लिनिक को कॉल करें' : "Call Dr Somani's Clinic"}
         >
           <PhoneCall size={22} color="#FFFFFF" className="flicker-phone-icon" />
         </a>

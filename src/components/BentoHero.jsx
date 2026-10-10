@@ -1,7 +1,13 @@
 import React from 'react';
 import { trustStats } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BentoHero({ onOpenBooking }) {
+  const { t, dict } = useLanguage();
+
+  const localizedStats = dict?.bento?.trustStats || t('bento.trustStats');
+  const activeStats = (Array.isArray(localizedStats) && localizedStats.length > 0) ? localizedStats : trustStats;
+
   return (
     <section id="bento-hero" className="bento-hero" aria-label="Somani Homoeopathy Overview">
       <div className="container">
@@ -65,7 +71,7 @@ export default function BentoHero({ onOpenBooking }) {
                 marginBottom: '0.75rem',
                 letterSpacing: '-0.01em'
               }}>
-                Real Cases.<br />Real Healing.
+                {t('bento.realCasesTitle') || 'Real Cases. Real Healing.'}
               </h2>
 
               <p style={{
@@ -76,22 +82,22 @@ export default function BentoHero({ onOpenBooking }) {
                 maxWidth: '380px',
                 fontWeight: 400
               }}>
-                "Documented classical homeopathic treatments for chronic skin, hair, and lifestyle conditions — proven by real clinical recovery."
+                {t('bento.realCasesDesc') || 'Documented classical homeopathic treatments for chronic skin, hair, and lifestyle conditions — proven by real clinical recovery.'}
               </p>
 
               {/* Case Category Pills */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1.35rem' }}>
                 <span style={{ fontSize: '0.74rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)', padding: '4px 12px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
-                  Skin Fungal
+                  {t('bento.categories.fungal') || 'Skin Fungal'}
                 </span>
                 <span style={{ fontSize: '0.74rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)', padding: '4px 12px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
-                  Psoriasis
+                  {t('bento.categories.psoriasis') || 'Psoriasis'}
                 </span>
                 <span style={{ fontSize: '0.74rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)', padding: '4px 12px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
-                  Vitiligo
+                  {t('bento.categories.vitiligo') || 'Vitiligo'}
                 </span>
                 <span style={{ fontSize: '0.74rem', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)', padding: '4px 12px', borderRadius: '9999px', color: '#ffffff', fontWeight: 600 }}>
-                  Hair Loss
+                  {t('bento.categories.hairLoss') || 'Hair Loss'}
                 </span>
               </div>
             </div>
@@ -99,7 +105,7 @@ export default function BentoHero({ onOpenBooking }) {
             {/* Bottom Action Button */}
             <div style={{ position: 'relative', zIndex: 2, marginTop: 'auto' }}>
               <span className="btn-primary" style={{ padding: '0.65rem 1.4rem', fontSize: '0.88rem', boxShadow: '0 4px 16px rgba(220,38,38,0.35)' }}>
-                Read Verified Cases →
+                {t('bento.readCases') || 'Read Verified Cases →'}
               </span>
             </div>
           </a>
@@ -148,7 +154,7 @@ export default function BentoHero({ onOpenBooking }) {
                 width: '100%', marginBottom: '0.85rem'
               }}>
                 <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
-                  50+ Conditions
+                  {t('bento.servicesBadge') || '50+ Conditions'}
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
@@ -163,13 +169,13 @@ export default function BentoHero({ onOpenBooking }) {
               {/* Body Content */}
               <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
                 <h3 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.35rem' }}>
-                  Area of Services
+                  {t('bento.servicesTitle') || 'Area of Services'}
                 </h3>
                 <p style={{ color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
-                  Holistic care for skin, allergies, PCOD, paediatric &amp; chronic health.
+                  {t('bento.servicesDesc') || 'Holistic care for skin, allergies, PCOD, paediatric & chronic health.'}
                 </p>
                 <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#60a5fa', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                  Explore All Services →
+                  {t('bento.exploreServices') || 'Explore All Services →'}
                 </span>
               </div>
             </a>
@@ -213,7 +219,7 @@ export default function BentoHero({ onOpenBooking }) {
                 width: '100%', marginBottom: '0.85rem'
               }}>
                 <span className="badge badge-ocean" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>
-                  Root-Cause Care
+                  {t('bento.approachBadge') || 'Root-Cause Care'}
                 </span>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
@@ -228,13 +234,13 @@ export default function BentoHero({ onOpenBooking }) {
               {/* Body Content */}
               <div style={{ position: 'relative', zIndex: 2, maxWidth: '85%' }}>
                 <h3 style={{ fontSize: '1.35rem', color: '#ffffff', fontWeight: 600, marginBottom: '0.35rem' }}>
-                  Specialized Treatment
+                  {t('bento.approachTitle') || 'Specialized Treatment'}
                 </h3>
                 <p style={{ color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.45, marginBottom: '0.75rem' }}>
-                  Individualised formulas engineered for lasting wellness without side effects.
+                  {t('bento.approachDesc') || 'Individualised formulas engineered for lasting wellness without side effects.'}
                 </p>
                 <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#60a5fa', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                  Our Approach →
+                  {t('bento.approachLink') || 'Our Approach →'}
                 </span>
               </div>
             </a>
@@ -297,7 +303,7 @@ export default function BentoHero({ onOpenBooking }) {
                   fontWeight: 600,
                   borderRadius: '9999px'
                 }}>
-                  Wakad, Pune &amp; Jalgaon
+                  {t('bento.clinicsBadge') || 'Wakad, Pune & Jalgaon'}
                 </span>
 
                 <div style={{
@@ -319,7 +325,7 @@ export default function BentoHero({ onOpenBooking }) {
                   fontWeight: 500,
                   marginBottom: '0.3rem'
                 }}>
-                  Our Clinics
+                  {t('bento.clinicsTitle') || 'Our Clinics'}
                 </h3>
                 <p style={{
                   color: '#cbd5e1',
@@ -327,11 +333,11 @@ export default function BentoHero({ onOpenBooking }) {
                   lineHeight: 1.45,
                   marginBottom: '0.9rem'
                 }}>
-                  Modern physical clinics with in-person care &amp; global online video consultations.
+                  {t('bento.clinicsDesc') || 'Modern physical clinics with in-person care & global online video consultations.'}
                 </p>
                 <div>
                   <span className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    Find Nearest Clinic →
+                    {t('bento.findClinic') || 'Find Nearest Clinic →'}
                   </span>
                 </div>
               </div>
@@ -356,7 +362,7 @@ export default function BentoHero({ onOpenBooking }) {
           gap: '1rem',
           alignItems: 'center'
         }}>
-          {trustStats.map((stat, idx) => (
+          {activeStats.map((stat, idx) => (
             <div key={idx} className="bento-trust-item" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{
                 fontSize: '1.35rem',

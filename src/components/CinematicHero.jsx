@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ChevronDown, Award } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function CinematicHero() {
+  const { t } = useLanguage();
   const screenRef = useRef(null);
   const videoRef = useRef(null);
 
@@ -124,23 +126,23 @@ export default function CinematicHero() {
           </div>
 
           {/* Main Centered Typography */}
-          <p className="screen-think">Think</p>
+          <p className="screen-think">{t('cinematicHero.think') || 'Think'}</p>
           <h1 className="screen-home">
-            <span>Homeopathy.</span>
+            <span>{t('cinematicHero.homeopathy') || 'Homeopathy.'}</span>
           </h1>
           <p className="screen-somani">
-            <span>Think</span>
-            <span style={{ color: '#dc2626' }}>Somani.</span>
+            <span>{t('cinematicHero.think') || 'Think'}</span>
+            <span style={{ color: '#dc2626' }}>{t('cinematicHero.somani') || 'Somani.'}</span>
           </p>
 
           <p className="screen-tagline">
-            Gentle, Root-Cause Classical Healing Across Generations
+            {t('cinematicHero.tagline') || 'Gentle, Root-Cause Classical Healing Across Generations'}
           </p>
         </div>
 
         {/* Scroll Cue Prompt */}
         <div className="screen-scroll-cue">
-          <span>Scroll to Explore</span>
+          <span>{t('cinematicHero.scrollCue') || 'Scroll to Explore'}</span>
           <ChevronDown size={18} className="scroll-chevron" />
         </div>
       </div>

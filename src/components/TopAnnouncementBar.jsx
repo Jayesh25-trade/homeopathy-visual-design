@@ -1,11 +1,14 @@
 import React from 'react';
 import { Phone, Award, Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function TopAnnouncementBar() {
+  const { t } = useLanguage();
+
   const items = [
-    { icon: <Award size={13} style={{ color: '#fbbf24' }} />, text: '28+ Years of Trusted Experience' },
-    { icon: <Sparkles size={13} style={{ color: '#38bdf8' }} />, text: 'Online Consultation & Doorstep Medicine Delivery' },
-    { icon: <Phone size={13} style={{ color: '#4ade80' }} />, text: 'Direct Doctor Consultation: +91 98341 72124' },
+    { icon: <Award size={13} style={{ color: '#fbbf24' }} />, text: t('topBar.exp') || '28+ Years of Trusted Experience' },
+    { icon: <Sparkles size={13} style={{ color: '#38bdf8' }} />, text: t('topBar.delivery') || 'Online Consultation & Doorstep Medicine Delivery' },
+    { icon: <Phone size={13} style={{ color: '#4ade80' }} />, text: t('topBar.directCall') || 'Direct Doctor Consultation: +91 98341 72124' },
   ];
 
   const fullBannerText = items.map((item, idx) => (

@@ -172,7 +172,7 @@ function GoogleMark() {
   return <span className="google-mark-notebook" aria-label="Google">G</span>;
 }
 
-function ReviewCard({ review, index, duplicate = false, onClick }) {
+function ReviewCard({ review, index, duplicate = false, onClick, t }) {
   return (
     <article
       className={`review-card-notebook ${rotations[index % rotations.length]}`}
@@ -191,7 +191,7 @@ function ReviewCard({ review, index, duplicate = false, onClick }) {
       <blockquote>{review.text}</blockquote>
       <footer>
         <span>{review.time}</span>
-        <span className="verified-mark-notebook">verified</span>
+        <span className="verified-mark-notebook">{t ? t('common.verified') : 'verified'}</span>
       </footer>
     </article>
   );
@@ -252,6 +252,7 @@ export default function InfiniteReviews() {
               review={review}
               index={index}
               onClick={setSelectedReview}
+              t={t}
             />
           ))}
           {reviewsList.map((review, index) => (
@@ -261,6 +262,7 @@ export default function InfiniteReviews() {
               index={index}
               duplicate
               onClick={setSelectedReview}
+              t={t}
             />
           ))}
         </div>

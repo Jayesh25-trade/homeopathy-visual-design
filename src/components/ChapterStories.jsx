@@ -75,7 +75,7 @@ const storiesBase = [
 ];
 
 export default function ChapterStories() {
-  const { lang } = useLanguage();
+  const { t, lang } = useLanguage();
   const [active, setActive] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef(null);
@@ -173,7 +173,7 @@ export default function ChapterStories() {
               marginBottom: '0.75rem'
             }}>
               <span style={{ width: '18px', height: '1px', background: 'var(--muted)' }} />
-              FROM THE CLINIC
+              {t('stories.label') || 'FROM THE CLINIC'}
             </div>
             
             <h2 id="stories-title" style={{
@@ -183,8 +183,8 @@ export default function ChapterStories() {
               fontWeight: 400,
               lineHeight: 1.15
             }}>
-              Care, explained<br />
-              <em style={{ color: '#dc2626', fontStyle: 'italic' }}>in Dr Somani’s own words.</em>
+              {t('stories.h2') || 'Care, explained'}<br />
+              <em style={{ color: '#dc2626', fontStyle: 'italic' }}>{t('stories.h2Em') || 'in Dr Somani’s own words.'}</em>
             </h2>
           </div>
 
@@ -262,7 +262,7 @@ export default function ChapterStories() {
                 transition: 'color 0.2s ease, border-color 0.2s ease'
               }}
             >
-              FOLLOW @SOMANIKUSHAL ↗
+              {t('stories.followIg') || 'FOLLOW @SOMANIKUSHAL ↗'}
             </a>
           </div>
         </div>
@@ -381,7 +381,7 @@ export default function ChapterStories() {
                   display: 'block',
                   marginBottom: '0.2rem'
                 }}>
-                  {story.eyebrow}
+                  {t(`stories.${story.id}.eyebrow`) || story.eyebrow}
                 </span>
                 <strong style={{
                   fontSize: '0.98rem',
@@ -391,7 +391,7 @@ export default function ChapterStories() {
                   display: 'block',
                   color: '#ffffff'
                 }}>
-                  {story.title}
+                  {t(`stories.${story.id}.title`) || story.title}
                 </strong>
               </div>
             </article>
@@ -406,7 +406,7 @@ export default function ChapterStories() {
           className="video-modal" 
           role="dialog" 
           aria-modal="true" 
-          aria-label={storiesBase[active].title}
+          aria-label={t(`stories.${storiesBase[active].id}.title`) || storiesBase[active].title}
           onClick={close}
           style={{
             position: 'fixed', inset: 0, zIndex: 3000,
@@ -454,10 +454,10 @@ export default function ChapterStories() {
 
             <div style={{ padding: '1rem 1.25rem', background: '#0f172a', color: '#ffffff' }}>
               <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d8aa5c', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                {storiesBase[active].eyebrow}
+                {t(`stories.${storiesBase[active].id}.eyebrow`) || storiesBase[active].eyebrow}
               </span>
               <h3 style={{ fontSize: '1.1rem', fontFamily: 'var(--font-serif)', marginTop: '0.2rem', fontWeight: 400 }}>
-                {storiesBase[active].title}
+                {t(`stories.${storiesBase[active].id}.title`) || storiesBase[active].title}
               </h3>
             </div>
           </div>

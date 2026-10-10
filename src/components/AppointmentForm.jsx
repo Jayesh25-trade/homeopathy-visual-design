@@ -19,15 +19,109 @@ const enquirySchema = z.object({
   message: z.string().trim().max(1000, 'Please keep your message under 1,000 characters'),
 });
 
-function buildWAText(form) {
-  const lines = [`*New Consultation Enquiry — Dr Somani's Homoeopathy*\n`];
-  if (form.name)          lines.push(`*Name:* ${form.name}`);
-  if (form.phone)         lines.push(`*Phone:* ${form.phone}`);
-  if (form.condition)     lines.push(`*Concern:* ${form.condition}`);
-  if (form.branch)        lines.push(`*Preferred Location:* ${form.branch}`);
-  if (form.date)          lines.push(`*Preferred Date:* ${form.date}`);
+function buildWAText(form, lang = 'en') {
+  if (lang === 'mr') {
+    const lines = [
+      "*सल्लामसलत बुकिंग — डॉ. सोमाणी हॉमिओपॅथी*",
+      "───────────────────────────────────",
+    ];
+    if (form.name)           lines.push(`*रुग्णाचे नाव:* ${form.name}`);
+    if (form.phone)          lines.push(`*फोन नंबर:* ${form.phone}`);
+    if (form.condition)      lines.push(`*आरोग्य समस्या:* ${form.condition}`);
+    if (form.branch)         lines.push(`*क्लिनिक / पद्धत:* ${form.branch}`);
+    if (form.date)           lines.push(`*पसंतीची तारीख:* ${form.date}`);
+    if (form.timePreference) lines.push(`*पसंतीची वेळ:* ${form.timePreference}`);
+    if (form.message)        lines.push(`*रुग्णाची नोंद:* ${form.message}`);
+    lines.push("───────────────────────────────────");
+    lines.push("कृपया उपलब्ध अपॉइंटमेंट वेळ निश्चित करावी. धन्यवाद!");
+    return lines.join('\n');
+  }
+  if (lang === 'hi') {
+    const lines = [
+      "*परामर्श बुकिंग — डॉ. सोमानी होम्योपैथी*",
+      "───────────────────────────────────",
+    ];
+    if (form.name)           lines.push(`*मरीज का नाम:* ${form.name}`);
+    if (form.phone)          lines.push(`*फ़ोन नंबर:* ${form.phone}`);
+    if (form.condition)      lines.push(`*स्वास्थ्य समस्या:* ${form.condition}`);
+    if (form.branch)         lines.push(`*क्लिनिक / माध्यम:* ${form.branch}`);
+    if (form.date)           lines.push(`*पसंदीदा तारीख:* ${form.date}`);
+    if (form.timePreference) lines.push(`*पसंदीदा समय:* ${form.timePreference}`);
+    if (form.message)        lines.push(`*मरीज की टिप्पणी:* ${form.message}`);
+    lines.push("───────────────────────────────────");
+    lines.push("कृपया उपलब्ध अपॉइंटमेंट समय की पुष्टि करें। धन्यवाद!");
+    return lines.join('\n');
+  }
+
+  const lines = [
+    "*Consultation Booking — Dr Somani's Homoeopathy*",
+    "───────────────────────────────────",
+  ];
+  if (form.name)           lines.push(`*Patient Name:* ${form.name}`);
+  if (form.phone)          lines.push(`*Phone Number:* ${form.phone}`);
+  if (form.condition)      lines.push(`*Health Concern:* ${form.condition}`);
+  if (form.branch)         lines.push(`*Clinic / Mode:* ${form.branch}`);
+  if (form.date)           lines.push(`*Preferred Date:* ${form.date}`);
   if (form.timePreference) lines.push(`*Preferred Time:* ${form.timePreference}`);
-  if (form.message)       lines.push(`\n${form.message}`);
+  if (form.message)        lines.push(`*Patient Note:* ${form.message}`);
+  lines.push("───────────────────────────────────");
+  lines.push("Kindly confirm the appointment slot availability. Thank you!");
+  return lines.join('\n');
+}
+
+function buildDirectWAText(form, lang = 'en') {
+  if (lang === 'mr') {
+    const lines = [
+      "*थेट बुकिंग — डॉ. सोमाणी हॉमिओपॅथी*",
+      "───────────────────────────────────",
+      "नमस्ते डॉ. सोमाणी हॉमिओपॅथी क्लिनिक,",
+      "मला डॉक्टरांशी थेट सल्लामसलत बुक करायची आहे."
+    ];
+    if (form.name)           lines.push(`*रुग्णाचे नाव:* ${form.name}`);
+    if (form.phone)          lines.push(`*फोन नंबर:* ${form.phone}`);
+    if (form.condition)      lines.push(`*आरोग्य समस्या:* ${form.condition}`);
+    if (form.branch)         lines.push(`*क्लिनिक ठिकाण:* ${form.branch}`);
+    if (form.date)           lines.push(`*पसंतीची तारीख:* ${form.date}`);
+    if (form.timePreference) lines.push(`*पसंतीची वेळ:* ${form.timePreference}`);
+    if (form.message)        lines.push(`*नोंद:* ${form.message}`);
+    lines.push("───────────────────────────────────");
+    lines.push("कृपया उपलब्ध अपॉइंटमेंट वेळ आणि सल्ल्याची माहिती द्यावी. धन्यवाद!");
+    return lines.join('\n');
+  }
+  if (lang === 'hi') {
+    const lines = [
+      "*सीधी बुकिंग — डॉ. सोमानी होम्योपैथी*",
+      "───────────────────────────────────",
+      "नमस्ते डॉ. सोमानी होम्योपैथी क्लिनिक,",
+      "मैं डॉक्टर के साथ सीधा परामर्श बुक करना चाहता/चाहती हूँ।"
+    ];
+    if (form.name)           lines.push(`*मरीज का नाम:* ${form.name}`);
+    if (form.phone)          lines.push(`*फ़ोन नंबर:* ${form.phone}`);
+    if (form.condition)      lines.push(`*स्वास्थ्य समस्या:* ${form.condition}`);
+    if (form.branch)         lines.push(`*क्लिनिक स्थान:* ${form.branch}`);
+    if (form.date)           lines.push(`*पसंदीदा तारीख:* ${form.date}`);
+    if (form.timePreference) lines.push(`*पसंदीदा समय:* ${form.timePreference}`);
+    if (form.message)        lines.push(`*नोट:* ${form.message}`);
+    lines.push("───────────────────────────────────");
+    lines.push("कृपया उपलब्ध अपॉइंटमेंट स्लॉट और परामर्श विवरण साझा करें। धन्यवाद!");
+    return lines.join('\n');
+  }
+
+  const lines = [
+    "*Direct Booking — Dr Somani's Homoeopathy*",
+    "───────────────────────────────────",
+    "Hello Dr Somani's Homoeopathy Clinic,",
+    "I would like to book a direct consultation with the doctor."
+  ];
+  if (form.name)           lines.push(`*Patient Name:* ${form.name}`);
+  if (form.phone)          lines.push(`*Phone Number:* ${form.phone}`);
+  if (form.condition)      lines.push(`*Health Concern:* ${form.condition}`);
+  if (form.branch)         lines.push(`*Clinic Location:* ${form.branch}`);
+  if (form.date)           lines.push(`*Preferred Date:* ${form.date}`);
+  if (form.timePreference) lines.push(`*Preferred Time:* ${form.timePreference}`);
+  if (form.message)        lines.push(`*Note:* ${form.message}`);
+  lines.push("───────────────────────────────────");
+  lines.push("Please share available appointment slots and consultation details. Thank you!");
   return lines.join('\n');
 }
 
@@ -65,7 +159,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
   const [errors, setErrors]           = useState({});
   const [showPreview, setShowPreview] = useState(false);
 
-  const waText = useMemo(() => buildWAText(form), [form]);
+  const waText = useMemo(() => buildWAText(form, lang), [form, lang]);
   const hasAnyInput = form.name || form.phone || form.condition;
 
   if (!isOpen) return null;
@@ -83,6 +177,15 @@ export default function AppointmentForm({ isOpen, onClose }) {
   const set = key => e => {
     setForm(f => ({ ...f, [key]: e.target.value }));
     if (errors[key]) setErrors(er => { const n = { ...er }; delete n[key]; return n; });
+  };
+
+  const handleDirectWhatsApp = () => {
+    const directText = buildDirectWAText(form, lang);
+    const targetPhone = form.branch && form.branch.toLowerCase().includes('jalgaon')
+      ? '919270278668'
+      : '919834172124';
+    const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(directText)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleSubmit = (ev) => {
@@ -105,7 +208,10 @@ export default function AppointmentForm({ isOpen, onClose }) {
     } catch (_) {}
 
     // Open WhatsApp directly with patient's query
-    const url = `https://wa.me/919834172124?text=${encodeURIComponent(waText)}`;
+    const targetPhone = form.branch && form.branch.toLowerCase().includes('jalgaon')
+      ? '919270278668'
+      : '919834172124';
+    const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waText)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -290,7 +396,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   gap: '8px',
                   padding: '14px 20px',
                   borderRadius: '8px',
-                  fontSize: '0.92rem',
+                  fontSize: '0.96rem',
                   fontWeight: 700,
                   background: '#16A34A',
                   color: '#FFFFFF',
@@ -301,6 +407,32 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 }}
               >
                 <span>{t('form.instantWaBtn')}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleDirectWhatsApp}
+                className="btn btn--whatsapp-outline btn--full"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '12px 20px',
+                  borderRadius: '8px',
+                  fontSize: '0.88rem',
+                  fontWeight: 600,
+                  background: '#F0FDF4',
+                  color: '#15803D',
+                  border: '1.5px solid #22C55E',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                <span>{t('form.directWaBtn')}</span>
               </button>
             </div>
           </form>
@@ -316,7 +448,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
             }}
           >
             <p className="mono" style={{ color: 'var(--mineral)', marginBottom: '14px', fontSize: '0.72rem' }}>
-              DIRECT WHATSAPP CONSULTATION
+              {t('form.directWaHeading')}
             </p>
             {hasAnyInput ? (
               <>
@@ -331,7 +463,7 @@ export default function AppointmentForm({ isOpen, onClose }) {
                   <CleanPreview form={form} t={t} />
                 </div>
                 <p style={{ fontSize: '0.78rem', color: 'rgba(14,14,12,0.4)', marginTop: '14px', lineHeight: 1.5 }}>
-                  ↑ Patient details will be formatted into a direct WhatsApp message to Dr. Somani's clinic.
+                  {t('form.directWaSubtitle')}
                 </p>
               </>
             ) : (
@@ -339,8 +471,8 @@ export default function AppointmentForm({ isOpen, onClose }) {
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: 'rgba(14,14,12,0.03)', borderRadius: '8px', minHeight: '200px',
               }}>
-                <p style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1rem', color: 'rgba(14,14,12,0.3)', textAlign: 'center' }}>
-                  Start filling in the form<br />to prepare your WhatsApp message.
+                <p style={{ fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontSize: '1rem', color: 'rgba(14,14,12,0.3)', textAlign: 'center', whiteSpace: 'pre-line' }}>
+                  {t('form.directWaEmptyPrompt')}
                 </p>
               </div>
             )}

@@ -114,7 +114,7 @@ function getLocalFallbackResponse(query) {
 }
 
 export default function AarogyaChatbot({ onOpenBooking }) {
-  const { lang } = useLanguage();
+  const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -127,7 +127,33 @@ export default function AarogyaChatbot({ onOpenBooking }) {
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
 
-  const quickPrompts = [
+  // Sync initial welcome message if user changes language
+  useEffect(() => {
+    setMessages(prev => {
+      if (prev.length === 1 && prev[0].sender === 'bot') {
+        return [{
+          sender: 'bot',
+          text: t('aarogya.welcome'),
+          time: prev[0].time,
+        }];
+      }
+      return prev;
+    });
+  }, [lang, t]);
+
+  const quickPrompts = lang === 'mr' ? [
+    { label: "अपॉइंटमेंट बुकिंग", query: "अपॉइंटमेंट कशी बुक करावी?" },
+    { label: "आमचे डॉक्टर", query: "डॉ. अंतिम आणि डॉ. कुशल सोमाणी यांच्याबद्दल सांगा" },
+    { label: "क्लिनिकची ठिकाणे", query: "वाकड पुणे आणि जळगाव क्लिनिक कुठे आहेत?" },
+    { label: "त्वचा व कोड उपचार", query: "त्वचारोग आणि विटिलिगोसाठी कोणते उपचार आहेत?" },
+    { label: "ऑनलाइन व्हिडिओ सल्ला", query: "ऑनलाइन व्हिडिओ सल्लामसलत कशी होते?" },
+  ] : lang === 'hi' ? [
+    { label: "अपॉइंटमेंट बुकिंग", query: "अपॉइंटमेंट कैसे बुक करें?" },
+    { label: "हमारे डॉक्टर", query: "डॉ. अंतिम और डॉ. कुशल सोमानी के बारे में बताएं" },
+    { label: "क्लिनिक के स्थान", query: "वाकड पुणे और जलगांव क्लिनिक कहां हैं?" },
+    { label: "त्वचा और विटिलिगो इलाज", query: "त्वचा और सफेद दाग के लिए क्या इलाज है?" },
+    { label: "ऑनलाइन वीडियो परामर्श", query: "ऑनलाइन वीडियो परामर्श कैसे काम करता है?" },
+  ] : [
     { label: "Book Consultation", query: "How do I book a consultation?" },
     { label: "Our Doctors", query: "Tell me about Dr Antim and Dr Kushal Somani" },
     { label: "Clinic Locations", query: "Where are your Wakad Pune and Jalgaon clinics?" },
@@ -249,7 +275,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
             }}
           >
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A', display: 'inline-block' }} />
-            <span>Ask Aarogya Assistant</span>
+            <span>{t('aarogya.bubblePill')}</span>
           </div>
 
           <button
@@ -352,10 +378,10 @@ export default function AarogyaChatbot({ onOpenBooking }) {
               </div>
               <div>
                 <h3 style={{ margin: 0, fontFamily: 'Cormorant Garamond, serif', fontSize: '1.15rem', fontWeight: 600, color: '#FFFFFF', letterSpacing: '0.02em' }}>
-                  Aarogya Care Assistant
+                  {t('aarogya.assistantTitle')}
                 </h3>
                 <p style={{ margin: 0, fontSize: '0.72rem', color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                  Care Coordinator • Dr Somani's Homoeopathy
+                  {t('aarogya.assistantSub')}
                 </p>
               </div>
             </div>
@@ -447,7 +473,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
                         boxShadow: '0 3px 10px rgba(22, 163, 74, 0.2)',
                       }}
                     >
-                      <Calendar size={13} /> Book Appointment Form
+                      <Calendar size={13} /> {t('aarogya.bookBtn')}
                     </button>
                     <a
                       href="https://wa.me/919834172124?text=Hello%20Dr%20Somani's%20Clinic,%20I%20would%20like%20to%20book%20a%20consultation"
@@ -467,7 +493,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
                         boxShadow: '0 3px 10px rgba(37, 211, 102, 0.2)',
                       }}
                     >
-                      <MessageSquare size={13} /> WhatsApp Booking
+                      <MessageSquare size={13} /> {t('aarogya.whatsappBtn')}
                     </a>
                   </div>
                 )}
@@ -476,7 +502,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
 
             {isTyping && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#64748B', fontSize: '0.8rem', fontStyle: 'italic', padding: '4px' }}>
-                <span>Aarogya is preparing a response...</span>
+                <span>{lang === 'mr' ? 'आरोग्य उत्तर तयार करत आहे...' : lang === 'hi' ? 'आरोग्य उत्तर तैयार कर रहा है...' : 'Aarogya is preparing a response...'}</span>
               </div>
             )}
             <div ref={chatEndRef} />
@@ -535,7 +561,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask Aarogya about doctors, treatments, clinics..."
+              placeholder={t('aarogya.inputPlaceholder')}
               style={{
                 flex: 1,
                 padding: '10px 16px',
@@ -572,7 +598,7 @@ export default function AarogyaChatbot({ onOpenBooking }) {
           {/* Footer Disclaimer */}
           <div style={{ padding: '6px 14px', background: '#F8FAFC', textAlign: 'center', borderTop: '1px solid #F1F5F9' }}>
             <p style={{ margin: 0, fontSize: '0.64rem', color: '#94A3B8', fontFamily: 'sans-serif' }}>
-              Homoeopathic care is individualized • General AI information only • Non-emergency
+              {t('aarogya.disclaimer')}
             </p>
           </div>
         </div>

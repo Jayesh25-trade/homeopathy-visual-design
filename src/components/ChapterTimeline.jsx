@@ -6,27 +6,27 @@ export default function ChapterTimeline() {
 
   const chapters = [
     { 
-      year: "1998", 
+      year: lang === 'mr' ? '१९९८' : '1998', 
       title: lang === 'mr' ? 'प्रारंभ · जळगाव' : lang === 'hi' ? 'शुरुआत · जलगांव' : 'Founding Year · Jalgaon',
       body: t('timeline.t1998') 
     },
     { 
-      year: "2000s", 
+      year: lang === 'mr' ? '२००० चे दशक' : lang === 'hi' ? '2000 का दशक' : '2000s', 
       title: lang === 'mr' ? 'विश्वास व विस्तार' : lang === 'hi' ? 'विश्वास और विकास' : 'Growing Trust & Cases',
       body: t('timeline.t2000s') 
     },
     { 
-      year: "Wakad, Pune", 
+      year: lang === 'mr' ? 'वाकड, पुणे' : lang === 'hi' ? 'वाकड, पुणे' : 'Wakad, Pune', 
       title: lang === 'mr' ? 'वाकड, पुणे क्लिनिक' : lang === 'hi' ? 'वाकड, पुणे क्लिनिक' : 'Expansion to Pune',
       body: t('timeline.tSecondDecade') 
     },
     { 
-      year: "Second Gen", 
+      year: lang === 'mr' ? 'दुसरी पिढी' : lang === 'hi' ? 'दूसरी पीढ़ी' : 'Second Gen', 
       title: lang === 'mr' ? 'दुसरी पिढी · डॉ. कुशल सोमाणी' : lang === 'hi' ? 'दूसरी पीढ़ी · डॉ. कुशल सोमानी' : 'Academic Depth & Gen-2',
       body: t('timeline.tGen2') 
     },
     { 
-      year: "Present", 
+      year: lang === 'mr' ? 'आज' : lang === 'hi' ? 'वर्तमान' : 'Present', 
       title: lang === 'mr' ? 'डिजिटल सेवा व भारतभर उपचार' : lang === 'hi' ? 'डिजिटल परामर्श एवं सेवा' : 'Nationwide Video Care',
       body: t('timeline.tPresent') 
     },

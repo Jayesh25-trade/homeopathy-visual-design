@@ -1,7 +1,13 @@
 import React from 'react';
 import { consultationSteps } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterConsultation({ onOpenBooking }) {
+  const { t, dict } = useLanguage();
+
+  const localizedSteps = dict?.onlineCare?.steps || t('onlineCare.steps');
+  const steps = (Array.isArray(localizedSteps) && localizedSteps.length > 0) ? localizedSteps : consultationSteps;
+
   return (
     <section 
       id="consultation" 
@@ -35,7 +41,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
           <span className="badge badge-ocean" style={{ marginBottom: '0.85rem', background: 'rgba(220, 38, 38, 0.08)', color: '#dc2626', border: '1px solid rgba(220, 38, 38, 0.2)' }}>
-            Global Online Care
+            {t('onlineCare.badge') || 'Global Online Care'}
           </span>
           
           <h2 style={{
@@ -46,7 +52,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
             lineHeight: 1.15,
             marginBottom: '0.5rem'
           }}>
-            Your Doctor, Just a Click Away
+            {t('onlineCare.h2') || 'Your Doctor, Just a Click Away'}
           </h2>
 
           <h3 style={{
@@ -57,7 +63,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
             fontStyle: 'italic',
             fontFamily: 'var(--font-serif)'
           }}>
-            Online Homoeopathic Consultations Across the Globe
+            {t('onlineCare.sub') || 'Online Homoeopathic Consultations Across the Globe'}
           </h3>
 
           <div style={{
@@ -75,11 +81,11 @@ export default function ChapterConsultation({ onOpenBooking }) {
             gap: '1.1rem'
           }}>
             <p>
-              Distance should never be a barrier to accessing personalised healthcare. With years of experience in online consultations, Dr Somani’s Homoeopathy has been serving patients across India and internationally, with patients already consulting us from the USA, Canada, Germany and other parts of the world.
+              {t('onlineCare.p1')}
             </p>
 
             <p>
-              Whether you're at home or living abroad, you can consult with our doctors from the comfort of your home. Our online consultation process makes it convenient to discuss your health concerns and receive individualised guidance. Medicines can also be couriered to your doorstep, subject to availability and delivery regulations in your location.
+              {t('onlineCare.p2')}
             </p>
           </div>
         </div>
@@ -91,7 +97,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
           gap: '1.5rem',
           marginBottom: '3.5rem'
         }}>
-          {consultationSteps.map((step, idx) => (
+          {steps.map((step, idx) => (
             <div
               key={idx}
               style={{
@@ -134,7 +140,7 @@ export default function ChapterConsultation({ onOpenBooking }) {
         {/* Action CTA Button */}
         <div style={{ textAlign: 'center' }}>
           <button className="btn-primary" onClick={onOpenBooking} style={{ fontSize: '1rem', padding: '0.9rem 2.5rem' }}>
-            Book Your Online Consultation Now →
+            {t('onlineCare.cta') || 'Book Your Online Consultation Now →'}
           </button>
         </div>
 

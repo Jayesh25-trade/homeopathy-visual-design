@@ -17,8 +17,10 @@ export function LanguageProvider({ children }) {
   };
 
   useEffect(() => {
-    document.documentElement.lang = lang;
-    document.documentElement.dataset.language = lang;
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.language = lang;
+    }
   }, [lang]);
 
   // Helper function to safely get nested translation strings

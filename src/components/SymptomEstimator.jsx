@@ -18,7 +18,7 @@ const TONE_COLORS = {
 };
 
 export default function SymptomEstimator({ onOpenBooking }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [stageIndex, setStageIndex] = useState(2); // Default 2 years
 
   const getMessageIndex = (sIdx) => {
@@ -33,6 +33,12 @@ export default function SymptomEstimator({ onOpenBooking }) {
   const msgTone = toneList[msgIdx];
 
   const currentStage = STAGE_IMAGES[stageIndex];
+  const localizedConcept = t('estimator.concepts')?.[stageIndex] || currentStage.concept;
+  const stageNotchLabels = lang === 'mr' 
+    ? ['< १ वर्ष', '१ वर्ष', '२ वर्षे', '३-४ वर्षे', '५-६ वर्षे', '७+ वर्षे']
+    : lang === 'hi'
+    ? ['< 1 वर्ष', '1 वर्ष', '2 वर्ष', '3-4 वर्ष', '5-6 वर्ष', '7+ वर्ष']
+    : ['< 1 Year', '1 Year', '2 Years', '3-4 Years', '5-6 Years', '7+ Years'];
 
   const msgObj = {
     title: t(`estimator.messages.${msgIdx}.title`),
@@ -115,7 +121,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
                     lineHeight: 1,
                   }}
                 >
-                  {currentStage.yearsText}
+                  {lang === 'mr' ? (stageIndex === 0 ? '< १' : stageIndex === 1 ? '१' : stageIndex === 2 ? '२' : stageIndex === 3 ? '३-४' : stageIndex === 4 ? '५-६' : '७+') : currentStage.yearsText}
                 </span>
                 <span className="mono" style={{ fontSize: '0.82rem', color: 'var(--amber-light)', fontWeight: 600 }}>
                   {stageIndex === 0
@@ -164,7 +170,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
                       transition: 'all 0.2s ease',
                     }}
                   >
-                    {st.label}
+                    {stageNotchLabels[i]}
                   </button>
                 ))}
               </div>
@@ -298,7 +304,7 @@ export default function SymptomEstimator({ onOpenBooking }) {
             >
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--amber-light)' }} />
               <span className="mono" style={{ fontSize: '0.68rem', color: '#ffffff', letterSpacing: '0.08em' }}>
-                {currentStage.concept}
+                {localizedConcept}
               </span>
             </div>
           </div>

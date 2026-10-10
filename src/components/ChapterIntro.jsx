@@ -1,7 +1,10 @@
 import React from 'react';
 import { clinic } from '../data/clinicData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterIntro({ onOpenBooking }) {
+  const { t } = useLanguage();
+
   return (
     <section
       id="treatments"
@@ -41,10 +44,10 @@ export default function ChapterIntro({ onOpenBooking }) {
               letterSpacing: '0.08em',
               textTransform: 'uppercase'
             }}>
-              About the Clinic
+              {t('intro.badge') || 'About the Clinic'}
             </span>
             <span style={{ fontFamily: "'Special Elite', monospace", fontSize: '0.82rem', color: '#17392e', fontWeight: 600 }}>
-              28+ Years of Trusted Healthcare
+              {t('intro.years') || '28+ Years of Trusted Healthcare'}
             </span>
           </div>
 
@@ -56,7 +59,7 @@ export default function ChapterIntro({ onOpenBooking }) {
             lineHeight: 1.18,
             marginBottom: '0.75rem'
           }}>
-            Compassionate, root-cause healing for over two decades.
+            {t('intro.h2') || 'Compassionate, root-cause healing for over two decades.'}
           </h2>
 
           <div className="clinic-intro__copy" style={{
@@ -77,28 +80,28 @@ export default function ChapterIntro({ onOpenBooking }) {
             lineHeight: 1.75
           }}>
             <p>
-              With over 28 years of trusted experience, Dr Somani’s Homoeopathy was founded by Dr. Antim Somani in 1998 and has grown into a family-led practice serving patients in Jalgaon, Pune and beyond. Today, the clinic brings together Dr. Antim Somani, Dr. Kushal Somani and Dr. Minal Somani, who are committed to providing personalised Homoeopathic care with an individualised approach to each patient.
+              {t('intro.p1')}
             </p>
 
             <p>
-              Over the years, the clinic has cared for patients with a wide range of acute and chronic health concerns, including allergies, migraine, digestive issues, skin disorders, hair fall, asthma, arthritis, PCOD, anxiety, kidney stones and various paediatric conditions. The doctors aim to understand each patient’s health concerns, medical history and individual needs to guide their care and follow-up.
+              {t('intro.p2')}
             </p>
 
             <p>
-              With in-clinic consultations in Jalgaon and Pune and online consultations for patients across India and internationally, including the USA, Canada and Germany, Dr Somani’s Homoeopathy continues its commitment to accessible, personalised healthcare.
+              {t('intro.p3')}
             </p>
 
             <p style={{ fontWeight: 600, color: '#17392e' }}>
-              Our approach is built on experience, individual attention and a long-standing commitment to patient care. We welcome you to connect with our team and take the next step in your healthcare journey.
+              {t('intro.p4')}
             </p>
           </div>
 
           <div className="clinic-intro__actions" style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
             <button className="btn-primary" onClick={onOpenBooking}>
-              Book a Consultation →
+              {t('intro.bookBtn') || 'Book a Consultation →'}
             </button>
             <a href="tel:+919834172124" className="btn-outline" style={{ fontFamily: "'Special Elite', monospace" }}>
-              📞 Call: +91 98341 72124
+              {t('intro.callBtn') || 'Call: +91 98341 72124'}
             </a>
           </div>
 
@@ -107,3 +110,4 @@ export default function ChapterIntro({ onOpenBooking }) {
     </section>
   );
 }
+

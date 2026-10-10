@@ -1,8 +1,60 @@
 import React, { useState } from 'react';
 import { doctors } from '../data/clinicData';
 import { X, Award, CheckCircle, GraduationCap, BookOpen, Stethoscope, Calendar, Phone, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
+const getLocalizedInterest = (interest, lang) => {
+  if (lang === 'mr') {
+    const map = {
+      "Skin Diseases & Vitiligo": "त्वचारोग व विटिलिगो (कोड)",
+      "Allergies & Asthma": "ऍलर्जी व दमा",
+      "Migraine": "मायग्रेन व डोकेदुखी",
+      "PCOD & Hormonal Health": "पीसीओडी व संप्रेरक आरोग्य",
+      "Kidney Stones": "मूतखडा (किडनी स्टोन)",
+      "Acidity & Digestion": "ॲसिडिटी व पचनसंस्था",
+      "Paediatric Illnesses": "बालरोग व मुलांचे आरोग्य",
+      "Chronic Case Management": "जुनाट आजार व्यवस्थापन",
+      "Mental Health & Emotional Well-being": "मानसिक आरोग्य व भावनिक स्वास्थ्य",
+      "Mental Health Care": "मानसिक आरोग्य",
+      "Respiratory & Allergies": "श्वसन विकार व ऍलर्जी",
+      "Hair & Skin Care": "केस व त्वचा निगा",
+      "Teenager & Adult Mental Health": "तरुणांचे मानसिक आरोग्य",
+      "Corporate Wellness": "कॉर्पोरेट वेलनेस",
+      "Women's Health & Gynaecological Care": "महिला आरोग्य व स्त्रीरोग",
+      "Women's Health": "महिला आरोग्य",
+      "Ayurvedic Pulse Diagnosis": "आयुर्वेदिक नाडी परीक्षा",
+      "Holistic Lifestyle & Diet": "समग्र जीवनशैली व आहार"
+    };
+    return map[interest] || interest;
+  }
+  if (lang === 'hi') {
+    const map = {
+      "Skin Diseases & Vitiligo": "त्वचारोग व सफेद दाग (विटिलिगो)",
+      "Allergies & Asthma": "एलर्जी व अस्थमा",
+      "Migraine": "माइग्रेन व सिरदर्द",
+      "PCOD & Hormonal Health": "पीसीओडी व हार्मोनल स्वास्थ्य",
+      "Kidney Stones": "गुर्दे की पथरी",
+      "Acidity & Digestion": "एसिडिटी व पाचन",
+      "Paediatric Illnesses": "बाल रोग",
+      "Chronic Case Management": "क्रोनिक रोग प्रबंधन",
+      "Mental Health & Emotional Well-being": "मानसिक स्वास्थ्य एवं संतुलन",
+      "Mental Health Care": "मानसिक स्वास्थ्य",
+      "Respiratory & Allergies": "श्वसन रोग व एलर्जी",
+      "Hair & Skin Care": "बाल व त्वचा देखभाल",
+      "Teenager & Adult Mental Health": "युवा मानसिक स्वास्थ्य",
+      "Corporate Wellness": "कॉर्पोरेट वेलनेस",
+      "Women's Health & Gynaecological Care": "महिला स्वास्थ्य एवं स्त्री रोग",
+      "Women's Health": "महिला स्वास्थ्य",
+      "Ayurvedic Pulse Diagnosis": "आयुर्वेदिक नाड़ी परीक्षा",
+      "Holistic Lifestyle & Diet": "समग्र जीवनशैली व आहार"
+    };
+    return map[interest] || interest;
+  }
+  return interest;
+};
 
 export default function ChapterDoctors({ onOpenBooking }) {
+  const { t, lang } = useLanguage();
   const [selectedDoctorBio, setSelectedDoctorBio] = useState(null);
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
 
@@ -55,7 +107,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
         {/* Section Heading */}
         <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3.5rem' }}>
           <span className="badge badge-ocean" style={{ marginBottom: '0.75rem' }}>
-            Experienced Practitioners
+            {t('doctorsSection.badge') || 'Experienced Practitioners'}
           </span>
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -65,10 +117,10 @@ export default function ChapterDoctors({ onOpenBooking }) {
             lineHeight: 1.2,
             marginBottom: '0.85rem'
           }}>
-            Meet Our Doctors
+            {t('doctorsSection.h2') || 'Meet Our Doctors'}
           </h2>
           <p style={{ color: 'var(--muted)', fontSize: '1.02rem', lineHeight: 1.6 }}>
-            Registered homoeopathic and ayurvedic practitioners dedicated to individualised, compassionate care.
+            {t('doctorsSection.sub') || 'Registered homoeopathic and ayurvedic practitioners dedicated to individualised, compassionate care.'}
           </p>
         </div>
 
@@ -132,12 +184,12 @@ export default function ChapterDoctors({ onOpenBooking }) {
                     fontSize: '0.75rem', fontWeight: 600, padding: '5px 0', textAlign: 'center',
                     letterSpacing: '0.04em'
                   }}>
-                    Click for Full Bio
+                    {lang === 'mr' ? 'सविस्तर माहिती पहा' : lang === 'hi' ? 'पूरा परिचय देखें' : 'Click for Full Bio'}
                   </div>
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '1rem' }}>
                   <span className="badge badge-green" style={{ background: 'rgba(220, 38, 38, 0.08)', color: '#dc2626', border: '1px solid rgba(220, 38, 38, 0.2)' }}>
-                    Reg. No. {dr.regNo}
+                    {lang === 'mr' ? 'नोंदणी क्र. ' : lang === 'hi' ? 'पंजीकरण संख्या ' : 'Reg. No. '}{dr.regNo}
                   </span>
                 </div>
               </div>
@@ -145,7 +197,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
               {/* Doctor Bio & Info */}
               <div>
                 <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#dc2626', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  {dr.generation}
+                  {dr.id === 'antim' ? (lang === 'mr' ? 'संस्थापक व पहिली पिढी' : lang === 'hi' ? 'संस्थापक एवं पहली पीढ़ी' : dr.generation) : dr.id === 'kushal' ? (lang === 'mr' ? 'दुसरी पिढी' : lang === 'hi' ? 'दूसरी पीढ़ी' : dr.generation) : (lang === 'mr' ? 'आयुर्वेदिक तज्ज्ञ' : lang === 'hi' ? 'आयुर्वेदिक विशेषज्ञ' : dr.generation)}
                 </span>
                 <h3 style={{
                   fontFamily: 'var(--font-serif)',
@@ -155,18 +207,18 @@ export default function ChapterDoctors({ onOpenBooking }) {
                   marginTop: '0.25rem',
                   marginBottom: '0.35rem'
                 }}>
-                  {dr.name}
+                  {t(`doctorsSection.${dr.id === 'antim' ? 'drAntim' : dr.id === 'kushal' ? 'drKushal' : 'drMinal'}.name`) || dr.name}
                 </h3>
                 <p style={{ color: 'var(--muted)', fontWeight: 600, fontSize: '0.95rem', marginBottom: '1.25rem' }}>
-                  {dr.qualifications} · {dr.role}
+                  {t(`doctorsSection.${dr.id === 'antim' ? 'drAntim' : dr.id === 'kushal' ? 'drKushal' : 'drMinal'}.qual`) || `${dr.qualifications} · ${dr.role}`}
                 </p>
 
                 <p style={{ color: 'var(--ink)', fontSize: '0.96rem', lineHeight: 1.65, marginBottom: '1.1rem' }}>
-                  {dr.id === 'kushal' 
+                  {t(`doctorsSection.${dr.id === 'antim' ? 'drAntim' : dr.id === 'kushal' ? 'drKushal' : 'drMinal'}.intro`) || (dr.id === 'kushal' 
                     ? 'Second-generation physician continuing a 28-year clinical legacy. Awarded MUHS University Gold Medal. Specialised in Mental Health, Emotional Well-being, Skin Diseases, Allergies, and Chronic Care.' 
                     : dr.id === 'antim' 
                     ? 'Founder of Dr Somani’s Homoeopathy (est. 1998). Over 28+ years of clinical excellence treating 50,000+ patients across India. Recipient of Khandesh Gaurav Puraskar.' 
-                    : 'Senior Ayurvedic Consultant with 28+ years experience. Specialising in Women’s Health, PCOD, hormonal balance, and holistic natural healing.'}
+                    : 'Senior Ayurvedic Consultant with 28+ years experience. Specialising in Women’s Health, PCOD, hormonal balance, and holistic natural healing.')}
                 </p>
 
                 {/* Read Full Bio Button */}
@@ -187,13 +239,13 @@ export default function ChapterDoctors({ onOpenBooking }) {
                     gap: '4px'
                   }}
                 >
-                  Read Full Professional Bio &amp; Credentials →
+                  {lang === 'mr' ? 'संपूर्ण परिचय आणि पदव्या पहा →' : lang === 'hi' ? 'पूरा परिचय और योग्यता देखें →' : 'Read Full Professional Bio & Credentials →'}
                 </button>
 
                 {/* Clinical Interests */}
                 <div style={{ marginBottom: '1.5rem' }}>
                   <p style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    Specialised Focus Areas
+                    {t('doctorsSection.interestsLabel') || 'Specialised Focus Areas'}
                   </p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                     {dr.interests.map((interest, i) => (
@@ -209,7 +261,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
                           fontWeight: 500
                         }}
                       >
-                        {interest}
+                        {getLocalizedInterest(interest, lang)}
                       </span>
                     ))}
                   </div>
@@ -221,7 +273,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
                   onClick={onOpenBooking}
                   style={{ fontSize: '0.9rem', padding: '0.65rem 1.35rem' }}
                 >
-                  Book Consultation with {dr.name.split(' ')[1] || dr.name} →
+                  {t('doctorsSection.bookWithDr') || 'Book Consultation with'} {dr.name.split(' ')[1] || dr.name} →
                 </button>
               </div>
 
@@ -243,12 +295,16 @@ export default function ChapterDoctors({ onOpenBooking }) {
           zIndex: 2
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span className="badge badge-gold">Verified Credentials</span>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>MUHS University Gold Medalist</span>
+            <span className="badge badge-gold">
+              {lang === 'mr' ? 'प्रमाणित पदव्या' : lang === 'hi' ? 'सत्यापित प्रमाण' : 'Verified Credentials'}
+            </span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--navy)' }}>
+              {lang === 'mr' ? 'एमयूएचएस सुवर्णपदक विजेता' : lang === 'hi' ? 'एमयूएचएस स्वर्ण पदक विजेता' : 'MUHS University Gold Medalist'}
+            </span>
           </div>
 
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '1rem' }}>
-            Academic Excellence &amp; Medical Credentials
+            {lang === 'mr' ? 'शैक्षणिक उत्कृष्टता आणि वैद्यकीय प्रमाणपत्रे' : lang === 'hi' ? 'शैक्षणिक उत्कृष्टता और चिकित्सा प्रमाण' : 'Academic Excellence & Medical Credentials'}
           </h3>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
@@ -265,8 +321,12 @@ export default function ChapterDoctors({ onOpenBooking }) {
                 style={{ width: '100%', height: '220px', objectFit: 'cover' }}
               />
               <div style={{ padding: '0.75rem 1rem', background: '#f2ece0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-                <strong style={{ fontSize: '0.88rem', color: 'var(--navy)' }}>Graduation Degree &amp; Gold Medal</strong>
-                <p style={{ fontSize: '0.78rem', color: 'var(--muted)', margin: 0 }}>Dhondumama Sathe Homoeopathic Medical College &amp; MUHS Nashik</p>
+                <strong style={{ fontSize: '0.88rem', color: 'var(--navy)' }}>
+                  {lang === 'mr' ? 'पदवी आणि सुवर्णपदक' : lang === 'hi' ? 'स्नातक उपाधि और स्वर्ण पदक' : 'Graduation Degree & Gold Medal'}
+                </strong>
+                <p style={{ fontSize: '0.78rem', color: 'var(--muted)', margin: 0 }}>
+                  {lang === 'mr' ? 'धोंडूमामा साठे होमिओपॅथिक मेडिकल कॉलेज आणि एमयूएचएस नाशिक' : lang === 'hi' ? 'धोंडूमामा साठे होम्योपैथिक मेडिकल कॉलेज और एमयूएचएस नासिक' : 'Dhondumama Sathe Homoeopathic Medical College & MUHS Nashik'}
+                </p>
               </div>
             </div>
 
@@ -282,8 +342,12 @@ export default function ChapterDoctors({ onOpenBooking }) {
                 style={{ width: '100%', height: '220px', objectFit: 'cover' }}
               />
               <div style={{ padding: '0.75rem 1rem', background: '#f2ece0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-                <strong style={{ fontSize: '0.88rem', color: 'var(--navy)' }}>Classical Materia Medica Library</strong>
-                <p style={{ fontSize: '0.78rem', color: 'var(--muted)', margin: 0 }}>Deep case study environment for comprehensive individualised care</p>
+                <strong style={{ fontSize: '0.88rem', color: 'var(--navy)' }}>
+                  {lang === 'mr' ? 'क्लासिकल मटेरिया मेडिका ग्रंथालय' : lang === 'hi' ? 'शास्त्रीय मटेरिया मेडिका लाइब्रेरी' : 'Classical Materia Medica Library'}
+                </strong>
+                <p style={{ fontSize: '0.78rem', color: 'var(--muted)', margin: 0 }}>
+                  {lang === 'mr' ? 'सखोल केस स्टडी व वैयक्तिक उपचारांसाठी सुसज्ज ग्रंथालय' : lang === 'hi' ? 'गहन केस स्टडी और व्यक्तिगत उपचार के लिए सुसज्जित लाइब्रेरी' : 'Deep case study environment for comprehensive individualised care'}
+                </p>
               </div>
             </div>
 
@@ -337,21 +401,28 @@ export default function ChapterDoctors({ onOpenBooking }) {
             {/* Modal Header Title & Badges */}
             <div style={{ marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '8px' }}>
-                <span className="badge badge-gold">{selectedDoctorBio.generation}</span>
+                <span className="badge badge-gold">
+                  {selectedDoctorBio.id === 'antim' ? (lang === 'mr' ? 'संस्थापक' : lang === 'hi' ? 'संस्थापक' : selectedDoctorBio.generation) : selectedDoctorBio.id === 'kushal' ? (lang === 'mr' ? 'दुसरी पिढी' : lang === 'hi' ? 'दूसरी पीढ़ी' : selectedDoctorBio.generation) : (lang === 'mr' ? 'आयुर्वेद तज्ज्ञ' : lang === 'hi' ? 'आयुर्वेद विशेषज्ञ' : selectedDoctorBio.generation)}
+                </span>
                 {selectedDoctorBio.id === 'kushal' && (
-                  <span className="badge badge-emerald" style={{ background: '#10b981', color: '#fff' }}>MUHS Gold Medalist</span>
+                  <span className="badge badge-emerald" style={{ background: '#10b981', color: '#fff' }}>
+                    {lang === 'mr' ? 'एमयूएचएस सुवर्णपदक विजेते' : lang === 'hi' ? 'एमयूएचएस स्वर्ण पदक विजेता' : 'MUHS Gold Medalist'}
+                  </span>
                 )}
-                <span className="badge badge-ocean">Reg. No. {selectedDoctorBio.regNo}</span>
+                <span className="badge badge-ocean">
+                  {lang === 'mr' ? 'नोंदणी क्र. ' : lang === 'hi' ? 'पंजीकरण संख्या ' : 'Reg. No. '}{selectedDoctorBio.regNo}
+                </span>
               </div>
 
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.85rem', color: 'var(--navy)', margin: '0 0 4px 0' }}>
-                {selectedDoctorBio.name}
+                {t(`doctorsSection.${selectedDoctorBio.id === 'antim' ? 'drAntim' : selectedDoctorBio.id === 'kushal' ? 'drKushal' : 'drMinal'}.name`) || selectedDoctorBio.name}
               </h2>
               <div style={{ fontSize: '0.98rem', fontWeight: 700, color: '#dc2626' }}>
-                {selectedDoctorBio.qualifications} · {selectedDoctorBio.role}
+                {t(`doctorsSection.${selectedDoctorBio.id === 'antim' ? 'drAntim' : selectedDoctorBio.id === 'kushal' ? 'drKushal' : 'drMinal'}.qual`) || `${selectedDoctorBio.qualifications} · ${selectedDoctorBio.role}`}
               </div>
               <div style={{ fontSize: '0.86rem', color: 'var(--muted)', marginTop: '2px' }}>
-                Practicing at: {selectedDoctorBio.locations.join(' · ')}
+                {lang === 'mr' ? 'येथे उपलब्ध: ' : lang === 'hi' ? 'उपलब्ध: ' : 'Practicing at: '}
+                {selectedDoctorBio.locations.map(l => l === 'Jalgaon' ? (lang === 'mr' ? 'जळगाव' : lang === 'hi' ? 'जलगांव' : l) : l === 'Pune' ? (lang === 'mr' ? 'पुणे' : lang === 'hi' ? 'पुणे' : l) : (lang === 'mr' ? 'ऑनलाइन' : lang === 'hi' ? 'ऑनलाइन' : l)).join(' · ')}
               </div>
             </div>
 
@@ -415,7 +486,7 @@ export default function ChapterDoctors({ onOpenBooking }) {
               {doctorGalleries[selectedDoctorBio.id] && doctorGalleries[selectedDoctorBio.id].length > 1 && (
                 <div style={{ background: '#131e3a', padding: '12px 16px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#cbd5e1', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                    SELECT PHOTO TO PREVIEW LARGE:
+                    {lang === 'mr' ? 'मोठा फोटो पाहण्यासाठी क्लिक करा:' : lang === 'hi' ? 'बड़ा फोटो देखने के लिए क्लिक करें:' : 'SELECT PHOTO TO PREVIEW LARGE:'}
                   </div>
                   <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '4px' }}>
                     {doctorGalleries[selectedDoctorBio.id].map((photo, pIdx) => (
@@ -506,14 +577,14 @@ export default function ChapterDoctors({ onOpenBooking }) {
                 }}
                 style={{ flex: 1, padding: '0.8rem 1.4rem', fontSize: '0.92rem' }}
               >
-                Book Consultation with {selectedDoctorBio.name.split(' ')[1] || selectedDoctorBio.name} →
+                {t('doctorsSection.bookWithDr') || 'Book Consultation with'} {selectedDoctorBio.name.split(' ')[1] || selectedDoctorBio.name} →
               </button>
               <button
                 onClick={() => setSelectedDoctorBio(null)}
                 className="btn-secondary"
                 style={{ padding: '0.8rem 1.4rem', fontSize: '0.92rem', background: '#e2d9cc', color: 'var(--navy)', border: 'none' }}
               >
-                Close Profile
+                {lang === 'mr' ? 'प्रोफाइल बंद करा' : lang === 'hi' ? 'प्रोफाइल बंद करें' : 'Close Profile'}
               </button>
             </div>
 

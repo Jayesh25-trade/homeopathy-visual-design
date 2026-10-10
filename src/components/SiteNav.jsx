@@ -24,9 +24,9 @@ export default function SiteNav({ onOpenBooking }) {
   const navItems = [
     { href: '#cases', label: t('nav.cases') || 'Patient Stories' },
     { href: '#concerns', label: t('nav.concerns') || 'Areas of Care' },
-    { href: '#treatments', label: 'Treatments' },
-    { href: '#locations', label: 'Our Clinics' },
-    { href: '#doctors', label: 'Our Doctors' },
+    { href: '#treatments', label: t('nav.treatments') || 'Treatments' },
+    { href: '#locations', label: t('nav.locations') || 'Our Clinics' },
+    { href: '#doctors', label: t('nav.doctors') || 'Our Doctors' },
     { href: '#consultation', label: t('nav.consultation') || 'Online Consult' },
   ];
 
@@ -186,7 +186,7 @@ export default function SiteNav({ onOpenBooking }) {
               }}
             >
               <Calendar size={14} />
-              Book Appointment
+              {t('nav.bookBtn') || 'Book Appointment'}
             </button>
 
             {/* Mobile Hamburger Toggle */}
@@ -271,7 +271,7 @@ export default function SiteNav({ onOpenBooking }) {
               }}
             >
               <Calendar size={16} />
-              Book Appointment →
+              {t('nav.bookBtn') || 'Book Appointment'}
             </button>
           </nav>
         )}

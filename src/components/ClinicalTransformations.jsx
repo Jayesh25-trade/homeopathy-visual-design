@@ -179,7 +179,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
             transform: 'rotate(-4deg)',
           }}
         >
-          Healing<br />People<br />Naturally
+          {t('casesSection.scriptDecorative')}
         </span>
       </div>
 
@@ -326,7 +326,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                       ...badgeStyle
                     }}
                   >
-                    {item.category}
+                    {t(`casesSection.categories.${item.category.toLowerCase()}`) || item.category}
                   </span>
 
                   {/* Treatment Duration Pill */}
@@ -345,7 +345,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     }}
                   >
                     <span aria-hidden="true" style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 700 }}>•</span>
-                    {item.treatment}
+                    {t(`casesSection.treatments.${item.cKey}`) || item.treatment}
                   </span>
                 </div>
 
@@ -596,7 +596,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
               }}
               aria-label="Close modal"
             >
-              âœ•
+              ×
             </button>
 
             {/* Modal Header */}
@@ -612,7 +612,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     ...getCategoryBadgeStyle(selectedCase.category)
                   }}
                 >
-                  {selectedCase.category}
+                  {t(`casesSection.categories.${selectedCase.category.toLowerCase()}`) || selectedCase.category}
                 </span>
                 <span
                   style={{
@@ -624,7 +624,7 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                     fontWeight: 500,
                   }}
                 >
-                  â€¢ {selectedCase.treatment}
+                  • {t(`casesSection.treatments.${selectedCase.cKey}`) || selectedCase.treatment}
                 </span>
               </div>
 
@@ -720,7 +720,13 @@ export default function ClinicalTransformations({ onOpenBooking }) {
                 }}
               >
                 <span className="mono" style={{ fontSize: '0.72rem', color: '#18231F' }}>
-                  Doctor: <strong>{selectedCase.doctor}</strong>
+                  {t('casesSection.doctorLabel')}: <strong>{
+                    selectedCase.id === 'case-02'
+                      ? (lang === 'mr' ? 'डॉ. अंतिम सोमाणी (संस्थापक)' : lang === 'hi' ? 'डॉ. अंतिम सोमानी (संस्थापक)' : selectedCase.doctor)
+                      : (selectedCase.id === 'case-01' || selectedCase.id === 'case-04')
+                      ? (lang === 'mr' ? 'डॉ. कुशल ए. सोमाणी आणि डॉ. अंतिम सोमाणी' : lang === 'hi' ? 'डॉ. कुशल ए. सोमानी और डॉ. अंतिम सोमानी' : selectedCase.doctor)
+                      : (lang === 'mr' ? 'डॉ. कुशल ए. सोमाणी' : lang === 'hi' ? 'डॉ. कुशल ए. सोमानी' : selectedCase.doctor)
+                  }</strong>
                 </span>
                 <span className="mono" style={{ fontSize: '0.7rem', color: '#1B2A41', fontWeight: 600 }}>
                    ✓ {t('trust.safe')}

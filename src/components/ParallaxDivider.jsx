@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ParallaxDivider() {
+  const { t } = useLanguage();
   const bgRef = useRef(null);
 
   useEffect(() => {
@@ -74,17 +76,17 @@ export default function ParallaxDivider() {
         }}
       >
         <p className="mono" style={{ color: 'var(--amber-light)', marginBottom: '14px', letterSpacing: '0.15em' }}>
-          CLINICAL PHILOSOPHY
+          {t('philosophy.tag') || 'CLINICAL PHILOSOPHY'}
         </p>
         <h2
           className="serif-display serif-display--md"
           style={{ color: '#ffffff', lineHeight: 1.25, marginBottom: '16px' }}
         >
-          Rooted in 27+ Years of Practice.<br />
-          <em style={{ color: 'var(--amber-light)', fontStyle: 'italic' }}>Inspired by Nature.</em>
+          {t('philosophy.h2') || 'Rooted in 28+ Years of Practice.'}<br />
+          <em style={{ color: 'var(--amber-light)', fontStyle: 'italic' }}>{t('philosophy.h2Em') || 'Inspired by Nature.'}</em>
         </h2>
         <p style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.1rem)', color: 'rgba(244,241,234,0.85)', lineHeight: 1.7 }}>
-          Classical homoeopathy treats the individual as a whole — awakening the body’s innate vital force to restore true balance and lasting well-being.
+          {t('philosophy.desc') || 'Classical homoeopathy treats the individual as a whole — awakening the body’s innate vital force to restore true balance and lasting well-being.'}
         </p>
       </div>
     </section>

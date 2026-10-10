@@ -11,7 +11,7 @@ export const clinic = {
   founded: 1998,
   phone: "+91 98341 72124",
   phoneHref: "tel:+919834172124",
-  whatsapp: "https://wa.me/919834172124",
+  whatsapp: "https://wa.me/919834172124?text=Hello%20Dr.%20Somani's%20Homoeopathy%2C%20I%20would%20like%20to%20book%20a%20consultation%20appointment.%20Please%20share%20the%20available%20slots.",
   instagram: "https://instagram.com/somanikushal",
   logo: "/assets/somani-logo.png",
 };
@@ -167,7 +167,7 @@ export const locations = [
     phone: "+91 98341 72124",
     phoneHref: "tel:+919834172124",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=One+Place+Wakad+Pink+City+Road+Pune+411057",
-    whatsapp: "https://wa.me/919834172124",
+    whatsapp: "https://wa.me/919834172124?text=Hello%20Dr.%20Somani's%20Homoeopathy%2C%20I%20would%20like%20to%20book%20a%20consultation%20appointment%20at%20Wakad%2C%20Pune%20Clinic.",
   },
   {
     id: "jalgaon",
@@ -176,7 +176,7 @@ export const locations = [
     phone: "+91 92702 78668",
     phoneHref: "tel:+919270278668",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Chitra+Chowk+JMP+Market+Jalgaon+425001",
-    whatsapp: "https://wa.me/919834172124",
+    whatsapp: "https://wa.me/919270278668?text=Hello%20Dr.%20Somani's%20Homoeopathy%2C%20I%20would%20like%20to%20book%20a%20consultation%20appointment%20at%20Jalgaon%20Clinic.",
   },
   {
     id: "online",
@@ -185,7 +185,7 @@ export const locations = [
     phone: "+91 98341 72124",
     phoneHref: "tel:+919834172124",
     mapsUrl: null,
-    whatsapp: "https://wa.me/919834172124",
+    whatsapp: "https://wa.me/919834172124?text=Hello%20Dr.%20Somani's%20Homoeopathy%2C%20I%20would%20like%20to%20book%20an%20Online%20Video%20Consultation.",
   },
 ];
 

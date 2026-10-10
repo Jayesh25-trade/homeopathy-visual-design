@@ -3,7 +3,7 @@ import { doctors, clinic } from '../data/clinicData';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterAtlas({ onOpenBooking }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [selected, setSelected] = useState(0);
 
   const conditionKeys = ['skin', 'allergies', 'migraine', 'pcod', 'kidney', 'acidity', 'paediatric', 'mental'];
@@ -215,10 +215,14 @@ export default function ChapterAtlas({ onOpenBooking }) {
                   fontFamily: 'var(--font-serif)', fontWeight: 400,
                   fontSize: '1rem', color: 'var(--ink)', marginBottom: '2px',
                 }}>
-                  {doctor.name}
+                  {doctor.id === 'antim'
+                    ? (lang === 'mr' ? 'डॉ. अंतिम सोमाणी' : lang === 'hi' ? 'डॉ. अंतिम सोमानी' : doctor.name)
+                    : (lang === 'mr' ? 'डॉ. कुशल ए. सोमाणी' : lang === 'hi' ? 'डॉ. कुशल ए. सोमानी' : doctor.name)}
                 </p>
                 <p className="mono" style={{ fontSize: '0.6rem', color: 'var(--mineral)' }}>
-                  {doctor.qualifications} · Reg. {doctor.regNo}
+                  {doctor.id === 'antim'
+                    ? (lang === 'mr' ? 'बी.एच.एम.एस. · नोंदणी क्र. ४०७२१' : lang === 'hi' ? 'बी.एच.एम.एस. · पंजीकरण संख्या 40721' : `${doctor.qualifications} · Reg. ${doctor.regNo}`)
+                    : (lang === 'mr' ? 'एम.डी. (होमिओपॅथी) · नोंदणी क्र. ८२१७०' : lang === 'hi' ? 'एम.डी. (होम्योपैथी) · पंजीकरण संख्या 82170' : `${doctor.qualifications} · Reg. ${doctor.regNo}`)}
                 </p>
               </div>
             </div>

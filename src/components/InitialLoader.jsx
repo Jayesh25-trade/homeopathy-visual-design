@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function InitialLoader({ onComplete }) {
+  const { t } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const videoRef = useRef(null);
@@ -149,7 +151,7 @@ export default function InitialLoader({ onComplete }) {
               fontWeight: 600,
               letterSpacing: '0.04em'
             }}>
-              Loading clinical care &amp; doctor perspectives...
+              {t('common.loaderText')}
             </p>
           </div>
 

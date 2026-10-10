@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function BeforeYouCall() {
@@ -60,7 +60,7 @@ export default function BeforeYouCall() {
           }}>
             {allDone
               ? t('consultationSection.readyHeader')
-              : `${t('consultationSection.beforeCallHeader')} â€” ${checked.size}/${items.length}`}
+              : `${t('consultationSection.beforeCallHeader')} — ${checked.size}/${items.length}`}
           </span>
         </div>
         <svg
