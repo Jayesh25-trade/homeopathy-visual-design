@@ -439,7 +439,32 @@ export const translations = {
       directWaHeading: "DIRECT WHATSAPP CONSULTATION",
       directWaSubtitle: "↑ Patient details will be formatted into a direct WhatsApp message to Dr. Somani's clinic.",
       directWaEmptyPrompt: "Start filling in the form to prepare your WhatsApp message.",
-    }
+    },
+
+    // ChapterConsultation (Global Online Care)
+    onlineCare: {
+      badge: "Global Online Care",
+      h2: "Your Doctor, Just a Click Away",
+      sub: "Online Homoeopathic Consultations Across the Globe",
+      p1: "Distance should never be a barrier to trusted, individualised healthcare. Patients across India and internationally (including the USA, Canada, UK, and Germany) consult Dr Antim and Dr Kushal Somani through high-definition video consultations.",
+      p2: "Receive a detailed case evaluation from the comfort of your home, with genuine homoeopathic remedies securely couriered to your doorstep with clear dosage instructions and regular progress monitoring.",
+      ctaBtn: "Book Your Online Consultation →",
+      steps: [
+        { n: "01", title: "Book your slot", body: "Request a suitable date and time through WhatsApp or website form." },
+        { n: "02", title: "Confirm and pay", body: "Confirm the consultation and complete the fee payment securely through UPI." },
+        { n: "03", title: "Video consultation", body: "Discuss the case with the doctor through a video or in-clinic consultation." },
+        { n: "04", title: "Medicine delivered", body: "Doorstep courier dispatch with clear dosage schedule and follow-up guidance." },
+      ],
+    },
+
+    // ChapterEnding (Begin / Locations)
+    ending: {
+      h2: "Begin your care journey.",
+      h2Em: "We are here to listen.",
+      sub: "In-person consultations at our Wakad and Jalgaon clinics, or secure online consultations anywhere in India.",
+      requestBtn: "Request Consultation",
+      whatsappBtn: "Chat on WhatsApp",
+    },
   },
 
   mr: {
@@ -877,7 +902,32 @@ export const translations = {
       directWaHeading: "थेट व्हॉट्सॲप सल्लामसलत",
       directWaSubtitle: "↑ रुग्णाची माहिती डॉ. सोमाणी क्लिनिकला थेट व्हॉट्सॲप संदेशाद्वारे पाठवली जाईल.",
       directWaEmptyPrompt: "व्हॉट्सॲप संदेश तयार करण्यासाठी\nफॉर्म भरणे सुरू करा.",
-    }
+    },
+
+    // ChapterConsultation (Global Online Care)
+    onlineCare: {
+      badge: "जागतिक ऑनलाइन सेवा",
+      h2: "तुमचे डॉक्टर, फक्त एका क्लिकवर",
+      sub: "भारत आणि जगभरातून ऑनलाइन होमिओपॅथिक सल्ला",
+      p1: "अंतरामुळे वैयक्तिक व विश्वासार्ह आरोग्यसेवा कधीही थांबू नये. भारतासह अमेरिका, कॅनडा, युनायटेड किंगडम आणि जर्मनीतील रुग्ण डॉ. अंतिम व डॉ. कुशल सोमाणी यांच्याशी व्हिडिओद्वारे थेट सल्लामसलत करतात.",
+      p2: "घरी बसून सविस्तर केस तपासणी करून घ्या. मूळ शास्त्रीय होमिओपॅथिक औषधे योग्य डोसच्या मार्गदर्शनासह थेट तुमच्या पत्त्यावर कुरिअरने सुरक्षित पोहोचवली जातात.",
+      ctaBtn: "तुमचा ऑनलाइन सल्ला बुक करा →",
+      steps: [
+        { n: "०१", title: "वेळ निवडा", body: "व्हॉट्सॲप किंवा वेबसाइट फॉर्मद्वारे तुम्हाला सोयीची तारीख आणि वेळ निश्चित करा." },
+        { n: "०२", title: "निश्चिती आणि देयक", body: "सल्लामसलतीची पुष्टी करा आणि यूपीआयद्वारे सुरक्षित शुल्क भरा." },
+        { n: "०३", title: "व्हिडिओ सल्ला", body: "तुमच्या संपूर्ण आरोग्याच्या इतिहासावर डॉक्टरांशी सविस्तर आणि निवांत व्हिडिओ चर्चा." },
+        { n: "०४", title: "औषधे घरपोच", body: "औषधे योग्य डोसच्या मार्गदर्शनासह थेट तुमच्या घरपोच कुरिअरने मिळवा." },
+      ],
+    },
+
+    // ChapterEnding (Begin / Locations)
+    ending: {
+      h2: "उपचार प्रवासाची सुरुवात करा.",
+      h2Em: "आम्ही तुमचे म्हणणे ऐकण्यास तत्पर आहोत.",
+      sub: "वाकड व जळगाव क्लिनिकमध्ये प्रत्यक्ष भेट किंवा भारतात कोठूनही सुरक्षित ऑनलाइन व्हिडिओ सल्ला.",
+      requestBtn: "सल्लामसलत अर्ज करा",
+      whatsappBtn: "व्हॉट्सॲपवर चॅट करा",
+    },
   },
 
   hi: {
@@ -1315,6 +1365,32 @@ export const translations = {
       directWaHeading: "सीधा व्हाट्सएप परामर्श",
       directWaSubtitle: "↑ मरीज का विवरण डॉ. सोमानी क्लिनिक को सीधे व्हाट्सएप संदेश के रूप में भेजा जाएगा।",
       directWaEmptyPrompt: "व्हाट्सएप संदेश तैयार करने के लिए\nफॉर्म भरना शुरू करें।",
-    }
+    },
+
+    // ChapterConsultation (Global Online Care)
+    onlineCare: {
+      badge: "वैश्विक ऑनलाइन देखभाल",
+      h2: "आपके डॉक्टर, बस एक क्लिक दूर",
+      sub: "भारत और दुनिया भर में ऑनलाइन होम्योपैथिक परामर्श",
+      p1: "दूरी कभी भी विश्वसनीय, व्यक्तिगत स्वास्थ्य सेवा में बाधा नहीं बननी चाहिए। भारत सहित अमेरिका, कनाडा, यूके और जर्मनी के मरीज डॉ. अंतिम और डॉ. कुशल सोमानी से वीडियो परामर्श लेते हैं।",
+      p2: "घर बैठे विस्तृत केस का विश्लेषण करवाएं। मूल शास्त्रीय होम्योपैथिक दवाएं उचित खुराक के मार्गदर्शन के साथ सीधे आपके पते पर कूरियर द्वारा पहुंचाई जाती हैं।",
+      ctaBtn: "अपना ऑनलाइन परामर्श बुक करें →",
+      steps: [
+        { n: "01", title: "समय चुनें", body: "व्हाट्सएप या वेबसाइट फॉर्म के माध्यम से अपनी सुविधानुसार तारीख और समय चुनें।" },
+        { n: "02", title: "पुष्टि और भुगतान", body: "परामर्श की पुष्टि करें और यूपीआई के माध्यम से सुरक्षित शुल्क का भुगतान करें।" },
+        { n: "03", title: "वीडियो परामर्श", body: "अपने संपूर्ण स्वास्थ्य इतिहास पर डॉक्टर के साथ विस्तृत और तनावमुक्त बातचीत।" },
+        { n: "04", title: "दवा घर तक", body: "सटीक दवाएं खुराक के स्पष्ट निर्देशों के साथ कूरियर द्वारा सीधे आपके घर पहुंचेगी।" },
+      ],
+    },
+
+    // ChapterEnding (Begin / Locations)
+    ending: {
+      h2: "अपनी देखभाल यात्रा शुरू करें।",
+      h2Em: "हम आपको सुनने के लिए उपस्थित हैं।",
+      sub: "वाकड और जलगांव क्लिनिक में प्रत्यक्ष मुलाकात या भारत में कहीं से भी सुरक्षित ऑनलाइन वीडियो परामर्श।",
+      requestBtn: "परामर्श का अनुरोध करें",
+      whatsappBtn: "व्हाट्सएप पर चैट करें",
+    },
   }
 };
+

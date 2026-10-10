@@ -69,8 +69,8 @@ export default function ChapterEnding({ onOpenBooking }) {
             marginBottom: '0.75rem',
             letterSpacing: '0',
           }}>
-            {t('ending.h2')}<br />
-            <em style={{ color: '#dc2626', fontStyle: 'italic' }}>{t('ending.h2Em')}</em>
+            {t('ending.h2') || 'Begin your care journey.'}<br />
+            <em style={{ color: '#dc2626', fontStyle: 'italic' }}>{t('ending.h2Em') || 'We are here to listen.'}</em>
           </h2>
 
           <div style={{
@@ -88,7 +88,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             color: '#5c6660',
             lineHeight: 1.6,
           }}>
-            {t('ending.sub')}
+            {t('ending.sub') || 'In-person consultations at our Wakad and Jalgaon clinics, or secure online consultations anywhere in India.'}
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function ChapterEnding({ onOpenBooking }) {
                   className="btn-primary"
                   style={{ fontSize: '0.85rem', padding: '0.65rem 1.4rem', width: '100%' }}
                 >
-                  {t('ending.requestBtn')}
+                  {t('ending.requestBtn') || 'Request Consultation'}
                 </button>
 
                 {loc.mapsUrl && (
@@ -186,7 +186,7 @@ export default function ChapterEnding({ onOpenBooking }) {
                       textUnderlineOffset: '3px',
                     }}
                   >
-                    {t('common.directions')} →
+                    {t('common.directions') || 'Directions'} →
                   </a>
                 )}
               </div>
@@ -209,7 +209,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             className="btn btn--whatsapp"
             style={{ fontSize: '0.9rem', padding: '0.75rem 1.75rem' }}
           >
-            {t('ending.whatsappBtn')}
+            {t('ending.whatsappBtn') || 'Chat on WhatsApp'}
           </a>
           <a
             href={clinic.instagram}
@@ -233,7 +233,7 @@ export default function ChapterEnding({ onOpenBooking }) {
           paddingTop: '20px',
           borderTop: '1px solid #e2dad0',
         }}>
-          {t('footer.disclaimer')}
+          {t('footer.disclaimer') || 'Homoeopathic treatment is individualized. Results may vary depending on patient history and compliance.'}
         </p>
 
       </div>

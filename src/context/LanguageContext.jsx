@@ -4,6 +4,33 @@ import { localizationExtras } from '../data/localizationExtras';
 
 const LanguageContext = createContext();
 
+// Recursive deep merge: base is augmented/overridden by override
+function deepMerge(base, override) {
+  if (!base && !override) return {};
+  if (!override) return base ? { ...base } : {};
+  if (!base) return override ? { ...override } : {};
+
+  const result = { ...base };
+  for (const key of Object.keys(override)) {
+    const oVal = override[key];
+    const bVal = base[key];
+
+    if (
+      oVal &&
+      typeof oVal === 'object' &&
+      !Array.isArray(oVal) &&
+      bVal &&
+      typeof bVal === 'object' &&
+      !Array.isArray(bVal)
+    ) {
+      result[key] = deepMerge(bVal, oVal);
+    } else if (oVal !== undefined && oVal !== null) {
+      result[key] = oVal;
+    }
+  }
+  return result;
+}
+
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(() => {
     return localStorage.getItem('preferred_lang') || 'en';
@@ -23,29 +50,62 @@ export function LanguageProvider({ children }) {
     }
   }, [lang]);
 
+  // Deep merged dictionaries: translations[lang] takes precedence, supplemented by localizationExtras
+  const activeDict = React.useMemo(() => {
+    const extras = localizationExtras[lang] || localizationExtras.en || {};
+    const primary = translations[lang] || translations.en || {};
+    return deepMerge(extras, primary);
+  }, [lang]);
+
+  const fallbackDict = React.useMemo(() => {
+    const extras = localizationExtras.en || {};
+    const primary = translations.en || {};
+    return deepMerge(extras, primary);
+  }, []);
+
   // Helper function to safely get nested translation strings
-  const t = (path) => {
+  const t = (path, defaultValue) => {
+    if (!path || typeof path !== 'string') return defaultValue !== undefined ? defaultValue : '';
     const keys = path.split('.');
-    let current = { ...(translations[lang] || translations.en), ...(localizationExtras[lang] || localizationExtras.en) };
-    
+
+    // 1. Try current language
+    let current = activeDict;
+    let found = true;
     for (const k of keys) {
-      if (current && current[k] !== undefined) {
+      if (current && typeof current === 'object' && current[k] !== undefined && current[k] !== null) {
         current = current[k];
       } else {
-        // Fallback to English if translation key missing
-        let fallback = { ...translations.en, ...localizationExtras.en };
-        for (const fk of keys) {
-          if (fallback && fallback[fk] !== undefined) fallback = fallback[fk];
-          else return path;
+        found = false;
+        break;
+      }
+    }
+    if (found && current !== undefined && current !== null) {
+      return current;
+    }
+
+    // 2. Fallback to English dictionary
+    if (lang !== 'en') {
+      let fallback = fallbackDict;
+      let fallbackFound = true;
+      for (const fk of keys) {
+        if (fallback && typeof fallback === 'object' && fallback[fk] !== undefined && fallback[fk] !== null) {
+          fallback = fallback[fk];
+        } else {
+          fallbackFound = false;
+          break;
         }
+      }
+      if (fallbackFound && fallback !== undefined && fallback !== null) {
         return fallback;
       }
     }
-    return current;
+
+    // 3. Return defaultValue or undefined (NEVER return raw path string!)
+    return defaultValue !== undefined ? defaultValue : undefined;
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t, dict: { ...(translations[lang] || translations.en), ...(localizationExtras[lang] || localizationExtras.en) } }}>
+    <LanguageContext.Provider value={{ lang, setLang, t, dict: activeDict }}>
       {children}
     </LanguageContext.Provider>
   );

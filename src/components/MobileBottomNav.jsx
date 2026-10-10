@@ -30,7 +30,7 @@ export default function MobileBottomNav({ onOpenBooking }) {
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
           <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
-        <span>{t('mobileNav.home')}</span>
+        <span>{t('mobileNav.home') || 'Home'}</span>
       </a>
 
       <a href="#concerns" className="mobile-nav-item">
@@ -40,14 +40,14 @@ export default function MobileBottomNav({ onOpenBooking }) {
           <rect x="14" y="14" width="7" height="7"/>
           <rect x="3" y="14" width="7" height="7"/>
         </svg>
-        <span>{t('mobileNav.services')}</span>
+        <span>{t('mobileNav.services') || 'Services'}</span>
       </a>
 
       <a href="#cases" className="mobile-nav-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
         </svg>
-        <span>{t('mobileNav.stories')}</span>
+        <span>{t('mobileNav.stories') || 'Stories'}</span>
       </a>
 
       <button onClick={onOpenBooking} className="mobile-nav-item" style={{ color: 'var(--red)', fontWeight: 600 }}>
@@ -57,7 +57,7 @@ export default function MobileBottomNav({ onOpenBooking }) {
           <line x1="8" y1="2" x2="8" y2="6"/>
           <line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-        <span>{t('mobileNav.book')}</span>
+        <span>{t('mobileNav.book') || 'Book'}</span>
       </button>
     </nav>
   );
