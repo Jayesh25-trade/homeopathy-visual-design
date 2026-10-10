@@ -63,6 +63,36 @@ body {
   transition: background 0.45s ease, color 0.45s ease;
 }
 
+html[data-language='mr'] body,
+html[data-language='hi'] body {
+  font-family: 'Noto Sans Devanagari', var(--font-sans);
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+html[data-language='mr'] .serif-display,
+html[data-language='hi'] .serif-display,
+html[data-language='mr'] h1,
+html[data-language='mr'] h2,
+html[data-language='mr'] h3,
+html[data-language='hi'] h1,
+html[data-language='hi'] h2,
+html[data-language='hi'] h3 {
+  font-family: 'Noto Sans Devanagari', var(--font-serif);
+  line-height: 1.28;
+}
+
+html[data-language='mr'] button,
+html[data-language='hi'] button,
+html[data-language='mr'] a,
+html[data-language='hi'] a {
+  line-height: 1.35;
+}
+
+button, a, label, p, h1, h2, h3, h4, span {
+  overflow-wrap: anywhere;
+}
+
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; touch-action: manipulation; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; touch-action: manipulation; }

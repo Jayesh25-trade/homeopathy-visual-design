@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '../data/translations';
+import { localizationExtras } from '../data/localizationExtras';
 
 const LanguageContext = createContext();
 
@@ -15,17 +16,22 @@ export function LanguageProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.language = lang;
+  }, [lang]);
+
   // Helper function to safely get nested translation strings
   const t = (path) => {
     const keys = path.split('.');
-    let current = translations[lang] || translations.en;
+    let current = { ...(translations[lang] || translations.en), ...(localizationExtras[lang] || localizationExtras.en) };
     
     for (const k of keys) {
       if (current && current[k] !== undefined) {
         current = current[k];
       } else {
         // Fallback to English if translation key missing
-        let fallback = translations.en;
+        let fallback = { ...translations.en, ...localizationExtras.en };
         for (const fk of keys) {
           if (fallback && fallback[fk] !== undefined) fallback = fallback[fk];
           else return path;
@@ -37,7 +43,7 @@ export function LanguageProvider({ children }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t, dict: translations[lang] || translations.en }}>
+    <LanguageContext.Provider value={{ lang, setLang, t, dict: { ...(translations[lang] || translations.en), ...(localizationExtras[lang] || localizationExtras.en) } }}>
       {children}
     </LanguageContext.Provider>
   );
