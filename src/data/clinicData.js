@@ -12,7 +12,7 @@ export const clinic = {
   phone: "+91 98341 72124",
   phoneHref: "tel:+919834172124",
   whatsapp: "https://wa.me/919834172124?text=Hello%20Dr.%20Somani's%20Homoeopathy%2C%20I%20would%20like%20to%20book%20a%20consultation%20appointment.%20Please%20share%20the%20available%20slots.",
-  instagram: "https://instagram.com/somanikushal",
+  instagram: "https://www.instagram.com/drsomanihomoeopathy/",
   logo: "/assets/somani-logo.png",
 };
 

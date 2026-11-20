@@ -100,7 +100,7 @@ export default function ChapterIntro({ onOpenBooking }) {
             <button className="btn-primary" onClick={onOpenBooking}>
               {t('intro.bookBtn') || 'Book a Consultation →'}
             </button>
-            <a href="tel:+919834172124" className="btn-outline" style={{ fontFamily: "'Special Elite', monospace" }}>
+            <a href={clinic.phoneHref} className="btn-outline" style={{ fontFamily: "'Special Elite', monospace" }}>
               {t('intro.callBtn') || 'Call: +91 98341 72124'}
             </a>
           </div>

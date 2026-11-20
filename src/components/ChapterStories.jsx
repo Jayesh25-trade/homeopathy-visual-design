@@ -248,7 +248,7 @@ export default function ChapterStories() {
             </div>
 
             <a
-              href="https://www.instagram.com/somanikushal/"
+              href="https://www.instagram.com/drsomanihomoeopathy/"
               target="_blank"
               rel="noopener noreferrer"
               style={{

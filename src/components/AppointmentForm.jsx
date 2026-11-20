@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { z } from 'zod';
-import { conditions, locations } from '../data/clinicData';
+import { clinic, conditions, locations } from '../data/clinicData';
 import { supabase } from '../integrations/supabase/client';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -181,9 +181,10 @@ export default function AppointmentForm({ isOpen, onClose }) {
 
   const handleDirectWhatsApp = () => {
     const directText = buildDirectWAText(form, lang);
-    const targetPhone = form.branch && form.branch.toLowerCase().includes('jalgaon')
-      ? '919270278668'
-      : '919834172124';
+    const selectedLocation = locations.find(location =>
+      form.branch && location.city.toLowerCase().includes(form.branch.toLowerCase())
+    );
+    const targetPhone = selectedLocation?.phoneHref.replace('tel:+', '') ?? clinic.phoneHref.replace('tel:+', '');
     const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(directText)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -208,9 +209,10 @@ export default function AppointmentForm({ isOpen, onClose }) {
     } catch (_) {}
 
     // Open WhatsApp directly with patient's query
-    const targetPhone = form.branch && form.branch.toLowerCase().includes('jalgaon')
-      ? '919270278668'
-      : '919834172124';
+    const selectedLocation = locations.find(location =>
+      form.branch && location.city.toLowerCase().includes(form.branch.toLowerCase())
+    );
+    const targetPhone = selectedLocation?.phoneHref.replace('tel:+', '') ?? clinic.phoneHref.replace('tel:+', '');
     const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waText)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { clinic } from '../data/clinicData';
+import { clinic, locations } from '../data/clinicData';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function ChapterEnding({ onOpenBooking }) {
@@ -10,7 +10,7 @@ export default function ChapterEnding({ onOpenBooking }) {
       id: 'wakad',
       city: lang === 'mr' ? 'वाकड, पुणे' : lang === 'hi' ? 'वाकड, पुणे' : 'Wakad, Pune',
       address: t('common.puneAddress'),
-      phone: '+91 98226 77921',
+      phone: locations.find((location) => location.id === 'pune')?.phone ?? '',
       type: 'CLINIC',
       mapsUrl: 'https://maps.app.goo.gl/jthY3tH3iZJyVP9j9'
     },
@@ -18,7 +18,7 @@ export default function ChapterEnding({ onOpenBooking }) {
       id: 'jalgaon',
       city: lang === 'mr' ? 'जळगाव' : lang === 'hi' ? 'जलगांव' : 'Jalgaon',
       address: t('common.jalgaonAddress'),
-      phone: '+91 94222 77921',
+      phone: locations.find((location) => location.id === 'jalgaon')?.phone ?? '',
       type: 'CLINIC',
       mapsUrl: 'https://maps.google.com/?q=Somani+Homoeopathy+Jalgaon'
     },
@@ -26,7 +26,7 @@ export default function ChapterEnding({ onOpenBooking }) {
       id: 'online',
       city: lang === 'mr' ? 'ऑनलाइन सल्ला' : lang === 'hi' ? 'ऑनलाइन परामर्श' : 'Online Consultation',
       address: t('common.onlineAddress'),
-      phone: '+91 98226 77921',
+      phone: locations.find((location) => location.id === 'online')?.phone ?? '',
       type: 'ONLINE',
     }
   ];
@@ -219,7 +219,7 @@ export default function ChapterEnding({ onOpenBooking }) {
             style={{ fontFamily: "'Special Elite', monospace", fontSize: '0.88rem' }}
             aria-label="Instagram"
           >
-            @somanikushal
+            @drsomanihomoeopathy
           </a>
         </div>
 

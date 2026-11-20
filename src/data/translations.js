@@ -9,7 +9,7 @@ export const translations = {
     topBar: {
       exp: "28+ Years of Trusted Experience",
       delivery: "Online Consultation & Doorstep Medicine Delivery",
-      directCall: "Direct Doctor Consultation: +91 98341 72124",
+      directCall: "Pune Clinic: +91 98341 72124",
     },
 
     // Navigation & Common
@@ -92,7 +92,7 @@ export const translations = {
       p3: "With in-clinic consultations in Jalgaon and Pune and online consultations for patients across India and internationally, including the USA, Canada and Germany, Dr Somani’s Homoeopathy continues its commitment to accessible, personalised healthcare.",
       p4: "Our approach is built on experience, individual attention and a long-standing commitment to patient care. We welcome you to connect with our team and take the next step in your healthcare journey.",
       bookBtn: "Book a Consultation →",
-      callBtn: "Call: +91 98341 72124",
+      callBtn: "Call Pune: +91 98341 72124",
     },
 
     // Parallax Divider (Clinical Philosophy)
@@ -264,7 +264,7 @@ export const translations = {
       label: "From the clinic",
       h2: "Care, explained",
       h2Em: "in Dr Somani’s own words.",
-      followIg: "Follow @somanikushal ↗",
+      followIg: "Follow @drsomanihomoeopathy ↗",
       s1: { title: "Understanding your health", eyebrow: "Doctor explains" },
       s2: { title: "A patient’s experience", eyebrow: "Patient story" },
       s3: { title: "Inside the clinic", eyebrow: "Care journey" },
@@ -472,7 +472,7 @@ export const translations = {
     topBar: {
       exp: "२८+ वर्षांचा विश्वासार्ह अनुभव",
       delivery: "ऑनलाइन सल्ला व घरपोच औषध वितरण",
-      directCall: "डॉक्टरांशी थेट सल्लामसलत: +९१ ९८३४१ ७२१२४",
+      directCall: "पुणे क्लिनिक: +९१ ९८३४१ ७२१२४",
     },
 
     // Navigation & Common
@@ -555,7 +555,7 @@ export const translations = {
       p3: "जळगाव आणि पुण्यातील प्रत्यक्ष तपासणी तसेच भारत, अमेरिका, कॅनडा, जर्मनीसह जगभरातील रुग्णांसाठी ऑनलाइन सल्ल्याद्वारे, डॉ. सोमाणी हॉमिओपॅथी सुलभ व वैयक्तिक आरोग्यसेवा देण्यासाठी कटिबद्ध आहे.",
       p4: "आमचा दृष्टिकोन प्रदीर्घ अनुभव, वैयक्तिक लक्ष आणि रुग्णसेवेच्या बांधिलकीवर आधारलेला आहे. आपल्या आरोग्याच्या प्रवासात पुढचे पाऊल टाकण्यासाठी आम्ही आपले स्वागत करतो.",
       bookBtn: "सल्लामसलत बुक करा →",
-      callBtn: "कॉल करा: +९१ ९८३४१ ७२१२४",
+      callBtn: "पुणे येथे कॉल करा: +९१ ९८३४१ ७२१२४",
     },
 
     // Parallax Divider (Clinical Philosophy)
@@ -727,7 +727,7 @@ export const translations = {
       label: "क्लिनिकमधील अनुभव",
       h2: "आरोग्य मार्गदर्शन,",
       h2Em: "डॉ. सोमाणी यांच्या स्वतःच्या शब्दांत.",
-      followIg: "फॉलो करा @somanikushal ↗",
+      followIg: "@drsomanihomoeopathy ला फॉलो करा ↗",
       s1: { title: "तुमचे आरोग्य समजून घ्या", eyebrow: "डॉक्टरांचे मार्गदर्शन" },
       s2: { title: "रुग्णाचा अनुभव", eyebrow: "रुग्ण कथा" },
       s3: { title: "क्लिनिकमधील वातावरण", eyebrow: "उपचार प्रवास" },
@@ -935,7 +935,7 @@ export const translations = {
     topBar: {
       exp: "२८+ वर्षों का विश्वसनीय अनुभव",
       delivery: "ऑनलाइन परामर्श व घर तक दवा डिलीवरी",
-      directCall: "डॉक्टर से सीधा परामर्श: +९१ ९८३४१ ७२१२४",
+      directCall: "पुणे क्लिनिक: +९१ ९८३४१ ७२१२४",
     },
 
     // Navigation & Common
@@ -1018,7 +1018,7 @@ export const translations = {
       p3: "जलगांव और पुणे में क्लिनिक परामर्श और भारत सहित अमेरिका, कनाडा, जर्मनी आदि देशों के मरीजों के लिए ऑनलाइन परामर्श द्वारा, डॉ. सोमानी होम्योपैथी सुलभ स्वास्थ्य सेवा प्रदान कर रही है।",
       p4: "हमारा दृष्टिकोण अनुभव, व्यक्तिगत ध्यान और मरीज की देखभाल की प्रतिबद्धता पर आधारित है। अपने स्वास्थ्य के सफर में अगला कदम उठाने के लिए हम आपका स्वागत करते हैं।",
       bookBtn: "परामर्श बुक करें →",
-      callBtn: "कॉल करें: +९१ ९८३४१ ७२१२४",
+      callBtn: "पुणे में कॉल करें: +९१ ९८३४१ ७२१२४",
     },
 
     // Parallax Divider (Clinical Philosophy)
@@ -1190,7 +1190,7 @@ export const translations = {
       label: "क्लिनिक से",
       h2: "देखभाल की समझ,",
       h2Em: "डॉ. सोमानी के अपने शब्दों में।",
-      followIg: "फॉलो करें @somanikushal ↗",
+      followIg: "@drsomanihomoeopathy को फॉलो करें ↗",
       s1: { title: "अपने स्वास्थ्य को समझें", eyebrow: "डॉक्टर समझाते हैं" },
       s2: { title: "एक मरीज का अनुभव", eyebrow: "मरीज की कहानी" },
       s3: { title: "क्लिनिक के अंदर", eyebrow: "देखभाल यात्रा" },

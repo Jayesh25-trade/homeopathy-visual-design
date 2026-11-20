@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Calendar, Clock, MapPin, User, Phone, MessageSquare, CheckCircle, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { clinicInfo, doctors, treatments } from '../data/clinicData';
+import { doctors, locations, treatments } from '../data/clinicData';
 
 export default function BookingModal({ isOpen, onClose, initialCondition = '' }) {
   const [form, setForm] = useState({
@@ -59,7 +59,8 @@ export default function BookingModal({ isOpen, onClose, initialCondition = '' })
       `--------------------------------\n` +
       `Please confirm slot availability.`;
 
-    const cleanPhone = form.branch.includes('Jalgaon') ? '919270278668' : clinicInfo.whatsappNumber;
+    const contactLocation = locations.find((location) => location.id === (form.branch.includes('Jalgaon') ? 'jalgaon' : 'pune'));
+    const cleanPhone = contactLocation?.phoneHref.replace('tel:+', '') ?? '919834172124';
     const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(whatsappMessage)}`;
     
     setTimeout(() => {

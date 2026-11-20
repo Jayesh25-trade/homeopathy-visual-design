@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { clinic } from '../data/clinicData';
+import { clinic, locations } from '../data/clinicData';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function SiteFooter({ onOpenBooking }) {
@@ -156,7 +156,17 @@ export default function SiteFooter({ onOpenBooking }) {
                 <span className="contact-icon">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E4B567" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
-                <a href="tel:+919834172124">+91 98341 72124</a>
+                <a href={locations.find((location) => location.id === 'pune')?.phoneHref ?? clinic.phoneHref}>
+                  Pune: {locations.find((location) => location.id === 'pune')?.phone ?? clinic.phone}
+                </a>
+              </li>
+              <li>
+                <span className="contact-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E4B567" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <a href={locations.find((location) => location.id === 'jalgaon')?.phoneHref ?? clinic.phoneHref}>
+                  Jalgaon: {locations.find((location) => location.id === 'jalgaon')?.phone ?? '+91 92702 78668'}
+                </a>
               </li>
               <li>
                 <span className="contact-icon">
@@ -317,7 +327,12 @@ export default function SiteFooter({ onOpenBooking }) {
               </button>
               {activeMobileSection === 'get-in-touch' && (
                 <div className="mobile-accordion-body">
-                  <a href="tel:+919834172124">Phone: +91 98341 72124</a>
+                  <a href={locations.find((location) => location.id === 'pune')?.phoneHref ?? clinic.phoneHref}>
+                    Pune: {locations.find((location) => location.id === 'pune')?.phone ?? clinic.phone}
+                  </a>
+                  <a href={locations.find((location) => location.id === 'jalgaon')?.phoneHref ?? clinic.phoneHref}>
+                    Jalgaon: {locations.find((location) => location.id === 'jalgaon')?.phone ?? '+91 92702 78668'}
+                  </a>
                   <a href={clinic.whatsapp} target="_blank" rel="noopener noreferrer">
                     {lang === 'mr' ? 'व्हॉट्सॲप सल्ला' : lang === 'hi' ? 'व्हाट्सएप परामर्श' : 'WhatsApp Consultation'}
                   </a>

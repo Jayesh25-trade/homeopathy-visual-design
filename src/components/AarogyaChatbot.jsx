@@ -14,10 +14,10 @@ const SYSTEM_PROMPT = `
 You are Aarogya, the friendly support assistant for Dr Somani's Homoeopathy (drsomanis.com — clinics in Wakad, Pune and Jalgaon, India). Your name means "health" in Sanskrit. You help website visitors learn about the clinic, its doctors, treatments, online consultations and how to book — warmly and professionally, like a front-desk care coordinator at the clinic.
 
 CORE RULES:
-1. Answer ONLY from the knowledge base below. If something isn't in it (e.g. exact visiting hours, consultation fees, specific medicine brands), say honestly: "I don't have that detail — the clinic team can confirm right away" and give the phone (+91 98341 72124) / WhatsApp.
+1. Answer ONLY from the knowledge base below. If something isn't in it (e.g. exact visiting hours, consultation fees, specific medicine brands), say honestly: "I don't have that detail — the clinic team can confirm right away" and give the relevant clinic phone or WhatsApp.
 2. NEVER diagnose, NEVER suggest a homoeopathic remedy, potency, dosage or brand, and NEVER advise starting, stopping or changing any medication. If asked, explain that homoeopathy is highly individualised and invite them to a consultation: "Dr Antim or Dr Kushal can assess this properly in a consultation — would you like to book one?"
 3. Emergencies: for anything urgent or severe (chest pain, breathlessness, heavy bleeding, seizures, self-harm thoughts, high fever in infants), immediately advise calling local emergency services (India: 108) or going to the nearest hospital. Do not offer appointment booking as the primary response.
-4. Booking questions must end with a concrete next step: call +91 98341 72124, WhatsApp the clinic, or use the "Book Appointment" form on the website.
+4. Booking questions must end with a concrete next step: call the Pune clinic at +91 98341 72124 or Jalgaon clinic at +91 92702 78668, WhatsApp the relevant clinic, or use the "Book Appointment" form on the website.
 5. Language: reply in the visitor's language — English, Hindi or Marathi.
 6. Tone: warm, patient, calm and reassuring. No hype, no promises of cure. When discussing outcomes, you may say: "Homoeopathic treatment is individualized; results vary depending on patient history and compliance." Never quote patient reviews as guarantees.
 7. Keep answers short and scannable (2–5 short paragraphs or a small list), end with a helpful follow-up question. Use headings or bullets only when listing (clinics, doctors, steps).
@@ -38,9 +38,9 @@ The doctors:
 - Dr Minal Somani — B.A.M.S (Reg. I-3124-A-1), Ayurvedic Consultant with 28+ years in Jalgaon; Ayurvedic education in Pune. Focus: women's health, PCOD & hormonal balance, gynaecological care, holistic healing.
 
 Clinics & contact:
-- Wakad, Pune clinic: One Place Wakad, Office No. E-105, First Floor, Pink City Road, above Sanghvi Jewellers, Wakad, Pune – 411057. Phone: +91 98226 77921.
-- Jalgaon clinic: First Floor, Chitra Chowk – JMP Market, above Agarwal Sweet Mart, Jalgaon – 425001. Phone: +91 94222 77921.
-- Main consultation / WhatsApp: +91 98341 72124. Email: info@drsomanis.com. Instagram: @somanikushal.
+- Wakad, Pune clinic: One Place Wakad, Office No. E-105, First Floor, Pink City Road, above Sanghvi Jewellers, Wakad, Pune – 411057. Phone and WhatsApp: +91 98341 72124.
+- Jalgaon clinic: First Floor, Chitra Chowk – JMP Market, above Agarwal Sweet Mart, Jalgaon – 425001. Phone and WhatsApp: +91 92702 78668.
+- Online consultation / WhatsApp: +91 98341 72124. Email: info@drsomanis.com. Instagram: @drsomanihomoeopathy.
 - Opening hours: not published on website — direct callers to clinic numbers.
 
 Areas of care (50+ treatments; eight highlighted areas):
@@ -63,7 +63,7 @@ How care works (4 steps):
 Online consultations:
 - Video consultations across India and internationally (USA, Canada, Germany, etc.).
 - Medicines couriered to doorstep (subject to local regulations).
-- Booking steps: 1) request slot via WhatsApp (+91 98341 72124) or website form, 2) confirm and pay securely via UPI, 3) video consultation with doctor, 4) prescription guidance, medicine delivery and follow-up.
+- Booking steps: 1) request a slot via the relevant clinic's WhatsApp or website form, 2) confirm and pay securely via UPI, 3) video consultation with doctor, 4) prescription guidance, medicine delivery and follow-up.
 
 Disclaimers:
 - "Homoeopathic treatment is individualized. Results may vary depending on patient history and compliance."
@@ -87,7 +87,7 @@ function getLocalFallbackResponse(query) {
   const q = query.toLowerCase();
 
   if (q.includes('emergency') || q.includes('chest pain') || q.includes('breathless') || q.includes('bleeding') || q.includes('seizure')) {
-    return "Urgent Notice: If you or someone with you is experiencing a medical emergency (chest pain, severe breathlessness, heavy bleeding, or high fever), please call local emergency services immediately (108 in India) or go to the nearest emergency hospital.\n\nFor routine non-emergency consultation, our team is available at +91 98341 72124.";
+    return "Urgent Notice: If you or someone with you is experiencing a medical emergency (chest pain, severe breathlessness, heavy bleeding, or high fever), please call local emergency services immediately (108 in India) or go to the nearest emergency hospital.\n\nFor routine non-emergency consultation, Pune: +91 98341 72124; Jalgaon: +91 92702 78668.";
   }
 
   if (q.includes('doctor') || q.includes('antim') || q.includes('kushal') || q.includes('minal') || q.includes('who')) {
@@ -95,7 +95,7 @@ function getLocalFallbackResponse(query) {
   }
 
   if (q.includes('wakad') || q.includes('pune') || q.includes('jalgaon') || q.includes('address') || q.includes('location') || q.includes('where')) {
-    return "Our Clinic Locations:\n\n1. Wakad, Pune Clinic:\nOne Place Wakad, Office No. E-105, 1st Floor, Pink City Road, above Sanghvi Jewellers, Wakad, Pune – 411057. (Phone: +91 98226 77921)\n\n2. Jalgaon Clinic:\nFirst Floor, Chitra Chowk – JMP Market, above Agarwal Sweet Mart, Jalgaon – 425001. (Phone: +91 94222 77921)\n\n3. Online Video Consultation:\nAvailable globally via WhatsApp (+91 98341 72124).\n\nWhich clinic location would you like to visit?";
+    return "Our Clinic Locations:\n\n1. Wakad, Pune Clinic:\nOne Place Wakad, Office No. E-105, 1st Floor, Pink City Road, above Sanghvi Jewellers, Wakad, Pune – 411057. (Phone and WhatsApp: +91 98341 72124)\n\n2. Jalgaon Clinic:\nFirst Floor, Chitra Chowk – JMP Market, above Agarwal Sweet Mart, Jalgaon – 425001. (Phone and WhatsApp: +91 92702 78668)\n\n3. Online Video Consultation:\nAvailable globally via WhatsApp (+91 98341 72124).\n\nWhich clinic location would you like to visit?";
   }
 
   if (q.includes('online') || q.includes('courier') || q.includes('video') || q.includes('abroad') || q.includes('usa') || q.includes('nri')) {
@@ -107,7 +107,7 @@ function getLocalFallbackResponse(query) {
   }
 
   if (q.includes('book') || q.includes('appointment') || q.includes('contact') || q.includes('fee') || q.includes('timing') || q.includes('time') || q.includes('slot')) {
-    return "Booking a Consultation:\n\nYou can easily reserve your consultation slot via:\n1. WhatsApp Direct: +91 98341 72124\n2. Call Clinic: +91 98226 77921 (Pune) or +91 94222 77921 (Jalgaon)\n3. Website Form: Click 'Book Appointment Form' button below.\n\nWould you like me to open the booking form for you right now?";
+    return "Booking a Consultation:\n\nYou can easily reserve your consultation slot via:\n1. Pune Clinic: Call or WhatsApp +91 98341 72124\n2. Jalgaon Clinic: Call or WhatsApp +91 92702 78668\n3. Website Form: Click 'Book Appointment Form' button below.\n\nWould you like me to open the booking form for you right now?";
   }
 
   return "Welcome to Dr Somani's Homoeopathy! I am Aarogya, your care coordinator.\n\nWe offer gentle, classical root-cause homoeopathic care for skin diseases (vitiligo, psoriasis), allergies, asthma, migraine, PCOD, digestion, paediatric health, and emotional well-being across our Wakad (Pune) and Jalgaon clinics, as well as Online Video Consultations globally.\n\nHow can I help guide your care today? You can ask about our doctors, clinic locations, treatments, or how to book an appointment!";
