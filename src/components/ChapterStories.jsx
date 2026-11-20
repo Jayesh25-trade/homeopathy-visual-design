@@ -262,7 +262,7 @@ export default function ChapterStories() {
                 transition: 'color 0.2s ease, border-color 0.2s ease'
               }}
             >
-              {t('stories.followIg') || 'FOLLOW @SOMANIKUSHAL ↗'}
+              {t('stories.followIg') || 'FOLLOW @DRSOMANIHOMOEOPATHY ↗'}
             </a>
           </div>
         </div>
